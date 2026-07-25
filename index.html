@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Commpatible" content="IE=edge">
+        <!-- This makes the page use the real screen width, so it adapts to any type of phone -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Postcards Home</title>
+        <!-- Links to the css file, tells the browser this is a style file-->
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <h2 id="title">Postcards Home</h2>
+        <!-- <h3 id="mothersday">🎉 母亲节快乐！ 🎉</h3> -->
+        <h6 id="subtitle">Made by Alex Yang</h6>
+
+        <select id="languageSelect">
+            <option value="">Select Language:</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="zh">🇨🇳 中文</option>
+        </select>
+
+        <div id="instructionsBox">
+            <p id="instructionsTitle" style="text-align: center;"><b><u>Instructions:</u></b></p>
+            <p id="instructionsList">
+                1️⃣ Choose a Photo<br>
+                2️⃣ Write a Caption<br>
+                3️⃣ Choose a Mood<br>
+                4️⃣ Add a Location<br>
+                5️⃣ Download or Share
+            </p>
+        </div>
+
+        <div id="loggedInUserInfo">
+            <h4 id="welcomeMessage"></h4>
+        </div>
+
+        <div id="controls">
+
+            <!-- Ask the user to choose a file, or use the back camera on phones -->
+            <input id="photoInput"
+                    type="file" 
+                    accept="image/*">
+                    <!-- If I add capture="environment" it will only use camera, no "choose from photo library" option -->
+                    
+
+
+            <!-- Select a stamp type -->
+            <!--
+            <select id="stampSelect">
+                <option value="">Select Stamp...</option>
+                <option value="music">Music Stamp</option>
+                <option value="home">Home Stamp</option>
+                <option value="travel">Travel Stamp</option>
+                <option value="canada">Canada Stamp</option>
+                <option value="princeton">Princeton Stamp</option>
+            </select> --> 
+            <!-- This above is if I want to switch to base64-->
+
+            <select id="stampSelect">
+                <option value="">Select Stamp...</option>
+                <option value="images/music-stamp.png">🎵 Music Stamp</option>
+                <option value="images/home-stamp.png">🏡 Home Stamp</option>
+                <option value="images/travel-stamp.png">✈️ Travel Stamp</option>
+                <option value="images/canada-stamp.png">🇨🇦 Canada Stamp</option>
+                <option value="images/princeton-stamp.png">🐯 Princeton Stamp</option>
+            </select>
+
+            <div id="musicControls">
+
+                <select id="moodSelect">
+                    <option value="">Choose Mood...</option>
+                    <option value="happy">😀 Happy</option>
+                    <option value="excited">😃 Excited!</option>
+                    <option value="romantic">🥰 Romantic</option>
+                    <option value="reflective">😇 Calm / Reflective</option>
+                    <option value="ambitious">😈 Ambitious</option>
+                    <option value="angry">😡 Angry</option>
+                    <option value="inspired">🤩 Inspired</option>
+                    <option value="chinese">🇨🇳 Chinese</option>
+                </select>
+
+                <audio id="musicPlayer" controls loop></audio> <!-- controls give it the interactive playback bar -->
+
+                <button id="musicRerollButton">🔄</button>
+            
+            </div>
+
+            <button id="locationButton">Use My Location</button>
+
+            <!-- Creates a multiline text input -->
+            <textarea id="captionInput" placeholder="Write a caption..."></textarea>
+        
+        </div>
+
+        <!-- Design the actual postcard -->
+        <div id="postcard">
+            <!-- Embed the image directly into the webpage, and give it an id called photoPreview for javascript to find -->
+            <img id="photoPreview">
+            <img id="stampPreview" src="">
+            <p id="captionPreview">
+                Your Caption Will Appear Here.
+            </p>
+
+            <p id="musicMessage"></p>
+            
+            <p id="datePreview"></p>
+            <p id="locationPreview"></p>
+        </div>
+
+        <button id="loginButton">Log In to Save Your Postcards!</button>
+
+        <!-- Error Message JUST IN CASE the postcard cannot share -->
+        <p id="statusMessage"></p>
+
+        <div id="lifeSegmentControls">
+            <select id="lifeSegmentSelect">
+                <option value="">Choose Life Segment...</option>
+            </select>
+
+            <button id="createLifeSegmentButton">
+                + New Life Segment
+            </button>
+        </div>
+
+        <div id="controlCenter">
+
+            <div id="exportMenuContainer">
+                <button id="exportButton" class="control-center-button">Export Postcard ▾</button>
+
+                <div id="exportMenu">
+                    <button id="downloadButton">Download Postcard</button>
+                    <button id="shareButton">↗ Share Postcard</button>
+                </div>
+            </div>
+
+            <button id="resetPostcardButton" class="control-center-button">New Postcard</button>
+            <button id="toInventoryButton" class="control-center-button">Go To Full Inventory</button>
+
+        </div>
+
+
+        <div id="modalOverlay">
+            <div id="lifeSegmentModal">
+
+                <button id="xButton_LifeSegmentModal">✕</button>
+
+                <h3 class="defaultText">Create New Life Segment</h3>
+                <p id="lifeSegmentInfo">
+                    What is a "Life Segment?"<br>
+                    <br>
+                    Think of it as a collection of postcards that store your memories. 
+                    Instead of 50 random photos which you forgot the context, why not take a few moments and write a meaningful caption for your photo?
+                    In essence, this is like a binder of postcards that document a specific moment in your life.
+                </p>
+                <input id="lifeSegmentTitleInput" type="text" placeholder="Life Segment Title">
+                <textarea id="lifeSegmentDescriptionInput" placeholder="Description"></textarea>
+                <p id="lifeSegmentStatusMessage"></p>
+                
+                <div id="lifeSegmentModalControls">
+                    <button id="saveLifeSegmentButton">Create Segment</button>
+                    <button id="closeLifeSegmentModal">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Link script.js -->
+        <!-- Import the html2canvas library to export postcard to picture -->
+        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+        <!-- Download the supabase-js library, kinda like pip install in Python -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+        <!-- <script src="images.js"></script> -->
+        <script src="music.js"></script>
+        <script src="libs/canvas-confetti.min.js"></script>
+        
+        <script src="supabase.js"></script>
+        <script src="dictionary.js"></script>
+        <script src="script.js"></script>
+
+    </body>
+</html>
+

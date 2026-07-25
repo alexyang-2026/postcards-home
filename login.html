@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Commpatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <title>Postcards Home - Login</title>
+        <link rel="stylesheet" href="login_style.css">
+    </head>
+    <body>
+        <h2 id="title">Postcards Home: Login</h2>
+        <h6 id="subtitle">Made by Alex Yang</h6>
+
+        <div id="loginForms">
+            <input 
+                id="emailInput"
+                type="email"
+                placeholder="Enter Your Email:">
+
+            <input
+                id="passwordInput"
+                type="password"
+                placeholder="Enter Your Password:">
+
+            <label>
+                <input type="checkbox" id="showPassword">
+                Show Password
+            </label>
+            
+            <!-- <p id="resendEmailText">Note: if you're a new user, you must confirm your email first.</p> -->
+            <p id="statusMessage"></p>
+            <p id="redirectMessage"></p>
+            <!-- <button id="resendConfirmationButton">Press Here to Resend Email Confirmation</button> -->
+            <button id="loginButton">Log In</button>
+        </div>
+
+        <a id="createAccount" href="create_account.html">No account? Press here to create one, it's free!</a>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="supabase.js"></script>
+        <script src="login_js.js"></script>
+    </body>
+</html>

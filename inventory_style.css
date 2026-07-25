@@ -1,0 +1,296 @@
+:root {
+    --header-height: 80px;
+}
+
+body {
+    display:flex;
+    flex-direction:column;
+    background: #f7efe5;
+    font-family: American Typewriter;
+}
+
+.inventory-layout {
+    display: flex;
+    height: calc(100vh - var(--header-height));
+    
+}
+
+.inventory-sidebar {
+    width: 260px;
+    flex-shrink: 0; /* never let the sidebar get skinnier than 260 px */
+    padding: 32px;
+    border-right: 2px solid black;
+}
+
+.inventory-sidebar.closed {
+    display: none;
+}
+
+.inventory-nav-button {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    background-color: gold;
+    font-family: American Typewriter;
+}
+
+.inventory-nav-button:active {
+    transform:scale(0.95);
+}
+
+.inventory-main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+
+}
+
+#inventoryMenuButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:fit-content;
+    height:25px;
+    font-family: American Typewriter;
+    font-size: large;
+
+    border: 2px solid black;
+    background-color: lightblue;
+
+}
+
+.general-heading{
+    padding-top: 15px;
+}
+
+.life-segment-grid {
+    display: flex;
+    flex-wrap: wrap; /* If there is not room on this row, move the remaining items to the next one */
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.life-segment {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    flex: 0 0 calc(25% - 18px); /* should take around 1/4 of the window but leave 18px for the gaps */
+    align-items: center;
+}
+
+.life-segment-cover, .stamp-cover {
+    width: 100%; /* make the image as wide as its parent card */
+}
+
+.life-segment-title, .life-segment-postcards, .life-segment-date {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.stamps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.stamp-icon {
+    display: flex;
+    flex-direction:column;
+    border: 2px solid black;
+    flex: 0 0 calc(16.6666666666666666667% - 18px);
+    align-items: cnter;
+}
+
+.stamp-title {
+    text-align: center;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+
+/* Modal Stuff */
+#modalOverlay {
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lifeSegmentModal {
+    position: relative;
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-family: American Typewriter;
+
+    width: 90vw;
+    height: 90vh;
+
+    max-width: 1400px;
+    max-height: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inventory-postcard {
+    width: 200px;
+    height: 220px;
+    border: 2px solid black;
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    padding: 10px;
+    box-sizing: border-box; /* The whole card including padding */
+
+}
+
+.postcard-photo-container {
+    position: relative;
+    flex: 3;
+    min-height: 0;
+    border: 2px solid black;
+}
+
+.postcard-body {
+    flex: 2;
+    padding: 6px;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    font-family: "Chalkduster", "Fantasy", fantasy;
+}
+
+.postcard-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.postcard-stamp {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 40px;
+}
+
+.postcard-caption,
+.postcard-music,
+.postcard-date,
+.postcard-location {
+    font-size: 8px;
+    margin: 1px 1px;
+    
+}
+
+#closeLifeSegmentModalButton {
+    background: red;
+    border: 2px solid black;
+    border-top-right-radius: 12px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#closeLifeSegmentModalButton.active {
+    transform: scale(0.95);
+}
+
+
+/* Postcard Editor Modal */
+#editPostcardOverlay {
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+#editPostcardModal {
+    position: relative;
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+
+    width: 600px;
+    max-width: 90vw;
+    max-height: 90vh;
+    
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    font-family: American Typewriter;
+}
+
+#editPostcard {
+    position: relative;
+
+    background: white;
+    border: 2px solid black;
+
+    padding: 20px;
+    width: 320px;
+}
+
+#editPostcardImage {
+    width: 100%;
+    height: auto;
+
+    border: 2px solid black;
+}
+
+#editStampPreview {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 80px;
+}
+
+#editCaptionPreview, #editMusicPreview{
+    font-family: Chalkduster, fantasy;
+    font-size: 11px;
+    white-space: pre;
+}
+
+#closeEditPostcardButton {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    background: red;
+    border: 2px solid black;
+    border-top-right-radius: 12px;
+}
+
+#editPostcardImage {
+    width: 320px;
+    border: 2px solid black;
+}
+
+#editCaptionInput {
+    width: 320px;
+    height: 90px;
+}

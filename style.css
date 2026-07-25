@@ -1,0 +1,311 @@
+body {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background: #f7efe5;
+    font-family: Arial, sans-serif;
+}
+
+#title {
+    font-family: American Typewriter;
+    margin-bottom:5px;
+}
+
+.defaultText {
+    font-family: American Typewriter;
+}
+
+/*
+#mothersday {
+    font-family: American Typewriter;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+*/
+
+#subtitle {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: American Typewriter;
+    font-size: small;
+}
+
+#languageSelect {
+    background-color: gold;
+}
+
+#instructionsBox {
+    border: 2px solid black;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#instructionsTitle {
+    margin-top: 0;
+    font-family: American Typewriter;
+    font-size: small;
+}
+
+#instructionsList {
+    margin-top:0;
+    margin-bottom:0;
+    font-family: American Typewriter;
+    font-size: small;
+}
+
+#welcomeMessage {
+    margin-top: 5px;
+    font-family: American Typewriter;
+    font-size: large;
+}
+
+
+/* Selects the element with id="postcard" */
+#postcard {
+    position:relative; /* Establish th postcard as a relative position */
+    background: white;
+    border: 2px solid black;
+    padding: 20px;
+    width: 320px;
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start; /* align everything to the left side */
+}
+
+#musicControls {
+    display: flex;
+    align-items: center; /* vertically aligns the player bar and mood selection meny */
+    justify-content: center;
+    gap: 4px;
+}
+
+/* Change the size of the musicPlayer */
+#musicPlayer {
+    width:200px;
+    height: 10px;
+}
+
+#captionInput {
+    width:300px;
+    height:80px;
+    margin-bottom:10px;
+    display: block; /* Make it a block element which means: take the entire row and start on a new line */
+    /* Align it to the center by taking any remaining space and split it in half */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#stampPreview {
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:80px;
+}
+
+
+#photoPreview{
+    width: 100%;
+    height: auto;
+    border: 2px solid black;
+}
+
+#captionPreview{
+    font-family: "Chalkduster", "Fantasy", fantasy;
+    font-size: 11px;
+
+}
+
+#musicMessage{
+    font-family: "Chalkduster", "Fantasy", fantasy;
+    font-size: 10px;
+    white-space: pre-line; /* The browser respects \n from JS with this */
+}
+
+#locationPreview{
+    font-family: "Chalkduster", "Fantasy", fantasy;
+    font-size: 10px;
+}
+
+#datePreview{
+    font-family: "Chalkduster", "Fantasy", fantasy;
+    font-size:10px;
+}
+
+#loginButton {
+    background-color: turquoise;
+    margin-top: 15px;
+}
+
+#loginButton:active {
+    transform:scale(0.95);
+}
+
+#downloadButton{
+    margin-top:15px;
+    background-color: lightgoldenrodyellow;
+}
+
+#downloadButton:active {
+    transform: scale(0.95);
+    background-color: gold;
+}
+
+#shareButton{
+    margin-top: 10px;
+    background-color: limegreen;
+}
+
+#shareButton:active {
+    transform: scale(0.95);
+    background-color: greenyellow;
+}
+
+#resetPostcardButton{
+    background-color: red
+}
+
+#resetPostcardButton:active {
+    transform: scale(0.95);
+}
+
+#statusMessage {
+    display:none;
+    font-family: American Typewriter;
+    font-size: 11;
+    color: red;
+
+}
+
+
+#lifeSegmentControls {
+    margin-top: 10px;
+}
+
+
+#modalOverlay {
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lifeSegmentModal {
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    font-family: American Typewriter;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#lifeSegmentTitleInput {
+    width: 200px;
+    height: 30px;
+    margin-top: 0;
+}
+
+#lifeSegmentInfo {
+    margin-top: 0;
+}
+
+#lifeSegmentDescriptionInput {
+    width: 200px;
+    height: 40px;
+}
+
+#xButton_LifeSegmentModal {
+    background-color: red;
+    position: absolute;
+    border: 1px solid black;
+    color: yellow;
+    border-top-right-radius: 13px;
+
+    top: 0;
+    right: 0;
+
+}
+
+#closeLifeSegmentModal {
+    background-color: red;
+}
+
+#saveLifeSegmentButton {
+    background-color: greenyellow;
+}
+
+#toInventoryButton {
+    background-color: gold;
+}
+
+#exportMenuContainer {
+    position: relative;
+}
+
+#exportMenu {
+    display: none;
+
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+
+    min-width: 210px;
+    padding: 8px;
+
+    background: white;
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    z-index: 100;
+}
+
+#exportMenu.open {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#exportMenu button {
+    width: 100%;
+    padding: 10px 12px;
+
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+
+    text-align: left;
+    cursor: pointer;
+}
+
+#exportMenu button:hover {
+    background: #f2f2f2;
+}
+
+#controlCenter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.control-center-button {
+    margin: 0;
+    width: auto;
+    margin-top: 10px;
+    height: 20px;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Commpatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Inventory</title>
+    <link rel="stylesheet" href="inventory_style.css">
+</head>
+
+<body>
+    <button id="inventoryMenuButton">☰ Show/Hide Menu</button>
+    <div class="inventory-layout">
+        <aside id="inventorySidebar" class="inventory-sidebar">
+            <h2>My Inventory</h2>
+
+            <button id="fullInventoryButton" class="inventory-nav-button">Full Inventory</button>
+            <button id="lifeSegmentsButton" class="inventory-nav-button">Life Segments</button>
+            <button id="stampsButton" class="inventory-nav-button">Stamps</button>
+            <button id="collectiblesButton" class="inventory-nav-button">Collectibles</button>
+
+            <button id="returnButton">Return to Main Page</button>
+        </aside>
+
+        <main class="inventory-main">
+            <div class="inventory-main-header">
+                <h2>Full Inventory</h2>
+                <p>Your saved postcards and collections will appear here.</p>
+            </div>
+
+            <section id="lifeSegmentsSection">
+
+                <h3 class=general-heading>My Life Segment Collection</h3>
+                
+                <div class="life-segment-grid">
+                    
+                    <!-- Template Life Segment
+                    <div class="life-segment">
+                        <img src="images/princeton-stamp.png" class="life-segment-cover">
+                        <h3 class="life-segment-title">Test</h3>
+
+                        <p class="life-segment-postcards">
+                            24 postcards
+                        </p>
+
+                        <p class="life-segment-date">
+                            Last Updated on June 21, 2026
+                        </p>
+                    </div>
+                -->
+                </div>
+            </section>
+            
+            
+            <section id="stampsSection">
+                <h3 class="general-heading">My Stamp Collection</h3>
+                <div class="stamps-grid">
+
+                    <!-- Template for Stamps
+                    <div class="stamp-icon">
+                        <img src="images/princeton-stamp.png" class="stamp-cover">
+                        <h3 class="stamp-title">Test</h3>
+                    </div>
+                    -->
+
+                </div>
+            </section>
+
+            <section id="collectiblesSection">
+                <h3 class="general-heading">My Other Collectibles</h3>
+                <div class="collectibles-grid">
+
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <div id="modalOverlay">
+        <div id="lifeSegmentModal" class="modal">
+            <button id="closeLifeSegmentModalButton">✕</button>
+
+            <h3 id="lifeSegmentModalHeading" class="general-heading">View Postcards</h3>
+            <p class="general-text">Click on a Postcard to Zoom In or Edit. (Postcards may take some time to load.)</p>
+
+            <div id="postcardGrid">
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div id="editPostcardOverlay">
+        <div id="editPostcardModal">
+            <button id="closeEditPostcardButton">✕</button>
+
+            <h3>View / Edit Postcard</h3>
+            <div id="editPostcard">
+
+                <img id="editPostcardImage">
+                <img id="editStampPreview">
+
+                <p id="editCaptionPreview"></p>
+                <p id="editMusicPreview"></p>
+                <p id="editDatePreview"></p>
+                <p id="editLocationPreview"></p>
+
+            </div>
+            
+            <button id="savePostcardEditsButton" class="edit-button">Save Changes</button>
+            <button id="downloadPostcardButton" class="edit-button">Download Postcard</button>
+            <button id="sharePostcardButton" class="edit-button">Share Postcard</button>
+            <button id="deletePostcardButton" class="edit-button">Delete Postcard</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="stamp_database.js"></script>
+    <script src="inventory_script.js"></script>
+    
+</body>
+</html>

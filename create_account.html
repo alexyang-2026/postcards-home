@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Commpatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Postcards Home:Create Account</title>
+        <link rel="stylesheet" href="create_account_style.css">
+    </head>
+    
+    <body>
+        <h2 id="title">Postcards Home: Create an Account</h2>
+        <h6 id="subtitle">Created by Alex Yang</h6>
+
+        <div id="createAccountBox">
+
+            <!-- The input forms and password checker are the "top row" while the create account button is the bototm row -->
+            <div id="topRow">
+
+                <div id="inputForms">
+
+                    <input id="emailInput" type="email" placeholder="Your Email Here">
+                    <input id="passwordInput" type="password" placeholder="Your Password Here">
+                    <input id="confirmPasswordInput" type="password" placeholder="Confirm Password">
+                    <label>
+                        <input id="showPassword" type="checkbox">
+                        Show Password
+                    </label>
+
+                    <input id="firstNameInput" placeholder="Your First Name"></input>
+                    <input id="lastNameInput" placeholder="Your Last Name"></input>
+                    <input id="usernameInput" placeholder="Pick a Username">
+                    <label for="birthdateInput">Your Birthday:</label>
+                    <input id="birthdateInput" type="date" placeholder="Your Birthday:">
+
+                </div>
+                
+                <div id="passwordChecker">
+                    <p id="requirementsTitle"><u>Password Requirements:</u></p>
+                    <p id="characterCheck">❌ At least 8 characters</p>
+                    <p id="uppercaseCheck">❌ At least 1 uppercase letter</p>
+                    <p id="lowercaseCheck">❌ At least 1 lowercase letter</p>
+                    <p id="numberCheck">❌ At least 1 number</p>
+                    <p id="specialCharacterCheck">❌ At least 1 special character (e.g. !, @, #, etc.)</p>
+
+                    <p id="usernameRequirementsTitle"><u>Username Check:</u></p>
+                    <p id="uniqueCheck">❌ Username Not Available — Try Another!</p>
+
+                </div>
+            
+            </div>
+
+
+            <button id="createAccountButton">Create Account</button>
+            
+            <p id="statusMessage"></p>  
+            <p id="redirectMessage"></p>          
+
+        </div>
+
+        <a id="accountExistsLink" href="login.html">Already have an account? Click here to log in</a>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="supabase.js"></script>
+        <script src="create_account_js.js"></script>
+        
+    </body>
+</html>
