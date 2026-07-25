@@ -41,11 +41,11 @@ const dropdownTranslations = {
     en: {
         stamps: {
             "": "Select Stamp...",
-            "images/music-stamp.png": "🎵 Music Stamp",
-            "images/home-stamp.png": "🏡 Home Stamp",
-            "images/travel-stamp.png": "✈️ Travel Stamp",
-            "images/canada-stamp.png": "🇨🇦 Canada Stamp",
-            "images/princeton-stamp.png": "🐯 Princeton Stamp"
+            "assets/images/music-stamp.png": "🎵 Music Stamp",
+            "assets/images/home-stamp.png": "🏡 Home Stamp",
+            "assets/images/travel-stamp.png": "✈️ Travel Stamp",
+            "assets/images/canada-stamp.png": "🇨🇦 Canada Stamp",
+            "assets/images/princeton-stamp.png": "🐯 Princeton Stamp"
         },
         moods: {
             "": "Choose Mood...",
@@ -63,11 +63,11 @@ const dropdownTranslations = {
     zh: {
         stamps: {
             "": "选择邮票...",
-            "images/music-stamp.png": "🎵 音乐邮票",
-            "images/home-stamp.png": "🏡 房子邮票",
-            "images/travel-stamp.png": "✈️ 旅行邮票",
-            "images/canada-stamp.png": "🇨🇦 加拿大邮票",
-            "images/princeton-stamp.png": "🐯 普林斯顿邮票"
+            "assets/images/music-stamp.png": "🎵 音乐邮票",
+            "assets/images/home-stamp.png": "🏡 房子邮票",
+            "assets/images/travel-stamp.png": "✈️ 旅行邮票",
+            "assets/images/canada-stamp.png": "🇨🇦 加拿大邮票",
+            "assets/images/princeton-stamp.png": "🐯 普林斯顿邮票"
         },
         moods: {
             "": "选择心情...",

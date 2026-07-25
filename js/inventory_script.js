@@ -131,7 +131,7 @@ async function loadInventoryLifeSegments() {
 
         const card = `
     <div class="life-segment" data-segment-id="${segment.id}" data-segment-title="${segment.title}">
-        <img src="images/princeton-stamp.png" class="life-segment-cover">
+        <img src="assets/images/princeton-stamp.png" class="life-segment-cover">
 
         <h3 class="life-segment-title">
             ${segment.title}
