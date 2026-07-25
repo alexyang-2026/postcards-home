@@ -145,6 +145,7 @@ body {
     transform:scale(0.95);
 }
 
+/* OLD DOWNLOAD BUTTONS
 #downloadButton{
     margin-top:15px;
     background-color: lightgoldenrodyellow;
@@ -163,6 +164,11 @@ body {
 #shareButton:active {
     transform: scale(0.95);
     background-color: greenyellow;
+}
+*/
+
+#downloadButton {
+    border-bottom: 2px solid black;
 }
 
 #resetPostcardButton{
@@ -264,8 +270,8 @@ body {
     top: calc(100% + 8px);
     left: 0;
 
-    min-width: 210px;
-    padding: 8px;
+    min-width: 150px;
+    padding: 5px;
 
     background: white;
     border: 1px solid #d8d8d8;
