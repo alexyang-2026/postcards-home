@@ -424,48 +424,7 @@ moodSelect.addEventListener("change", loadRandomMusic);
 musicRerollButton.addEventListener("click", loadRandomMusic);
 
 locationButton.addEventListener("click", function(){
-
-    locationPreview.style.display = "block";
-    locationPreview.textContent = "📍 Finding Location...";
-
-    if (!navigator.geolocation) {
-        locationPreview.textContent = "📍 Somewhere in the world 🫪";
-        return;
-    };
-    // Use the built-in Web API navigator (built into web browser)
-    navigator.geolocation.getCurrentPosition(
-        
-        async function(position) {
-        
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
-            const url = "https://nominatim.openstreetmap.org/reverse?format=json" + "&lat=" + latitude + "&lon=" + longitude;
-            const response = await fetch(url);
-            const data = await response.json();
-
-            const city = 
-                data.address.city ||
-                data.address.town ||
-                data.address.village ||
-                data.address.municipality ||
-                "Unknown city";
-
-            const region = data.address.state;
-            const country = data.address.country;
-            
-            locationPreview.style.display = "block";
-            locationPreview.textContent = "📍 " + city + ", " + region + ", " + country;
-            },
-
-            function(error) {
-                locationPreview.textContent = "📍 Location unavailable. Error Code: " + error.code;
-                
-                showMessage("Location Error: " + error.message, "error");
-        }
-
-    );
-
+    getLocation(locationPreview);
 });
 
 function updateDate() {
@@ -512,6 +471,8 @@ resetPostcardButton.addEventListener("click", function() {
     statusMessage.style.display = "none";
     statusMessage.textContent = "";
 
+
+    
     updateDate();
 
     showMessage("Postcard Reset Successfully.", "success");

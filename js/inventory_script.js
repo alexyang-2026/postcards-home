@@ -35,7 +35,6 @@ const editMusicPreview = document.getElementById("editMusicPreview");
 const editDatePreview = document.getElementById("editDatePreview");
 const editLocationPreview = document.getElementById("editLocationPreview");
 
-
 function resetButtonColors() {
     fullInventoryButton.style.backgroundColor = "gold";
     lifeSegmentsButton.style.backgroundColor = "gold";
@@ -322,7 +321,9 @@ function displayPostcards(postcardsData) {
     }
 
     const postcardCards = document.querySelectorAll(".inventory-postcard");
+
     for (const card of postcardCards) {
+
         card.addEventListener("click", function() {
             const postcardID = card.dataset.postcardId;
 
@@ -333,8 +334,19 @@ function displayPostcards(postcardsData) {
             editPostcardImage.src = selectedPostcard.image_url;
             editCaptionPreview.textContent = selectedPostcard.caption;
             editMusicPreview.textContent = `♫ Currently listening to: ♫ \n${selectedPostcard.music_piece}`;
+            editDatePreview.textContent = selectedPostcard.postcard_date;
+            editLocationPreview.textContent = selectedPostcard.location;
 
             editPostcardOverlay.style.display = "flex";
+
+            savePostcardEditsButton.onclick = async function() {
+                try {
+                    await savePostcardToSupabase(selectedPostcard);
+                } catch (error) {
+                    console.error(error);
+                    alert(error.message);
+                }
+}
         })
     }
 
@@ -409,7 +421,13 @@ async function loadCollectibles() {
     }
 }
 
+// Edit Postcard Modal Control Buttons ///
+const editPostcardLocation = document.getElementById("editPostcardLocation");
+editPostcardLocation.addEventListener("click", function (){
+    getLocation(editLocationPreview);
+});
 
+const savePostcardEditsButton = document.getElementById("savePostcardEditsButton");
 
 const closeLifeSegmentModalButton = document.getElementById("closeLifeSegmentModalButton");
 closeLifeSegmentModalButton.addEventListener("click", function(){

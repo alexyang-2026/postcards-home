@@ -278,7 +278,10 @@ body {
     width: 80px;
 }
 
-#editCaptionPreview, #editMusicPreview{
+#editCaptionPreview, 
+#editMusicPreview,
+#editDatePreview,
+#editLocationPreview {
     font-family: Chalkduster, fantasy;
     font-size: 11px;
     white-space: pre;
@@ -330,6 +333,9 @@ body {
     background-color: red;
 }
 
+#editPostcardLocation {
+    background: cyan;
+}
 #downloadPostcardButton, #sharePostcardButton {
     background-color: yellow;
 }
