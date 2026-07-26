@@ -223,7 +223,10 @@ chooseLifeSegmentImage.addEventListener("change", async function() {
             throw new Error("No Life Segment was updated. Check your UPDATE policy.");
         }
 
-        await loadInventoryLifeSegments();
+        // Select the life segment currently on screen and change its image
+        const selectedCard = document.querySelector(`.life-segment[data-segment-id="${selectedLifeSegmentID}"]`);
+        selectedCard.querySelector(".life-segment-cover").src = `assets/images/life-segment-covers/${selectedCoverImage}.svg`;
+
         alert("Life Segment cover updated!")
 
     } catch (error) {
