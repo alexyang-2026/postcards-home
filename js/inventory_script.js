@@ -22,6 +22,10 @@ const collectiblesSection = document.getElementById("collectiblesSection");
 const modalOverlay = document.getElementById("modalOverlay");
 const postcardGrid = document.getElementById("postcardGrid");
 
+const chooseLifeSegmentImageButton = document.getElementById("chooseLifeSegmentImageButton");
+const deleteLifeSegmentButton = document.getElementById("deleteLifeSegmentButton");
+let seletedLifeSegmentID = null;
+
 const editPostcardOverlay = document.getElementById("editPostcardOverlay");
 const editPostcardImage = document.getElementById("editPostcardImage");
 const editStampPreview = document.getElementById("editStampPreview");
@@ -45,6 +49,7 @@ function hideAllSections() {
     collectiblesSection.style.display = "none";
 }
 
+// Button Features for Sidebar Menu
 fullInventoryButton.addEventListener("click", function(){
     lifeSegmentsSection.style.display = "block";
     stampsSection.style.display = "block";
@@ -85,8 +90,7 @@ returnButton.addEventListener("click", function(){
     window.location.href = "index.html";
 })
 
-
-
+// Load inventory life segments
 async function loadInventoryLifeSegments() {
     // Get the logged in user
     const { data: authData } = await supabaseClient.auth.getUser();
@@ -157,6 +161,7 @@ async function loadInventoryLifeSegments() {
         card.addEventListener("click", async function() {
 
             try {
+                selectedLifeSegmentID = card.dataset.segmentId;
                 lifeSegmentModalHeading.textContent = `View Postcards in ${card.dataset.segmentTitle}`;
                 const postcards = await loadPostcards(card.dataset.segmentId);
                 displayPostcards(postcards);
@@ -171,6 +176,54 @@ async function loadInventoryLifeSegments() {
 
 
 }
+
+chooseLifeSegmentImageButton.addEventListener("click", function() {
+    
+})
+
+deleteLifeSegmentButton.addEventListener("click", async function() {
+    if (!selectedLifeSegmentID) {
+        return;
+    }
+
+    const confirmed = confirm("Are you sure you want to delete this Life Segment?");
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+
+        if (authError) {
+            throw authError;
+        }
+
+        if (!authData.user) {
+            throw new Error("You must be logged in.")
+        }
+
+        const userID = authData.user.id;
+
+        const { error: deleteError } = await supabaseClient
+            .from("life_segments")
+            .delete()
+            .eq("id", selectedLifeSegmentID)
+            .eq("user_id", userID);
+        
+        if (deleteError) {
+            throw deleteError;
+        }
+
+        modalOverlay.style.display = "none";
+        selectedLifeSegmentID = null;
+
+        await loadInventoryLifeSegments();
+
+    } catch (error) {
+        console.error(error);
+        alert("Error: Could not delete Life Segment (" + error.message + ")");
+    }
+});
 
 // Function to load the postcards
 async function loadPostcards(lifeSegmentID) {

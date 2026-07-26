@@ -139,6 +139,14 @@ body {
     align-items: center;
 }
 
+#chooseLifeSegmentImageButton {
+    background-color: greenyellow;
+}
+
+#deleteLifeSegmentButton {
+    background-color: red;
+}
+
 .inventory-postcard {
     width: 200px;
     height: 220px;
