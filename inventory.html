@@ -108,10 +108,30 @@
 
             </div>
             
-            <button id="savePostcardEditsButton" class="edit-button">Save Changes</button>
-            <button id="downloadPostcardButton" class="edit-button">Download Postcard</button>
-            <button id="sharePostcardButton" class="edit-button">Share Postcard</button>
-            <button id="deletePostcardButton" class="edit-button">Delete Postcard</button>
+            <div id="editPostcardModalControls">
+                <div id="editPostcardModalControlsButtons">
+                    <button id="editPostcardLocation">Edit Location</button>
+                    <select id="moodSelect">
+                        <option value="">Choose Mood...</option>
+                        <option value="happy">😀 Happy</option>
+                        <option value="excited">😃 Excited!</option>
+                        <option value="romantic">🥰 Romantic</option>
+                        <option value="reflective">😇 Calm / Reflective</option>
+                        <option value="ambitious">😈 Ambitious</option>
+                        <option value="angry">😡 Angry</option>
+                        <option value="inspired">🤩 Inspired</option>
+                        <option value="chinese">🇨🇳 Chinese</option>
+                    </select>
+                    <button id="deletePostcardButton" class="edit-button">Delete Postcard</button>
+                </div>
+
+                <div id="editPostcardModalSaveButtons">
+                    <button id="downloadPostcardButton" class="edit-button">Download Postcard</button>
+                    <button id="sharePostcardButton" class="edit-button">Share Postcard</button>
+                    <button id="savePostcardEditsButton" class="edit-button">Save Changes</button>
+                </div>
+
+            </div>
         </div>
     </div>
 

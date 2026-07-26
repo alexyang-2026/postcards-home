@@ -240,6 +240,8 @@ body {
     gap: 15px;
 
     font-family: American Typewriter;
+
+    overflow-y: auto;
 }
 
 #editPostcard {
@@ -272,6 +274,8 @@ body {
     font-family: Chalkduster, fantasy;
     font-size: 11px;
     white-space: pre;
+
+    text-wrap: wrap;
 }
 
 #closeEditPostcardButton {
@@ -294,3 +298,36 @@ body {
     width: 320px;
     height: 90px;
 }
+
+#editPostcardModalControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#editPostcardModalSaveButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#editPostcardModalControlsButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Individual Styling for Modal Buttons */
+#deletePostcardButton {
+    background-color: red;
+}
+
+#downloadPostcardButton, #sharePostcardButton {
+    background-color: yellow;
+}
+
+#savePostcardEditsButton {
+    background-color: limegreen;
+}
+
+
