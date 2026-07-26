@@ -22,9 +22,9 @@ const collectiblesSection = document.getElementById("collectiblesSection");
 const modalOverlay = document.getElementById("modalOverlay");
 const postcardGrid = document.getElementById("postcardGrid");
 
-const chooseLifeSegmentImageButton = document.getElementById("chooseLifeSegmentImageButton");
+const chooseLifeSegmentImage = document.getElementById("chooseLifeSegmentImage");
 const deleteLifeSegmentButton = document.getElementById("deleteLifeSegmentButton");
-let seletedLifeSegmentID = null;
+let selectedLifeSegmentID = null;
 
 const editPostcardOverlay = document.getElementById("editPostcardOverlay");
 const editPostcardImage = document.getElementById("editPostcardImage");
@@ -93,7 +93,12 @@ returnButton.addEventListener("click", function(){
 // Load inventory life segments
 async function loadInventoryLifeSegments() {
     // Get the logged in user
-    const { data: authData } = await supabaseClient.auth.getUser();
+    const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+
+    if (authError) {
+        console.error(authError);
+        return;
+    }
 
     if (!authData.user) {
         return;
@@ -104,7 +109,7 @@ async function loadInventoryLifeSegments() {
     // Get the life segments
     const { data: lifeSegments, error } = await supabaseClient
         .from("life_segments")
-        .select("id, title, created_at")
+        .select("id, title, created_at, cover_image")
         .eq("user_id", userID);
     
     
@@ -135,7 +140,7 @@ async function loadInventoryLifeSegments() {
 
         const card = `
     <div class="life-segment" data-segment-id="${segment.id}" data-segment-title="${segment.title}">
-        <img src="assets/images/life-segment-covers/sunrise_over_water.svg" class="life-segment-cover">
+        <img src="assets/images/life-segment-covers/${segment.cover_image}.svg" class="life-segment-cover" alt="${segment.title} cover image">
 
         <h3 class="life-segment-title">
             ${segment.title}
@@ -177,8 +182,57 @@ async function loadInventoryLifeSegments() {
 
 }
 
-chooseLifeSegmentImageButton.addEventListener("click", function() {
-    // Add later
+chooseLifeSegmentImage.addEventListener("change", async function() {
+
+    if (!selectedLifeSegmentID) {
+        alert("No Life Segment is currently selected.")
+        return;
+    }
+
+    const selectedCoverImage = chooseLifeSegmentImage.value;
+    
+    if (!selectedCoverImage) {
+        return;
+    }
+
+    try {
+        const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+        if (authError) {
+            throw authError;
+        }
+
+        if (!authData.user) {
+            throw new Error("You must be logged in.")
+        }
+
+        const userID = authData.user.id;
+
+        const { data: updatedSegments, error: updateError } = await supabaseClient
+            .from("life_segments")
+            .update({cover_image: selectedCoverImage})
+            .eq("id", selectedLifeSegmentID)
+            .eq("user_id", userID)
+            .select();
+        
+        if (updateError) {
+            throw updateError;
+        }
+
+        // Edge case: Supabase may return no error but update zero rows
+        if (!updatedSegments || updatedSegments.length === 0) {
+            throw new Error("No Life Segment was updated. Check your UPDATE policy.");
+        }
+
+        await loadInventoryLifeSegments();
+        alert("Life Segment cover updated!")
+
+    } catch (error) {
+        console.error(error);
+
+        alert("Could not change the Life Segment cover: " + error.message);
+    }
+
+    
 })
 
 deleteLifeSegmentButton.addEventListener("click", async function() {

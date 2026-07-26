@@ -83,7 +83,16 @@
 
             <h3 id="lifeSegmentModalHeading" class="general-heading">View Postcards</h3>
             <div id="lifeSegmentModalButtons">
-                <button id="chooseLifeSegmentImageButton">Change Life Segment Cover Image</button>
+                <select id="chooseLifeSegmentImage">
+                    <option value="sunrise_over_water">Change Life Segment Cover Image</option> <!-- If the user selects this option, then it will be the default image that is loaded -->
+                    <option value="sunrise_over_water">Sunrise Over Water (Default)</option>
+                    <option value="sunrise_over_mountains">Sunrise Over Mountains</option>
+                    <option value="sunset_over_city">Sunset Over City</option>
+                    <option value="city_at_dusk">City At Dusk</option>
+                    <option value="bridge_at_night">Bridge At Night</option>
+                    <option value="mountain_railway">Mountain Railway</option>
+                    <option value="world_map">World Map</option>
+                </select>
                 <button id="deleteLifeSegmentButton">Delete Life Segment</button>
             </div>
             <p class="general-text">Click on a Postcard to Zoom In or Edit. (Postcards may take some time to load.)</p>

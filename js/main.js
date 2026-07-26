@@ -165,6 +165,7 @@ saveLifeSegmentButton.addEventListener("click", async function() {
             user_id: userID,
             title: title,
             description: description,
+            // Default image insert is sunrise_over_water
         });
 
     if (insertError) {
