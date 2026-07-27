@@ -458,6 +458,40 @@ closeEditPostcardButton.addEventListener("click", function() {
 })
 
 
+/// POPUP FOR EDITING CAPTION ///
+const editCaptionButton = document.getElementById("editCaptionButton");
+const captionEditorOverlay = document.getElementById("captionEditorOverlay");
+const captionEditorInput = document.getElementById("captionEditorInput");
+const applyCaptionButton = document.getElementById("applyCaptionButton");
+const closeCaptionEditorButton = document.getElementById("closeCaptionEditorButton");
+
+editCaptionButton.addEventListener("click", function () {
+    // Copy the current caption into the textarea
+    captionEditorInput.value = editCaptionPreview.textContent;
+
+    captionEditorOverlay.style.display = "flex";
+    captionEditorInput.focus();
+});
+
+// Apply edited caption to the postcard preview
+applyCaptionButton.addEventListener("click", function () {
+    editCaptionPreview.textContent = captionEditorInput.value.trim();
+
+    captionEditorOverlay.style.display = "none";
+});
+
+// Close without applying changes
+closeCaptionEditorButton.addEventListener("click", function () {
+    const confirmClose = window.confirm("Are you sure you want to discard your changes?")
+
+    if (!confirmClose) {
+        return;
+    }
+
+    captionEditorOverlay.style.display = "none";
+});
+
+
 async function initializeInventory() {
     showLoading("Loading Inventory...");
 

@@ -124,6 +124,7 @@
             
             <div id="editPostcardModalControls">
                 <div id="editPostcardModalControlsButtons">
+                    <button id="editCaptionButton">Edit Caption</button>
                     <button id="editPostcardLocation">📍 Edit Location</button>
                     <select id="moodSelect">
                         <option value="">Choose Mood...</option>
@@ -146,6 +147,18 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <div id="captionEditorOverlay">
+        <div id="captionEditorModal">
+            <button id="closeCaptionEditorButton">✕</button>
+
+            <h3>Edit Caption</h3>
+
+            <textarea id="captionEditorInput" maxlength="500" placeholder="Write your caption..."></textarea>
+
+            <button id="applyCaptionButton">Apply Caption</button>
         </div>
     </div>
 

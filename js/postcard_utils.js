@@ -51,6 +51,7 @@ async function savePostcardToSupabase(postcard) {
 
     const updatedLocation = editLocationPreview.textContent.trim();
     const updatedMood = moodSelect.value || null;
+    const updatedCaption = editCaptionPreview.textContent.trim() || null;
 
     if (updatedLocation !== postcard.location) {
         updates.location = updatedLocation;
@@ -58,6 +59,10 @@ async function savePostcardToSupabase(postcard) {
 
     if (updatedMood !== postcard.mood) {
         updates.mood = updatedMood;
+    }
+
+    if (updatedCaption !== (postcard.caption || "")) {
+        updates.caption = updatedCaption;
     }
 
     if (Object.keys(updates).length === 0) {

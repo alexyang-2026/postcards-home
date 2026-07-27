@@ -333,6 +333,10 @@ body {
     background-color: red;
 }
 
+#editCaptionButton {
+    background-color: peachpuff;
+}
+
 #editPostcardLocation {
     background: cyan;
 }
@@ -344,4 +348,68 @@ body {
     background-color: limegreen;
 }
 
+#moodSelect {
+    background-color: orange;
+}
+
+
+/* Caption Editor */
+#captionEditorOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(3px);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1002;
+}
+
+#captionEditorModal {
+    position: relative;
+
+    width: 400px;
+    max-width: 85vw;
+    max-height: 80vh;
+
+    padding: 20px;
+
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#captionEditorInput {
+    font-family: American Typewriter;
+}
+
+#applyCaptionButton {
+    background: yellowgreen;
+}
+
+#closeCaptionEditorButton {
+    background: red;
+    border: 2px solid black;
+    border-top-right-radius: 12px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+
+/* Loading Overlay */
+#loadingOverlay {
+    z-index: 9999;
+}
 
