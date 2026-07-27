@@ -1,0 +1,42 @@
+/* Shared Utility #1: Loading Spinner */
+#loadingOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0, 0.45);
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    z-index: 9999;
+}
+
+#loadingText {
+    color: white;
+    margin-top: 15px;
+    font-family: American Typewriter;
+    text-align: center;
+}
+
+.spinner {
+    --border-width: 10px;
+    width: 50px;
+    height: 50px;
+    border: var(--border-width) solid #f3f3f3;
+    border-top: var(--border-width) solid limegreen;
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    
+    to {
+        transform: rotate(360deg);
+    }
+}

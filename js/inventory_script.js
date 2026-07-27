@@ -165,6 +165,7 @@ async function loadInventoryLifeSegments() {
         card.addEventListener("click", async function() {
 
             try {
+                showLoading("Loading Life Segment...");
                 selectedLifeSegmentID = card.dataset.segmentId;
                 lifeSegmentModalHeading.textContent = `View Postcards in ${card.dataset.segmentTitle}`;
                 const postcards = await loadPostcards(card.dataset.segmentId);
@@ -173,6 +174,9 @@ async function loadInventoryLifeSegments() {
             
             } catch (error) {
                 showMessage(error.message, "error");
+
+            } finally {
+                hideLoading();
             }
             
         })
@@ -324,31 +328,46 @@ function displayPostcards(postcardsData) {
 
     for (const card of postcardCards) {
 
-        card.addEventListener("click", function() {
+    card.addEventListener("click", async function () {
+        showLoading("Opening Postcard...");
+
+        try {
             const postcardID = card.dataset.postcardId;
 
             const selectedPostcard = postcardsData.find(function(postcard) {
                 return postcard.id === postcardID;
-            })
+            });
 
             editPostcardImage.src = selectedPostcard.image_url;
             editCaptionPreview.textContent = selectedPostcard.caption;
-            editMusicPreview.textContent = `♫ Currently listening to: ♫ \n${selectedPostcard.music_piece}`;
+            editMusicPreview.textContent =
+                `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
             editDatePreview.textContent = selectedPostcard.postcard_date;
             editLocationPreview.textContent = selectedPostcard.location;
 
-            editPostcardOverlay.style.display = "flex";
+            savePostcardEditsButton.onclick = async function () {
+                showLoading("Saving postcard...");
 
-            savePostcardEditsButton.onclick = async function() {
                 try {
                     await savePostcardToSupabase(selectedPostcard);
                 } catch (error) {
                     console.error(error);
                     alert(error.message);
+                } finally {
+                    hideLoading();
                 }
+            };
+
+            editPostcardOverlay.style.display = "flex";
+
+        } catch (error) {
+            console.error(error);
+            alert("Could not open Postcard: " + error.message);
+        } finally {
+            hideLoading();
+        }
+    });
 }
-        })
-    }
 
 }
 
@@ -400,7 +419,6 @@ async function loadCollectibles() {
     }
 
     const userID = authData.user.id;
-
     collectiblesGrid.innerHTML = "";
 
     const { data: collectiblesData, error: collectiblesError } = await supabaseClient
@@ -440,6 +458,16 @@ closeEditPostcardButton.addEventListener("click", function() {
 })
 
 
-loadInventoryLifeSegments();
-loadInventoryStamps();
-loadCollectibles();
+async function initializeInventory() {
+    showLoading("Loading Inventory...");
+
+    try {
+        await loadInventoryLifeSegments();
+        await loadInventoryStamps();
+        await loadCollectibles();
+    } finally {
+        hideLoading();
+    }
+}
+
+initializeInventory();

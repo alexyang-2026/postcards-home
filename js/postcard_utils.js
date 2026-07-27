@@ -80,3 +80,16 @@ async function savePostcardToSupabase(postcard) {
 
     alert("Postcard saved!");
 }
+
+// CREATE A SPINNER FOR LOADING SCREENS
+const loadingOverlay = document.getElementById("loadingOverlay");
+const loadingText = document.getElementById("loadingText");
+
+function showLoading(message = "Loading...") {
+    loadingText.textContent = message;
+    loadingOverlay.style.display = "flex";
+}
+
+function hideLoading(){
+    loadingOverlay.style.display = "none";
+}
