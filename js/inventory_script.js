@@ -360,6 +360,10 @@ function displayPostcards(postcardsData) {
 
             editPostcardOverlay.style.display = "flex";
 
+            requestAnimationFrame(function () {
+                resizePostcardText();
+            })
+
         } catch (error) {
             console.error(error);
             alert("Could not open Postcard: " + error.message);
@@ -477,8 +481,48 @@ editCaptionButton.addEventListener("click", function () {
 applyCaptionButton.addEventListener("click", function () {
     editCaptionPreview.textContent = captionEditorInput.value.trim();
 
+    resizePostcardText();
+
     captionEditorOverlay.style.display = "none";
 });
+
+const editPostcardText =
+    document.getElementById("editPostcardText");
+
+function resizePostcardText() {
+    // Assume starting font size 11, and then shrink it gradually but never go below the minimum font size
+    let fontSize = 11;
+    const minimumFontSize = 4;
+
+    editPostcardText.style.fontSize = fontSize + "px";
+
+    while (fontSize > minimumFontSize) {
+        // Measure the rectangle occupied by the text area
+        const textAreaBox = editPostcardText.getBoundingClientRect();
+
+        // Create a range (i.e. "highlighting" a part of the browser), which highlights everything inside the div editPostcardText
+        const range = document.createRange();
+        range.selectNodeContents(editPostcardText);
+
+        // This highlights how much space the highlighted text actually ocupies
+        const actualTextBox = range.getBoundingClientRect();
+
+        const textFits =
+            actualTextBox.bottom <= textAreaBox.bottom &&
+            actualTextBox.right <= textAreaBox.right;
+
+        if (textFits) {
+            break;
+        }
+
+        fontSize -= 0.25;
+        editPostcardText.style.fontSize =
+            fontSize + "px";
+    }
+
+    console.log("Final font:", fontSize);
+}
+
 
 // Close without applying changes
 closeCaptionEditorButton.addEventListener("click", function () {
