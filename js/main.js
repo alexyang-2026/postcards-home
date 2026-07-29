@@ -267,7 +267,8 @@ captionInput.addEventListener("input", function() {
     }
 
     // Update the caption preview as the user inputs stuff
-    captionPreview.textContent = captionInput.value || "Your Caption Will Appear Here."; // the || "Hi!" is in case the user deletes all their input
+    captionPreview.textContent = captionInput.value || "Your Caption Will Appear Here.";
+    resizeMainPostcardText();
 });
 
 // Security functions to check whether there's a photo or a caption
@@ -417,6 +418,8 @@ function loadRandomMusic() {
     musicMessage.textContent = "♫ Currently listening to: ♫\n" + currentMusicRecommendation.piece;
     musicPlayer.src = currentMusicRecommendation.audio;
     musicPlayer.play(); 
+
+    resizeMainPostcardText();
 }
 
 
@@ -425,6 +428,7 @@ musicRerollButton.addEventListener("click", loadRandomMusic);
 
 locationButton.addEventListener("click", function(){
     getLocation(locationPreview);
+    resizeMainPostcardText();
 });
 
 function updateDate() {
@@ -433,6 +437,8 @@ function updateDate() {
                                                 day: "numeric",
                                                 year: "numeric"
     });
+
+    resizeMainPostcardText();
 }
 
 resetPostcardButton.addEventListener("click", function() {
@@ -472,7 +478,7 @@ resetPostcardButton.addEventListener("click", function() {
     statusMessage.textContent = "";
 
 
-    
+
     updateDate();
 
     showMessage("Postcard Reset Successfully.", "success");
@@ -660,6 +666,41 @@ lifeSegmentSelect.addEventListener("change", async function() {
 })
 
 
+// Auto-Resize Postcard Text
+const postcardText = document.getElementById("postcardText");
+function resizeMainPostcardText() {
+    // Assume starting font size 11, and then shrink it gradually but never go below the minimum font size
+    let fontSize = 11;
+    const minimumFontSize = 4;
+
+    postcardText.style.fontSize = fontSize + "px";
+
+    while (fontSize > minimumFontSize) {
+        // Measure the rectangle occupied by the text area
+        const textAreaBox = postcardText.getBoundingClientRect();
+
+        // Create a range (i.e. "highlighting" a part of the browser), which highlights everything inside the div editPostcardText
+        const range = document.createRange();
+        range.selectNodeContents(postcardText);
+
+        // This highlights how much space the highlighted text actually ocupies
+        const actualTextBox = range.getBoundingClientRect();
+
+        const textFits =
+            actualTextBox.bottom <= textAreaBox.bottom &&
+            actualTextBox.right <= textAreaBox.right;
+
+        if (textFits) {
+            break;
+        }
+
+        fontSize -= 0.25;
+        postcardText.style.fontSize =
+            fontSize + "px";
+    }
+
+    console.log("Final font:", fontSize);
+}
 
 
 

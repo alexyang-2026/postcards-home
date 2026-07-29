@@ -63,11 +63,17 @@ body {
 
 /* Selects the element with id="postcard" */
 #postcard {
-    position:relative; /* Establish th postcard as a relative position */
+    position: relative;
+
     background: white;
     border: 2px solid black;
-    padding: 20px;
+
     width: 320px;
+    height: 360px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 #controls {
@@ -114,26 +120,31 @@ body {
     border: 2px solid black;
 }
 
-#captionPreview{
-    font-family: "Chalkduster", "Fantasy", fantasy;
+#postcardText {
+    height: 200px;
+
+    margin-top: 8px;
+    overflow: hidden;
+
     font-size: 11px;
-
+    line-height: 1.15;
 }
 
-#musicMessage{
-    font-family: "Chalkduster", "Fantasy", fantasy;
-    font-size: 10px;
-    white-space: pre-line; /* The browser respects \n from JS with this */
-}
+#captionPreview,
+#musicMessage,
+#datePreview,
+#locationPreview {
+    font-family: Chalkduster, fantasy;
 
-#locationPreview{
-    font-family: "Chalkduster", "Fantasy", fantasy;
-    font-size: 10px;
-}
+    font-size: inherit;
+    line-height: inherit;
 
-#datePreview{
-    font-family: "Chalkduster", "Fantasy", fantasy;
-    font-size:10px;
+    margin: 8px 0;
+    padding: 0;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 #loginButton {
