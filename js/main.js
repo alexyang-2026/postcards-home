@@ -451,7 +451,7 @@ resetPostcardButton.addEventListener("click", function() {
         return;
     }
 
-    photoPreview.src = "";
+    photoPreview.src = "assets/images/postcard-placeholder.png";
     photoInput.value = "";
 
     captionInput.value = "";
