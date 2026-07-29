@@ -108,6 +108,68 @@ body {
     padding: 10px;
 }
 
+/* Style Collectibles */
+.collectibles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.collectible-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 0 0 calc(25% - 18px);
+    box-sizing: border-box;
+
+    border: 2px solid black;
+    background: white;
+
+    overflow: hidden;
+}
+
+.collectible-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+
+    border-bottom: 2px solid black;
+}
+
+.collectible-title {
+    text-align: center;
+    margin: 12px 10px 4px;
+}
+
+.collectible-description {
+    text-align: center;
+    margin: 4px 12px;
+    font-size: 14px;
+}
+
+.collectible-category {
+    margin: 8px 12px 14px;
+    padding: 4px 8px;
+
+    border: 1px solid black;
+    background: gold;
+
+    font-size: 10px;
+    text-align: center;
+}
+
+.collectible-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 4px grey;
+}
+
+.collectible-card:active {
+    transform: translateY(0);
+    box-shadow: 2px 2px 4px grey;
+}
+
 
 /* Modal Stuff */
 #modalOverlay {
@@ -428,9 +490,31 @@ body {
 }
 
 
-
 /* Loading Overlay */
 #loadingOverlay {
     z-index: 9999;
 }
 
+
+/* Restyling for smaller devices */
+@media (max-width: 1100px) {
+    .collectible-card {
+        flex-basis: calc(50% - 12px);
+    }
+}
+
+@media (max-width: 700px) {
+    .inventory-layout {
+        flex-direction: column;
+    }
+
+    .inventory-sidebar {
+        width: auto;
+        border-right: none;
+        border-bottom: 2px solid black;
+    }
+
+    .collectible-card {
+        flex-basis: 100%;
+    }
+}

@@ -428,15 +428,32 @@ async function loadCollectibles() {
     const { data: collectiblesData, error: collectiblesError } = await supabaseClient
         .from("profiles")
         .select("owned_collectibles")
-        .eq("user_id", userID);
+        .eq("user_id", userID)
+        .single();
     
-        if (collectiblesError) {
-            console.error(collectiblesError);
-            return;
+    if (collectiblesError) {
+        console.error(collectiblesError);
+        return;
+    }
+
+    const ownedCollectibles = collectiblesData.owned_collectibles || [];
+    
+    for (const collectibleID of ownedCollectibles) {
+        const collectible = findCollectibleByID(collectibleID);
+
+        if (!collectible) {
+            console.warn("Collectible not found: ", collectibleID);
+            continue;
         }
-    
-    for (const collectibleName of collectiblesData[0].owned_collectibles) {
+        
         const htmlTemplate = `
+        
+            <div class="collectible-card">
+                <img src="${collectible.image}" alt="${collectible.name}" class="collectible-image">
+                <h3 class="collectible-title">${collectible.name}</h3>
+                <p class="collectible-description">${collectible.description || ""}</p>
+                <p class="collectible-category">${collectible.category}</p>
+            </div>
             `;
 
         collectiblesGrid.innerHTML += htmlTemplate;
