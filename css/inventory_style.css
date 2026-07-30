@@ -166,11 +166,15 @@ body {
     text-align: center;
 }
 
+.life-segment:hover, 
+.stamp-icon:hover,
 .collectible-card:hover {
     transform: translateY(-3px);
     box-shadow: 4px 4px 4px grey;
 }
 
+.life-segment:active, 
+.stamp-icon:active, 
 .collectible-card:active {
     transform: translateY(0);
     box-shadow: 2px 2px 4px grey;

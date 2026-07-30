@@ -520,7 +520,8 @@ async function checkLoggedInUser() {
     welcomeMessage.style.display = "block";
     welcomeMessage.textContent = "Welcome, " + profileData.full_name + "!";
 
-    loadLifeSegments(userID);
+    await loadLifeSegments(userID);
+    await loadCollectibleDropdowns();
 }
 
 
@@ -703,6 +704,55 @@ function resizeMainPostcardText() {
 }
 
 
+// Load Collectible Dropdown Menus
+const postcardBackgroundSelect = document.getElementById("postcardBackgroundSelect");
+const wallpaperSelect = document.getElementById("wallpaperSelect");
+
+async function loadCollectibleDropdowns() {
+
+    const { data: authData } = await supabaseClient.auth.getUser();
+
+    if (!authData.user) {
+        alert("You need to be logged in!");
+        return;
+    }
+    
+    const userID = authData.user.id;
+
+    const { data: collectiblesData, error: collectiblesError } =
+        await supabaseClient
+            .from("profiles")
+            .select("owned_collectibles")
+            .eq("user_id", userID)
+            .single();
+
+    if (collectiblesError) {
+        alert("Error: " + collectiblesError.message);
+        return;
+    }
+
+    const ownedCollectibles = collectiblesData.owned_collectibles || [];
+
+    // Create an option
+    for (const collectibleID of ownedCollectibles) {
+
+        const collectible = findCollectibleByID(collectibleID);
+
+        if (!collectible) {
+            console.warn("Collectible not found: ", collectibleID);
+        }
+
+        const option = document.createElement("option");
+
+        option.value = collectible.id;
+        option.textContent = collectible.name;
+        if (collectible.category === "wallpapers") {
+            wallpaperSelect.appendChild(option);
+        } else if (collectible.category === "postcardBackgrounds") {
+            postcardBackgroundSelect.appendChild(option);
+        }
+    }
+}
 
 
 

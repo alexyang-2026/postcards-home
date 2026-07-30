@@ -13,7 +13,6 @@
 
     <body>
         <h2 id="title">Postcards Home</h2>
-        <!-- <h3 id="mothersday">🎉 母亲节快乐！ 🎉</h3> -->
         <h6 id="subtitle">Made by Alex Yang</h6>
 
         <select id="languageSelect">
@@ -89,6 +88,12 @@
             </div>
 
             <button id="locationButton">Use My Location</button>
+            <select id="postcardBackgroundSelect">
+                <option value="default">Select Postcard Background...</option>
+            </select>
+            <select id="wallpaperSelect">
+                <option value="default">Select Wallpaper...</option>
+            </select>
 
             <!-- Creates a multiline text input -->
             <textarea id="captionInput" placeholder="Write a caption..."></textarea>
@@ -179,6 +184,7 @@
         <script src="js/supabase.js"></script>
         <script src="js/dictionary.js"></script>
         <script src="js/postcard_utils.js"></script>
+        <script src="js/collectibles.js"></script>
         <script src="js/main.js"></script>
 
     </body>

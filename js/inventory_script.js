@@ -445,14 +445,22 @@ async function loadCollectibles() {
             console.warn("Collectible not found: ", collectibleID);
             continue;
         }
+
+        let collectibleCategory = collectible.category;
         
+        if (collectible.category === "postcardBackgrounds") {
+            collectibleCategory = "Postcard Background";
+        } else if (collectible.category === "wallpapers") {
+            collectibleCategory = "Wallpaper";
+        }
+
         const htmlTemplate = `
         
             <div class="collectible-card">
                 <img src="${collectible.image}" alt="${collectible.name}" class="collectible-image">
                 <h3 class="collectible-title">${collectible.name}</h3>
                 <p class="collectible-description">${collectible.description || ""}</p>
-                <p class="collectible-category">${collectible.category}</p>
+                <p class="collectible-category">${collectibleCategory}</p>
             </div>
             `;
 
