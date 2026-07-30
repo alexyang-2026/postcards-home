@@ -754,6 +754,51 @@ async function loadCollectibleDropdowns() {
     }
 }
 
+// Change Page Wallpaper
+function updateWallpaper() {
+    const wallpaperID = wallpaperSelect.value;
+
+    if (wallpaperID === "default") {
+        document.body.style.backgroundImage = "";
+        return;
+    }
+
+    const wallpaper = findCollectibleByID(wallpaperID);
+
+    if (!wallpaper) {
+        console.warn("Wallpaper not found:", wallpaperID); 
+        return;
+    }
+
+    document.body.style.backgroundImage = `url("${wallpaper.image}")`;
+}
+
+
+function updatePostcardBackground() {
+    const postcardBackgroundID =
+        postcardBackgroundSelect.value;
+
+    if (postcardBackgroundID === "default") {
+        postcard.style.backgroundImage = "";
+        return;
+    }
+
+    const postcardBackground = findCollectibleByID(postcardBackgroundID);
+
+    if (!postcardBackground) {
+        console.warn("Postcard background not found:", postcardBackgroundID);
+        return;
+    }
+
+    postcard.style.backgroundImage = `url("${postcardBackground.image}")`;
+}
+
+
+// Run the functions whenever the selections change
+wallpaperSelect.addEventListener("change", updateWallpaper);
+
+postcardBackgroundSelect.addEventListener("change", updatePostcardBackground);
+
 
 
 window.addEventListener("load", function() {

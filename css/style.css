@@ -4,6 +4,11 @@ body {
     align-items: center;
     background: #f7efe5;
     font-family: Arial, sans-serif;
+
+    background-size: cover;      /* Scale the image so that it fits the entire browser window */
+    background-position: center; /* This is because I want to keep the center of the image always visible */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keep the wallpaper stay while the page scrolls */
 }
 
 #title {
@@ -74,6 +79,10 @@ body {
 
     display: flex;
     flex-direction: column;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #controls {
