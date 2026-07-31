@@ -98,3 +98,28 @@ function showLoading(message = "Loading...") {
 function hideLoading(){
     loadingOverlay.style.display = "none";
 }
+
+
+/// Fireworks Helper Function
+function launchFireworkBurst() {
+    confetti({
+        particleCount: 5000,
+        spread: 360,
+        startVelocity: 28,
+        gravity: 0.7,
+        ticks: 70,
+        scalar: 0.8,
+
+        origin: {
+            x: 0.2 + Math.random() * 0.6,
+            y: 0.15 + Math.random() * 0.4
+        }
+    });
+}
+
+function launchFireworksCelebration() {
+    launchFireworkBurst();
+
+    setTimeout(launchFireworkBurst, 300);
+    setTimeout(launchFireworkBurst, 650);
+}

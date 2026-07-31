@@ -39,6 +39,8 @@ datePreview.textContent = new Date().toLocaleDateString("en-US", {
                                                 year: "numeric"
 });
 
+/// FIREWORKS SECTION ///
+
 
 /// DOWNLOAD POSTCARD ///
 const downloadButton = document.getElementById("downloadButton");
@@ -799,6 +801,11 @@ function updatePostcardBackground() {
     postcardText.style.color = postcardTextColor;
 
     postcard.style.backgroundImage = `url("${postcardBackground.image}")`;
+
+    if (postcardBackgroundID === "fireworks"){
+        launchFireworksCelebration();
+    }
+
 }
 
 
@@ -842,7 +849,7 @@ window.addEventListener("load", async function() {
     showLoading("Loading Postcard Creator...");
 
     try {
-        launchConfetti(5000, 15);
+        // launchConfetti(5000, 15);
         await checkLoggedInUser();
     } catch (error) {
         console.error("Could not initialize page: ", error);
