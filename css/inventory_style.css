@@ -100,7 +100,7 @@ body {
     display: flex;
     flex-direction:column;
     border: 2px solid black;
-    flex-basis: calc(33% - 12px);
+    flex-basis: calc(25% - 18px);
     align-items: center;
 }
 
@@ -127,7 +127,7 @@ body {
     flex-direction: column;
     align-items: center;
 
-    flex: 0 0 calc(25% - 18px);
+    flex-basis: calc(25% - 18px);
     box-sizing: border-box;
 
     border: 2px solid black;
@@ -511,6 +511,7 @@ body {
     .collectible-card {
         flex-basis: calc(50% - 12px);
     }
+    
 }
 
 @media (max-width: 700px) {
@@ -525,6 +526,6 @@ body {
     }
 
     .collectible-card {
-        flex-basis: 100%;
+        flex-basis: calc(25% - 18px);
     }
 }

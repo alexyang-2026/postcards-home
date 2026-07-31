@@ -38,6 +38,42 @@ const collectibles = {
             image: "assets/collectibles/wallpapers/sunset.png",
             rarity: "Epic",
             description: "A peaceful sunset to relax and enjoy."
+        },
+
+        bostonplaza: {
+            id: "bostonplaza",
+            name: "Boston Christian Science Plaza",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/boston-christian-science-plaza.png",
+            rarity: "Epic",
+            description: "Enjoy making postcards with one of Boston's most famous landmarks in the background."
+        },
+
+        starry_night_wallpaper: {
+            id: "starrynightwallpaper",
+            name: "Starry Night (Wallpaper)",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/starry-night-wallpaper.png",
+            rarity: "Legendary",
+            description: "A calming starry night."
+        },
+
+        winterforest: {
+            id: "winterforest",
+            name: "Winter Forest at Night",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/winter-forest-with-stars.png",
+            rarity: "Legendary",
+            description: "A beautiful, cold winter forest with a starry night."
+        },
+
+        twilight: {
+            id: "twilightwallpaper",
+            name: "Twilight (Wallpaper)",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/twilight-wallpaper.png",
+            rarity: "Epic",
+            description: "Enjoy the twilight calm."
         }
     }
 
