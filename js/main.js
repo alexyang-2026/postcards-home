@@ -795,6 +795,9 @@ function updatePostcardBackground() {
         return;
     }
 
+    const postcardTextColor = postcardBackground ? postcardBackground.text_color : "black";
+    postcardText.style.color = postcardTextColor;
+
     postcard.style.backgroundImage = `url("${postcardBackground.image}")`;
 }
 
@@ -835,7 +838,15 @@ wallpaperSelect.addEventListener("change", async function () {
 postcardBackgroundSelect.addEventListener("change", updatePostcardBackground);
 
 
-window.addEventListener("load", function() {
-    launchConfetti(5000, 15);
-    checkLoggedInUser();
+window.addEventListener("load", async function() {
+    showLoading("Loading Postcard Creator...");
+
+    try {
+        launchConfetti(5000, 15);
+        await checkLoggedInUser();
+    } catch (error) {
+        console.error("Could not initialize page: ", error);
+    } finally {
+        hideLoading();
+    }
 });

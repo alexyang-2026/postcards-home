@@ -28,6 +28,7 @@ let selectedLifeSegmentID = null;
 
 const editPostcardOverlay = document.getElementById("editPostcardOverlay");
 const editPostcard = document.getElementById("editPostcard");
+const editPostcardText = document.getElementById("editPostcardText");
 const editPostcardImage = document.getElementById("editPostcardImage");
 const editStampPreview = document.getElementById("editStampPreview");
 
@@ -306,6 +307,7 @@ function displayPostcards(postcardsData) {
 
     for (const postcard of postcardsData) {
         const postcardBackground = findCollectibleByID(postcard.postcard_background);
+        const postcardTextColor = postcardBackground ? postcardBackground.text_color : "black";
         const backgroundImage = postcardBackground ? postcardBackground.image : "";
 
         const htmlTemplate = `
@@ -315,7 +317,7 @@ function displayPostcards(postcardsData) {
                     <img class="postcard-stamp" src="${postcard.stamp}">
                 </div>
 
-                <div class="postcard-body">
+                <div class="postcard-body" style="color: ${postcardTextColor};">
                     <p class="postcard-caption">${postcard.caption || "No Caption"}</p>
                     <p class="postcard-music">♫ Currently listening to: ♫\n${postcard.music_piece || ""}</p>
                     <p class="postcard-date">${postcard.postcard_date}</p>
@@ -348,11 +350,20 @@ function displayPostcards(postcardsData) {
 
             const postcardBackground = findCollectibleByID(selectedPostcard.postcard_background);
 
+            if (!postcardBackground) {
+                console.warn("Postcard background not found:", selectedPostcard.postcard_background);
+                return;
+            }
+
+            const postcardTextColor = postcardBackground ? postcardBackground.text_color : "white";
+
             editPostcardImage.src = selectedPostcard.image_url;
             editCaptionPreview.textContent = selectedPostcard.caption;
             editMusicPreview.textContent = `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
             editDatePreview.textContent = selectedPostcard.postcard_date;
             editLocationPreview.textContent = selectedPostcard.location;
+
+            editPostcardText.style.color = postcardTextColor;
 
             if (postcardBackground) {
                 editPostcard.style.backgroundImage = `url("${postcardBackground.image}")`;
@@ -525,9 +536,6 @@ applyCaptionButton.addEventListener("click", function () {
 
     captionEditorOverlay.style.display = "none";
 });
-
-const editPostcardText =
-    document.getElementById("editPostcardText");
 
 function resizePostcardText() {
     // Assume starting font size 11, and then shrink it gradually but never go below the minimum font size

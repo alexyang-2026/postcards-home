@@ -1,13 +1,24 @@
 const collectibles = {
 
     postcardBackgrounds: {
+        default: { // Chances are, default background will not appear in anyone's inventory
+            id: "default",
+            name: "Default",
+            type: "postcard_background",
+            image: "",
+            rarity: "Common",
+            description: "The classic white postcard.",
+            text_color: "black"
+        },
+
         fireworks: {
             id: "fireworks",
             name: "Fireworks",
             type: "postcard_background",
             image: "assets/collectibles/backgrounds/fireworks.png",
             rarity: "Rare",
-            description: "A beautiful fireworks background for your postcard!"
+            description: "A beautiful fireworks background for your postcard!",
+            text_color: "yellow"
         },
 
         sakura: {
@@ -16,7 +27,8 @@ const collectibles = {
             type: "postcard_background",
             image: "assets/collectibles/backgrounds/sakura.png",
             rarity: "Epic",
-            description: "A gentle spring evening with cherry blossoms."
+            description: "A gentle spring evening with cherry blossoms.",
+            text_color: "yellow"
         },
 
         starry_night: {
@@ -25,7 +37,8 @@ const collectibles = {
             type: "postcard_background",
             image: "assets/collectibles/backgrounds/starry-night.png",
             rarity: "Legendary",
-            description: "A peaceful starry night sky."
+            description: "A peaceful starry night sky.",
+            text_color: "white"
         }
     },
 
