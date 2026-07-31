@@ -58,14 +58,6 @@ const collectibles = {
             description: "A calming starry night."
         },
 
-        winterforest: {
-            id: "winterforest",
-            name: "Winter Forest at Night",
-            type: "wallpaper",
-            image: "assets/collectibles/wallpapers/winter-forest-with-stars.png",
-            rarity: "Legendary",
-            description: "A beautiful, cold winter forest with a starry night."
-        },
 
         twilight: {
             id: "twilightwallpaper",

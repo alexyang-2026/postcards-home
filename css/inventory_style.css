@@ -232,6 +232,10 @@ body {
     padding: 10px;
     box-sizing: border-box; /* The whole card including padding */
 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 
 .postcard-photo-container {
@@ -338,6 +342,10 @@ body {
     
     display: flex;
     flex-direction: column;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #editPostcardImage {

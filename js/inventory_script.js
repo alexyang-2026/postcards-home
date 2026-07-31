@@ -27,6 +27,7 @@ const deleteLifeSegmentButton = document.getElementById("deleteLifeSegmentButton
 let selectedLifeSegmentID = null;
 
 const editPostcardOverlay = document.getElementById("editPostcardOverlay");
+const editPostcard = document.getElementById("editPostcard");
 const editPostcardImage = document.getElementById("editPostcardImage");
 const editStampPreview = document.getElementById("editStampPreview");
 
@@ -173,7 +174,8 @@ async function loadInventoryLifeSegments() {
                 modalOverlay.style.display = "flex";
             
             } catch (error) {
-                showMessage(error.message, "error");
+                alert("Error: ", error.message)
+                console.log(error)
 
             } finally {
                 hideLoading();
@@ -289,7 +291,7 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
 async function loadPostcards(lifeSegmentID) {
     const { data: postcards, error: postcardsError } = await supabaseClient
         .from("postcards")
-        .select("id, caption, image_url, location, postcard_date, created_at, stamp, mood, music_piece")
+        .select("id, caption, image_url, location, postcard_date, created_at, stamp, mood, music_piece, postcard_background")
         .eq("life_segment_id", lifeSegmentID);
 
     if (postcardsError) {
@@ -297,15 +299,17 @@ async function loadPostcards(lifeSegmentID) {
     }
 
     return postcards;
-    
 }
 
 function displayPostcards(postcardsData) {
     postcardGrid.innerHTML = "";
 
     for (const postcard of postcardsData) {
+        const postcardBackground = findCollectibleByID(postcard.postcard_background);
+        const backgroundImage = postcardBackground ? postcardBackground.image : "";
+
         const htmlTemplate = `
-            <div class="inventory-postcard" data-postcard-id="${postcard.id}">
+            <div class="inventory-postcard" data-postcard-id="${postcard.id}" style="background-image: url('${backgroundImage}')">
                 <div class="postcard-photo-container">
                     <img class="postcard-photo" src="${postcard.image_url}">
                     <img class="postcard-stamp" src="${postcard.stamp}">
@@ -338,12 +342,24 @@ function displayPostcards(postcardsData) {
                 return postcard.id === postcardID;
             });
 
+            if (!selectedPostcard) {
+                throw new Error("Postcard not found.")
+            }
+
+            const postcardBackground = findCollectibleByID(selectedPostcard.postcard_background);
+
             editPostcardImage.src = selectedPostcard.image_url;
             editCaptionPreview.textContent = selectedPostcard.caption;
-            editMusicPreview.textContent =
-                `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
+            editMusicPreview.textContent = `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
             editDatePreview.textContent = selectedPostcard.postcard_date;
             editLocationPreview.textContent = selectedPostcard.location;
+
+            if (postcardBackground) {
+                editPostcard.style.backgroundImage = `url("${postcardBackground.image}")`;
+            } else {
+                editPostcard.style.backgroundImage = "";
+            }
+            
 
             savePostcardEditsButton.onclick = async function () {
                 showLoading("Saving postcard...");
@@ -372,7 +388,6 @@ function displayPostcards(postcardsData) {
         }
     });
 }
-
 }
 
 

@@ -592,8 +592,6 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
 
     // Next, check the caption
     if (!checkCaption()) {
-
-        s
         showMessage("Please Write a Caption Before Saving Your Postcard! (You can edit it later)", "error");
         return;
     }
@@ -614,6 +612,7 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
     const postcardDate = new Date().toISOString().slice(0, 10);
     const mood = moodSelect.value || null;
     const music = currentMusicRecommendation ? currentMusicRecommendation.piece : null;
+    const postcardBackground = postcardBackgroundSelect.value === "default" ? null : postcardBackgroundSelect.value;
 
     try {
         console.log("Original size:", photoInput.files[0].size);
@@ -632,7 +631,8 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
                 mood: mood,
                 music_piece: music,
                 image_url: imageUrl,
-                postcard_date: postcardDate
+                postcard_date: postcardDate,
+                postcard_background: postcardBackground
             });
         
         if (insertError) {
@@ -647,10 +647,7 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
 
     } finally {
         lifeSegmentSelect.disabled = false;
-    }
-
-    
-    
+    } 
 }
 
 lifeSegmentSelect.addEventListener("change", async function() {
@@ -775,8 +772,7 @@ function updateWallpaper() {
 
 
 function updatePostcardBackground() {
-    const postcardBackgroundID =
-        postcardBackgroundSelect.value;
+    const postcardBackgroundID = postcardBackgroundSelect.value;
 
     if (postcardBackgroundID === "default") {
         postcard.style.backgroundImage = "";
