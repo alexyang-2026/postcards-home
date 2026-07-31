@@ -719,7 +719,7 @@ async function loadCollectibleDropdowns() {
     const { data: collectiblesData, error: collectiblesError } =
         await supabaseClient
             .from("profiles")
-            .select("owned_collectibles")
+            .select("owned_collectibles, selected_wallpaper")
             .eq("user_id", userID)
             .single();
 
@@ -749,13 +749,16 @@ async function loadCollectibleDropdowns() {
             postcardBackgroundSelect.appendChild(option);
         }
     }
+
+    const savedWallpaperID = collectiblesData.selected_wallpaper || "default";
+    
+    wallpaperSelect.value = savedWallpaperID;
+    applyWallpaper(savedWallpaperID);
 }
 
 // Change Page Wallpaper
-function updateWallpaper() {
-    const wallpaperID = wallpaperSelect.value;
-
-    if (wallpaperID === "default") {
+function applyWallpaper(wallpaperID) {
+    if (!wallpaperID || wallpaperID === "default") {
         document.body.style.backgroundImage = "";
         return;
     }
@@ -763,11 +766,17 @@ function updateWallpaper() {
     const wallpaper = findCollectibleByID(wallpaperID);
 
     if (!wallpaper) {
-        console.warn("Wallpaper not found:", wallpaperID); 
+        console.warn("Wallpaper not found:", wallpaperID);
+        document.body.style.backgroundImage = "";
         return;
     }
 
     document.body.style.backgroundImage = `url("${wallpaper.image}")`;
+}
+
+function updateWallpaper() {
+    const wallpaperID = wallpaperSelect.value;
+    applyWallpaper(wallpaperID);
 }
 
 
@@ -791,10 +800,39 @@ function updatePostcardBackground() {
 
 
 // Run the functions whenever the selections change
-wallpaperSelect.addEventListener("change", updateWallpaper);
+wallpaperSelect.addEventListener("change", async function () {
+    const wallpaperID = wallpaperSelect.value;
+    applyWallpaper(wallpaperID);
+    
+    const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
+    if (!authData.user) {
+        alert("You must be logged in to change background!");
+        return;
+    }
+
+    if (authError) {
+        alert("Error: ", authError.message);
+        return;
+    }
+
+    const userID = authData.user.id;
+
+    const { data: updatedProfile, error } = await supabaseClient
+        .from("profiless")
+        .update({selected_wallpaper: wallpaperID})
+        .eq("user_id", userID)
+        .select("selected_wallpaper");
+
+    if (error) {
+        console.error("Wallpaper update failed:", error);
+        return;
+    }
+
+    console.log("Wallpaper Saved: ", updatedProfile);
+
+});
 postcardBackgroundSelect.addEventListener("change", updatePostcardBackground);
-
 
 
 window.addEventListener("load", function() {
