@@ -829,7 +829,7 @@ wallpaperSelect.addEventListener("change", async function () {
     const userID = authData.user.id;
 
     const { data: updatedProfile, error } = await supabaseClient
-        .from("profiless")
+        .from("profiles")
         .update({selected_wallpaper: wallpaperID})
         .eq("user_id", userID)
         .select("selected_wallpaper");
@@ -840,6 +840,12 @@ wallpaperSelect.addEventListener("change", async function () {
     }
 
     console.log("Wallpaper Saved: ", updatedProfile);
+
+    if (wallpaperID === "winterwallpaper") {
+        launchSnowfall();
+    }
+
+    
 
 });
 postcardBackgroundSelect.addEventListener("change", updatePostcardBackground);

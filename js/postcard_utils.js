@@ -123,3 +123,37 @@ function launchFireworksCelebration() {
     setTimeout(launchFireworkBurst, 300);
     setTimeout(launchFireworkBurst, 650);
 }
+
+// Snowfall with Confetti
+function snowfallBurst () {
+    const clusterX = Math.random();
+    confetti({
+        particleCount: 15,
+
+        angle: 270,      // Drop straight down
+        spread: 10,
+
+        gravity: 0.70,
+        startVelocity: 2,
+        drift: 0.1,
+
+        ticks: 300,
+
+        colors: ["white", "#eef7ff"],
+        scalar: 1.2,
+
+        origin: {
+            x: clusterX,
+            y: 0
+        }
+    })
+}
+
+function launchSnowfall() {
+    const snowfall = setInterval(snowfallBurst, 120);
+    
+    // Stop the snowfall after 5 seconds
+    setTimeout(function () {
+        clearInterval(snowfall);
+    }, 5000);
+}

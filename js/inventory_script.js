@@ -473,11 +473,13 @@ async function loadCollectibles() {
         }
 
         let collectibleCategory = collectible.category;
+        let collectibleCategoryBackgroundColor = "gold";
         
         if (collectible.category === "postcardBackgrounds") {
             collectibleCategory = "Postcard Background";
         } else if (collectible.category === "wallpapers") {
             collectibleCategory = "Wallpaper";
+            collectibleCategoryBackgroundColor = "limegreen";
         }
 
         const htmlTemplate = `
@@ -486,7 +488,7 @@ async function loadCollectibles() {
                 <img src="${collectible.image}" alt="${collectible.name}" class="collectible-image">
                 <h3 class="collectible-title">${collectible.name}</h3>
                 <p class="collectible-description">${collectible.description || ""}</p>
-                <p class="collectible-category">${collectibleCategory}</p>
+                <p class="collectible-category" style="background-color: ${collectibleCategoryBackgroundColor}">${collectibleCategory}</p>
             </div>
             `;
 

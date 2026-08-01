@@ -79,6 +79,15 @@ const collectibles = {
             image: "assets/collectibles/wallpapers/twilight-wallpaper.png",
             rarity: "Epic",
             description: "Enjoy the twilight calm."
+        },
+
+        winterwallpaper: {
+            id: "winterwallpaper",
+            name: "Winter (Wallpaper)",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/winter-wallpaper.png",
+            rarity: "Rare",
+            description: "Enjoy gentle snowflakes as you make your postcards."
         }
     }
 
