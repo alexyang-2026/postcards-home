@@ -191,6 +191,39 @@ function launchTwinklingStars() {
 }
 
 
+// Ocean Animation
+function oceanWaveBurst(fromLeft) {
+    confetti({
+        particleCount: 45,
+        angle: fromLeft ? 20 : 160,
+        spread: 18,
+        startVelocity: 22,
+        gravity: 0.25,
+        drift: fromLeft ? 0.5 : -0.5,
+        ticks: 120,
+        scalar: 1.1,
+        colors: ["#ffffff", "#bfe9ff", "#5ecbff", "#168aad"],
+        origin: {
+            x: fromLeft ? 0 : 1,
+            y: 0.75 + Math.random() * 0.15
+        }
+    });
+}
+
+function launchOceanWaves() {
+    let fromLeft = true;
+
+    const waves = setInterval(function () {
+        oceanWaveBurst(fromLeft);
+        fromLeft = !fromLeft;
+    }, 450);
+
+    setTimeout(function () {
+        clearInterval(waves);
+    }, 5000);
+}
+
+
 // Function to add collectible when it is unclocked
 async function unlockCollectible(userID, collectibleID, ownedCollectibles) {
     // If already owned: do nothing

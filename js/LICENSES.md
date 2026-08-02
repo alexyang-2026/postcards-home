@@ -11,6 +11,12 @@ Performance by: Nelson Friere
 Source: IMSLP: https://imslp.org/wiki/6_Klavierst%C3%BCcke,_Op.118_(Brahms,_Johannes)
 License: Creative Commons Attribution 4.0
 
+### Samuel Barber: Fugue from Piano Sonata, Op. 26
+Performance by: Alex Yang.
+
+© 2026 Alex Yang. All rights reserved.
+Recorded exclusively for Postcards Home.
+
 
 ## Chopin's Nocturnes
 

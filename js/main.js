@@ -723,9 +723,19 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
         }
 
         // Winter
-        if (!ownedCollectibles.includes("winterwallpaper") && [10, 11, 0, 1].includes(time.month)
-        ) {
+        if (!ownedCollectibles.includes("winterwallpaper") && [11, 0, 1, 2].includes(time.month)) {
             await unlockCollectible(userID, "winterwallpaper", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Ocean Background & Wallpaper
+        if (!ownedCollectibles.includes("ocean") && [6, 7, 8].includes(time.month)) {
+            await unlockCollectible(userID, "ocean", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        if (!ownedCollectibles.includes("oceanwallpaper") && [6, 7, 8].includes(time.month)) {
+            await unlockCollectible(userID, "oceanwallpaper", ownedCollectibles);
             unlockedSomething = true;
         }
 
@@ -947,6 +957,8 @@ wallpaperSelect.addEventListener("change", async function () {
         launchSnowfall();
     } else if (wallpaperID === "starrynightwallpaper") {
         launchTwinklingStars();
+    } else if (wallpaperID === "oceanwallpaper") {
+        launchOceanWaves();
     }
 
 });

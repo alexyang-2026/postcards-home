@@ -52,7 +52,7 @@ const musicDatabase = {
         {
             piece: "Barber - Fugue from Piano Sonata, Op. 26",
             composer: "Samuel Barber",
-            audio: "assets/audio/barber_fugue.mp3"
+            audio: "assets/audio/barber_fugue.m4a"
         },
 
         {

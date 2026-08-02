@@ -54,6 +54,17 @@ const collectibles = {
             description: "A peaceful dawn of day",
             text_color: "limegreen",
             how_to_get: "Unlocked after adding a postcard to a life segment before 7:00 AM."
+        },
+
+        ocean: {
+            id: "ocean",
+            name: "Ocean",
+            type: "postcard_background",
+            image: "assets/collectibles/backgrounds/ocean.png",
+            rarity: "Epic",
+            description: "A peaceful ocean",
+            text_color: "white",
+            how_to_get: "Add a postcard to a life segment during the summer months."
         }
     },
 
@@ -120,7 +131,18 @@ const collectibles = {
             rarity: "Epic",
             description: "Enjoy a beautiful sunrise.",
             how_to_get: "Unlocked after adding a postcard to a life segment before 7:00 AM."
-        }
+        },
+
+        oceanwallpaper: {
+            id: "oceanwallpaper",
+            name: "Ocean (Wallpaper)",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/ocean-wallpaper.png",
+            rarity: "Legendary",
+            text_color: "white",
+            description: "Relax beside gentle ocean waves as you create your postcards.",
+            how_to_get: "Add a postcard to a life segment during the summer months."
+        },
     },
     
     exclusiveMusic: {
