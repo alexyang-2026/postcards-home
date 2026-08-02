@@ -185,9 +185,14 @@ saveLifeSegmentButton.addEventListener("click", async function() {
     lifeSegmentStatusMessage.style.color = "green";
     lifeSegmentStatusMessage.textContent = "Successfully Created Life Segment! \nFeel free to close this popup window, or create another!"
 
-    await loadLifeSegments(userID);
-    // console.log("Loading life segments...");
+    // If this is the first life segment then unlock the fireworks postcard background
+    const unlocked = await unlockCollectible(userID, "fireworks", ownedCollectibles);
 
+    if (unlocked) {
+        await loadCollectibleDropdowns();
+    }
+
+    await loadLifeSegments(userID);
 })
 
 
@@ -618,7 +623,7 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
     const postcardDate = new Date().toISOString().slice(0, 10);
     const mood = moodSelect.value || null;
     const music = currentMusicRecommendation ? currentMusicRecommendation.piece : null;
-    const postcardBackground = postcardBackgroundSelect.value === "default" ? null : postcardBackgroundSelect.value;
+    const postcardBackground = postcardBackgroundSelect.value || "default";
 
     try {
         console.log("Original size:", photoInput.files[0].size);
@@ -647,6 +652,81 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
 
         showMessage("🎉 Postcard saved to life segment " + lifeSegmentName + "!", "success");
         lifeSegmentSelect.value = ""; // this prevents duplicate photo saves
+
+        ///// SECTION TO UNLOCK COLLECTIBLES /////
+        let unlockedSomething = false;
+
+        // Sakura
+        if (!ownedCollectibles.includes("sakura")) {
+            await unlockCollectible(userID, "sakura", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        const time = getCurrentTimeInfo();
+
+        // Dawn
+        if (!ownedCollectibles.includes("dawn") && time.totalMinutes < 7 * 60) {
+            await unlockCollectible(userID, "dawn", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Dawn wallpaper
+        if (!ownedCollectibles.includes("dawnwallpaper") && time.totalMinutes < 7 * 60) {
+            await unlockCollectible(userID, "dawnwallpaper", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Starry Night
+        if (!ownedCollectibles.includes("starrynight") && time.totalMinutes >= 20 * 60) {
+            await unlockCollectible(userID, "starrynight", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Starry Night wallpaper
+        if (!ownedCollectibles.includes("starrynightwallpaper") && time.totalMinutes >= 21 * 60) {
+            await unlockCollectible(userID, "starrynightwallpaper", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Boston Plaza
+        if (
+            !ownedCollectibles.includes("bostonplaza") &&
+            location.includes("Boston") &&
+            location.includes("United States")
+        ) {
+            await unlockCollectible(userID, "bostonplaza", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Sunset
+        if (
+            !ownedCollectibles.includes("sunset") &&
+            time.totalMinutes >= 18 * 60 &&
+            time.totalMinutes < 19 * 60
+        ) {
+            await unlockCollectible(userID, "sunset", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Twilight
+        if (
+            !ownedCollectibles.includes("twilightwallpaper") &&
+            ((time.totalMinutes >= 450 && time.totalMinutes < 480) || (time.totalMinutes >= 1200 && time.totalMinutes < 1230))
+        ) {
+            await unlockCollectible(userID, "twilightwallpaper", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        // Winter
+        if (!ownedCollectibles.includes("winterwallpaper") && [10, 11, 0, 1].includes(time.month)
+        ) {
+            await unlockCollectible(userID, "winterwallpaper", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
+        if (unlockedSomething) {
+            await loadCollectibleDropdowns();
+        }
 
     } catch (error) {
         showMessage(error.message, "error");
@@ -710,6 +790,7 @@ function resizeMainPostcardText() {
 // Load Collectible Dropdown Menus
 const postcardBackgroundSelect = document.getElementById("postcardBackgroundSelect");
 const wallpaperSelect = document.getElementById("wallpaperSelect");
+let ownedCollectibles = [];
 
 async function loadCollectibleDropdowns() {
 
@@ -734,7 +815,7 @@ async function loadCollectibleDropdowns() {
         return;
     }
 
-    const ownedCollectibles = collectiblesData.owned_collectibles || [];
+    ownedCollectibles = collectiblesData.owned_collectibles || [];
 
     // Create an option
     for (const collectibleID of ownedCollectibles) {
@@ -859,13 +940,15 @@ wallpaperSelect.addEventListener("change", async function () {
 
     if (wallpaperID === "winterwallpaper") {
         launchSnowfall();
-    }  
+    } else if (wallpaperID === "starrynightwallpaper") {
+        launchTwinklingStars();
+    }
 
 });
 
 postcardBackgroundSelect.addEventListener("change", updatePostcardBackground);
 
-
+// MAIN LOADING
 window.addEventListener("load", async function() {
     showLoading("Loading Postcard Creator...");
 

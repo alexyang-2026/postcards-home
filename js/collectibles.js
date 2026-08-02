@@ -20,7 +20,7 @@ const collectibles = {
             rarity: "Rare",
             description: "A beautiful fireworks background for your postcard!",
             text_color: "yellow",
-            how_to_get: "Unlocked as a reward after creating first life segment"
+            how_to_get: "Create your first life segment to get it."
         },
 
         sakura: {
@@ -42,7 +42,7 @@ const collectibles = {
             rarity: "Legendary",
             description: "A peaceful starry night sky.",
             text_color: "white",
-            how_to_get: "Unlocked after adding a postcard to a life segment after 8:00 PM."
+            how_to_get: "Unlocked after adding a postcard to a life segment after 9:00 PM."
         },
 
         dawn: {
@@ -65,7 +65,8 @@ const collectibles = {
             type: "wallpaper",
             image: "assets/collectibles/wallpapers/sunset.png",
             rarity: "Epic",
-            description: "A peaceful sunset to relax and enjoy."
+            description: "A peaceful sunset to relax and enjoy.",
+            how_to_get: "Add a postcard to a life segment between 6:00 PM and 7:00 PM."
         },
 
         bostonplaza: {
@@ -74,7 +75,8 @@ const collectibles = {
             type: "wallpaper",
             image: "assets/collectibles/wallpapers/boston-christian-science-plaza.png",
             rarity: "Epic",
-            description: "Enjoy making postcards with one of Boston's most famous landmarks in the background."
+            description: "Enjoy making postcards with one of Boston's most famous landmarks in the background.",
+            how_to_get: "Create a postcard while in Boston (in the USA)."
         },
 
         starry_night_wallpaper: {
@@ -84,7 +86,8 @@ const collectibles = {
             image: "assets/collectibles/wallpapers/starry-night-wallpaper.png",
             rarity: "Legendary",
             text_color: "gold",
-            description: "A calming starry night."
+            description: "A calming starry night.",
+            how_to_get: "Add a postcard to a life segments after 9:00 PM."
         },
 
 
@@ -95,7 +98,8 @@ const collectibles = {
             image: "assets/collectibles/wallpapers/twilight-wallpaper.png",
             rarity: "Epic",
             text_color: "white",
-            description: "Enjoy the twilight calm."
+            description: "Enjoy the twilight calm.",
+            how_to_get: "Add a postcard to a life segment between 7:30-8:00 AM, or 8:00-8:30 PM."
         },
 
         winterwallpaper: {
@@ -104,7 +108,8 @@ const collectibles = {
             type: "wallpaper",
             image: "assets/collectibles/wallpapers/winter-wallpaper.png",
             rarity: "Rare",
-            description: "Enjoy gentle snowflakes as you make your postcards."
+            description: "Enjoy gentle snowflakes as you make your postcards.",
+            how_to_get: "Add a postcard to a life segment between the months of November and February."
         },
 
         dawnwallpaper: {
@@ -116,12 +121,7 @@ const collectibles = {
             description: "Enjoy a beautiful sunrise.",
             how_to_get: "Unlocked after adding a postcard to a life segment before 7:00 AM."
         }
-    }
-
-
-
-
-    
+    }  
 };
 
 
@@ -144,3 +144,19 @@ function findCollectibleByID(collectibleID) {
 
     return null;
 }
+
+
+/* 
+[
+  "fireworks",
+  "starrynight",
+  "sakura",
+  "sunset",
+  "bostonplaza",
+  "starrynightwallpaper",
+  "twilightwallpaper",
+  "winterwallpaper",
+  "dawn",
+  "dawnwallpaper"
+]
+*/

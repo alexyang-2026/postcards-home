@@ -157,3 +157,82 @@ function launchSnowfall() {
         clearInterval(snowfall);
     }, 5000);
 }
+
+
+// Stars Animation
+function twinkleStar() {
+    confetti({
+        particleCount: 5,
+
+        shapes: ["star"],
+        colors: ["#ffd700", "#ffdd1c"],
+
+        startVelocity: 0,
+        gravity: 0,
+        drift: 0,
+
+        spread: 360,
+        ticks: 70,
+        scalar: 1.2,
+
+        origin: {
+            x: Math.random(),
+            y: Math.random() * 0.65
+        }
+    });
+}
+
+function launchTwinklingStars() {
+    const stars = setInterval(twinkleStar, 180);
+
+    setTimeout(function () {
+        clearInterval(stars);
+    }, 5000);
+}
+
+
+// Function to add collectible when it is unclocked
+async function unlockCollectible(userID, collectibleID, ownedCollectibles) {
+    // If already owned: do nothing
+    if (ownedCollectibles.includes(collectibleID)) {
+        return false;
+    }
+
+    // Update the local array immediately
+    ownedCollectibles.push(collectibleID);
+
+    const { error } = await supabaseClient
+        .from("profiles")
+        .update({
+            owned_collectibles: ownedCollectibles
+        })
+        .eq("user_id", userID);
+
+    if (error) {
+        // Undo the local change because Supabase failed
+        ownedCollectibles = ownedCollectibles.filter(function(id) {
+                return id !== collectibleID;
+            });
+
+        throw error;
+    }
+
+    const collectible = findCollectibleByID(collectibleID);
+
+    alert(`🎉 You unlocked ${collectible?.name || collectibleID}!`);
+    launchFireworksCelebration();
+
+    return true;
+}
+
+// Function to get the current time
+function getCurrentTimeInfo() {
+    const now = new Date();
+
+    return {
+        hour: now.getHours(),
+        minute: now.getMinutes(),
+        month: now.getMonth(),
+        totalMinutes: now.getHours() * 60 + now.getMinutes()
+    };
+}
