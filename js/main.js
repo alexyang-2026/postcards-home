@@ -1,3 +1,7 @@
+const mainPageTitle = document.getElementById("title");
+const mainPageSubtitle = document.getElementById("subtitle");
+const instructionsBox = document.getElementById("instructionsBox");
+
 // creates a variable called photoInput that is unchangeable
 const photoInput = document.getElementById("photoInput");
 const photoPreview = document.getElementById("photoPreview");
@@ -759,6 +763,7 @@ async function loadCollectibleDropdowns() {
 }
 
 // Change Page Wallpaper
+const textItems = [mainPageTitle, mainPageSubtitle, instructionsBox, loggedInUserInfo];
 function applyWallpaper(wallpaperID) {
     if (!wallpaperID || wallpaperID === "default") {
         document.body.style.backgroundImage = "";
@@ -774,6 +779,16 @@ function applyWallpaper(wallpaperID) {
     }
 
     document.body.style.backgroundImage = `url("${wallpaper.image}")`;
+
+    // Change all the text colors
+    const wallpaperData = findCollectibleByID(wallpaperID);
+    const wallpaperTextColor = wallpaperData.text_color || "black";
+
+    for (const textColorChange of textItems) {
+        textColorChange.style.color = wallpaperTextColor;
+    }
+
+    instructionsBox.style.borderColor = wallpaperTextColor;
 }
 
 function updateWallpaper() {
@@ -841,13 +856,13 @@ wallpaperSelect.addEventListener("change", async function () {
 
     console.log("Wallpaper Saved: ", updatedProfile);
 
+
     if (wallpaperID === "winterwallpaper") {
         launchSnowfall();
-    }
-
-    
+    }  
 
 });
+
 postcardBackgroundSelect.addEventListener("change", updatePostcardBackground);
 
 

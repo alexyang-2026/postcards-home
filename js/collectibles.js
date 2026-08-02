@@ -8,7 +8,8 @@ const collectibles = {
             image: "",
             rarity: "Common",
             description: "The classic white postcard.",
-            text_color: "black"
+            text_color: "black",
+            how_to_get: "Default: everyone already should have it"
         },
 
         fireworks: {
@@ -18,7 +19,8 @@ const collectibles = {
             image: "assets/collectibles/backgrounds/fireworks.png",
             rarity: "Rare",
             description: "A beautiful fireworks background for your postcard!",
-            text_color: "yellow"
+            text_color: "yellow",
+            how_to_get: "Unlocked as a reward after creating first life segment"
         },
 
         sakura: {
@@ -28,7 +30,8 @@ const collectibles = {
             image: "assets/collectibles/backgrounds/sakura.png",
             rarity: "Epic",
             description: "A gentle spring evening with cherry blossoms.",
-            text_color: "yellow"
+            text_color: "yellow",
+            how_to_get: "Unlocked as a reward after adding first postcard to a life segment."
         },
 
         starry_night: {
@@ -38,7 +41,19 @@ const collectibles = {
             image: "assets/collectibles/backgrounds/starry-night.png",
             rarity: "Legendary",
             description: "A peaceful starry night sky.",
-            text_color: "white"
+            text_color: "white",
+            how_to_get: "Unlocked after adding a postcard to a life segment after 8:00 PM."
+        },
+
+        dawn: {
+            id: "dawn",
+            name: "Dawn",
+            type: "postcard_background",
+            image: "assets/collectibles/backgrounds/dawn.png",
+            rarity: "Epic",
+            description: "A peaceful dawn of day",
+            text_color: "limegreen",
+            how_to_get: "Unlocked after adding a postcard to a life segment before 7:00 AM."
         }
     },
 
@@ -68,6 +83,7 @@ const collectibles = {
             type: "wallpaper",
             image: "assets/collectibles/wallpapers/starry-night-wallpaper.png",
             rarity: "Legendary",
+            text_color: "gold",
             description: "A calming starry night."
         },
 
@@ -78,6 +94,7 @@ const collectibles = {
             type: "wallpaper",
             image: "assets/collectibles/wallpapers/twilight-wallpaper.png",
             rarity: "Epic",
+            text_color: "white",
             description: "Enjoy the twilight calm."
         },
 
@@ -88,6 +105,16 @@ const collectibles = {
             image: "assets/collectibles/wallpapers/winter-wallpaper.png",
             rarity: "Rare",
             description: "Enjoy gentle snowflakes as you make your postcards."
+        },
+
+        dawnwallpaper: {
+            id: "dawnwallpaper",
+            name: "Dawn (Wallpaper)",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/dawn-wallpaper.png",
+            rarity: "Epic",
+            description: "Enjoy a beautiful sunrise.",
+            how_to_get: "Unlocked after adding a postcard to a life segment before 7:00 AM."
         }
     }
 
