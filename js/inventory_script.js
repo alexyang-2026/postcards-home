@@ -480,6 +480,9 @@ async function loadCollectibles() {
         } else if (collectible.category === "wallpapers") {
             collectibleCategory = "Wallpaper";
             collectibleCategoryBackgroundColor = "limegreen";
+        } else if (collectible.category === "exclusiveMusic") {
+            collectibleCategory = "Exclusive Music";
+            collectibleCategoryBackgroundColor = "orange";
         }
 
         const htmlTemplate = `

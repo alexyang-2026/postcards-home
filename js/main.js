@@ -72,6 +72,8 @@ welcomeMessage.style.display = "none";
 let imageFailMessage = "Download Failed. You didn't select or take a photo, it's not a postcard without a photo 🤣"
 let captionFailMessage = "Download Failed. You didn't write a caption! Go write a caption 🙂"
 
+let loggedInUserID = null;
+
 
 /// LIFE SEGMENT FUNCTIONALITY ///
 lifeSegmentSelect.innerHTML = "";
@@ -315,7 +317,7 @@ downloadButton.addEventListener("click", function() {
     html2canvas(postcard, {
         useCORS: true, // CORS = cross-origin resource sharing: allows browser-based scripts to securely request the resources, helps prevent canvas from tainting
         allowTaint: true // allow tainted local images to compile into canvas layout
-    }).then(function (canvas){
+    }).then(async function (canvas){
 
         // creates a temporary download link
         const link = document.createElement("a");
@@ -333,6 +335,7 @@ downloadButton.addEventListener("click", function() {
         statusMessage.style.display = "block";
         statusMessage.style.color = "green";
         showMessage("🎉 Postcard Downloaded Successfully! 🎉", "success");
+        await tryUnlockRandomChopinNocturne(loggedInUserID);
         launchConfetti(3000, 10);
     });
 });
@@ -514,12 +517,14 @@ async function checkLoggedInUser() {
 
     // Check if logged in user exists first
     if (authError || !authData.user){
+        loggedInUserID = null; // reset the global variable if not logged in
         loginButton.textContent = "Log In to Save Your Postcards!";
         loginButton.style.display = "block";
         return
     }
 
     const userID = authData.user.id;
+    loggedInUserID = userID; // Update this global variable
 
     const { data: profileData, error: profileError } = await supabaseClient
         .from("profiles")
