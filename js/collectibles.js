@@ -121,7 +121,221 @@ const collectibles = {
             description: "Enjoy a beautiful sunrise.",
             how_to_get: "Unlocked after adding a postcard to a life segment before 7:00 AM."
         }
-    }  
+    },
+    
+    exclusiveMusic: {
+
+        // ALL OF CHOPIN'S NOCTURNES. This will become a collectible set the user can get
+        chopin_nocturne_op9no1: {
+            id: "chopin_nocturne_9_1",
+            name: "Chopin: Nocturne Op. 9 No. 1 in B-flat Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_9_1.mp3",
+            rarity: "Legendary",
+            description: "A dark, expressive nocturne of haunting lyricism."
+        },
+
+        chopin_nocturne_op9no2: {
+            id: "chopin_nocturne_9_2",
+            name: "Chopin: Nocturne Op. 9 No. 2 in E-flat Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_9_2.mp3",
+            rarity: "Legendary",
+            description: "Perhaps Chopin's most beloved nocturne."
+        },
+
+        chopin_nocturne_op9no3: {
+            id: "chopin_nocturne_9_3",
+            name: "Chopin: Nocturne Op. 9 No. 3 in B Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_9_3.mp3",
+            rarity: "Legendary",
+            description: "Radiant and ornamented with graceful elegance."
+        },
+
+        chopin_nocturne_op15no1: {
+            id: "chopin_nocturne_15_1",
+            name: "Chopin: Nocturne Op. 15 No. 1 in F Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_15_1.mp3",
+            rarity: "Legendary",
+            description: "Warm and lyrical, with a dramatic middle section."
+        },
+
+        chopin_nocturne_op15no2: {
+            id: "chopin_nocturne_15_2",
+            name: "Chopin: Nocturne Op. 15 No. 2 in F-sharp Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_15_2.mp3",
+            rarity: "Legendary",
+            description: "Gentle and luminous throughout."
+        },
+
+        chopin_nocturne_op15no3: {
+            id: "chopin_nocturne_15_3",
+            name: "Chopin: Nocturne Op. 15 No. 3 in G Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_15_3.mp3",
+            rarity: "Legendary",
+            description: "Stormy passion gives way to quiet introspection."
+        },
+
+        chopin_nocturne_op27no1: {
+            id: "chopin_nocturne_27_1",
+            name: "Chopin: Nocturne Op. 27 No. 1 in C-sharp Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_27_1.mp3",
+            rarity: "Legendary",
+            description: "One of Chopin's most dramatic nocturnes."
+        },
+
+        chopin_nocturne_op27no2: {
+            id: "chopin_nocturne_27_2",
+            name: "Chopin: Nocturne Op. 27 No. 2 in D-flat Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_27_2.mp3",
+            rarity: "Legendary",
+            description: "A quiet, introverted piece."
+        },
+
+        chopin_nocturne_op32no1: {
+            id: "chopin_nocturne_32_1",
+            name: "Chopin: Nocturne Op. 32 No. 1 in B Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_32_1.mp3",
+            rarity: "Legendary",
+            description: "Serene elegance with a surprising ending."
+        },
+
+        chopin_nocturne_op32no2: {
+            id: "chopin_nocturne_32_2",
+            name: "Chopin: Nocturne Op. 32 No. 2 in A-flat Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_32_2.mp3",
+            rarity: "Legendary",
+            description: "Tender lyricism with rich harmonies."
+        },
+
+        chopin_nocturne_op37no1: {
+            id: "chopin_nocturne_37_1",
+            name: "Chopin: Nocturne Op. 37 No. 1 in G Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_37_1.mp3",
+            rarity: "Legendary",
+            description: "Meditative and chorale-like."
+        },
+
+        chopin_nocturne_op37no2: {
+            id: "chopin_nocturne_37_2",
+            name: "Chopin: Nocturne Op. 37 No. 2 in G Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_37_2.mp3",
+            rarity: "Legendary",
+            description: "Peaceful and luminous."
+        },
+
+        chopin_nocturne_op48no1: {
+            id: "chopin_nocturne_48_1",
+            name: "Chopin: Nocturne Op. 48 No. 1 in C Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_48_1.mp3",
+            rarity: "Legendary",
+            description: "A monumental, tragic masterpiece."
+        },
+
+        chopin_nocturne_op48no2: {
+            id: "chopin_nocturne_48_2",
+            name: "Chopin: Nocturne Op. 48 No. 2 in F-sharp Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_48_2.mp3",
+            rarity: "Legendary",
+            description: "Melancholy with quiet nobility."
+        },
+
+        chopin_nocturne_op55no1: {
+            id: "chopin_nocturne_55_1",
+            name: "Chopin: Nocturne Op. 55 No. 1 in F Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_55_1.mp3",
+            rarity: "Legendary",
+            description: "Deeply introspective and poetic."
+        },
+
+        chopin_nocturne_op55no2: {
+            id: "chopin_nocturne_55_2",
+            name: "Chopin: Nocturne Op. 55 No. 2 in E-flat Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_55_2.mp3",
+            rarity: "Legendary",
+            description: "Delicate, flowing, and endlessly graceful."
+        },
+
+        chopin_nocturne_op62no1: {
+            id: "chopin_nocturne_62_1",
+            name: "Chopin: Nocturne Op. 62 No. 1 in B Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_62_1.mp3",
+            rarity: "Legendary",
+            description: "Sophisticated late-Chopin lyricism."
+        },
+
+        chopin_nocturne_op62no2: {
+            id: "chopin_nocturne_62_2",
+            name: "Chopin: Nocturne Op. 62 No. 2 in E Major",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_62_2.mp3",
+            rarity: "Legendary",
+            description: "A serene farewell to the nocturne genre."
+        },
+
+        chopin_nocturne_op72no1: {
+            id: "chopin_nocturne_72_1",
+            name: "Chopin: Nocturne Op. 72 No. 1 in E Minor",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_72_1.mp3",
+            rarity: "Legendary",
+            description: "An early nocturne filled with youthful melancholy."
+        },
+
+        chopin_nocturne_posth_csharpminor: {
+            id: "chopin_nocturne_posth_csharp_minor",
+            name: "Chopin: Nocturne in C-sharp Minor (Posthumous)",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_posth_csharp_minor.mp3",
+            rarity: "Legendary",
+            description: "One of Chopin's most famous posthumous works."
+        },
+
+        chopin_nocturne_posth_cminor: {
+            id: "chopin_nocturne_posth_c_minor",
+            name: "Chopin: Nocturne in C Minor (Posthumous)",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/chopin_nocturnes/piano.png",
+            audio: "assets/audio/chopin_nocturne_posth_c_minor.mp3",
+            rarity: "Legendary",
+            description: "A powerful and dramatic concluding nocturne."
+        },
+    }
 };
 
 
@@ -144,19 +358,3 @@ function findCollectibleByID(collectibleID) {
 
     return null;
 }
-
-
-/* 
-[
-  "fireworks",
-  "starrynight",
-  "sakura",
-  "sunset",
-  "bostonplaza",
-  "starrynightwallpaper",
-  "twilightwallpaper",
-  "winterwallpaper",
-  "dawn",
-  "dawnwallpaper"
-]
-*/
