@@ -1,6 +1,7 @@
 const mainPageTitle = document.getElementById("title");
 const mainPageSubtitle = document.getElementById("subtitle");
 const instructionsBox = document.getElementById("instructionsBox");
+const footer = document.getElementById("footer");
 
 // creates a variable called photoInput that is unchangeable
 const photoInput = document.getElementById("photoInput");
@@ -859,7 +860,7 @@ async function loadCollectibleDropdowns() {
 }
 
 // Change Page Wallpaper
-const textItems = [mainPageTitle, mainPageSubtitle, instructionsBox, loggedInUserInfo];
+const textItems = [mainPageTitle, mainPageSubtitle, instructionsBox, loggedInUserInfo, footer];
 function applyWallpaper(wallpaperID) {
     if (!wallpaperID || wallpaperID === "default") {
         document.body.style.backgroundImage = "";
