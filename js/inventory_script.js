@@ -25,6 +25,8 @@ const postcardGrid = document.getElementById("postcardGrid");
 const chooseLifeSegmentImage = document.getElementById("chooseLifeSegmentImage");
 const deleteLifeSegmentButton = document.getElementById("deleteLifeSegmentButton");
 let selectedLifeSegmentID = null;
+let selectedPostcard = null;
+let selectedMusicRecommendation = null;
 
 const editPostcardOverlay = document.getElementById("editPostcardOverlay");
 const editPostcard = document.getElementById("editPostcard");
@@ -340,7 +342,7 @@ function displayPostcards(postcardsData) {
         try {
             const postcardID = card.dataset.postcardId;
 
-            const selectedPostcard = postcardsData.find(function(postcard) {
+            selectedPostcard = postcardsData.find(function(postcard) {
                 return postcard.id === postcardID;
             });
 
@@ -362,6 +364,9 @@ function displayPostcards(postcardsData) {
             editMusicPreview.textContent = `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
             editDatePreview.textContent = selectedPostcard.postcard_date;
             editLocationPreview.textContent = selectedPostcard.location;
+            
+            moodSelect.value = selectedPostcard.mood || "";
+            selectedMusicRecommendation = null;
 
             editPostcardText.style.color = postcardTextColor;
 
@@ -369,6 +374,14 @@ function displayPostcards(postcardsData) {
                 editPostcard.style.backgroundImage = `url("${postcardBackground.image}")`;
             } else {
                 editPostcard.style.backgroundImage = "";
+            }
+
+            if (selectedPostcard.stamp) {
+                editStampPreview.src = selectedPostcard.stamp;
+                editStampPreview.style.display = "block";
+            } else {
+                editStampPreview.src = "";
+                editStampPreview.style.display = "none";
             }
             
 
@@ -524,6 +537,11 @@ const captionEditorOverlay = document.getElementById("captionEditorOverlay");
 const captionEditorInput = document.getElementById("captionEditorInput");
 const applyCaptionButton = document.getElementById("applyCaptionButton");
 const closeCaptionEditorButton = document.getElementById("closeCaptionEditorButton");
+const moodSelect = document.getElementById("moodSelect");
+
+const deletePostcardButton = document.getElementById("deletePostcardButton");
+const downloadPostcardButton = document.getElementById("downloadPostcardButton");
+const sharePostcardButton = document.getElementById("sharePostcardButton");
 
 editCaptionButton.addEventListener("click", function () {
     // Copy the current caption into the textarea
@@ -532,6 +550,185 @@ editCaptionButton.addEventListener("click", function () {
     captionEditorOverlay.style.display = "flex";
     captionEditorInput.focus();
 });
+
+moodSelect.addEventListener("change", function() {
+    const selectedMood = moodSelect.value;
+
+    if (selectedMood === "") {
+        selectedMusicRecommendation = null;
+        editMusicPreview.textContent = "";
+        resizePostcardText();
+        return;
+    }
+
+    const recommendations = musicDatabase[selectedMood];
+
+    if (!recommendations || recommendations.length === 0) {
+        console.warn("No music found for mood:", selectedMood);
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * recommendations.length);
+
+    selectedMusicRecommendation = recommendations[randomIndex];
+
+    editMusicPreview.textContent = "♫ Currently listening to: ♫\n" + selectedMusicRecommendation.piece;
+    resizePostcardText();
+})
+
+deletePostcardButton.addEventListener("click", async function() {
+    if (!selectedPostcard) {
+        alert("No postcard is currently selected.");
+        return;
+    }
+
+    const confirmed = confirm("Are you sure you want to delete this postcard?");
+    if (!confirmed) {
+        return;
+    }
+
+    showLoading("Deleting postcard...");
+
+    try {
+        const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+
+        if (authError) {
+            throw authError;
+        }
+
+        if (!authData.user) {
+            throw new Error("You must be logged in.");
+        }
+
+        // First, delete the actual postcard
+        const { data: deletedPostcards, error: deleteError } = await supabaseClient
+            .from("postcards")
+            .delete()
+            .eq("id", selectedPostcard.id)
+            .eq("user_id", authData.user.id)
+            .select("id");
+
+        if (deleteError) {
+            throw deleteError;
+        }
+
+        if (!deletedPostcards || deletedPostcards.length === 0) {
+            throw new Error("No postcard was deleted. Check your DELETE policy.");
+        }
+
+        // Deleting a postcard does not mean deleting the image from Supabase storage
+        // Added conditional for defensive programming reasons, just in case an edge case occurs where an image has no URL
+        const imagePath = selectedPostcard.image_url ? selectedPostcard.image_url.split("/postcard-images/")[1] : null;
+
+        if (imagePath) {
+            const { error: storageError } = await supabaseClient.storage
+                .from("postcard-images")
+                .remove([imagePath]);
+
+            if (storageError) {
+                console.error("Postcard deleted, but image cleanup failed:", storageError);
+            }
+        }
+
+        // Finally, clean everything up
+        editPostcardOverlay.style.display = "none";
+        selectedPostcard = null;
+
+        const remainingPostcards = await loadPostcards(selectedLifeSegmentID);
+
+        displayPostcards(remainingPostcards);
+        await loadInventoryLifeSegments();
+        alert("Postcard deleted successfully.");
+
+    } catch (error) {
+        console.error(error);
+        alert("Could not delete postcard: " + error.message);
+
+    } finally {
+        hideLoading();
+    }
+});
+
+downloadPostcardButton.addEventListener("click", async function() {
+    if (!selectedPostcard) {
+        alert("No postcard is currently selected.")
+        return;
+    }
+
+    showLoading("Preparing Download...")
+
+    try {
+        const canvas = await html2canvas(editPostcard, {
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null
+        });
+        const link = document.createElement("a");
+        link.download = "postcard.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    } catch (error) {
+        console.error(error);
+        alert("Could not download postcard: " + error.message);
+    } finally {
+        hideLoading();
+    }
+})
+
+sharePostcardButton.addEventListener("click", async function() {
+    if (!selectedPostcard) {
+        alert("No postcard is currently selected.");
+        return;
+    }
+
+    showLoading("Preparing Postcard...");
+
+    try {
+        const canvas = await html2canvas(editPostcard, {
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null
+        });
+
+        const blob = await new Promise(function (resolve, reject) {
+            canvas.toBlob(function(result) {
+                if (!result) {
+                    reject(new Error("Could not create postcard image."))
+                    return;
+                }
+                
+                resolve(result);
+            }, "image/png");
+        });
+
+        const file = new File([blob], "postcard.png", {
+            type: "image/png"
+        });
+
+        if (navigator.share && navigator.canShare && navigator.canShare({files: [file]})) {
+            await navigator.share({
+                title: "Postcards Home",
+                text: "A postcard for you!",
+                files: [file]
+            });
+        } else {
+            const link = document.createElement("a");
+            link.download = "postcard.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+            
+            alert("Sharing is not supported by this browser, so the postcard was downloaded instead.");
+
+        }
+    } catch (error) {
+        if (error.name !== "AbortError") { // AbortError means that the user opened the share window then cancelled, so it's not the app's fault
+            console.error(error);
+            alert("Could not share postcard: " + error.message);
+        }
+    } finally {
+        hideLoading();
+    }
+})
 
 // Apply edited caption to the postcard preview
 applyCaptionButton.addEventListener("click", function () {

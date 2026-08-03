@@ -52,6 +52,7 @@ async function savePostcardToSupabase(postcard) {
     const updatedLocation = editLocationPreview.textContent.trim();
     const updatedMood = moodSelect.value || null;
     const updatedCaption = editCaptionPreview.textContent.trim() || null;
+    const updatedMusicPiece = selectedMusicRecommendation ? selectedMusicRecommendation.piece : postcard.music_piece;
 
     if (updatedLocation !== postcard.location) {
         updates.location = updatedLocation;
@@ -194,17 +195,17 @@ function launchTwinklingStars() {
 // Ocean Animation
 function oceanWaveBurst(fromLeft) {
     confetti({
-        particleCount: 45,
+        particleCount: 500,
         angle: fromLeft ? 20 : 160,
-        spread: 18,
+        spread: 20,
         startVelocity: 22,
-        gravity: 0.25,
-        drift: fromLeft ? 0.5 : -0.5,
+        gravity: 1,
+        drift: fromLeft ? 0 : -0.5,
         ticks: 120,
         scalar: 1.1,
         colors: ["#ffffff", "#bfe9ff", "#5ecbff", "#168aad"],
         origin: {
-            x: fromLeft ? 0 : 1,
+            x: fromLeft ? -0.05: 1.05,
             y: 0.75 + Math.random() * 0.15
         }
     });
