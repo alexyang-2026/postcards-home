@@ -361,7 +361,33 @@ function displayPostcards(postcardsData) {
 
             editPostcardImage.src = selectedPostcard.image_url;
             editCaptionPreview.textContent = selectedPostcard.caption;
-            editMusicPreview.textContent = `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
+
+            // Don't display music stuff if the user did not select a piece to begin with
+            if (selectedPostcard.music_piece){
+                editMusicPreview.textContent = `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
+                const savedMusic = findMusicByPieceName(selectedPostcard.music_piece);
+                
+                if (savedMusic && savedMusic.audio) {
+                    editMusicPlayer.src = savedMusic.audio;
+                    editMusicPlayer.style.display = "block";
+                    rerollButton.style.display = "block";
+                    editPostcardMusicControls.style.display = "inline-flex";
+                    editMusicPlayer.play().catch(function(error) {
+                        console.warn("Autoplay prevented:", error);
+                    });
+
+                } else {
+                    editMusicPlayer.pause();
+                    editMusicPlayer.removeAttribute("src");
+                    editMusicPlayer.load();
+                    editMusicPlayer.style.display = "none";
+                    rerollButton.style.display = "none";
+                    editPostcardMusicControls.style.display = "none";
+
+                    console.log("Could not find audio for:", selectedPostcard.music_piece);
+                }
+            }
+            
             editDatePreview.textContent = selectedPostcard.postcard_date;
             editLocationPreview.textContent = selectedPostcard.location;
             
@@ -527,6 +553,7 @@ closeLifeSegmentModalButton.addEventListener("click", function(){
 
 const closeEditPostcardButton = document.getElementById("closeEditPostcardButton");
 closeEditPostcardButton.addEventListener("click", function() {
+    editMusicPlayer.pause();
     editPostcardOverlay.style.display = "none";
 })
 
@@ -538,6 +565,10 @@ const captionEditorInput = document.getElementById("captionEditorInput");
 const applyCaptionButton = document.getElementById("applyCaptionButton");
 const closeCaptionEditorButton = document.getElementById("closeCaptionEditorButton");
 const moodSelect = document.getElementById("moodSelect");
+
+const editPostcardMusicControls = document.getElementById("editPostcardMusicControls");
+const editMusicPlayer = document.getElementById("editMusicPlayer");
+const rerollButton = document.getElementById("rerollButton");
 
 const deletePostcardButton = document.getElementById("deletePostcardButton");
 const downloadPostcardButton = document.getElementById("downloadPostcardButton");
@@ -557,6 +588,12 @@ moodSelect.addEventListener("change", function() {
     if (selectedMood === "") {
         selectedMusicRecommendation = null;
         editMusicPreview.textContent = "";
+        editMusicPlayer.pause();
+        editMusicPlayer.removeAttribute("src");
+        editMusicPlayer.load();
+        editMusicPlayer.style.display = "none";
+        rerollButton.style.display = "none";
+        editPostcardMusicControls.style.display = "none";
         resizePostcardText();
         return;
     }
@@ -573,6 +610,15 @@ moodSelect.addEventListener("change", function() {
     selectedMusicRecommendation = recommendations[randomIndex];
 
     editMusicPreview.textContent = "♫ Currently listening to: ♫\n" + selectedMusicRecommendation.piece;
+    editMusicPlayer.src = selectedMusicRecommendation.audio;
+    editPostcardMusicControls.style.display = "inline-flex";
+    editMusicPlayer.style.display = "block";
+    rerollButton.style.display = "block";
+
+    editMusicPlayer.play().catch(function(error) {
+        console.warn("Playback could not begin:", error);
+    });
+
     resizePostcardText();
 })
 

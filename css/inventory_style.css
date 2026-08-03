@@ -506,6 +506,44 @@ body {
     right: 0;
 }
 
+/* Music Controls */
+#editPostcardMusicControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border: 2px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    width: fit-content;
+}
+
+#editMusicPlayer {
+    display: block;
+    width: 180px;
+    margin: 0;
+}
+
+#rerollButton {
+    border: none;
+    border-left: 2px solid black;
+
+    background: #f7efe5;
+
+    width: 42px;
+    height: 54px;
+
+    cursor: pointer;
+    font-size: 18px;
+
+    transition: background-color 0.2s;
+}
+
+#rerollButton:hover {
+    background: gold;
+}
+
 
 /* Loading Overlay */
 #loadingOverlay {

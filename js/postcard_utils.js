@@ -52,7 +52,11 @@ async function savePostcardToSupabase(postcard) {
     const updatedLocation = editLocationPreview.textContent.trim();
     const updatedMood = moodSelect.value || null;
     const updatedCaption = editCaptionPreview.textContent.trim() || null;
-    const updatedMusicPiece = selectedMusicRecommendation ? selectedMusicRecommendation.piece : postcard.music_piece;
+    const updatedMusicPiece = updatedMood === null
+            ? null
+            : selectedMusicRecommendation 
+                ? selectedMusicRecommendation.piece 
+                : postcard.music_piece;
 
     if (updatedLocation !== postcard.location) {
         updates.location = updatedLocation;
@@ -60,6 +64,10 @@ async function savePostcardToSupabase(postcard) {
 
     if (updatedMood !== postcard.mood) {
         updates.mood = updatedMood;
+    }
+
+    if (updatedMusicPiece !== postcard.music_piece) {
+        updates.music_piece = updatedMusicPiece;
     }
 
     if (updatedCaption !== (postcard.caption || "")) {
@@ -269,4 +277,34 @@ function getCurrentTimeInfo() {
         month: now.getMonth(),
         totalMinutes: now.getHours() * 60 + now.getMinutes()
     };
+}
+
+
+// Function to find a music given the piece name (for audio)
+function findMusicByPieceName(pieceName) {
+    // Search regular mood music
+    for (const mood in musicDatabase) {
+        const foundMusic = musicDatabase[mood].find(function(track) {
+            return track.piece === pieceName;
+        });
+
+        if (foundMusic) {
+            return foundMusic;
+        }
+    }
+
+    // Search exclusive music collectibles
+    const foundExclusiveMusic = Object.values(collectibles).find(function(collectible) {
+        return (collectible.type === "exclusive_music" && collectible.name === pieceName);
+    });
+
+    if (foundExclusiveMusic) {
+        return {
+            piece: foundExclusiveMusic.name,
+            composer: "Frédéric Chopin", // I currently hardcoded Chopin for his nocturnes are the only exclusive music but CHANGE SOON
+            audio: foundExclusiveMusic.audio
+        };
+    }
+
+    return null;
 }

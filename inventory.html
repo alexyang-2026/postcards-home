@@ -139,6 +139,10 @@
                         <option value="inspired">🤩 Inspired</option>
                         <option value="chinese">🇨🇳 Chinese</option>
                     </select>
+                    <div id="editPostcardMusicControls">
+                        <audio id="editMusicPlayer" controls loop></audio>
+                        <button id="rerollButton">🔄</button>
+                    </div>
                     <button id="deletePostcardButton" class="edit-button">Delete Postcard</button>
                 </div>
 
@@ -186,7 +190,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    
+
     <script src="js/supabase.js"></script>
     <script src="js/music.js"></script>
     <script src="js/stamp_database.js"></script>
