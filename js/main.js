@@ -417,22 +417,56 @@ function loadRandomMusic() {
         musicRerollButton.style.display = "none";
         return;
     }
+    
+    let recommendationsArray = [];
+
+    // Exclusive Chopin Nocturnes
+    if (selectedMood === "exclusive_nocturnal") {
+        recommendationsArray = ownedCollectibles
+            .map(function (collectibleID) {
+                return findCollectibleByID(collectibleID);
+            })
+            .filter(function (collectible) {
+                return (collectible && collectible.category === "exclusiveMusic" && collectible.id.startsWith("chopin_nocturne") && collectible.audio);
+            })
+            .map(function (collectible) {
+                return {
+                    piece: collectible.name,
+                    composer: "Frédéric Chopin",
+                    audio: collectible.audio
+                }
+            })
+    } else {
+        recommendationsArray = musicDatabase[selectedMood] || [];
+    }
+
+    if (recommendationsArray.length === 0) {
+        console.warn("No playable music found for:", selectedMood);
+
+        currentMusicRecommendation = null;
+        musicPlayer.style.display = "none";
+        musicMessage.style.display = "none";
+        musicRerollButton.style.display = "none";
+
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * recommendationsArray.length);
+    // Math.random() creates a random number between 0-1, so we multiply by the array length to get a random number between 0-(last index of the array) rounded down
+    // Example: if the array length was 2, then Math.random() * recommendationsArray.length will give us a number from 0 <= x < 2, where 0-0.999999... --> index 0, and 1-1.999999.... --> index 1 (the last index of the array)
+
+    currentMusicRecommendation = recommendationsArray[randomIndex];
 
     musicPlayer.style.display = "flex";
     musicRerollButton.style.display = "flex";
-
-    const recommendations_array = musicDatabase[selectedMood];
-    const randomIndex = Math.floor(Math.random() * recommendations_array.length);
-    // Math.random() creates a random number between 0-1, so we multiply by the array length to get a random number between 0-(last index of the array) rounded down
-    // Example: if the array length was 2, then Math.random() * recommendations_array.length will give us a number from 0 <= x < 2, where 0-0.999999... --> index 0, and 1-1.999999.... --> index 1 (the last index of the array)
-
-    currentMusicRecommendation = recommendations_array[randomIndex];
 
     // Now play the music file which is stored in "recommendation.audio"
     musicMessage.style.display = "block" // show the music message because we hid it initially
     musicMessage.textContent = "♫ Currently listening to: ♫\n" + currentMusicRecommendation.piece;
     musicPlayer.src = currentMusicRecommendation.audio;
-    musicPlayer.play(); 
+    musicPlayer.play().catch(function (error) {
+        console.warn("Automatic music playback was blocked: ", error);
+    })
 
     resizeMainPostcardText();
 }
@@ -857,6 +891,23 @@ async function loadCollectibleDropdowns() {
     
     wallpaperSelect.value = savedWallpaperID;
     applyWallpaper(savedWallpaperID);
+
+    // Section for Chopin Nocturne loading
+    const ownsChopinNocturne = ownedCollectibles.some(function (collectibleID) {
+        const collectible = findCollectibleByID(collectibleID)
+
+        return (collectible && collectible.category === "exclusiveMusic" && collectible.id.startsWith("chopin_nocturne"));
+    });
+
+    if (ownsChopinNocturne) {
+        const exclusiveOption = document.createElement("option");
+
+        exclusiveOption.id = "exclusiveNocturnalOption";
+        exclusiveOption.value = "exclusive_nocturnal";
+        exclusiveOption.textContent = "🌗 EXCLUSIVE: Nocturnal";
+
+        moodSelect.appendChild(exclusiveOption);
+    }
 }
 
 // Change Page Wallpaper
