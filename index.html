@@ -22,86 +22,122 @@
             <option value="zh">🇨🇳 中文</option>
         </select>
 
-        <div id="instructionsBox">
-            <p id="instructionsTitle" style="text-align: center;"><b><u>Instructions:</u></b></p>
-            <p id="instructionsList">
-                1️⃣ Choose a Photo<br>
-                2️⃣ Write a Caption<br>
-                3️⃣ Choose a Mood<br>
-                4️⃣ Add a Location<br>
-                5️⃣ Download or Share
-            </p>
-        </div>
-
         <div id="loggedInUserInfo">
             <h4 id="welcomeMessage"></h4>
         </div>
 
-        <div id="controls">
+        <section id="postcardCreator">
+            <div class="builderStep">
+                <div class="stepLabel">Step 1: Choose Photo</div>
 
-            <!-- Ask the user to choose a file, or use the back camera on phones -->
-            <input id="photoInput"
-                    type="file" 
-                    accept="image/*">
-                    <!-- If I add capture="environment" it will only use camera, no "choose from photo library" option -->
-                    
+                <div class="stepArrow">⟶</div>
 
-
-            <!-- Select a stamp type -->
-            <!--
-            <select id="stampSelect">
-                <option value="">Select Stamp...</option>
-                <option value="music">Music Stamp</option>
-                <option value="home">Home Stamp</option>
-                <option value="travel">Travel Stamp</option>
-                <option value="canada">Canada Stamp</option>
-                <option value="princeton">Princeton Stamp</option>
-            </select> --> 
-            <!-- This above is if I want to switch to base64-->
-
-            <select id="stampSelect">
-                <option value="">Select Stamp...</option>
-                <option value="assets/images/music-stamp.png">🎵 Music Stamp</option>
-                <option value="assets/images/home-stamp.png">🏡 Home Stamp</option>
-                <option value="assets/images/travel-stamp.png">✈️ Travel Stamp</option>
-                <option value="assets/images/canada-stamp.png">🇨🇦 Canada Stamp</option>
-                <option value="assets/images/princeton-stamp.png">🐯 Princeton Stamp</option>
-            </select>
-
-            <div id="musicControls">
-
-                <select id="moodSelect">
-                    <option value="">Choose Mood...</option>
-                    <option value="happy">😀 Happy</option>
-                    <option value="excited">😃 Excited!</option>
-                    <option value="romantic">🥰 Romantic</option>
-                    <option value="reflective">😇 Calm / Reflective</option>
-                    <option value="ambitious">😈 Ambitious</option>
-                    <option value="angry">😡 Angry</option>
-                    <option value="inspired">🤩 Inspired</option>
-                    <option value="chinese">🇨🇳 Chinese</option>
-                </select>
-
-                <audio id="musicPlayer" controls loop></audio> <!-- controls give it the interactive playback bar -->
-
-                <button id="musicRerollButton">🔄</button>
-            
+                <div class="stepControl">
+                    <input id="photoInput"
+                        type="file" 
+                        accept="image/*">
+                </div>
             </div>
 
-            <button id="locationButton">Use My Location</button>
-            <select id="postcardBackgroundSelect">
-                <option value="default">Select Postcard Background...</option>
-                <option value="default">Default White Postcard</option>
-            </select>
-            <select id="wallpaperSelect">
-                <option value="default">Select Wallpaper...</option>
-                <option value="default">Default Wallpaper</option>
-            </select>
+            <div class="builderStep">
+                <div class="stepLabel">Step 2: Write a Caption</div>
 
-            <!-- Creates a multiline text input -->
-            <textarea id="captionInput" placeholder="Write a caption..."></textarea>
-        
-        </div>
+                <div class="stepArrow">⟶</div>
+
+                <div class="stepControl">
+                    <textarea id="captionInput" placeholder="Write a caption..."></textarea>
+                </div>
+            </div>
+
+            <div class="builderStep">
+                <div class="stepLabel">Step 3: Select a Stamp</div>
+
+                <div class="stepArrow">⟶</div>
+
+                <div class="stepControl">
+                    <select id="stampSelect">
+                        <option value="">Select Stamp...</option>
+                        <option value="assets/images/music-stamp.png">🎵 Music Stamp</option>
+                        <option value="assets/images/home-stamp.png">🏡 Home Stamp</option>
+                        <option value="assets/images/travel-stamp.png">✈️ Travel Stamp</option>
+                        <option value="assets/images/canada-stamp.png">🇨🇦 Canada Stamp</option>
+                        <option value="assets/images/princeton-stamp.png">🐯 Princeton Stamp</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="builderStep">
+                <div class="stepLabel">Step 4: Select a Mood</div>
+
+                <div class="stepArrow">⟶</div>
+
+                <div class="stepControl">
+                    <div id="musicControls">
+
+                        <select id="moodSelect">
+                            <option value="">Choose Mood...</option>
+                            <option value="happy">😀 Happy</option>
+                            <option value="excited">😃 Excited!</option>
+                            <option value="romantic">🥰 Romantic</option>
+                            <option value="reflective">😇 Calm / Reflective</option>
+                            <option value="ambitious">😈 Ambitious</option>
+                            <option value="angry">😡 Angry</option>
+                            <option value="inspired">🤩 Inspired</option>
+                            <option value="chinese">🇨🇳 Chinese</option>
+                        </select>
+                        
+                        <div class="musicPlayerRow">
+                            <audio id="musicPlayer" controls loop></audio> <!-- controls give it the interactive playback bar -->
+                            <button id="musicRerollButton">🔄</button>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <div class="builderStep">
+
+                <div class="stepLabel">Step 5: Use Your Location</div>
+
+                <div class="stepArrow">⟶</div>
+
+                <div class="stepControl">
+                    <button id="locationButton">Use My Location</button>
+                </div>
+
+            </div>
+
+            <div class="builderStep">
+
+                <div class="stepLabel">Select Postcard Background</div>
+
+                <div class="stepArrow">⟶</div>
+
+                <div class="stepControl">
+                    <select id="postcardBackgroundSelect">
+                        <option value="default">Select Postcard Background...</option>
+                        <option value="default">Default White Postcard</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="builderStep">
+
+                <div class="stepLabel">Select Screen Wallpaper</div>
+
+                <div class="stepArrow">⟶</div>
+
+                <div class="stepControl">
+                    <select id="wallpaperSelect">
+                        <option value="default">Select Wallpaper...</option>
+                        <option value="default">Default Wallpaper</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </section>
 
         <!-- Design the actual postcard -->
         <div id="postcard">

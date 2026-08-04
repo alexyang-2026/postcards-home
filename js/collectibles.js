@@ -70,6 +70,17 @@ const collectibles = {
 
     wallpapers: {
 
+        default: { // Chances are, default background will not appear in anyone's inventory
+            id: "default",
+            name: "Default",
+            type: "wallpaper",
+            image: "",
+            rarity: "Common",
+            description: "The classic beige color background.",
+            text_color: "black",
+            how_to_get: "Default: everyone already should have it"
+        },
+
         sunset: {
             id: "sunset",
             name: "Sunset Wallpaper",

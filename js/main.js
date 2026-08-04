@@ -1,6 +1,7 @@
 const mainPageTitle = document.getElementById("title");
 const mainPageSubtitle = document.getElementById("subtitle");
-const instructionsBox = document.getElementById("instructionsBox");
+const stepLabels = document.querySelectorAll(".stepLabel");
+const stepArrows = document.querySelectorAll(".stepArrow");
 const footer = document.getElementById("footer");
 
 // creates a variable called photoInput that is unchangeable
@@ -457,8 +458,8 @@ function loadRandomMusic() {
 
     currentMusicRecommendation = recommendationsArray[randomIndex];
 
-    musicPlayer.style.display = "flex";
-    musicRerollButton.style.display = "flex";
+    musicPlayer.style.display = "block";
+    musicRerollButton.style.display = "block";
 
     // Now play the music file which is stored in "recommendation.audio"
     musicMessage.style.display = "block" // show the music message because we hid it initially
@@ -911,10 +912,14 @@ async function loadCollectibleDropdowns() {
 }
 
 // Change Page Wallpaper
-const textItems = [mainPageTitle, mainPageSubtitle, instructionsBox, loggedInUserInfo, footer];
+const textItems = [mainPageTitle, mainPageSubtitle, loggedInUserInfo, footer, ...stepArrows, ...stepLabels];
 function applyWallpaper(wallpaperID) {
     if (!wallpaperID || wallpaperID === "default") {
         document.body.style.backgroundImage = "";
+        // Change all the text colors to black
+        for (const textColorChange of textItems) {
+            textColorChange.style.color = "black";
+        }
         return;
     }
 
@@ -935,8 +940,6 @@ function applyWallpaper(wallpaperID) {
     for (const textColorChange of textItems) {
         textColorChange.style.color = wallpaperTextColor;
     }
-
-    instructionsBox.style.borderColor = wallpaperTextColor;
 }
 
 function updateWallpaper() {
