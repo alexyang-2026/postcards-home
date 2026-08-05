@@ -85,12 +85,32 @@ loginButton.addEventListener("click", async function() {
         return;
     }
 
+    const userID = data.user.id;
+
+    const { data: profileData, error: profileError } = await supabaseClient
+        .from("profiles")
+        .select("is_deleted")
+        .eq("user_id", userID)
+        .single();
+    
+    if (profileError) {
+        await supabaseClient.auth.signout();
+        showStatusMessage("Could not load your profile: " + profileError.message, "error")
+        return;
+    }
+
+    if (profileData.is_deleted) {
+        await supabaseClient.auth.signOut();
+        showStatusMessage("This account is scheduled for deletion and can no longer be accessed. You can recover a portion of it by emailing zixuan.yang2018@gmail.com ASAP", "error");
+        return
+    }
+
     showStatusMessage("Successfully logged in!", "success");
     redirectMessage.style.display = "block";
 
     const timer = setInterval(function (){
         redirectMessage.textContent = `Redirecting back to application in ${seconds}...`
-        seconds --;
+        seconds--;
 
         if (seconds < 0){
             clearInterval(timer); 

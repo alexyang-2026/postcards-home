@@ -998,12 +998,17 @@ logoutButton.addEventListener("click", async function() {
     if (!confirmed) {
         return;
     }
+
+    showLoading("Logging Out...")
     
     const {error} = await supabaseClient.auth.signOut();
 
     if (error) {
         showProfileSettingsMessage("Could not log out:" + error.message, "error");
     }
+
+    window.location.href = "login.html";
+
 })
 
 
@@ -1039,7 +1044,7 @@ async function deleteUserPostcardImages(userID) {
     }
 }
 
-deleteAccountButton.addEventListener("click", function() {
+deleteAccountButton.addEventListener("click", async function() {
     const confirmDelete = window.confirm("Are you sure you want to permanently delete your account?")
 
     if (!confirmDelete) {
@@ -1111,7 +1116,7 @@ deleteAccountButton.addEventListener("click", function() {
 
         const { error: signOutError } = await supabaseClient.auth.signOut();
 
-        if (signoutError) {
+        if (signOutError) {
             throw signOutError;
         }
         
