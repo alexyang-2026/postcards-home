@@ -1006,10 +1006,129 @@ logoutButton.addEventListener("click", async function() {
     }
 })
 
-deleteAccountButton.addEventListener("click", function() {
-    alert("Account deletion has not been implemented yet.");
-});
 
+// Profile Deletion Mechanisms
+async function deleteUserPostcardImages(userID) {
+    while (true) {
+        const { data: files, error: listError } =await supabaseClient.storage
+            .from("postcard-images")
+            .list(userID, {
+                limit: 100,
+                offset: 0
+            });
+
+        if (listError) {
+            throw listError;
+        }
+
+        if (!files || files.length === 0) {
+            return;
+        }
+
+        const filePaths = files.map(function(file) {
+            return `${userID}/${file.name}`;
+        });
+
+        const { error: removeError } = await supabaseClient.storage
+            .from("postcard-images")
+            .remove(filePaths);
+
+        if (removeError) {
+            throw removeError;
+        }
+    }
+}
+
+deleteAccountButton.addEventListener("click", function() {
+    const confirmDelete = window.confirm("Are you sure you want to permanently delete your account?")
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    const typedConfirmation = prompt("Type DELETE MY ACCOUNT PERMANENTLY to confirm.");
+
+    if (typedConfirmation !== "DELETE MY ACCOUNT PERMANENTLY") {
+        alert("Account Deletion Cancelled.");
+        return;
+    }
+
+    const typedConfirmation2 = prompt("Deleting your account will permanently remove ALL postcards and life segments. This cannot be recovered. Some inventory items and account data may reamin temporarily before permanent deletion, but recovery is not guaranteed.\n\nType I CONFIRM I HAVE READ AND AGREE to confirm you have read, understand, and agree to this policy.")
+
+    if (typedConfirmation2 !== "I CONFIRM I HAVE READ AND AGREE") {
+        alert("Account Deletion Cancelled.");
+        return;
+    }
+
+    deleteAccountButton.disabled = true;
+    showLoading("Deleting account...");
+
+    try {
+
+        const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+
+        if (authError) {
+            throw authError;
+        }
+
+        if (!authData.user) {
+            throw new Error("You must be logged in.");
+        }
+
+        const userID = authData.user.id;
+        
+        await deleteUserPostcardImages(userID);
+
+        const { error: postcardsError } = await supabaseClient
+            .from("postcards")
+            .delete()
+            .eq("user_id", userID);
+        
+        if (postcardsError) {
+            throw postcardsError;
+        }
+
+        const { error: segmentsError } = await supabaseClient
+            .from("life_segments")
+            .delete()
+            .eq("user_id", userID);
+
+        if (segmentsError) {
+            throw segmentsError;
+        }
+
+        const { error: profileError } = await supabaseClient
+            .from("profiles")
+            .update({
+                is_deleted: true,
+                deletion_requested_at: new Date().toISOString()
+            })
+            .eq("user_id", userID);
+        
+        if (profileError) {
+            throw profileError;
+        }
+
+        const { error: signOutError } = await supabaseClient.auth.signOut();
+
+        if (signoutError) {
+            throw signOutError;
+        }
+        
+        localStorage.clear();
+        alert("Your account has been scheduled for deletion. Although all postcards/life segments could not be recovered, please email zixuan.yang2018@gmail.com ASAP if you want to retrieve your account with inventory items.")
+        window.location.href = "login.html";
+        
+
+    } catch (error) {
+        console.error(error);
+        alert("Could not delete account: " + error.message);
+    } finally {
+        deleteAccountButton.disabled = false;
+        hideLoading();
+    }
+
+});
 
 async function initializeInventory() {
     showLoading("Loading Inventory...");
