@@ -19,6 +19,7 @@
             <button id="lifeSegmentsButton" class="inventory-nav-button">Life Segments</button>
             <button id="stampsButton" class="inventory-nav-button">Stamps</button>
             <button id="collectiblesButton" class="inventory-nav-button">Collectibles</button>
+            <button id="profileSettingsButton" class="inventory-nav-button">Profile Settings</button>
 
             <button id="returnButton">Return to Main Page</button>
         </aside>
@@ -182,6 +183,60 @@
         <a href="legal/about.html">About</a>
     </footer>
     -->
+
+    <div id="profileSettingsOverlay">
+        <div id="profileSettingsModal">
+            <button id="closeProfileSettingsButton" type="button" aria-label="Close profile settings">✕</button>
+
+            <h2>Profile Settings</h2>
+
+            <section class="profile-settings-section">
+                <h3>Profile</h3>
+
+                <label for="profileFullNameInput">Full Name</label>
+
+                <input id="profileFullNameInput" type="text" maxlength="100">
+
+                <label for="profileUsernameInput">Username</label>
+
+                <input
+                    id="profileUsernameInput"
+                    type="text"
+                    maxlength="30"
+                >
+            </section>
+
+            <section class="profile-settings-section">
+                <h3>Preferences</h3>
+
+                <label for="profileLanguageSelect">Preferred Language</label>
+
+                <select id="profileLanguageSelect">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh">🇨🇳 中文</option>
+                </select>
+            </section>
+
+            <p id="profileSettingsMessage"></p>
+
+            <div id="profileSettingsActions">
+                <button id="saveProfileSettingsButton" type="button">Save Changes</button>
+            </div>
+
+            <section id="accountSection">
+                <h3>Account</h3>
+
+                <p>
+                    Permanently delete your account, postcards, Life Segments,
+                    collectibles, and uploaded images.
+                </p>
+
+                <button id="logoutButton">Log Out</button>
+                <button id="deleteAccountButton" type="button">Delete My Account</button>
+
+            </section>
+        </div>
+    </div>
 
     <div id="loadingOverlay">
         <div class="spinner"></div>

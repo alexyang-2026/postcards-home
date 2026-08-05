@@ -37,6 +37,10 @@ body {
     font-family: American Typewriter;
 }
 
+#profileSettingsButton {
+    background-color: orange;
+}
+
 .inventory-nav-button:active {
     transform:scale(0.95);
 }
@@ -548,6 +552,204 @@ body {
 /* Loading Overlay */
 #loadingOverlay {
     z-index: 9999;
+}
+
+/* Keep Profile Settings and Return buttons at bottom of sidebar */
+.inventory-sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+#profileSettingsButton {
+    margin-top: auto;
+}
+
+/* Profile Settings Overlay */
+#profileSettingsOverlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(5px);
+
+    z-index: 1200;
+}
+
+/* Profile Settings Modal */
+#profileSettingsModal {
+    position: relative;
+
+    width: min(460px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 26px;
+
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 12px;
+
+    box-sizing: border-box;
+    font-family: "American Typewriter", serif;
+}
+
+#profileSettingsModal h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+#closeProfileSettingsButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    background: red;
+    color: white;
+
+    border: none;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    border-top-right-radius: 9px;
+
+    cursor: pointer;
+}
+
+/* Profile and Preferences Sections */
+.profile-settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-top: 22px;
+}
+
+.profile-settings-section h3 {
+    margin: 0 0 6px;
+}
+
+.profile-settings-section label {
+    margin-top: 9px;
+    font-weight: bold;
+}
+
+.profile-settings-section input,
+.profile-settings-section select {
+    width: 100%;
+    min-height: 38px;
+
+    padding: 7px 9px;
+    box-sizing: border-box;
+
+    border: 1.5px solid black;
+    border-radius: 4px;
+
+    background: white;
+    font: inherit;
+}
+
+/* Save Message */
+#profileSettingsMessage {
+    display: none;
+
+    margin: 18px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+}
+
+/* Save Button */
+#profileSettingsActions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 20px;
+}
+
+#saveProfileSettingsButton {
+    padding: 9px 16px;
+
+    background: greenyellow;
+    border: 1.5px solid black;
+    border-radius: 4px;
+
+    font: inherit;
+    cursor: pointer;
+}
+
+#saveProfileSettingsButton:active {
+    transform: scale(0.96);
+}
+
+/* Account Section */
+#accountSection {
+    margin-top: 28px;
+    padding-top: 20px;
+
+    border-top: 1.5px solid black;
+}
+
+#accountSection h3 {
+    margin-top: 0;
+}
+
+#accountSection p {
+    font-family: American Typewriter;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+#logoutButton,
+#deleteAccountButton {
+    padding: 9px 14px;
+    margin-right: 8px;
+
+    border: 1.5px solid black;
+    border-radius: 4px;
+
+    font: inherit;
+    cursor: pointer;
+}
+
+#logoutButton {
+    background: gold;
+}
+
+#deleteAccountButton {
+    background: red;
+    color: white;
+}
+
+#logoutButton:active,
+#deleteAccountButton:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 520px) {
+    #profileSettingsModal {
+        padding: 22px 18px;
+    }
+
+    #logoutButton,
+    #deleteAccountButton {
+        display: block;
+        width: 100%;
+
+        margin-right: 0;
+        margin-top: 8px;
+    }
 }
 
 

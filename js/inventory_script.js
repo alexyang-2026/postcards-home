@@ -832,6 +832,185 @@ closeCaptionEditorButton.addEventListener("click", function () {
 });
 
 
+
+// Load Profile Modal
+const profileSettingsButton = document.getElementById("profileSettingsButton");
+const profileSettingsOverlay = document.getElementById("profileSettingsOverlay");
+const closeProfileSettingsButton = document.getElementById("closeProfileSettingsButton");
+const profileFullNameInput = document.getElementById("profileFullNameInput");
+const profileUsernameInput = document.getElementById("profileUsernameInput");
+const profileLanguageSelect = document.getElementById("profileLanguageSelect");
+const profileSettingsMessage = document.getElementById("profileSettingsMessage");
+const saveProfileSettingsButton = document.getElementById("saveProfileSettingsButton");
+const logoutButton = document.getElementById("logoutButton");
+const deleteAccountButton = document.getElementById("deleteAccountButton");
+
+function showProfileSettingsMessage(message, type) {
+    profileSettingsMessage.style.display = "block";
+    profileSettingsMessage.textContent = message;
+
+    if (type === "error") {
+        profileSettingsMessage.style.color = "red";
+    } else {
+        profileSettingsMessage.style.color = "green";
+    }
+}
+
+async function loadProfileSettings() {
+    const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+
+    if (authError) {
+        throw authError;
+    }
+
+    if (!authData.user) {
+        throw new Error("You must be logged in.");
+    }
+
+    const userID = authData.user.id;
+
+    const { data: profileData, error: profileError } = await supabaseClient
+            .from("profiles")
+            .select("full_name, username, owned_collectibles")
+            .eq("user_id", userID)
+            .single();
+
+    if (profileError) {
+        throw profileError;
+    }
+
+    profileFullNameInput.value = profileData.full_name || "";
+    profileUsernameInput.value = profileData.username || "";
+
+    profileLanguageSelect.value = localStorage.getItem("preferredLanguage") || "en";
+}
+
+profileSettingsButton.addEventListener("click",async function() {
+    profileSettingsMessage.style.display = "none";
+
+    showLoading("Loading Profile Settings...");
+
+    try {
+        await loadProfileSettings();
+
+        profileSettingsOverlay.style.display ="flex";
+        closeProfileSettingsButton.focus();
+
+    } catch (error) {
+        console.error(error);
+        alert("Could not load profile settings: " + error.message);
+
+    } finally {
+        hideLoading();
+    }
+});
+
+// This helper function is here because there are several ways to close the modal
+function closeProfileSettings() {
+    profileSettingsOverlay.style.display = "none";
+    profileSettingsMessage.style.display = "none";
+}
+
+closeProfileSettingsButton.addEventListener("click", closeProfileSettings);
+
+profileSettingsOverlay.addEventListener("click", function(event) {
+    if (event.target === profileSettingsOverlay) {
+        closeProfileSettings();
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && profileSettingsOverlay.style.display === "flex") {
+        closeProfileSettings();
+    }
+});
+
+saveProfileSettingsButton.addEventListener("click", async function() {
+    const fullName = profileFullNameInput.value.trim();
+    const username = profileUsernameInput.value.trim();
+    const language = profileLanguageSelect.value;
+
+    if (!fullName) {
+        showProfileSettingsMessage("Full name cannot be empty.", "error");
+        return;
+    }
+
+    if (!username) {
+        showProfileSettingsMessage("Username cannot be empty.", "error");
+        return;
+    }
+
+    saveProfileSettingsButton.disabled = true;
+    showLoading("Saving Profile Settings...");
+
+    try {
+        const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+        if (authError) {
+            throw authError;
+        }
+
+        if (!authData.user) {
+            throw new Error("You must be logged in.");
+        }
+
+        const userID = authData.user.id;
+
+        const { data: updatedProfile, error: updateError } = await supabaseClient
+            .from("profiles")
+            .update({
+                full_name: fullName,
+                username: username
+            })
+            .eq("user_id", userID)
+            .select("full_name, username")
+            .single();
+
+        if (updateError) {
+            throw updateError;
+        }
+
+        // First save the preferred language in the broser's localStorage
+        localStorage.setItem("preferredLanguage", language);
+
+        showProfileSettingsMessage("Profile settings saved!", "success");
+
+        console.log("Updated profile:", updatedProfile);
+
+    } catch (error) {
+        console.error(error);
+
+        let errorMessage = "Could not save profile settings: " + error.message;
+
+        if (error.code === "23505" || error.message.toLowerCase().includes("duplicate")) {
+            errorMessage = "That username is already being used.";
+        }
+
+        showProfileSettingsMessage(errorMessage, "error");
+
+    } finally {
+        saveProfileSettingsButton.disabled = false;
+        hideLoading();
+    }
+});
+
+logoutButton.addEventListener("click", async function() {
+    const confirmed = confirm("Are you sure you want to log out?");
+    if (!confirmed) {
+        return;
+    }
+    
+    const {error} = await supabaseClient.auth.signOut();
+
+    if (error) {
+        showProfileSettingsMessage("Could not log out:" + error.message, "error");
+    }
+})
+
+deleteAccountButton.addEventListener("click", function() {
+    alert("Account deletion has not been implemented yet.");
+});
+
+
 async function initializeInventory() {
     showLoading("Loading Inventory...");
 
