@@ -1,5 +1,6 @@
 const mainPageTitle = document.getElementById("title");
 const mainPageSubtitle = document.getElementById("subtitle");
+const languageSelect = document.getElementById("languageSelect");
 const stepLabels = document.querySelectorAll(".stepLabel");
 const stepArrows = document.querySelectorAll(".stepArrow");
 const footer = document.getElementById("footer");
@@ -59,6 +60,9 @@ exportButton.addEventListener("click", function(event) {
     event.stopPropagation();
 
     exportMenu.classList.toggle("open");
+
+    const isOpen = exportMenu.classList.contains("open");
+    exportButton.setAttribute("aria-expanded", String(isOpen));
 });
 
 document.addEventListener("click", function() {
@@ -81,7 +85,7 @@ let loggedInUserID = null;
 lifeSegmentSelect.innerHTML = "";
 const option = document.createElement("option");
 option.value = "";
-option.textContent = "No Life Segments Yet!"
+option.textContent = i18next.t("main.lifeSegments.noSegments");
 lifeSegmentSelect.appendChild(option);
 lifeSegmentSelect.disabled = true;
 
@@ -102,13 +106,13 @@ async function loadLifeSegments (userID) {
     }
 
     if (data.length === 0) {
-        lifeSegmentSelect.innerHTML = '<option value="">No Life Segments Yet!</option>';
+        lifeSegmentSelect.innerHTML = `<option value="">${i18next.t("main.lifeSegments.noSegments")}</option>`;
         lifeSegmentSelect.disabled = true;
         return;
     }
 
     lifeSegmentSelect.disabled = false;
-    lifeSegmentSelect.innerHTML = '<option value="">Add Postcard to Life Segment...</option>';
+    lifeSegmentSelect.innerHTML = `<option value="">${i18next.t("main.lifeSegments.addPostcard")}</option>`;
     
     for (const segment of data){
         const option = document.createElement("option");
@@ -282,7 +286,7 @@ captionInput.addEventListener("input", function() {
     }
 
     // Update the caption preview as the user inputs stuff
-    captionPreview.textContent = captionInput.value || "Your Caption Will Appear Here.";
+    captionPreview.textContent = captionInput.value || i18next.t("main.postcard.captionPlaceholder");
     resizeMainPostcardText();
 });
 
@@ -336,7 +340,7 @@ downloadButton.addEventListener("click", function() {
         // Sets the status message
         statusMessage.style.display = "block";
         statusMessage.style.color = "green";
-        showMessage("🎉 Postcard Downloaded Successfully! 🎉", "success");
+        showMessage(i18next.t("main.messages.downloadSuccess"), "success");
         await tryUnlockRandomChopinNocturne(loggedInUserID);
         launchConfetti(3000, 10);
     });
@@ -391,11 +395,11 @@ shareButton.addEventListener("click", function() {
                     files: [file]
                 })
 
-                showMessage("🎉 Congrats! Postcard Shared Successfully! 🎉", "success");
+                showMessage(i18next.t("main.messages.shareSuccess"), "success");
                 launchConfetti(3000, 10)
             } 
             else {
-                showMessage("Sharing is not supported by your browser, so postcard was downloaded instead. 🎉", "error");
+                showMessage(i18next.t("main.messages.shareUnsupported"), "error");
 
                 const link = document.createElement("a");
                 link.download = "postcard.png";
@@ -482,10 +486,22 @@ locationButton.addEventListener("click", function(){
 });
 
 function updateDate() {
-    datePreview.textContent = new Date().toLocaleDateString("en-US", {
-                                                month: "long",
-                                                day: "numeric",
-                                                year: "numeric"
+    // We need locales in order to translate our date
+    const locales = {
+        en: "en-US",
+        zh: "zh-CN",
+        fr: "fr-FR",
+        ja: "ja-JP",
+        es: "es-ES",
+        de: "de-DE"
+    };
+
+    const locale = locales[i18next.language] || "en-US";
+
+    datePreview.textContent = new Date().toLocaleDateString(locale, {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
     });
 
     resizeMainPostcardText();
@@ -505,7 +521,7 @@ resetPostcardButton.addEventListener("click", function() {
     photoInput.value = "";
 
     captionInput.value = "";
-    captionPreview.textContent = "Your Caption Will Appear Here.";
+    captionPreview.textContent = i18next.t("main.postcard.captionPlaceholder");
 
     stampSelect.value = "";
     stampPreview.src = "";
@@ -531,7 +547,7 @@ resetPostcardButton.addEventListener("click", function() {
 
     updateDate();
 
-    showMessage("Postcard Reset Successfully.", "success");
+    showMessage(i18next.t("main.messages.postcardReset"), "success");
 });
 
 // Login Button Event Listener
@@ -554,7 +570,7 @@ async function checkLoggedInUser() {
     // Check if logged in user exists first
     if (authError || !authData.user){
         loggedInUserID = null; // reset the global variable if not logged in
-        loginButton.textContent = "Log In to Save Your Postcards!";
+        loginButton.textContent = i18next.t("main.actions.login");
         loginButton.style.display = "block";
         return
     }
@@ -568,7 +584,7 @@ async function checkLoggedInUser() {
         .eq("user_id", userID)
         .maybeSingle();
 
-    loginButton.textContent = "Log Out"
+    loginButton.textContent = i18next.t("main.actions.logout");
     welcomeMessage.style.display = "block";
     welcomeMessage.textContent = "Welcome, " + profileData.full_name + "!";
 
@@ -638,22 +654,22 @@ async function compressImage(file) {
 async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
     // First, check the photo
     if (!checkPhoto()) {
-        showMessage("Please Take a Photo Before Saving Your Postcard!", "error");
+        showMessage(i18next.t("main.messages.photoRequired"), "error");
         return;
     }
 
     // Next, check the caption
     if (!checkCaption()) {
-        showMessage("Please Write a Caption Before Saving Your Postcard! (You can edit it later)", "error");
+        showMessage(i18next.t("main.messages.captionRequired"), "error");
         return;
     }
 
-    showMessage("Saving Postcard...please wait...", "waiting")
+    showMessage(i18next.t("main.messages.saving"), "waiting")
 
     const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
     if (authError || !authData.user) {
-        showMessage("Please log in before saving postcards.", "error");
+        showMessage(i18next.t("main.messages.loginRequired"), "error");
         return;
     }
 
@@ -1020,12 +1036,49 @@ wallpaperSelect.addEventListener("change", async function () {
 
 postcardBackgroundSelect.addEventListener("change", updatePostcardBackground);
 
+
+// Change Language
+function updateTranslatedDynamicText() {
+    imageFailMessage = i18next.t("main.messages.photoRequired");
+    captionFailMessage = i18next.t("main.messages.captionRequired");
+
+    if (captionInput.value.trim() === "") {
+        captionPreview.textContent =
+            i18next.t("main.postcard.captionPlaceholder");
+    }
+}
+
+languageSelect.addEventListener("change", async function() {
+    const selectedLanguage = languageSelect.value;
+
+    if (!selectedLanguage) {
+        return;
+    }
+
+    await i18next.changeLanguage(selectedLanguage);
+
+    localStorage.setItem("preferredLanguage", selectedLanguage);
+
+    applyTranslations();
+    updateTranslatedDynamicText();
+    updateDate();
+
+    if (loggedInUserID) {
+        await loadLifeSegments(loggedInUserID);
+    }
+})
+
 // MAIN LOADING
 window.addEventListener("load", async function() {
     showLoading("Loading Postcard Creator...");
 
     try {
-        // launchConfetti(5000, 15);
+        const savedLanguage = await initializeTranslations();
+        languageSelect.value = savedLanguage;
+
+        updateTranslatedDynamicText();
+        updateDate();
+
         await checkLoggedInUser();
     } catch (error) {
         console.error("Could not initialize page: ", error);

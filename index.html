@@ -2,93 +2,94 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Commpatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- This makes the page use the real screen width, so it adapts to any type of phone -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Postcards Home</title>
+        <title data-i18n="main.documentTitle">Postcards Home</title>
         <!-- Links to the css file, tells the browser this is a style file-->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/utilities.css">
     </head>
 
     <body>
-        <h2 id="title">Postcards Home</h2>
-        <h6 id="subtitle">Made by Alex Yang</h6>
+        <h2 id="title" data-i18n="main.title">Postcards Home</h2>
+        <h6 id="subtitle" data-i18n="main.subtitle">Made by Alex Yang</h6>
 
-        <select id="languageSelect">
-            <option value="">Select Language:</option>
+        <select id="languageSelect" aria-label="Choose page language" data-i18n-aria-label="main.languageLabel">
+            <option value="" data-i18n="main.selectLanguage">Select Language:</option>
             <option value="en">🇺🇸 English</option>
             <option value="zh">🇨🇳 中文</option>
         </select>
 
         <div id="loggedInUserInfo">
-            <h4 id="welcomeMessage"></h4>
+            <h4 id="welcomeMessage" aria-live="polite"></h4>
         </div>
 
         <section id="postcardCreator">
             <div class="builderStep">
-                <div class="stepLabel">Step 1: Choose Photo</div>
+                <div id="photoInputLabel" class="stepLabel" data-i18n="main.steps.choosePhoto">Step 1: Choose Photo</div>
 
-                <div class="stepArrow">⟶</div>
+                <div class="stepArrow" aria-hidden="true">⟶</div>
 
                 <div class="stepControl">
                     <input id="photoInput"
                         type="file" 
-                        accept="image/*">
+                        accept="image/*"
+                        aria-labelledby="photoInputLabel">
                 </div>
             </div>
 
             <div class="builderStep">
-                <div class="stepLabel">Step 2: Write a Caption</div>
+                <div id="captionInputLabel" class="stepLabel" data-i18n="main.steps.writeCaption">Step 2: Write a Caption</div>
 
-                <div class="stepArrow">⟶</div>
+                <div class="stepArrow" aria-hidden="true">⟶</div>
 
                 <div class="stepControl">
-                    <textarea id="captionInput" placeholder="Write a caption..."></textarea>
+                    <textarea id="captionInput" placeholder="Write a caption..." data-i18n-placeholder="main.controls.captionPlaceholder" aria-labelledby="captionInputLabel"></textarea>
                 </div>
             </div>
 
             <div class="builderStep">
-                <div class="stepLabel">Step 3: Select a Stamp</div>
+                <div id="stampSelectLabel" class="stepLabel" data-i18n="main.steps.selectStamp">Step 3: Select a Stamp</div>
 
-                <div class="stepArrow">⟶</div>
+                <div class="stepArrow" aria-hidden="true">⟶</div>
 
                 <div class="stepControl">
-                    <select id="stampSelect">
-                        <option value="">Select Stamp...</option>
-                        <option value="assets/images/music-stamp.png">🎵 Music Stamp</option>
-                        <option value="assets/images/home-stamp.png">🏡 Home Stamp</option>
-                        <option value="assets/images/travel-stamp.png">✈️ Travel Stamp</option>
-                        <option value="assets/images/canada-stamp.png">🇨🇦 Canada Stamp</option>
-                        <option value="assets/images/princeton-stamp.png">🐯 Princeton Stamp</option>
+                    <select id="stampSelect" aria-labelledby="stampSelectLabel">
+                        <option value="" data-i18n="main.stamps.select">Select Stamp...</option>
+                        <option value="assets/images/music-stamp.png" data-i18n="main.stamps.music">🎵 Music Stamp</option>
+                        <option value="assets/images/home-stamp.png" data-i18n="main.stamps.home">🏡 Home Stamp</option>
+                        <option value="assets/images/travel-stamp.png" data-i18n="main.stamps.travel">✈️ Travel Stamp</option>
+                        <option value="assets/images/canada-stamp.png" data-i18n="main.stamps.canada">🇨🇦 Canada Stamp</option>
+                        <option value="assets/images/princeton-stamp.png" data-i18n="main.stamps.princeton">🐯 Princeton Stamp</option>
                     </select>
                 </div>
             </div>
 
             <div class="builderStep">
-                <div class="stepLabel">Step 4: Select a Mood</div>
+                <div id="moodSelectLabel" class="stepLabel" data-i18n="main.steps.selectMood">Step 4: Select a Mood</div>
 
-                <div class="stepArrow">⟶</div>
+                <div class="stepArrow" aria-hidden="true">⟶</div>
 
                 <div class="stepControl">
                     <div id="musicControls">
 
-                        <select id="moodSelect">
-                            <option value="">Choose Mood...</option>
-                            <option value="happy">😀 Happy</option>
-                            <option value="excited">😃 Excited!</option>
-                            <option value="romantic">🥰 Romantic</option>
-                            <option value="reflective">😇 Calm / Reflective</option>
-                            <option value="ambitious">😈 Ambitious</option>
-                            <option value="angry">😡 Angry</option>
-                            <option value="inspired">🤩 Inspired</option>
+                        <select id="moodSelect" aria-labelledby="moodSelectLabel">
+                            <option value="" data-i18n="main.moods.select">Choose Mood...</option>
+                            <option value="happy" data-i18n="main.moods.happy">😀 Happy</option>
+                            <option value="excited" data-i18n="main.moods.excited">😃 Excited!</option>
+                            <option value="romantic" data-i18n="main.moods.romantic">🥰 Romantic</option>
+                            <option value="reflective" data-i18n="main.moods.reflective">😇 Calm / Reflective</option>
+                            <option value="ambitious" data-i18n="main.moods.ambitious">😈 Ambitious</option>
+                            <option value="angry" data-i18n="main.moods.angry">😡 Angry</option>
+                            <option value="inspired" data-i18n="main.moods.inspired">🤩 Inspired</option>
                             <!--<option value="chinese">🇨🇳 Chinese</option> This was a meme -->
                         </select>
                         
                         <div class="musicPlayerRow">
-                            <audio id="musicPlayer" controls loop></audio> <!-- controls give it the interactive playback bar -->
-                            <button id="musicRerollButton" alt="Choose Another Random Music Piece">🔄</button>
+                            <audio id="musicPlayer" controls loop aria-label="Postcard music preview" data-i18n-aria-label="main.accessibility.musicPlayer"></audio> <!-- controls give it the interactive playback bar -->
+                            <button id="musicRerollButton" aria-label="Choose Another Random Music Piece" data-i18n-aria-label="main.actions.rerollMusic">🔄</button>
                         </div>
                     
                     </div>
@@ -97,26 +98,26 @@
 
             <div class="builderStep">
 
-                <div class="stepLabel">Step 5: Use Your Location</div>
+                <div class="stepLabel" data-i18n="main.steps.useLocation">Step 5: Use Your Location</div>
 
-                <div class="stepArrow">⟶</div>
+                <div class="stepArrow" aria-hidden="true">⟶</div>
 
                 <div class="stepControl">
-                    <button id="locationButton">Use My Location</button>
+                    <button id="locationButton" data-i18n="main.controls.useLocation">Use My Location</button>
                 </div>
 
             </div>
 
             <div class="builderStep">
 
-                <div class="stepLabel">Select Postcard Background</div>
+                <div id="postcardBackgroundSelectLabel" class="stepLabel" data-i18n="main.customization.postcardBackground">Select Postcard Background</div>
 
-                <div class="stepArrow">⟶</div>
+                <div class="stepArrow" aria-hidden="true">⟶</div>
 
                 <div class="stepControl">
-                    <select id="postcardBackgroundSelect">
-                        <option value="default">Select Postcard Background...</option>
-                        <option value="default">Default White Postcard</option>
+                    <select id="postcardBackgroundSelect" aria-labelledby="postcardBackgroundSelectLabel">
+                        <option value="default" data-i18n="main.customization.selectPostcardBackground">Select Postcard Background...</option>
+                        <option value="default" data-i18n="main.customization.defaultPostcard">Default White Postcard</option>
                     </select>
                 </div>
 
@@ -124,14 +125,14 @@
 
             <div class="builderStep">
 
-                <div class="stepLabel">Select Screen Wallpaper</div>
+                <div id="wallpaperSelectLabel" class="stepLabel" data-i18n="main.customization.wallpaper">Select Screen Wallpaper</div>
 
-                <div class="stepArrow">⟶</div>
+                <div class="stepArrow" aria-hidden="true">⟶</div>
 
                 <div class="stepControl">
-                    <select id="wallpaperSelect">
-                        <option value="default">Select Wallpaper...</option>
-                        <option value="default">Default Wallpaper</option>
+                    <select id="wallpaperSelect" aria-labelledby="wallpaperSelectLabel">
+                        <option value="default" data-i18n="main.customization.selectWallpaper">Select Wallpaper...</option>
+                        <option value="default" data-i18n="main.customization.defaultWallpaper">Default Wallpaper</option>
                     </select>
                 </div>
 
@@ -140,92 +141,92 @@
         </section>
 
         <!-- Design the actual postcard -->
-        <div id="postcard">
+        <div id="postcard" role="region" aria-label="Live postcard preview" data-i18n-aria-label="main.accessibility.postcardPreview">
             <!-- Embed the image directly into the webpage, and give it an id called photoPreview for javascript to find -->
-            <img id="photoPreview" src="assets/images/postcard-placeholder.png">
-            <img id="stampPreview" src="">
+            <img id="photoPreview" src="assets/images/postcard-placeholder.png" alt="Selected postcard photograph" data-i18n-alt="main.accessibility.photoPreview">
+            <img id="stampPreview" src="" alt="Selected postcard stamp" data-i18n-alt="main.accessibility.stampPreview">
 
             <div id="postcardText">
-                <p id="captionPreview">Your Caption Will Appear Here.</p>
-                <p id="musicMessage"></p>
+                <p id="captionPreview" data-i18n="main.postcard.captionPlaceholder">Your Caption Will Appear Here.</p>
+                <p id="musicMessage" aria-live="polite"></p>
                 <p id="datePreview"></p>
-                <p id="locationPreview"></p>
+                <p id="locationPreview" aria-live="polite"></p>
             </div>
         </div>
 
-        <button id="loginButton">Log In to Save Your Postcards!</button>
+        <button id="loginButton" data-i18n="main.actions.login">Log In to Save Your Postcards!</button>
 
         <!-- Error Message JUST IN CASE the postcard cannot share -->
-        <p id="statusMessage"></p>
+        <p id="statusMessage" role="status" aria-live="polite"></p>
 
         <div id="lifeSegmentControls">
-            <select id="lifeSegmentSelect">
-                <option value="">Choose Life Segment...</option>
+            <select id="lifeSegmentSelect" aria-label="Choose a Life Segment for this postcard" data-i18n-aria-label="main.lifeSegments.chooseLabel">
+                <option value="" data-i18n="main.lifeSegments.choose">Choose Life Segment...</option>
             </select>
 
-            <button id="createLifeSegmentButton">
+            <button id="createLifeSegmentButton" data-i18n="main.lifeSegments.create">
                 + New Life Segment
             </button>
         </div>
 
-        <div id="controlCenter">
+        <div id="controlCenter" aria-label="Postcard actions" data-i18n-aria-label="main.accessibility.postcardActions">
 
             <div id="exportMenuContainer">
-                <button id="exportButton" class="control-center-button">Export Postcard ▾</button>
+                <button id="exportButton" class="control-center-button" aria-haspopup="true" aria-expanded="false" aria-controls="exportMenu" data-i18n="main.actions.export">Export Postcard ▾</button>
 
                 <div id="exportMenu">
-                    <button id="downloadButton">Download Postcard</button>
-                    <button id="shareButton">↗ Share Postcard</button>
+                    <button id="downloadButton" data-i18n="main.actions.download">Download Postcard</button>
+                    <button id="shareButton" data-i18n="main.actions.share">↗ Share Postcard</button>
                 </div>
             </div>
 
-            <button id="resetPostcardButton" class="control-center-button">New Postcard</button>
-            <button id="toInventoryButton" class="control-center-button">Go To Full Inventory</button>
+            <button id="resetPostcardButton" class="control-center-button" data-i18n="main.actions.newPostcard">New Postcard</button>
+            <button id="toInventoryButton" class="control-center-button" data-i18n="main.actions.inventory">Go To Full Inventory</button>
 
         </div>
 
 
         <div id="modalOverlay">
-            <div id="lifeSegmentModal">
+            <div id="lifeSegmentModal" role="dialog" aria-modal="true" aria-labelledby="lifeSegmentModalTitle">
 
-                <button id="xButton_LifeSegmentModal">✕</button>
+                <button id="xButton_LifeSegmentModal" aria-label="Close Life Segment window" data-i18n-aria-label="main.accessibility.closeLifeSegmentModal">✕</button>
 
-                <h3 class="defaultText">Create New Life Segment</h3>
-                <p id="lifeSegmentInfo">
+                <h3 id="lifeSegmentModalTitle" class="defaultText" data-i18n="main.lifeSegments.modalTitle">Create New Life Segment</h3>
+                <p id="lifeSegmentInfo" data-i18n="main.lifeSegments.explanation">
                     What is a "Life Segment?"<br>
                     <br>
                     Think of it as a collection of postcards that store your memories. 
                     Instead of 50 random photos which you forgot the context, why not take a few moments and write a meaningful caption for your photo?
                     In essence, this is like a binder of postcards that document a specific moment in your life.
                 </p>
-                <input id="lifeSegmentTitleInput" type="text" placeholder="Life Segment Title">
-                <textarea id="lifeSegmentDescriptionInput" placeholder="Description"></textarea>
-                <p id="lifeSegmentStatusMessage"></p>
+                <input id="lifeSegmentTitleInput" type="text" placeholder="Life Segment Title" aria-label="Life Segment Title" data-i18n-placeholder="main.lifeSegments.titlePlaceholder" data-i18n-aria-label="main.lifeSegments.titleLabel">
+                <textarea id="lifeSegmentDescriptionInput" placeholder="Description" aria-label="Description" data-i18n-placeholder="main.lifeSegments.descriptionPlaceholder" data-i18n-aria-label="main.lifeSegments.descriptionLabel"></textarea>
+                <p id="lifeSegmentStatusMessage" role="status" aria-live="polite"></p>
                 
                 <div id="lifeSegmentModalControls">
-                    <button id="saveLifeSegmentButton">Create Segment</button>
-                    <button id="closeLifeSegmentModal">Cancel</button>
+                    <button id="saveLifeSegmentButton" data-i18n="main.lifeSegments.save">Create Segment</button>
+                    <button id="closeLifeSegmentModal" data-i18n="common.cancel">Cancel</button>
                 </div>
             </div>
         </div>
 
         <footer id="footer">
-            <a href="legal/privacy.html">Privacy Policy</a>
-            <span>•</span>
-            <a href="legal/terms.html">Terms of Service</a>
-            <span>•</span>
-            <a href="legal/cookie-policy.html">Cookie Policy</a>
-            <span>•</span>
-            <a href="legal/music-credits.html">Music Credits</a>
-            <span>•</span>
-            <a href="legal/third-party-notices.html">Third-Party Notices</a>
-            <span>•</span>
-            <a href="legal/about.html">About</a>
+            <a href="legal/privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+            <span aria-hidden="true">•</span>
+            <a href="legal/terms.html" data-i18n="footer.terms">Terms of Service</a>
+            <span aria-hidden="true">•</span>
+            <a href="legal/cookie-policy.html" data-i18n="footer.cookies">Cookie Policy</a>
+            <span aria-hidden="true">•</span>
+            <a href="legal/music-credits.html" data-i18n="footer.musicCredits">Music Credits</a>
+            <span aria-hidden="true">•</span>
+            <a href="legal/third-party-notices.html" data-i18n="footer.thirdParty">Third-Party Notices</a>
+            <span aria-hidden="true">•</span>
+            <a href="legal/about.html" data-i18n="footer.about">About</a>
         </footer>
 
-        <div id="loadingOverlay">
-            <div class="spinner"></div>
-            <p id="loadingText">Loading...</p>
+        <div id="loadingOverlay" role="status" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <p id="loadingText" data-i18n="common.loading">Loading...</p>
         </div>
 
         <!-- Link script.js -->
@@ -234,6 +235,9 @@
 
         <!-- Download the supabase-js library, kinda like pip install in Python -->
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+        <!-- i18next for translation -->
+        <script src="https://cdn.jsdelivr.net/npm/i18next@25/i18next.min.js"></script>
 
         <!-- <script src="images.js"></script> -->
         <script src="js/music.js"></script>
@@ -247,4 +251,3 @@
 
     </body>
 </html>
-
