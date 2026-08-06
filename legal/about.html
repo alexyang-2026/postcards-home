@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>About | Postcards Home</title>
+    <title data-i18n="about.documentTitle">About | Postcards Home</title>
     <link rel="stylesheet" href="legal.css">
 </head>
 
@@ -12,66 +12,74 @@
 
     <main class="legalContainer">
 
-        <h1>About Postcards Home</h1>
+        <h1 data-i18n="about.title">About Postcards Home</h1>
 
-        <p class="lastUpdated">Version 1.0 (as of August 2026)</p>
+        <div id="languageControls">
+            <label for="languageSelect" data-i18n="common.language">Language:</label>
 
-        <h2>Our Mission</h2>
+            <select id="languageSelect" aria-label="Language" data-i18n-aria-label="common.languageLabel">
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <!-- <option value="fr">🇫🇷 Français</option> -->
+            </select>
+        </div>
 
-        <p>
-            Modern phones contain thousands of photographs, 
+        <p class="lastUpdated" data-i18n="about.lastUpdated">Version 1.0 (as of August 2026)</p>
+
+
+        <h2 data-i18n="about.mission.heading">Our Mission</h2>
+
+        <p data-i18n="about.mission.body1">
+            Modern phones contain thousands of photographs,
             yet many of our memories gradually lose their context over time.
         </p>
 
-        <p>
+        <p data-i18n="about.mission.body2">
             Postcards Home was created to encourage people to preserve meaningful moments
             rather than simply collecting pictures.
         </p>
 
-        <h2>Collect Memories Through Multiple Senses</h2>
+        <h2 data-i18n="about.senses.heading">Collect Memories Through Multiple Senses</h2>
 
-        <p>
+        <p data-i18n="about.senses.body1">
             Every postcard combines a photograph, caption, location, music,
             and personal touches into something worth revisiting years later.
         </p>
 
-        <p>
-            As a musician myself, I understand that many memories cannot be recreated through reading text alone.
-            Reading about a serene evening won't make you actually remember it.
-            <br><br>But what if you can hear a piece of music that emulates that feeling?
-            <br><br>What if you can see a sunset similar to the one you experienced?
-            <br><br>With each sensation Postcards Home engages, whether auditory, visual, or neurological, you recall a piece of a memory in your past.
-            And that's what makes your story <strong>yours.</strong>
+        <p data-i18n-html="about.senses.body2">
+            As a musician myself...
         </p>
 
-        <p>
+        <p data-i18n="about.senses.body3">
             The collectible system is designed to encourage exploration,
             reflection, and creativity.
         </p>
 
-        <p>
+        <p data-i18n="about.senses.body4">
             Whether you unlock a peaceful wallpaper,
             discover an exclusive piece of music,
-            or complete a memorable life segment,
+            or complete a memorable Life Segment,
             every collectible tells part of your story.
         </p>
 
-        <h2>Created By Alex Yang</h2>
+        <h2 data-i18n="about.creator.heading">Created By Alex Yang</h2>
 
-        <p>
+        <p data-i18n="about.creator.body">
             Thank you for trying Postcards Home.
             I hope it helps you preserve memories that might otherwise have been forgotten.
         </p>
 
         <br>
 
-        <p style="text-align:center;">Happy postcard making!</p>
-
         <a class="backButton" href="../index.html">
             ← Return to Postcards Home
         </a>
 
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/i18next@25/i18next.min.js"></script>
+    <script src="legal_dictionary.js"></script>
+    <script src="legal.js"></script>
 
 </body>
 </html>

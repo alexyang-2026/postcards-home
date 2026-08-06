@@ -268,6 +268,43 @@ const legalTranslations = {
                 },
 
                 back: "← Return to Postcards Home"
+            },
+
+            about: {
+                documentTitle: "About | Postcards Home",
+
+                title: "About Postcards Home",
+                lastUpdated: "Version 1.0 (as of August 2026)",
+
+                mission: {
+                    heading: "Our Mission",
+                    body1: "Modern phones contain thousands of photographs, yet many of our memories gradually lose their context over time.",
+                    body2: "Postcards Home was created to encourage people to preserve meaningful moments rather than simply collecting pictures."
+                },
+
+                senses: {
+                    heading: "Collect Memories Through Multiple Senses",
+
+                    body1: "Every postcard combines a photograph, caption, location, music, and personal touches into something worth revisiting years later.",
+
+                    body2: `As a musician myself, I understand that many memories cannot be recreated through reading text alone.
+                    Reading about a serene evening won't make you actually remember it.
+                    <br><br>But what if you can hear a piece of music that emulates that feeling?
+                    <br><br>What if you can see a sunset similar to the one you experienced?
+                    <br><br>With each sensation Postcards Home engages, whether auditory, visual, or neurological, you recall a piece of a memory in your past.
+                    And that's what makes your story <strong>yours.</strong>`,
+
+                    body3: "The collectible system is designed to encourage exploration, reflection, and creativity.",
+
+                    body4: "Whether you unlock a peaceful wallpaper, discover an exclusive piece of music, or complete a memorable Life Segment, every collectible tells part of your story."
+                },
+
+                creator: {
+                    heading: "Created by Alex Yang",
+                    body: "Thank you for trying Postcards Home. I hope it helps you preserve memories that might otherwise have been forgotten."
+                },
+
+                back: "← Return to Postcards Home"
             }
         }
     },
@@ -538,6 +575,43 @@ const legalTranslations = {
                 openSource: {
                     heading: "开源许可证",
                     body: "如有要求，本项目中已包含适用的开源许可证副本。"
+                },
+
+                back: "← 返回 Postcards Home"
+            },
+
+            about: {
+                documentTitle: "关于 | Postcards Home",
+
+                title: "关于 Postcards Home",
+                lastUpdated: "版本 1.0（截至 2026 年 8 月）",
+
+                mission: {
+                    heading: "我们的使命",
+                    body1: "现代手机中存放着成千上万张照片，但随着时间流逝，许多回忆都会逐渐失去它们原本的意义与背景。",
+                    body2: "Postcards Home 的诞生，是为了鼓励人们珍藏真正有意义的时刻，而不仅仅是收集照片。"
+                },
+
+                senses: {
+                    heading: "通过多重感官珍藏回忆",
+
+                    body1: "每一张明信片都将照片、文字、地点、音乐以及个人化元素结合在一起，使它多年以后依然值得再次翻阅。",
+
+                    body2: `作为一名音乐家，我深知许多回忆并不能仅靠阅读文字重新唤起。
+                    阅读一段关于宁静夜晚的描述，并不会真正让你重新感受到那个夜晚。
+                    <br><br>但如果你能够听见一首能够表达那份情感的音乐呢？
+                    <br><br>如果你能够看见一幅与你曾见过的夕阳相似的景色呢？
+                    <br><br>每当 Postcards Home 唤起一种感官体验——无论是听觉、视觉，还是大脑中的联想——你都会重新拾起过去的一小段回忆。
+                    而这，也正是你的故事之所以属于<strong>你自己</strong>的原因。`,
+
+                    body3: "收藏品系统旨在鼓励探索、反思与创造。",
+
+                    body4: "无论你解锁的是宁静的壁纸、独家的音乐，还是完成了一段难忘的人生篇章，每一件收藏品都讲述着属于你的故事。"
+                },
+
+                creator: {
+                    heading: "由 Alex Yang 创作",
+                    body: "感谢你体验 Postcards Home。希望它能够帮助你保存那些原本可能随着时间而被遗忘的珍贵回忆。"
                 },
 
                 back: "← 返回 Postcards Home"
