@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Postcards Home</title>
+    <title data-i18n="privacy.documentTitle">Privacy Policy | Postcards Home</title>
     <link rel="stylesheet" href="legal.css">
 </head>
 
@@ -11,117 +11,132 @@
 
     <div class="legalContainer">
 
-        <h1>Privacy Policy</h1>
+        <h1 data-i18n="privacy.title">Privacy Policy</h1>
 
-        <p class="lastUpdated">
+        <div id="languageControls">
+            <label for="languageSelect" data-i18n="common.language">Language:</label>
+
+            <select id="languageSelect" aria-label="Language" data-i18n-aria-label="common.languageLabel">
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="fr">🇫🇷 Français</option>
+            </select>
+        </div>
+
+        <p class="lastUpdated" data-i18n="privacy.lastUpdated">
             Last Updated: August 2, 2026
         </p>
 
-        <h2>1. Introduction</h2>
+        <h2 data-i18n="privacy.introduction.heading">1. Introduction</h2>
 
-        <p>
+        <p data-i18n-html="privacy.introduction.body">
             Welcome to <b>Postcards Home</b>.
             Your privacy is important to us.
             This Privacy Policy explains what information we collect, why we collect it, and how it is used.
         </p>
 
-        <h2>2. Information We Collect</h2>
-        <p>Depending on how you use the application, we may collect:</p>
-        <ul>
-            <li>Email address</li>
-            <li>Username</li>
-            <li>Uploaded photographs</li>
-            <li>Postcard captions</li>
-            <li>Life Segments</li>
-            <li>Collectibles and inventory progress</li>
-            <li>Wallpaper and personalization preferences</li>
-            <li>Location (only if you explicitly grant permission)</li>
-            <li>Dates associated with postcards</li>
-        </ul>
-
-        <h2>3. How We Use Your Information</h2>
-        <p>Your information is used only to operate the application, including:</p>
+        <h2 data-i18n="privacy.informationCollected.heading">2. Information We Collect</h2>
+        <p data-i18n="privacy.informationCollected.intro">Depending on how you use the application, we may collect:</p>
 
         <ul>
-            <li>Saving your postcards.</li>
-            <li>Keeping your account synchronized across devices.</li>
-            <li>Displaying your inventory and collectibles.</li>
-            <li>Providing personalized features.</li>
-            <li>Improving the application.</li>
+            <li data-i18n="privacy.informationCollected.email">Email address</li>
+            <li data-i18n="privacy.informationCollected.username">Username</li>
+            <li data-i18n="privacy.informationCollected.photographs">Uploaded photographs</li>
+            <li data-i18n="privacy.informationCollected.captions">Postcard captions</li>
+            <li data-i18n="privacy.informationCollected.lifeSegments">Life Segments</li>
+            <li data-i18n="privacy.informationCollected.collectibles">Collectibles and inventory progress</li>
+            <li data-i18n="privacy.informationCollected.preferences">Wallpaper and personalization preferences</li>
+            <li data-i18n="privacy.informationCollected.location">Location (only if you explicitly grant permission)</li>
+            <li data-i18n="privacy.informationCollected.dates">Dates associated with postcards</li>
         </ul>
 
-        <h2>4. Location Data</h2>
+        <h2 data-i18n="privacy.informationUse.heading">3. How We Use Your Information</h2>
+        <p data-i18n="privacy.informationUse.intro">Your information is used only to operate the application, including:</p>
 
-        <p>
+        <ul>
+            <li data-i18n="privacy.informationUse.saving">Saving your postcards.</li>
+            <li data-i18n="privacy.informationUse.syncing">Keeping your account synchronized across devices.</li>
+            <li data-i18n="privacy.informationUse.inventory">Displaying your inventory and collectibles.</li>
+            <li data-i18n="privacy.informationUse.personalization">Providing personalized features.</li>
+            <li data-i18n="privacy.informationUse.improving">Improving the application.</li>
+        </ul>
+
+        <h2 data-i18n="privacy.location.heading">4. Location Data</h2>
+
+        <p data-i18n="privacy.location.body">
             Location is optional.
             If you choose to grant location permission, it is used only to display locations on postcards and to unlock location-based collectibles.
         </p>
 
-        <h2>5. Data Storage</h2>
-        <p>
+        <h2 data-i18n="privacy.storage.heading">5. Data Storage</h2>
+
+        <p data-i18n="privacy.storage.body">
             Account information and uploaded content are securely stored using Supabase cloud services.
         </p>
 
-        <h2>6. Third-Party Services</h2>
+        <h2 data-i18n="privacy.thirdParty.heading">6. Third-Party Services</h2>
 
-        <p>
+        <p data-i18n="privacy.thirdParty.intro">
             Postcards Home currently uses third-party services including:
         </p>
 
         <ul>
-            <li>Supabase (authentication and cloud storage)</li>
-            <li>GitHub Pages (website hosting)</li>
+            <li data-i18n="privacy.thirdParty.supabase">Supabase (authentication and cloud storage)</li>
+            <li data-i18n="privacy.thirdParty.github">GitHub Pages (website hosting)</li>
         </ul>
 
-        <h2>7. Cookies and Local Storage</h2>
+        <h2 data-i18n="privacy.cookies.heading">7. Cookies and Local Storage</h2>
 
-        <p>
+        <p data-i18n="privacy.cookies.body">
             Postcards Home uses essential browser storage
             to keep you signed in and remember application settings.
         </p>
 
-        <h2>8. Data Sharing</h2>
+        <h2 data-i18n="privacy.sharing.heading">8. Data Sharing</h2>
 
-        <p>
+        <p data-i18n="privacy.sharing.body">
             We do not sell your personal information.
             Your data is only shared with third-party services
             when necessary to provide the application's functionality.
         </p>
 
-        <h2>9. Your Rights</h2>
+        <h2 data-i18n="privacy.rights.heading">9. Your Rights</h2>
 
-        <p>You may:</p>
+        <p data-i18n="privacy.rights.intro">You may:</p>
 
         <ul>
-            <li>Update your account information.</li>
-            <li>Delete your account.</li>
-            <li>Request deletion of your stored data.</li>
+            <li data-i18n="privacy.rights.update">Update your account information.</li>
+            <li data-i18n="privacy.rights.deleteAccount">Delete your account.</li>
+            <li data-i18n="privacy.rights.deleteData">Request deletion of your stored data.</li>
         </ul>
 
-        <h2>10. Changes to this Policy</h2>
+        <h2 data-i18n="privacy.changes.heading">10. Changes to this Policy</h2>
 
-        <p>
+        <p data-i18n="privacy.changes.body">
             This Privacy Policy may be updated sporadically.
             The latest version will always be available on this page.
         </p>
 
-        <h2>11. Contact</h2>
+        <h2 data-i18n="privacy.contact.heading">11. Contact</h2>
 
-        <p>
+        <p data-i18n="privacy.contact.intro">
             If you have any questions regarding this Privacy Policy,
             please contact:
         </p>
 
         <p>
             <b>Alex Yang</b><br>
-            Email: zixuan.yang2018@gmail.com
+            <span data-i18n="privacy.contact.emailLabel">Email:</span> zixuan.yang2018@gmail.com
         </p>
 
         <br>
-        <button class="backButton" style="background-color: gold" onclick="window.location.href='../index.html'">← Return to Postcards Home</button>
+
+        <button class="backButton" style="background-color: gold" onclick="window.location.href='../index.html'" data-i18n="privacy.back">← Return to Postcards Home</button>
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/i18next@25/i18next.min.js"></script>
+    <script src="legal_dictionary.js"></script>
     <script src="legal.js"></script>
 
 </body>
