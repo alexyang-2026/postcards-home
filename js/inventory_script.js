@@ -7,17 +7,30 @@ const lifeSegmentGrid = document.querySelector(".life-segment-grid");
 const languageSelect = document.getElementById("languageSelect");
 
 async function initializeInventoryTranslations() {
-    const savedLanguage =
-        localStorage.getItem("preferredLanguage") || "en";
 
+    const savedLanguage = localStorage.getItem("preferredLanguage") || "en";
+    
     await i18next.init({
         lng: savedLanguage,
         fallbackLng: "en",
-        resources: inventoryTranslations
-    });
+        resources: {
 
-    applyInventoryTranslations();
-    languageSelect.value = savedLanguage;
+            // Merge the two inventoryTranslations and collectiblesTranslations dictionaries together
+            en: {
+                translation: {
+                    ...inventoryTranslations.en.translation,
+                    ...collectiblesTranslations.en.translation
+                }
+            },
+
+            zh: {
+                translation: {
+                    ...inventoryTranslations.zh.translation,
+                    ...collectiblesTranslations.zh.translation
+                }
+            }
+        }
+    });
 }
 
 function applyInventoryTranslations() {
@@ -573,6 +586,11 @@ async function loadCollectibles() {
     for (const collectibleID of ownedCollectibles) {
         const collectible = findCollectibleByID(collectibleID);
 
+        const translatedCollectible = i18next.t(
+            `collectibles.${collectible.category}.${collectibleID}`,
+            { returnObjects: true }
+        );
+
         if (!collectible) {
             console.warn("Collectible not found: ", collectibleID);
             continue;
@@ -597,9 +615,9 @@ async function loadCollectibles() {
         const htmlTemplate = `
         
             <div class="collectible-card">
-                <img src="${collectible.image}" alt="${collectible.name}" class="collectible-image">
-                <h3 class="collectible-title">${collectible.name}</h3>
-                <p class="collectible-description">${collectible.description || ""}</p>
+                <img src="${collectible.image}" alt="${translatedCollectible.name}" class="collectible-image">
+                <h3 class="collectible-title">${translatedCollectible.name}</h3>
+                <p class="collectible-description">${translatedCollectible.description || ""}</p>
                 <p class="collectible-category" style="background-color: ${collectibleCategoryBackgroundColor}">${collectibleCategory}</p>
             </div>
             `;
