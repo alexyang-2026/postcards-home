@@ -89,6 +89,89 @@ const legalTranslations = {
                 },
 
                 back: "← Return to Postcards Home"
+            },
+
+            terms: {
+                documentTitle: "Terms of Service | Postcards Home",
+
+                title: "Terms of Service",
+                lastUpdated: "Last Updated: August 2, 2026",
+
+                acceptance: {
+                    heading: "1. Acceptance of These Terms",
+                    body: "By creating an account or using Postcards Home, you agree to these Terms of Service. If you do not agree, please do not use the application."
+                },
+
+                description: {
+                    heading: "2. Description of the Service",
+                    body1: "Postcards Home allows users to create and collect digital postcards using photographs, captions, locations, music, collectibles, and other personalization features. Users can store them in \"Life Segments,\" which are postcard albums that help document different periods of their lives.",
+                    body2: "Features may change, be added, or be removed over time. In such cases, the Terms of Service, Cookie Policy, and Privacy Policy will be updated accordingly."
+                },
+
+                accounts: {
+                    heading: "3. User Accounts",
+                    body1: "You are responsible for maintaining the security of your account and any activity that occurs under it. This includes keeping your password and login credentials confidential.",
+                    body2: "You agree to provide accurate account information."
+                },
+
+                content: {
+                    heading: "4. User Content",
+                    body1: "You retain ownership of the photos, captions, and other content that you upload.",
+                    body2: "By uploading content, you grant Postcards Home permission to store and display that content solely for the purpose of operating the service."
+                },
+
+                acceptableUse: {
+                    heading: "5. Acceptable Use",
+                    intro: "You agree not to:",
+                    illegal: "Upload illegal, unlawful, or explicit content.",
+                    copyright: "Upload content that infringes another person's copyright.",
+                    unauthorized: "Attempt to gain unauthorized access to the application or another user's account.",
+                    disrupt: "Interfere with or disrupt the service.",
+                    malware: "Use the service to distribute malware or harmful software.",
+                    discrimination: "Use the service to create or distribute discriminatory, illegal, unlawful, or explicit content."
+                },
+
+                collectibles: {
+                    heading: "6. Collectibles",
+                    body1: "Collectibles, wallpapers, postcard backgrounds, exclusive music, achievements, and other virtual items exist solely within Postcards Home.",
+                    body2: "They have no monetary value, cannot be exchanged for money, and may not be transferred between users unless such functionality is officially introduced.",
+                    body3: "All collectibles are unlockable through the application's intended gameplay. Users may not obtain them through unlawful means."
+                },
+
+                intellectualProperty: {
+                    heading: "7. Intellectual Property",
+                    body1: "The entire Postcards Home application, including its software, user interface, artwork, and original recordings, is protected by copyright and other intellectual property laws.",
+                    body2: "Some music included in the application is used under third-party licenses. Attribution is provided in the Music Credits and Third-Party Notices pages."
+                },
+
+                availability: {
+                    heading: "8. Availability",
+                    body1: "While we strive to provide a reliable service, Postcards Home is provided on an \"as is\" and \"as available\" basis.",
+                    body2: "We cannot guarantee uninterrupted availability, error-free operation, or permanent storage of user content. Nevertheless, we will make every reasonable effort to maintain a stable and reliable application."
+                },
+
+                suspension: {
+                    heading: "9. Account Suspension",
+                    body: "We reserve the right to suspend or terminate accounts that violate these Terms of Service or are used in a manner that harms the application or other users."
+                },
+
+                liability: {
+                    heading: "10. Limitation of Liability",
+                    body: "To the fullest extent permitted by applicable law, Postcards Home and its developer shall not be liable for any indirect, incidental, consequential, or special damages arising from the use of the application."
+                },
+
+                changes: {
+                    heading: "11. Changes to These Terms",
+                    body: "These Terms of Service may be updated from time to time. Continued use of the application after changes become effective constitutes acceptance of the revised Terms."
+                },
+
+                contact: {
+                    heading: "12. Contact",
+                    intro: "Questions regarding these Terms of Service may be directed to:",
+                    emailLabel: "Email:"
+                },
+
+                back: "← Return to Postcards Home"
             }
         }
     },
@@ -179,6 +262,89 @@ const legalTranslations = {
                 contact: {
                     heading: "11. 联系方式",
                     intro: "如果您对本隐私政策有任何疑问，请联系：",
+                    emailLabel: "电子邮箱："
+                },
+
+                back: "← 返回 Postcards Home"
+            },
+
+            terms: {
+                documentTitle: "服务条款 | Postcards Home",
+
+                title: "服务条款",
+                lastUpdated: "最后更新：2026年8月2日",
+
+                acceptance: {
+                    heading: "1. 接受本条款",
+                    body: "创建账户或使用 Postcards Home，即表示您同意本服务条款。如果您不同意，请不要使用本应用。"
+                },
+
+                description: {
+                    heading: "2. 服务说明",
+                    body1: "Postcards Home 允许用户使用照片、文字、地点、音乐、收藏品以及其他个性化功能创建和收藏数字明信片。用户可以将这些明信片存放于「人生篇章」中，用于记录人生不同阶段。",
+                    body2: "应用功能可能会随着时间增加、修改或移除。如有变更，《服务条款》、《Cookie 政策》和《隐私政策》也将相应更新。"
+                },
+
+                accounts: {
+                    heading: "3. 用户账户",
+                    body1: "您有责任保护账户安全，并对账户下发生的所有活动负责。这包括妥善保管您的密码和登录凭据。",
+                    body2: "您同意提供准确的账户信息。"
+                },
+
+                content: {
+                    heading: "4. 用户内容",
+                    body1: "您保留对上传照片、文字及其他内容的所有权。",
+                    body2: "上传内容即表示您授权 Postcards Home 仅为提供本服务之目的存储和展示这些内容。"
+                },
+
+                acceptableUse: {
+                    heading: "5. 合理使用",
+                    intro: "您同意不会：",
+                    illegal: "上传违法、非法或露骨内容。",
+                    copyright: "上传侵犯他人版权的内容。",
+                    unauthorized: "尝试未经授权访问本应用或其他用户账户。",
+                    disrupt: "干扰或破坏本服务。",
+                    malware: "利用本服务传播恶意软件或其他有害程序。",
+                    discrimination: "利用本服务创建或传播歧视性、违法、非法或露骨内容。"
+                },
+
+                collectibles: {
+                    heading: "6. 收藏品",
+                    body1: "收藏品、壁纸、明信片背景、专属音乐、成就及其他虚拟物品仅存在于 Postcards Home 中。",
+                    body2: "它们不具有任何现金价值，不能兑换金钱，也不得在用户之间转让，除非官方推出此类功能。",
+                    body3: "所有收藏品均可通过应用的正常机制解锁。用户不得通过非法方式获取它们。"
+                },
+
+                intellectualProperty: {
+                    heading: "7. 知识产权",
+                    body1: "整个 Postcards Home 应用，包括软件、用户界面、美术作品及原创录音，均受版权及其他知识产权法律保护。",
+                    body2: "应用中的部分音乐依据第三方许可使用，相关署名可见于《音乐鸣谢》和《第三方声明》页面。"
+                },
+
+                availability: {
+                    heading: "8. 服务可用性",
+                    body1: "虽然我们努力提供可靠的服务，但 Postcards Home 按“现状”和“现有”原则提供。",
+                    body2: "我们无法保证服务持续不中断、无错误运行或永久保存用户内容。但我们会尽最大努力维护应用的稳定与可靠。"
+                },
+
+                suspension: {
+                    heading: "9. 账户暂停",
+                    body: "对于违反本服务条款或以损害本应用或其他用户方式使用服务的账户，我们保留暂停或终止其账户的权利。"
+                },
+
+                liability: {
+                    heading: "10. 责任限制",
+                    body: "在适用法律允许的最大范围内，Postcards Home 及其开发者不对因使用本应用而产生的任何间接、附带、后果性或特殊损害承担责任。"
+                },
+
+                changes: {
+                    heading: "11. 条款变更",
+                    body: "本服务条款可能会不时更新。在变更生效后继续使用本应用，即表示您接受修订后的条款。"
+                },
+
+                contact: {
+                    heading: "12. 联系方式",
+                    intro: "如您对本服务条款有任何疑问，请联系：",
                     emailLabel: "电子邮箱："
                 },
 
