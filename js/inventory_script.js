@@ -3,6 +3,54 @@ const inventoryNavButtons = document.querySelectorAll(".inventory-nav-button");
 const inventoryMainHeader = document.querySelector(".inventory-main-header");
 const lifeSegmentGrid = document.querySelector(".life-segment-grid");
 
+// Set up translation
+const languageSelect = document.getElementById("languageSelect");
+
+async function initializeInventoryTranslations() {
+    const savedLanguage =
+        localStorage.getItem("preferredLanguage") || "en";
+
+    await i18next.init({
+        lng: savedLanguage,
+        fallbackLng: "en",
+        resources: inventoryTranslations
+    });
+
+    applyInventoryTranslations();
+    languageSelect.value = savedLanguage;
+}
+
+function applyInventoryTranslations() {
+    document.querySelectorAll("[data-i18n]").forEach(function(element) {
+        const key = element.dataset.i18n;
+        element.textContent = i18next.t(key);
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function(element) {
+        const key = element.dataset.i18nPlaceholder;
+        element.placeholder = i18next.t(key);
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(function(element) {
+        const key = element.dataset.i18nAriaLabel;
+        element.setAttribute("aria-label", i18next.t(key));
+    });
+
+    document.documentElement.lang = i18next.language;
+}
+
+languageSelect.addEventListener("change", async function() {
+    const selectedLanguage = languageSelect.value;
+    await i18next.changeLanguage(selectedLanguage);
+    localStorage.setItem("preferredLanguage", selectedLanguage);
+    applyInventoryTranslations();
+
+    await loadInventoryLifeSegments();
+    await loadInventoryStamps();
+    await loadCollectibles();
+});
+
+
 const inventoryMenuButton = document.getElementById("inventoryMenuButton");
 
 inventoryMenuButton.addEventListener("click", function() {
@@ -140,23 +188,29 @@ async function loadInventoryLifeSegments() {
     lifeSegmentGrid.innerHTML = "";
 
     for (const segment of lifeSegments) {
+        const postcardCount = postcardCounts[segment.id] || 0;
+
+        const coverAlt = i18next.t("inventory.lifeSegments.coverAlt", {title: segment.title});
+
+        const postcardCountText = i18next.t("inventory.lifeSegments.postcardCount", {count: postcardCount});
+        const createdOnText = i18next.t("inventory.lifeSegments.createdOn", {date: segment.created_at.slice(0, 10)});
 
         const card = `
-    <div class="life-segment" data-segment-id="${segment.id}" data-segment-title="${segment.title}">
-        <img src="assets/images/life-segment-covers/${segment.cover_image}.svg" class="life-segment-cover" alt="${segment.title} cover image">
+        <div class="life-segment" data-segment-id="${segment.id}" data-segment-title="${segment.title}">
+            <img src="assets/images/life-segment-covers/${segment.cover_image}.svg" class="life-segment-cover" alt="${coverAlt}">
 
-        <h3 class="life-segment-title">
-            ${segment.title}
-        </h3>
+            <h3 class="life-segment-title">
+                ${segment.title}
+            </h3>
 
-        <p class="life-segment-postcards">
-            Contains ${postcardCounts[segment.id] || 0} Postcards
-        </p>
+            <p class="life-segment-postcards">
+                ${postcardCountText}
+            </p>
 
-        <p class="life-segment-date">
-            Created on ${segment.created_at.slice(0, 10)}
-        </p>
-    </div>`;
+            <p class="life-segment-date">
+                ${createdOnText}
+            </p>
+        </div>`;
         
         lifeSegmentGrid.innerHTML += card;
     }
@@ -169,16 +223,19 @@ async function loadInventoryLifeSegments() {
         card.addEventListener("click", async function() {
 
             try {
-                showLoading("Loading Life Segment...");
+                showLoading(i18next.t("inventory.lifeSegments.loading"));
+
                 selectedLifeSegmentID = card.dataset.segmentId;
-                lifeSegmentModalHeading.textContent = `View Postcards in ${card.dataset.segmentTitle}`;
+
+                lifeSegmentModalHeading.textContent = i18next.t("inventory.lifeSegments.modalTitleWithName", {title: card.dataset.segmentTitle});
+
                 const postcards = await loadPostcards(card.dataset.segmentId);
                 displayPostcards(postcards);
                 modalOverlay.style.display = "flex";
             
             } catch (error) {
-                alert("Error: ", error.message)
-                console.log(error)
+                alert(error.message);
+                console.log(error);
 
             } finally {
                 hideLoading();
@@ -186,14 +243,12 @@ async function loadInventoryLifeSegments() {
             
         })
     }
-
-
 }
 
 chooseLifeSegmentImage.addEventListener("change", async function() {
 
     if (!selectedLifeSegmentID) {
-        alert("No Life Segment is currently selected.")
+        alert(i18next.t("inventory.lifeSegments.noneSelected"));
         return;
     }
 
@@ -205,12 +260,13 @@ chooseLifeSegmentImage.addEventListener("change", async function() {
 
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+
         if (authError) {
             throw authError;
         }
 
         if (!authData.user) {
-            throw new Error("You must be logged in.")
+            throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
         const userID = authData.user.id;
@@ -228,22 +284,19 @@ chooseLifeSegmentImage.addEventListener("change", async function() {
 
         // Edge case: Supabase may return no error but update zero rows
         if (!updatedSegments || updatedSegments.length === 0) {
-            throw new Error("No Life Segment was updated. Check your UPDATE policy.");
+            throw new Error(i18next.t("inventory.lifeSegments.noUpdate"));
         }
 
         // Select the life segment currently on screen and change its image
         const selectedCard = document.querySelector(`.life-segment[data-segment-id="${selectedLifeSegmentID}"]`);
         selectedCard.querySelector(".life-segment-cover").src = `assets/images/life-segment-covers/${selectedCoverImage}.svg`;
 
-        alert("Life Segment cover updated!")
+        alert(i18next.t("inventory.lifeSegments.coverUpdated"));
 
     } catch (error) {
         console.error(error);
-
-        alert("Could not change the Life Segment cover: " + error.message);
+        alert(i18next.t("inventory.lifeSegments.coverUpdateError", { message: error.message }));
     }
-
-    
 })
 
 deleteLifeSegmentButton.addEventListener("click", async function() {
@@ -251,7 +304,10 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
         return;
     }
 
-    const confirmed = confirm("Are you sure you want to delete this Life Segment?");
+    const confirmed = confirm(
+        i18next.t("inventory.lifeSegments.deleteConfirmation")
+    );
+
     if (!confirmed) {
         return;
     }
@@ -264,7 +320,7 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
         }
 
         if (!authData.user) {
-            throw new Error("You must be logged in.")
+            throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
         const userID = authData.user.id;
@@ -286,7 +342,7 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
 
     } catch (error) {
         console.error(error);
-        alert("Error: Could not delete Life Segment (" + error.message + ")");
+        alert(i18next.t("inventory.lifeSegments.deleteError", {message: error.message}));
     }
 });
 
@@ -312,6 +368,10 @@ function displayPostcards(postcardsData) {
         const postcardTextColor = postcardBackground ? postcardBackground.text_color : "black";
         const backgroundImage = postcardBackground ? postcardBackground.image : "";
 
+        const caption = postcard.caption || i18next.t("inventory.postcards.noCaption");
+
+        const musicText = postcard.music_piece ? `${i18next.t("inventory.postcards.listeningTo")}\n${postcard.music_piece}` : "";
+
         const htmlTemplate = `
             <div class="inventory-postcard" data-postcard-id="${postcard.id}" style="background-image: url('${backgroundImage}')">
                 <div class="postcard-photo-container">
@@ -320,8 +380,8 @@ function displayPostcards(postcardsData) {
                 </div>
 
                 <div class="postcard-body" style="color: ${postcardTextColor};">
-                    <p class="postcard-caption">${postcard.caption || "No Caption"}</p>
-                    <p class="postcard-music">♫ Currently listening to: ♫\n${postcard.music_piece || ""}</p>
+                    <p class="postcard-caption">${caption}</p>
+                    <p class="postcard-music">${musicText}</p>
                     <p class="postcard-date">${postcard.postcard_date}</p>
                     <p class="postcard-location">${postcard.location}</p>
                 </div>
@@ -336,110 +396,114 @@ function displayPostcards(postcardsData) {
 
     for (const card of postcardCards) {
 
-    card.addEventListener("click", async function () {
-        showLoading("Opening Postcard...");
+        card.addEventListener("click", async function () {
+            showLoading(i18next.t("inventory.postcards.opening"));
 
-        try {
-            const postcardID = card.dataset.postcardId;
+            try {
+                const postcardID = card.dataset.postcardId;
 
-            selectedPostcard = postcardsData.find(function(postcard) {
-                return postcard.id === postcardID;
-            });
+                selectedPostcard = postcardsData.find(function(postcard) {
+                    return postcard.id === postcardID;
+                });
 
-            if (!selectedPostcard) {
-                throw new Error("Postcard not found.")
-            }
+                if (!selectedPostcard) {
+                    throw new Error(
+                        i18next.t("inventory.postcards.notFound")
+                    );
+                }
 
-            const postcardBackground = findCollectibleByID(selectedPostcard.postcard_background);
+                const postcardBackground = findCollectibleByID(selectedPostcard.postcard_background);
 
-            if (!postcardBackground) {
-                console.warn("Postcard background not found:", selectedPostcard.postcard_background);
-                return;
-            }
+                if (!postcardBackground) {
+                    console.warn("Postcard background not found:", selectedPostcard.postcard_background);
+                    return;
+                }
 
-            const postcardTextColor = postcardBackground ? postcardBackground.text_color : "white";
+                const postcardTextColor = postcardBackground ? postcardBackground.text_color : "white";
 
-            editPostcardImage.src = selectedPostcard.image_url;
-            editCaptionPreview.textContent = selectedPostcard.caption;
+                editPostcardImage.src = selectedPostcard.image_url;
+                editCaptionPreview.textContent = selectedPostcard.caption;
 
-            // Don't display music stuff if the user did not select a piece to begin with
-            if (selectedPostcard.music_piece){
-                editMusicPreview.textContent = `♫ Currently listening to: ♫\n${selectedPostcard.music_piece}`;
-                const savedMusic = findMusicByPieceName(selectedPostcard.music_piece);
+                // Don't display music stuff if the user did not select a piece to begin with
+                if (selectedPostcard.music_piece){
+                    editMusicPreview.textContent =
+                        i18next.t("inventory.postcards.listeningTo") + "\n" + selectedPostcard.music_piece;
+
+                    const savedMusic = findMusicByPieceName(selectedPostcard.music_piece);
+                    
+                    if (savedMusic && savedMusic.audio) {
+                        editMusicPlayer.src = savedMusic.audio;
+                        editMusicPlayer.style.display = "block";
+                        rerollButton.style.display = "block";
+                        editPostcardMusicControls.style.display = "inline-flex";
+                        editMusicPlayer.play().catch(function(error) {
+                            console.warn("Autoplay prevented:", error);
+                        });
+
+                    } else {
+                        editMusicPlayer.pause();
+                        editMusicPlayer.removeAttribute("src");
+                        editMusicPlayer.load();
+                        editMusicPlayer.style.display = "none";
+                        rerollButton.style.display = "none";
+                        editPostcardMusicControls.style.display = "none";
+
+                        console.log("Could not find audio for:", selectedPostcard.music_piece);
+                    }
+                }
                 
-                if (savedMusic && savedMusic.audio) {
-                    editMusicPlayer.src = savedMusic.audio;
-                    editMusicPlayer.style.display = "block";
-                    rerollButton.style.display = "block";
-                    editPostcardMusicControls.style.display = "inline-flex";
-                    editMusicPlayer.play().catch(function(error) {
-                        console.warn("Autoplay prevented:", error);
-                    });
+                editDatePreview.textContent = selectedPostcard.postcard_date;
+                editLocationPreview.textContent = selectedPostcard.location;
+                
+                moodSelect.value = selectedPostcard.mood || "";
+                selectedMusicRecommendation = null;
 
+                editPostcardText.style.color = postcardTextColor;
+
+                if (postcardBackground) {
+                    editPostcard.style.backgroundImage = `url("${postcardBackground.image}")`;
                 } else {
-                    editMusicPlayer.pause();
-                    editMusicPlayer.removeAttribute("src");
-                    editMusicPlayer.load();
-                    editMusicPlayer.style.display = "none";
-                    rerollButton.style.display = "none";
-                    editPostcardMusicControls.style.display = "none";
-
-                    console.log("Could not find audio for:", selectedPostcard.music_piece);
+                    editPostcard.style.backgroundImage = "";
                 }
-            }
-            
-            editDatePreview.textContent = selectedPostcard.postcard_date;
-            editLocationPreview.textContent = selectedPostcard.location;
-            
-            moodSelect.value = selectedPostcard.mood || "";
-            selectedMusicRecommendation = null;
 
-            editPostcardText.style.color = postcardTextColor;
-
-            if (postcardBackground) {
-                editPostcard.style.backgroundImage = `url("${postcardBackground.image}")`;
-            } else {
-                editPostcard.style.backgroundImage = "";
-            }
-
-            if (selectedPostcard.stamp) {
-                editStampPreview.src = selectedPostcard.stamp;
-                editStampPreview.style.display = "block";
-            } else {
-                editStampPreview.src = "";
-                editStampPreview.style.display = "none";
-            }
-            
-
-            savePostcardEditsButton.onclick = async function () {
-                showLoading("Saving postcard...");
-
-                try {
-                    await savePostcardToSupabase(selectedPostcard);
-                } catch (error) {
-                    console.error(error);
-                    alert(error.message);
-                } finally {
-                    hideLoading();
+                if (selectedPostcard.stamp) {
+                    editStampPreview.src = selectedPostcard.stamp;
+                    editStampPreview.style.display = "block";
+                } else {
+                    editStampPreview.src = "";
+                    editStampPreview.style.display = "none";
                 }
-            };
+                
 
-            editPostcardOverlay.style.display = "flex";
+                savePostcardEditsButton.onclick = async function () {
+                    showLoading(i18next.t("inventory.postcards.saving"));
 
-            requestAnimationFrame(function () {
-                resizePostcardText();
-            })
+                    try {
+                        await savePostcardToSupabase(selectedPostcard);
+                    } catch (error) {
+                        console.error(error);
+                        alert(error.message);
+                    } finally {
+                        hideLoading();
+                    }
+                };
 
-        } catch (error) {
-            console.error(error);
-            alert("Could not open Postcard: " + error.message);
-        } finally {
-            hideLoading();
-        }
-    });
+                editPostcardOverlay.style.display = "flex";
+
+                requestAnimationFrame(function () {
+                    resizePostcardText();
+                })
+
+            } catch (error) {
+                console.error(error);
+
+                alert(i18next.t("inventory.postcards.openError", {message: error.message}));
+            } finally {
+                hideLoading();
+            }
+        });
+    }
 }
-}
-
 
 // Function to load the stamps
 const stampsGrid = document.querySelector(".stamps-grid");
@@ -460,17 +524,19 @@ async function loadInventoryStamps() {
         .select("owned_stamps")
         .eq("user_id", userID);
     
-        if (stampError) {
-            console.error(stampError);
-            return;
-        }
+    if (stampError) {
+        console.error(stampError);
+        return;
+    }
     
     for (const stampName of stampData[0].owned_stamps) {
+        const rarityText = i18next.t("inventory.stamps.rarity", {rarity: i18next.t(`inventory.rarities.${stampDatabase[stampName].rarity}`)});
+
         const htmlTemplate = `
             <div class="stamp-icon">
                 <img src="${stampDatabase[stampName].image}" class="stamp-cover">
                 <h3 class="stamp-title">${stampDatabase[stampName].name}</h3>
-                <p class="stamp-rarity">Rarity: ${stampDatabase[stampName].rarity}</p>
+                <p class="stamp-rarity">${rarityText}</p>
             </div>`;
 
         stampsGrid.innerHTML += htmlTemplate;
@@ -490,11 +556,12 @@ async function loadCollectibles() {
     const userID = authData.user.id;
     collectiblesGrid.innerHTML = "";
 
-    const { data: collectiblesData, error: collectiblesError } = await supabaseClient
-        .from("profiles")
-        .select("owned_collectibles")
-        .eq("user_id", userID)
-        .single();
+    const { data: collectiblesData, error: collectiblesError } =
+        await supabaseClient
+            .from("profiles")
+            .select("owned_collectibles")
+            .eq("user_id", userID)
+            .single();
     
     if (collectiblesError) {
         console.error(collectiblesError);
@@ -515,12 +582,15 @@ async function loadCollectibles() {
         let collectibleCategoryBackgroundColor = "gold";
         
         if (collectible.category === "postcardBackgrounds") {
-            collectibleCategory = "Postcard Background";
+            collectibleCategory = i18next.t("inventory.collectibleCategories.postcardBackground");
+
         } else if (collectible.category === "wallpapers") {
-            collectibleCategory = "Wallpaper";
+            collectibleCategory = i18next.t("inventory.collectibleCategories.wallpaper");
+
             collectibleCategoryBackgroundColor = "limegreen";
         } else if (collectible.category === "exclusiveMusic") {
-            collectibleCategory = "Exclusive Music";
+            collectibleCategory = i18next.t("inventory.collectibleCategories.exclusiveMusic");
+
             collectibleCategoryBackgroundColor = "orange";
         }
 
@@ -555,7 +625,7 @@ const closeEditPostcardButton = document.getElementById("closeEditPostcardButton
 closeEditPostcardButton.addEventListener("click", function() {
     editMusicPlayer.pause();
     editPostcardOverlay.style.display = "none";
-})
+});
 
 
 /// POPUP FOR EDITING CAPTION ///
@@ -609,7 +679,8 @@ moodSelect.addEventListener("change", function() {
 
     selectedMusicRecommendation = recommendations[randomIndex];
 
-    editMusicPreview.textContent = "♫ Currently listening to: ♫\n" + selectedMusicRecommendation.piece;
+    editMusicPreview.textContent = i18next.t("inventory.postcards.listeningTo") + "\n" + selectedMusicRecommendation.piece;
+
     editMusicPlayer.src = selectedMusicRecommendation.audio;
     editPostcardMusicControls.style.display = "inline-flex";
     editMusicPlayer.style.display = "block";
@@ -624,16 +695,19 @@ moodSelect.addEventListener("change", function() {
 
 deletePostcardButton.addEventListener("click", async function() {
     if (!selectedPostcard) {
-        alert("No postcard is currently selected.");
+        alert(i18next.t("inventory.postcards.noneSelected"));
         return;
     }
 
-    const confirmed = confirm("Are you sure you want to delete this postcard?");
+    const confirmed = confirm(
+        i18next.t("inventory.postcards.deleteConfirmation")
+    );
+
     if (!confirmed) {
         return;
     }
 
-    showLoading("Deleting postcard...");
+    showLoading(i18next.t("inventory.postcards.deleting"));
 
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
@@ -643,7 +717,7 @@ deletePostcardButton.addEventListener("click", async function() {
         }
 
         if (!authData.user) {
-            throw new Error("You must be logged in.");
+            throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
         // First, delete the actual postcard
@@ -659,12 +733,14 @@ deletePostcardButton.addEventListener("click", async function() {
         }
 
         if (!deletedPostcards || deletedPostcards.length === 0) {
-            throw new Error("No postcard was deleted. Check your DELETE policy.");
+            throw new Error(i18next.t("inventory.postcards.noneDeleted"));
         }
 
         // Deleting a postcard does not mean deleting the image from Supabase storage
         // Added conditional for defensive programming reasons, just in case an edge case occurs where an image has no URL
-        const imagePath = selectedPostcard.image_url ? selectedPostcard.image_url.split("/postcard-images/")[1] : null;
+        const imagePath = selectedPostcard.image_url
+            ? selectedPostcard.image_url.split("/postcard-images/")[1]
+            : null;
 
         if (imagePath) {
             const { error: storageError } = await supabaseClient.storage
@@ -684,11 +760,13 @@ deletePostcardButton.addEventListener("click", async function() {
 
         displayPostcards(remainingPostcards);
         await loadInventoryLifeSegments();
-        alert("Postcard deleted successfully.");
+
+        alert(i18next.t("inventory.postcards.deleteSuccess"));
 
     } catch (error) {
         console.error(error);
-        alert("Could not delete postcard: " + error.message);
+
+        alert(i18next.t("inventory.postcards.deleteError", {message: error.message}));
 
     } finally {
         hideLoading();
@@ -697,11 +775,11 @@ deletePostcardButton.addEventListener("click", async function() {
 
 downloadPostcardButton.addEventListener("click", async function() {
     if (!selectedPostcard) {
-        alert("No postcard is currently selected.")
+        alert(i18next.t("inventory.postcards.noneSelected"));
         return;
     }
 
-    showLoading("Preparing Download...")
+    showLoading(i18next.t("inventory.postcards.preparingDownload"));
 
     try {
         const canvas = await html2canvas(editPostcard, {
@@ -709,13 +787,17 @@ downloadPostcardButton.addEventListener("click", async function() {
             allowTaint: true,
             backgroundColor: null
         });
+
         const link = document.createElement("a");
         link.download = "postcard.png";
         link.href = canvas.toDataURL("image/png");
         link.click();
+
     } catch (error) {
         console.error(error);
-        alert("Could not download postcard: " + error.message);
+
+        alert(i18next.t("inventory.postcards.downloadError", {message: error.message}));
+
     } finally {
         hideLoading();
     }
@@ -723,11 +805,13 @@ downloadPostcardButton.addEventListener("click", async function() {
 
 sharePostcardButton.addEventListener("click", async function() {
     if (!selectedPostcard) {
-        alert("No postcard is currently selected.");
+        alert(i18next.t("inventory.postcards.noneSelected"));
         return;
     }
 
-    showLoading("Preparing Postcard...");
+    showLoading(
+        i18next.t("inventory.postcards.preparingShare")
+    );
 
     try {
         const canvas = await html2canvas(editPostcard, {
@@ -739,7 +823,10 @@ sharePostcardButton.addEventListener("click", async function() {
         const blob = await new Promise(function (resolve, reject) {
             canvas.toBlob(function(result) {
                 if (!result) {
-                    reject(new Error("Could not create postcard image."))
+                    reject(
+                        new Error(i18next.t("inventory.postcards.imageCreationError"))
+                    );
+
                     return;
                 }
                 
@@ -751,26 +838,34 @@ sharePostcardButton.addEventListener("click", async function() {
             type: "image/png"
         });
 
-        if (navigator.share && navigator.canShare && navigator.canShare({files: [file]})) {
+        if (
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({files: [file]})
+        ) {
             await navigator.share({
-                title: "Postcards Home",
-                text: "A postcard for you!",
+                title: i18next.t("inventory.postcards.shareTitle"),
+                text: i18next.t("inventory.postcards.shareText"),
                 files: [file]
             });
+
         } else {
             const link = document.createElement("a");
             link.download = "postcard.png";
             link.href = canvas.toDataURL("image/png");
             link.click();
             
-            alert("Sharing is not supported by this browser, so the postcard was downloaded instead.");
+            alert(i18next.t("inventory.postcards.shareUnsupported"));
+        }
 
-        }
     } catch (error) {
-        if (error.name !== "AbortError") { // AbortError means that the user opened the share window then cancelled, so it's not the app's fault
+        if (error.name !== "AbortError") {
+            // AbortError means that the user opened the share window then cancelled,
+            // so it's not the app's fault
             console.error(error);
-            alert("Could not share postcard: " + error.message);
-        }
+
+            alert(i18next.t("inventory.postcards.shareError", {message: error.message}));}
+
     } finally {
         hideLoading();
     }
@@ -812,8 +907,7 @@ function resizePostcardText() {
         }
 
         fontSize -= 0.25;
-        editPostcardText.style.fontSize =
-            fontSize + "px";
+        editPostcardText.style.fontSize = fontSize + "px";
     }
 
     console.log("Final font:", fontSize);
@@ -822,7 +916,7 @@ function resizePostcardText() {
 
 // Close without applying changes
 closeCaptionEditorButton.addEventListener("click", function () {
-    const confirmClose = window.confirm("Are you sure you want to discard your changes?")
+    const confirmClose = window.confirm(i18next.t("inventory.editor.discardConfirmation"));
 
     if (!confirmClose) {
         return;
@@ -864,16 +958,16 @@ async function loadProfileSettings() {
     }
 
     if (!authData.user) {
-        throw new Error("You must be logged in.");
+        throw new Error(i18next.t("inventory.profile.loginRequired"));
     }
 
     const userID = authData.user.id;
 
     const { data: profileData, error: profileError } = await supabaseClient
-            .from("profiles")
-            .select("full_name, username, owned_collectibles")
-            .eq("user_id", userID)
-            .single();
+        .from("profiles")
+        .select("full_name, username, owned_collectibles")
+        .eq("user_id", userID)
+        .single();
 
     if (profileError) {
         throw profileError;
@@ -885,10 +979,10 @@ async function loadProfileSettings() {
     profileLanguageSelect.value = localStorage.getItem("preferredLanguage") || "en";
 }
 
-profileSettingsButton.addEventListener("click",async function() {
+profileSettingsButton.addEventListener("click", async function() {
     profileSettingsMessage.style.display = "none";
 
-    showLoading("Loading Profile Settings...");
+    showLoading(i18next.t("inventory.profile.loading"));
 
     try {
         await loadProfileSettings();
@@ -898,7 +992,7 @@ profileSettingsButton.addEventListener("click",async function() {
 
     } catch (error) {
         console.error(error);
-        alert("Could not load profile settings: " + error.message);
+        alert(i18next.t("inventory.profile.loadError", {message: error.message}));
 
     } finally {
         hideLoading();
@@ -931,26 +1025,27 @@ saveProfileSettingsButton.addEventListener("click", async function() {
     const language = profileLanguageSelect.value;
 
     if (!fullName) {
-        showProfileSettingsMessage("Full name cannot be empty.", "error");
+        showProfileSettingsMessage(i18next.t("inventory.profile.fullNameRequired"), "error");
         return;
     }
 
     if (!username) {
-        showProfileSettingsMessage("Username cannot be empty.", "error");
+        showProfileSettingsMessage(i18next.t("inventory.profile.usernameRequired"), "error");
         return;
     }
 
     saveProfileSettingsButton.disabled = true;
-    showLoading("Saving Profile Settings...");
+    showLoading(i18next.t("inventory.profile.saving"));
 
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
+
         if (authError) {
             throw authError;
         }
 
         if (!authData.user) {
-            throw new Error("You must be logged in.");
+            throw new Error(i18next.t("inventory.profile.loginRequired"));
         }
 
         const userID = authData.user.id;
@@ -969,20 +1064,21 @@ saveProfileSettingsButton.addEventListener("click", async function() {
             throw updateError;
         }
 
-        // First save the preferred language in the broser's localStorage
         localStorage.setItem("preferredLanguage", language);
 
-        showProfileSettingsMessage("Profile settings saved!", "success");
+        showProfileSettingsMessage(i18next.t("inventory.profile.saved"), "success");
 
         console.log("Updated profile:", updatedProfile);
 
     } catch (error) {
         console.error(error);
 
-        let errorMessage = "Could not save profile settings: " + error.message;
+        let errorMessage = i18next.t("inventory.profile.saveError", {
+            message: error.message
+        });
 
         if (error.code === "23505" || error.message.toLowerCase().includes("duplicate")) {
-            errorMessage = "That username is already being used.";
+            errorMessage = i18next.t("inventory.profile.usernameTaken");
         }
 
         showProfileSettingsMessage(errorMessage, "error");
@@ -994,28 +1090,32 @@ saveProfileSettingsButton.addEventListener("click", async function() {
 });
 
 logoutButton.addEventListener("click", async function() {
-    const confirmed = confirm("Are you sure you want to log out?");
+    const confirmed = confirm(i18next.t("inventory.profile.logoutConfirmation"));
+
     if (!confirmed) {
         return;
     }
 
-    showLoading("Logging Out...")
+    showLoading(i18next.t("inventory.profile.loggingOut"));
     
-    const {error} = await supabaseClient.auth.signOut();
+    const { error } = await supabaseClient.auth.signOut();
 
     if (error) {
-        showProfileSettingsMessage("Could not log out:" + error.message, "error");
+        showProfileSettingsMessage(i18next.t("inventory.profile.logoutError", {
+            message: error.message
+        }), "error");
+
+        return;
     }
 
     window.location.href = "login.html";
-
-})
+});
 
 
 // Profile Deletion Mechanisms
 async function deleteUserPostcardImages(userID) {
     while (true) {
-        const { data: files, error: listError } =await supabaseClient.storage
+        const { data: files, error: listError } = await supabaseClient.storage
             .from("postcard-images")
             .list(userID, {
                 limit: 100,
@@ -1045,31 +1145,30 @@ async function deleteUserPostcardImages(userID) {
 }
 
 deleteAccountButton.addEventListener("click", async function() {
-    const confirmDelete = window.confirm("Are you sure you want to permanently delete your account?")
+    const confirmDelete = window.confirm(i18next.t("inventory.accountDeletion.firstConfirmation"));
 
     if (!confirmDelete) {
         return;
     }
 
-    const typedConfirmation = prompt("Type DELETE MY ACCOUNT PERMANENTLY to confirm.");
+    const typedConfirmation = prompt(i18next.t("inventory.accountDeletion.firstPrompt"));
 
-    if (typedConfirmation !== "DELETE MY ACCOUNT PERMANENTLY") {
-        alert("Account Deletion Cancelled.");
+    if (typedConfirmation !== i18next.t("inventory.accountDeletion.firstPhrase")) {
+        alert(i18next.t("inventory.accountDeletion.cancelled"));
         return;
     }
 
-    const typedConfirmation2 = prompt("Deleting your account will permanently remove ALL postcards and life segments. This cannot be recovered. Some inventory items and account data may reamin temporarily before permanent deletion, but recovery is not guaranteed.\n\nType I CONFIRM I HAVE READ AND AGREE to confirm you have read, understand, and agree to this policy.")
+    const typedConfirmation2 = prompt(i18next.t("inventory.accountDeletion.secondPrompt"));
 
-    if (typedConfirmation2 !== "I CONFIRM I HAVE READ AND AGREE") {
-        alert("Account Deletion Cancelled.");
+    if (typedConfirmation2 !== i18next.t("inventory.accountDeletion.secondPhrase")) {
+        alert(i18next.t("inventory.accountDeletion.cancelled"));
         return;
     }
 
     deleteAccountButton.disabled = true;
-    showLoading("Deleting account...");
+    showLoading(i18next.t("inventory.accountDeletion.deleting"));
 
     try {
-
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
         if (authError) {
@@ -1077,7 +1176,7 @@ deleteAccountButton.addEventListener("click", async function() {
         }
 
         if (!authData.user) {
-            throw new Error("You must be logged in.");
+            throw new Error(i18next.t("inventory.profile.loginRequired"));
         }
 
         const userID = authData.user.id;
@@ -1121,22 +1220,20 @@ deleteAccountButton.addEventListener("click", async function() {
         }
         
         localStorage.clear();
-        alert("Your account has been scheduled for deletion. Although all postcards/life segments could not be recovered, please email zixuan.yang2018@gmail.com ASAP if you want to retrieve your account with inventory items.")
+        alert(i18next.t("inventory.accountDeletion.scheduled"));
         window.location.href = "login.html";
         
-
     } catch (error) {
         console.error(error);
-        alert("Could not delete account: " + error.message);
+        alert(i18next.t("inventory.accountDeletion.error", { message: error.message }));
     } finally {
         deleteAccountButton.disabled = false;
         hideLoading();
     }
-
 });
 
 async function initializeInventory() {
-    showLoading("Loading Inventory...");
+    showLoading(i18next.t("inventory.loading.inventory"));
 
     try {
         await loadInventoryLifeSegments();
@@ -1147,4 +1244,13 @@ async function initializeInventory() {
     }
 }
 
-initializeInventory();
+async function initializeInventoryPage() {
+    try {
+        await initializeInventoryTranslations();
+        await initializeInventory();
+    } catch (error) {
+        console.error("Could not initialize inventory page:", error);
+    }
+}
+
+initializeInventoryPage();

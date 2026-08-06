@@ -9,6 +9,10 @@ body {
     font-family: American Typewriter;
 }
 
+#languageControls {
+    margin-bottom: 8px;
+}
+
 .inventory-layout {
     display: flex;
     height: calc(100vh - var(--header-height));
