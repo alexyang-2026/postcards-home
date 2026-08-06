@@ -84,6 +84,7 @@ const translationResources = {
                     postcardReset: "Postcard Reset Successfully.",
                     resetConfirmation: "Are you SURE you want to RESET your postcard?",
                     saving: "Saving postcard... Please wait...",
+                    saveToLifeSegmentSuccess: "🎉 Postcard saved to life segment ",
                     loginRequired: "Please log in before saving postcards.",
                     locationRequired: "Please enable location services.",
                     automaticPlaybackBlocked: "Automatic music playback was blocked."
@@ -210,6 +211,7 @@ const translationResources = {
                     postcardReset: "明信片已重置。",
                     resetConfirmation: "您确定要重置这张明信片吗？",
                     saving: "正在保存明信片，请稍候……",
+                    saveToLifeSegmentSuccess: "🎉 明信片已保存到 ",
                     loginRequired: "请先登录后再保存明信片。",
                     locationRequired: "请启用定位服务。",
                     automaticPlaybackBlocked: "浏览器阻止了自动播放音乐。"
@@ -252,6 +254,96 @@ const translationResources = {
     }
 };
 
+
+
+
+const loginTranslations = {
+    en: {
+        translation: {
+            login: {
+                documentTitle: "Postcards Home - Login",
+                title: "Postcards Home: Login",
+                subtitle: "Made by Alex Yang",
+
+                emailPlaceholder: "Enter Your Email:",
+                passwordPlaceholder: "Enter Your Password:",
+                showPassword: "Show Password",
+                loginButton: "Log In",
+
+                createAccount: "No account? Press here to create one, it's free!",
+
+                policyAgreement: `By continuing to use Postcards Home, I agree to the <a href="legal/privacy.html">Privacy Policy</a> and the <a href="legal/terms.html">Terms of Service.</a>`,
+
+                messages: {
+                    loginSuccess: "Successfully logged in!",
+                    profileError: "Could not load your profile: {{message}}",
+                    deletedAccount: "This account is scheduled for deletion and can no longer be accessed. You may be able to recover part of it by emailing zixuan.yang2018@gmail.com as soon as possible.",
+                    redirecting: "Redirecting back to application in {{seconds}}..."
+                }
+            },
+
+            common: {
+                language: "Language:",
+                languageLabel: "Choose language"
+            },
+
+            footer: {
+                privacy: "Privacy Policy",
+                terms: "Terms of Service",
+                cookies: "Cookie Policy",
+                musicCredits: "Music Credits",
+                thirdParty: "Third-Party Notices",
+                about: "About"
+            }
+        }
+    },
+
+    zh: {
+        translation: {
+            login: {
+                documentTitle: "Postcards Home - 登录",
+                title: "Postcards Home：登录",
+                subtitle: "由 Alex Yang 制作",
+
+                emailPlaceholder: "请输入电子邮箱：",
+                passwordPlaceholder: "请输入密码：",
+                showPassword: "显示密码",
+                loginButton: "登录",
+
+                createAccount: "还没有账户？点击这里免费创建！",
+
+                policyAgreement: `继续使用 Postcards Home，即表示我同意<a href="legal/privacy.html">《隐私政策》</a>和<a href="legal/terms.html">《服务条款》</a>。`,
+
+                messages: {
+                    loginSuccess: "登录成功！",
+                    profileError: "无法加载您的个人资料：{{message}}",
+                    deletedAccount: "此账户已被安排删除，现已无法访问。请尽快发送电子邮件至 zixuan.yang2018@gmail.com，部分数据可能仍可恢复。",
+                    redirecting: "{{seconds}} 秒后将返回应用……"
+                }
+            },
+
+            common: {
+                language: "语言：",
+                languageLabel: "选择语言"
+            },
+
+            footer: {
+                privacy: "隐私政策",
+                terms: "服务条款",
+                cookies: "Cookie 政策",
+                musicCredits: "音乐鸣谢",
+                thirdParty: "第三方声明",
+                about: "关于"
+            }
+        }
+    }
+};
+
+
+
+/////////////////////////////////////////////////////////////////
+///// THE ABOVE WAS TRANSLATION DICTIONARIES, THIS IS LOGIC /////
+/////////////////////////////////////////////////////////////////
 async function initializeTranslations() {
     const savedLanguage = localStorage.getItem("preferredLanguage") || "en";
 

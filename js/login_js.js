@@ -13,6 +13,56 @@ const redirectMessage = document.getElementById("redirectMessage");
 redirectMessage.style.display = "none";
 
 const loginButton = document.getElementById("loginButton");
+const languageSelect = document.getElementById("languageSelect");
+
+
+// TRANSLATION FUNCTIONS
+async function initializeLoginTranslations() {
+    const savedLanguage = localStorage.getItem("preferredLanguage") || "en";
+
+    await i18next.init({
+        lng: savedLanguage,
+        fallbackLng: "en",
+        resources: loginTranslations
+    });
+
+    applyLoginTranslations();
+    languageSelect.value = savedLanguage;
+}
+
+function applyLoginTranslations() {
+    document.querySelectorAll("[data-i18n]").forEach(function(element) {
+        const key = element.dataset.i18n;
+        element.textContent = i18next.t(key);
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function(element) {
+        const key = element.dataset.i18nPlaceholder;
+        element.placeholder = i18next.t(key);
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach(function(element) {
+        const key = element.dataset.i18nHtml;
+        element.innerHTML = i18next.t(key);
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(function(element) {
+        const key = element.dataset.i18nAriaLabel;
+        element.setAttribute("aria-label", i18next.t(key));
+    });
+
+    document.documentElement.lang = i18next.language;
+}
+
+languageSelect.addEventListener("change", async function() {
+    const selectedLanguage = languageSelect.value;
+
+    await i18next.changeLanguage(selectedLanguage);
+
+    localStorage.setItem("preferredLanguage", selectedLanguage);
+
+    applyLoginTranslations();
+});
 
 
 // Show Password Button
@@ -94,22 +144,44 @@ loginButton.addEventListener("click", async function() {
         .single();
     
     if (profileError) {
-        await supabaseClient.auth.signout();
-        showStatusMessage("Could not load your profile: " + profileError.message, "error")
+        await supabaseClient.auth.signOut();
+
+        showStatusMessage(
+            i18next.t("login.messages.profileError", {
+                message: profileError.message
+            }),
+            "error"
+        );
+
         return;
     }
 
     if (profileData.is_deleted) {
         await supabaseClient.auth.signOut();
-        showStatusMessage("This account is scheduled for deletion and can no longer be accessed. You can recover a portion of it by emailing zixuan.yang2018@gmail.com ASAP", "error");
+
+        showStatusMessage(
+            i18next.t("login.messages.deletedAccount"),
+            "error"
+        );
+
         return
     }
 
-    showStatusMessage("Successfully logged in!", "success");
+    showStatusMessage(
+        i18next.t("login.messages.loginSuccess"),
+        "success"
+    );
+
     redirectMessage.style.display = "block";
 
     const timer = setInterval(function (){
-        redirectMessage.textContent = `Redirecting back to application in ${seconds}...`
+        redirectMessage.textContent = i18next.t(
+            "login.messages.redirecting",
+            {
+                seconds: seconds
+            }
+        );
+
         seconds--;
 
         if (seconds < 0){
@@ -120,4 +192,16 @@ loginButton.addEventListener("click", async function() {
 
     }, 1000);
 
+});
+
+
+window.addEventListener("load", async function() {
+    try {
+        await initializeLoginTranslations();
+    } catch (error) {
+        console.error(
+            "Could not initialize login-page translations:",
+            error
+        );
+    }
 });

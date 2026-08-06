@@ -46,8 +46,6 @@ datePreview.textContent = new Date().toLocaleDateString("en-US", {
                                                 year: "numeric"
 });
 
-/// FIREWORKS SECTION ///
-
 
 /// DOWNLOAD POSTCARD ///
 const downloadButton = document.getElementById("downloadButton");
@@ -707,7 +705,7 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
             throw insertError;
         }
 
-        showMessage("🎉 Postcard saved to life segment " + lifeSegmentName + "!", "success");
+        showMessage(i18next.t("main.messages.saveToLifeSegmentSuccess") + lifeSegmentName + "!", "success");
         lifeSegmentSelect.value = ""; // this prevents duplicate photo saves
 
         ///// SECTION TO UNLOCK COLLECTIBLES /////
