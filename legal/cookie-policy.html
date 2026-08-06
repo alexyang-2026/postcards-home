@@ -3,108 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Policy | Postcards Home</title>
+    <title data-i18n="cookies.documentTitle">Cookie Policy | Postcards Home</title>
     <link rel="stylesheet" href="legal.css">
 </head>
 
 <body>
     <main class="legalContainer">
-        <h1>Cookie and Browser Storage Policy</h1>
+        <h1 data-i18n="cookies.title">Cookie and Browser Storage Policy</h1>
 
-        <p class="lastUpdated">
+        <div id="languageControls">
+            <label for="languageSelect" data-i18n="common.language">Language:</label>
+
+            <select id="languageSelect" aria-label="Language" data-i18n-aria-label="common.languageLabel">
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <!-- Add this once the main page is added <option value="fr">🇫🇷 Français</option> -->
+            </select>
+        </div>
+
+        <p class="lastUpdated" data-i18n="cookies.lastUpdated">
             Last Updated: August 2, 2026
         </p>
 
-        <h2>1. Introduction</h2>
+        <h2 data-i18n="cookies.introduction.heading">1. Introduction</h2>
 
-        <p>
+        <p data-i18n="cookies.introduction.body1">
             This Cookie and Browser Storage Policy explains how Postcards Home uses cookies and similar browser-storage technologies.
         </p>
 
-        <p>
+        <p data-i18n="cookies.introduction.body2">
             These technologies may include cookies, local storage,
             and other methods that allow information to remain available
             in a user's browser between visits.
         </p>
 
-        <h2>2. Essential Browser Storage</h2>
+        <h2 data-i18n="cookies.essentialStorage.heading">2. Essential Browser Storage</h2>
 
-        <p>
+        <p data-i18n="cookies.essentialStorage.intro">
             Postcards Home uses essential browser storage to provide features requested by users. This may include:
         </p>
 
         <ul>
-            <li>Keeping a user signed in to their account.</li>
-            <li>Maintaining and refreshing an authenticated session.</li>
-            <li>Protecting account access and supporting application security.</li>
-            <li>Remembering settings required for the application to function.</li>
+            <li data-i18n="cookies.essentialStorage.signedIn">Keeping a user signed in to their account.</li>
+            <li data-i18n="cookies.essentialStorage.session">Maintaining and refreshing an authenticated session.</li>
+            <li data-i18n="cookies.essentialStorage.security">Protecting account access and supporting application security.</li>
+            <li data-i18n="cookies.essentialStorage.settings">Remembering settings required for the application to function.</li>
         </ul>
 
-        <p>
+        <p data-i18n="cookies.essentialStorage.body">
             This storage is necessary to provide account and application
             functionality. Disabling or clearing it may sign you out or prevent
             certain features from working correctly.
         </p>
 
-        <h2>3. Authentication Provider</h2>
+        <h2 data-i18n="cookies.authentication.heading">3. Authentication Provider</h2>
 
-        <p>
+        <p data-i18n="cookies.authentication.body">
             Postcards Home uses Supabase to provide authentication, database, and storage services. 
             Supabase authentication may store session information in the browser so that users can remain signed in.
         </p>
 
-        <h2>4. Analytics and Advertising</h2>
+        <h2 data-i18n="cookies.analytics.heading">4. Analytics and Advertising</h2>
 
-        <p>
+        <p data-i18n="cookies.analytics.body1">
             Postcards Home currently does not use browser storage for targeted advertising.
             Postcards Home currently does not use any form of targeted advertising.
         </p>
 
-        <p>
+        <p data-i18n="cookies.analytics.body2">
             Postcards Home currently does not use optional analytics cookies
             or similar tracking technologies.
         </p>
 
-        <p>
+        <p data-i18n="cookies.analytics.body3">
             If optional analytics, advertising, or other non-essential
             technologies are introduced in the future, this policy will be
             updated and consent controls will be provided where required.
         </p>
 
-        <h2>5. Managing Browser Storage</h2>
+        <h2 data-i18n="cookies.managingStorage.heading">5. Managing Browser Storage</h2>
 
-        <p>
+        <p data-i18n="cookies.managingStorage.body1">
             Most browsers allow users to inspect, block, or delete cookies
             and locally stored website data through their browser settings.
         </p>
 
-        <p>
+        <p data-i18n="cookies.managingStorage.body2">
             Deleting Postcards Home's stored session information may log you
             out and require you to sign in again.
         </p>
 
-        <h2>6. Changes to This Policy</h2>
+        <h2 data-i18n="cookies.changes.heading">6. Changes to This Policy</h2>
 
-        <p>
+        <p data-i18n="cookies.changes.body">
             This policy may be updated when Postcards Home changes the
             technologies it uses. The latest version will be published on
             this page with a revised “Last Updated” date.
         </p>
 
-        <h2>7. Contact</h2>
+        <h2 data-i18n="cookies.contact.heading">7. Contact</h2>
 
-        <p>
+        <p data-i18n="cookies.contact.intro">
             Questions about this policy may be directed to:
         </p>
 
         <p>
             <strong>Alex Yang</strong><br>
-            Email: zixuan.yang2018@gmail.com
+            <span data-i18n="cookies.contact.emailLabel">Email:</span> zixuan.yang2018@gmail.com
         </p>
 
-        <a class="backButton" href="../index.html">
+        <a class="backButton" href="../index.html" data-i18n="cookies.back">
             ← Return to Postcards Home
         </a>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/i18next@25/i18next.min.js"></script>
+    <script src="legal_dictionary.js"></script>
+    <script src="legal.js"></script>
 </body>
 </html>

@@ -172,6 +172,60 @@ const legalTranslations = {
                 },
 
                 back: "← Return to Postcards Home"
+            },
+
+            cookies: {
+                documentTitle: "Cookie Policy | Postcards Home",
+
+                title: "Cookie and Browser Storage Policy",
+                lastUpdated: "Last Updated: August 2, 2026",
+
+                introduction: {
+                    heading: "1. Introduction",
+                    body1: "This Cookie and Browser Storage Policy explains how Postcards Home uses cookies and similar browser-storage technologies.",
+                    body2: "These technologies may include cookies, local storage, and other methods that allow information to remain available in a user's browser between visits."
+                },
+
+                essentialStorage: {
+                    heading: "2. Essential Browser Storage",
+                    intro: "Postcards Home uses essential browser storage to provide features requested by users. This may include:",
+                    signedIn: "Keeping a user signed in to their account.",
+                    session: "Maintaining and refreshing an authenticated session.",
+                    security: "Protecting account access and supporting application security.",
+                    settings: "Remembering settings required for the application to function.",
+                    body: "This storage is necessary to provide account and application functionality. Disabling or clearing it may sign you out or prevent certain features from working correctly."
+                },
+
+                authentication: {
+                    heading: "3. Authentication Provider",
+                    body: "Postcards Home uses Supabase to provide authentication, database, and storage services. Supabase authentication may store session information in the browser so that users can remain signed in."
+                },
+
+                analytics: {
+                    heading: "4. Analytics and Advertising",
+                    body1: "Postcards Home currently does not use browser storage for targeted advertising. Postcards Home currently does not use any form of targeted advertising.",
+                    body2: "Postcards Home currently does not use optional analytics cookies or similar tracking technologies.",
+                    body3: "If optional analytics, advertising, or other non-essential technologies are introduced in the future, this policy will be updated and consent controls will be provided where required."
+                },
+
+                managingStorage: {
+                    heading: "5. Managing Browser Storage",
+                    body1: "Most browsers allow users to inspect, block, or delete cookies and locally stored website data through their browser settings.",
+                    body2: "Deleting Postcards Home's stored session information may log you out and require you to sign in again."
+                },
+
+                changes: {
+                    heading: "6. Changes to This Policy",
+                    body: "This policy may be updated when Postcards Home changes the technologies it uses. The latest version will be published on this page with a revised “Last Updated” date."
+                },
+
+                contact: {
+                    heading: "7. Contact",
+                    intro: "Questions about this policy may be directed to:",
+                    emailLabel: "Email:"
+                },
+
+                back: "← Return to Postcards Home"
             }
         }
     },
@@ -349,6 +403,60 @@ const legalTranslations = {
                 },
 
                 back: "← 返回 Postcards Home"
+            },
+
+            cookies: {
+                documentTitle: "Cookie 政策 | Postcards Home",
+
+                title: "Cookie 与浏览器存储政策",
+                lastUpdated: "最后更新：2026年8月2日",
+
+                introduction: {
+                    heading: "1. 简介",
+                    body1: "本 Cookie 与浏览器存储政策说明 Postcards Home 如何使用 Cookie 以及类似的浏览器存储技术。",
+                    body2: "这些技术可能包括 Cookie、本地存储，以及其他可让信息在用户多次访问之间保留于浏览器中的方式。"
+                },
+
+                essentialStorage: {
+                    heading: "2. 必要的浏览器存储",
+                    intro: "Postcards Home 使用必要的浏览器存储，以提供用户所请求的功能。这可能包括：",
+                    signedIn: "保持用户的账户登录状态。",
+                    session: "维持并刷新经过身份验证的会话。",
+                    security: "保护账户访问并支持应用安全。",
+                    settings: "记住应用正常运行所需的设置。",
+                    body: "这些存储对于提供账户和应用功能是必要的。禁用或清除这些数据可能会使您退出登录，或导致某些功能无法正常运行。"
+                },
+
+                authentication: {
+                    heading: "3. 身份验证服务提供商",
+                    body: "Postcards Home 使用 Supabase 提供身份验证、数据库和存储服务。Supabase 身份验证可能会在浏览器中保存会话信息，以便用户保持登录状态。"
+                },
+
+                analytics: {
+                    heading: "4. 数据分析与广告",
+                    body1: "Postcards Home 目前不会将浏览器存储用于定向广告，也不使用任何形式的定向广告。",
+                    body2: "Postcards Home 目前不使用可选的数据分析 Cookie 或类似的跟踪技术。",
+                    body3: "如果未来引入可选的数据分析、广告或其他非必要技术，本政策将相应更新，并在法律要求的情况下提供用户同意控制。"
+                },
+
+                managingStorage: {
+                    heading: "5. 管理浏览器存储",
+                    body1: "大多数浏览器允许用户通过浏览器设置查看、阻止或删除 Cookie 以及网站本地存储的数据。",
+                    body2: "删除 Postcards Home 保存的会话信息可能会使您退出登录，并要求您重新登录。"
+                },
+
+                changes: {
+                    heading: "6. 本政策的变更",
+                    body: "当 Postcards Home 更改所使用的技术时，本政策可能会进行更新。最新版本将发布在本页面，并显示更新后的“最后更新”日期。"
+                },
+
+                contact: {
+                    heading: "7. 联系方式",
+                    intro: "如对本政策有任何疑问，请联系：",
+                    emailLabel: "电子邮箱："
+                },
+
+                back: "← 返回 Postcards Home"
             }
         }
     },
@@ -443,7 +551,7 @@ const legalTranslations = {
             },
 
             back: "← Retour à Postcards Home"
-        }
+        },
     },
 
     
