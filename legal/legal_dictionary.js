@@ -226,6 +226,48 @@ const legalTranslations = {
                 },
 
                 back: "← Return to Postcards Home"
+            },
+
+            thirdPartyNotices: {
+                documentTitle: "Third-Party Notices | Postcards Home",
+
+                title: "Third-Party Notices",
+                lastUpdated: "Last Updated: August 2, 2026",
+
+                introduction: {
+                    body: "Postcards Home makes use of several open-source libraries and third-party services. We are grateful to the developers and contributors who make these projects possible."
+                },
+
+                supabase: {
+                    heading: "Supabase",
+                    body: "Supabase is the backend database used for authentication, cloud storage, and user settings.",
+                    websiteLabel: "Website:"
+                },
+
+                html2canvas: {
+                    heading: "html2canvas",
+                    body: "The JavaScript library html2canvas is used to export postcards as images through the \"Export Postcard\" buttons on the main page and in the miniature postcard editor on the inventory page.",
+                    license: "License: MIT License"
+                },
+
+                canvasConfetti: {
+                    heading: "canvas-confetti",
+                    body: "This library is used for collectible animations and celebration animations that create visual effects.",
+                    license: "License: MIT License"
+                },
+
+                music: {
+                    heading: "Music",
+                    body1: "Certain music included in Postcards Home is distributed under Creative Commons licenses or other applicable licenses. Most of these works are licensed under Creative Commons Attribution 4.0 or are in the public domain. Music produced exclusively for Postcards Home, as well as performances by its creator, Alex Yang, is reserved for use within Postcards Home and may not be commercially redistributed.",
+                    body2: "Please see the Music Credits page for complete attribution."
+                },
+
+                openSource: {
+                    heading: "Open-Source Licenses",
+                    body: "Copies of applicable open-source licenses are included with this project where required."
+                },
+
+                back: "← Return to Postcards Home"
             }
         }
     },
@@ -454,6 +496,48 @@ const legalTranslations = {
                     heading: "7. 联系方式",
                     intro: "如对本政策有任何疑问，请联系：",
                     emailLabel: "电子邮箱："
+                },
+
+                back: "← 返回 Postcards Home"
+            },
+
+            thirdPartyNotices: {
+                documentTitle: "第三方声明 | Postcards Home",
+
+                title: "第三方声明",
+                lastUpdated: "最后更新：2026年8月2日",
+
+                introduction: {
+                    body: "Postcards Home 使用了若干开源程序库和第三方服务。我们衷心感谢所有使这些项目成为可能的开发者与贡献者。"
+                },
+
+                supabase: {
+                    heading: "Supabase",
+                    body: "Supabase 是本应用使用的后端数据库服务，用于身份验证、云端存储和用户设置。",
+                    websiteLabel: "网站："
+                },
+
+                html2canvas: {
+                    heading: "html2canvas",
+                    body: "JavaScript 程序库 html2canvas 用于通过主页上的“导出明信片”按钮以及收藏页面中的迷你明信片编辑器，将明信片导出为图片。",
+                    license: "许可证：MIT License"
+                },
+
+                canvasConfetti: {
+                    heading: "canvas-confetti",
+                    body: "该程序库用于收藏品动画和庆祝动画，以创建视觉效果。",
+                    license: "许可证：MIT License"
+                },
+
+                music: {
+                    heading: "音乐",
+                    body1: "Postcards Home 中的部分音乐依据知识共享许可或其他适用许可进行分发。其中大多数作品采用知识共享署名 4.0 许可，或属于公共领域。专为 Postcards Home 制作的音乐，以及由创作者 Alex Yang 演奏的录音，仅限在 Postcards Home 中使用，不得用于商业再分发。",
+                    body2: "完整的署名信息请参阅“音乐鸣谢”页面。"
+                },
+
+                openSource: {
+                    heading: "开源许可证",
+                    body: "如有要求，本项目中已包含适用的开源许可证副本。"
                 },
 
                 back: "← 返回 Postcards Home"

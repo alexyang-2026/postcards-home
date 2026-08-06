@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Third-Party Notices | Postcards Home</title>
+    <title data-i18n="thirdPartyNotices.documentTitle">Third-Party Notices | Postcards Home</title>
 
     <link rel="stylesheet" href="legal.css">
 </head>
@@ -13,71 +13,86 @@
 
     <main class="legalContainer">
 
-    <h1>Third-Party Notices</h1>
+    <h1 data-i18n="thirdPartyNotices.title">Third-Party Notices</h1>
 
-    <p class="lastUpdated">Last Updated: August 2, 2026</p>
+    <div id="languageControls">
+        <label for="languageSelect" data-i18n="common.language">Language:</label>
 
-    <p>
+        <select id="languageSelect" aria-label="Language" data-i18n-aria-label="common.languageLabel">
+            <option value="en">🇺🇸 English</option>
+            <option value="zh">🇨🇳 中文</option>
+            <!-- Add this once the main page is added <option value="fr">🇫🇷 Français</option> -->
+        </select>
+    </div>
+
+    <p class="lastUpdated" data-i18n="thirdPartyNotices.lastUpdated">Last Updated: August 2, 2026</p>
+
+    <p data-i18n="thirdPartyNotices.introduction.body">
         Postcards Home makes use of several open-source libraries and third-party
         services. We are grateful to the developers and contributors who make these
         projects possible.
     </p>
 
-    <h2>Supabase</h2>
+    <h2 data-i18n="thirdPartyNotices.supabase.heading">Supabase</h2>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.supabase.body">
         Supabase is the backend database used for authentication, cloud storage, and user settings.
     </p>
 
     <p>
-        Website: <a href="https://supabase.com" target="_blank">https://supabase.com</a>
+        <span data-i18n="thirdPartyNotices.supabase.websiteLabel">Website:</span>
+        <a href="https://supabase.com" target="_blank">https://supabase.com</a>
     </p>
 
-    <h2>html2canvas</h2>
+    <h2 data-i18n="thirdPartyNotices.html2canvas.heading">html2canvas</h2>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.html2canvas.body">
         The JavaScript library html2canvas was used to export postcards as images through "export postcard" buttons found on the main page and also the mini postcard editor in the inventory tab.
     </p>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.html2canvas.license">
         License: MIT License
     </p>
 
-    <h2>canvas-confetti</h2>
+    <h2 data-i18n="thirdPartyNotices.canvasConfetti.heading">canvas-confetti</h2>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.canvasConfetti.body">
         This library was used for collectible animations and celebration animations to create visual effects.
     </p>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.canvasConfetti.license">
         License: MIT License
     </p>
 
-    <h2>Music</h2>
+    <h2 data-i18n="thirdPartyNotices.music.heading">Music</h2>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.music.body1">
         Certain music included within Postcards Home is distributed under
         Creative Commons licenses or other applicable licenses.
         Most of these licenses are the Creative Commons Attribution 4.0 or Public Domain.
         Music that was produced exclusively for Postcards Home, or performances by the creator Alex Yang, remain solely for Postcards Home and cannot be redistributed commercially.
     </p>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.music.body2">
         Please see the Music Credits page for complete attribution.
     </p>
 
-    <h2>Open Source Licenses</h2>
+    <h2 data-i18n="thirdPartyNotices.openSource.heading">Open Source Licenses</h2>
 
-    <p>
+    <p data-i18n="thirdPartyNotices.openSource.body">
         Copies of applicable open-source licenses are included with this project
         where required.
     </p>
 
-    <a class="backButton" href="../index.html">
+    <a class="backButton" href="../index.html" data-i18n="thirdPartyNotices.back">
     ← Return to Postcards Home
     </a>
 
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/i18next@25/i18next.min.js"></script>
+    <script src="legal_dictionary.js"></script>
+    <script src="legal.js"></script>
 
 </body>
 </html>
