@@ -18,6 +18,11 @@ body {
     font-size: small;
 }
 
+#languageControls {
+    font-family: American Typewriter;
+    margin-bottom: 20px;
+}
+
 #createAccountBox{
     display:flex;
     flex-direction:column;

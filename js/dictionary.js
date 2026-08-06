@@ -339,6 +339,134 @@ const loginTranslations = {
     }
 };
 
+const createAccountTranslations = {
+    en: {
+        translation: {
+            createAccount: {
+                documentTitle: "Postcards Home: Create Account",
+                title: "Postcards Home: Create an Account",
+                subtitle: "Created by Alex Yang",
+
+                emailPlaceholder: "Your Email Here",
+                passwordPlaceholder: "Your Password Here",
+                confirmPasswordPlaceholder: "Confirm Password",
+                showPassword: "Show Password",
+                firstNamePlaceholder: "Your First Name",
+                lastNamePlaceholder: "Your Last Name",
+                usernamePlaceholder: "Pick a Username",
+                birthdayLabel: "Your Birthday:",
+                createButton: "Create Account",
+                accountExists: "Already have an account? Click here to log in",
+
+                passwordRequirements: {
+                    title: "Password Requirements:",
+                    characterPassed: "✅ At least 8 characters",
+                    characterFailed: "❌ At least 8 characters",
+                    uppercasePassed: "✅ At least 1 uppercase letter",
+                    uppercaseFailed: "❌ At least 1 uppercase letter",
+                    lowercasePassed: "✅ At least 1 lowercase letter",
+                    lowercaseFailed: "❌ At least 1 lowercase letter",
+                    numberPassed: "✅ At least 1 number",
+                    numberFailed: "❌ At least 1 number",
+                    specialPassed: "✅ At least 1 special character (e.g. !, @, #, etc.)",
+                    specialFailed: "❌ At least 1 special character (e.g. !, @, #, etc.)"
+                },
+
+                usernameCheck: {
+                    title: "Username Check:",
+                    empty: "❌ Please choose a username",
+                    unavailable: "❌ Username Not Available — Try Another!",
+                    available: "✅ Username Available!"
+                },
+
+                messages: {
+                    emailRequired: "Please enter an email!",
+                    invalidEmail: "Please enter a valid email address!",
+                    passwordRequired: "Please enter a password!",
+                    invalidPassword: "Password does not meet all requirements.",
+                    passwordMismatch: "Passwords do not match.",
+                    firstNameRequired: "Please enter your real first name!",
+                    lastNameRequired: "Please enter your real last name!",
+                    usernameRequired: "Please enter a username!",
+                    birthdayRequired: "Please enter your birthday!",
+                    usernameUnavailable: "Your username is not available!",
+                    waiting: "Please wait...",
+                    accountCreated: "Account Created Successfully! Enjoy Postcard-Collecting! 🎉",
+                    redirecting: "Redirecting back to application in {{seconds}}..."
+                }
+            },
+
+            common: {
+                language: "Language:",
+                languageLabel: "Choose language"
+            }
+        }
+    },
+
+    zh: {
+        translation: {
+            createAccount: {
+                documentTitle: "Postcards Home：创建账户",
+                title: "Postcards Home：创建账户",
+                subtitle: "由 Alex Yang 创作",
+
+                emailPlaceholder: "请输入电子邮箱",
+                passwordPlaceholder: "请输入密码",
+                confirmPasswordPlaceholder: "请再次输入密码",
+                showPassword: "显示密码",
+                firstNamePlaceholder: "请输入名字",
+                lastNamePlaceholder: "请输入姓氏",
+                usernamePlaceholder: "选择一个用户名",
+                birthdayLabel: "您的生日：",
+                createButton: "创建账户",
+                accountExists: "已有账户？点击这里登录",
+
+                passwordRequirements: {
+                    title: "密码要求：",
+                    characterPassed: "✅ 至少 8 个字符",
+                    characterFailed: "❌ 至少 8 个字符",
+                    uppercasePassed: "✅ 至少包含 1 个大写字母",
+                    uppercaseFailed: "❌ 至少包含 1 个大写字母",
+                    lowercasePassed: "✅ 至少包含 1 个小写字母",
+                    lowercaseFailed: "❌ 至少包含 1 个小写字母",
+                    numberPassed: "✅ 至少包含 1 个数字",
+                    numberFailed: "❌ 至少包含 1 个数字",
+                    specialPassed: "✅ 至少包含 1 个特殊字符（例如 !、@、# 等）",
+                    specialFailed: "❌ 至少包含 1 个特殊字符（例如 !、@、# 等）"
+                },
+
+                usernameCheck: {
+                    title: "用户名检查：",
+                    empty: "❌ 请选择一个用户名",
+                    unavailable: "❌ 该用户名不可用，请选择其他用户名！",
+                    available: "✅ 该用户名可用！"
+                },
+
+                messages: {
+                    emailRequired: "请输入电子邮箱！",
+                    invalidEmail: "请输入有效的电子邮箱地址！",
+                    passwordRequired: "请输入密码！",
+                    invalidPassword: "密码未满足全部要求。",
+                    passwordMismatch: "两次输入的密码不一致。",
+                    firstNameRequired: "请输入您的真实名字！",
+                    lastNameRequired: "请输入您的真实姓氏！",
+                    usernameRequired: "请输入用户名！",
+                    birthdayRequired: "请输入您的生日！",
+                    usernameUnavailable: "该用户名不可用！",
+                    waiting: "请稍候……",
+                    accountCreated: "账户创建成功！祝您收集明信片愉快！🎉",
+                    redirecting: "{{seconds}} 秒后将返回应用……"
+                }
+            },
+
+            common: {
+                language: "语言：",
+                languageLabel: "选择语言"
+            }
+        }
+    }
+};
+
 
 
 /////////////////////////////////////////////////////////////////
