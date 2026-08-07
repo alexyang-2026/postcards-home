@@ -53,6 +53,17 @@ Performance by: Alex Yang<br>
 © 2024 Alex Yang. All rights reserved.<br>
 Recorded for Postcards Home exclusive use.<br>
 
+### Schumann: Sonata No. 2 in G Minor, Op. 22
+Performance by: Alex Yang<br>
+© 2025 Alex Yang. All rights reserved.<br>
+Recorded for Postcards Home exclusive use.<br>
+
+### Frédéric Chopin: Scherzo No. 4 in E Major, Op. 54
+Performance by: Alex Yang<br>
+Source: https://youtu.be/QzeGziXHtYA<br>
+© 2024 Alex Yang. All rights reserved.<br>
+Recorded for Postcards Home exclusive use.<br>
+
 
 ## Chopin's Nocturnes
 

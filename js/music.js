@@ -19,7 +19,7 @@ const musicDatabase = {
             piece: "Chopin — Grande Polonaise Brillante, Op. 22",
             composer: "Frédéric Chopin",
             audio: "assets/audio/chopin_grande_polonaise.m4a"
-        }
+        },
         
 
     ],
@@ -46,6 +46,12 @@ const musicDatabase = {
             audio: "assets/audio/brahms_intermezzo_118_2.mp3"
         },
 
+        {
+            piece: "Schumann — Sonata No. 2 in G Minor (Movement II)",
+            composer: "Robert Schumann",
+            audio: "assets/audio/schumann_sonata_2_movement_2.m4a"
+        }
+
     ],
 
     reflective: [
@@ -65,6 +71,18 @@ const musicDatabase = {
             piece: "Chopin — Andante Spianato, Op. 22",
             composer: "Frédéric Chopin",
             audio: "assets/audio/chopin_andante_spianato.m4a"
+        },
+
+        {
+            piece: "Chopin — Scherzo No. 4 in E Major, Op. 54",
+            composer: "Frédéric Chopin",
+            audio: "assets/audio/chopin_scherzo_4.m4a"
+        },
+        
+        {
+            piece: "Schumann — Sonata No. 2 in G Minor (Movement II)",
+            composer: "Robert Schumann",
+            audio: "assets/audio/schumann_sonata_2_movement_2.m4a"
         }
     ],
 
@@ -87,6 +105,12 @@ const musicDatabase = {
             piece: "Chopin — Sonata No. 2 in B-flat Minor (Movement I)",
             composer: "Frédéric Chopin",
             audio: "assets/audio/chopin_sonata_2_movement_1.m4a",
+        },
+
+        {
+            piece: "Schumann — Sonata No. 2 in G Minor (Movement IV)",
+            composer: "Robert Schumann",
+            audio: "assets/audio/schumann_sonata_2_movement_4.mp3"
         }
     ],
 
