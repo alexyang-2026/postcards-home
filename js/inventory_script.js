@@ -315,6 +315,31 @@ chooseLifeSegmentImage.addEventListener("change", async function() {
     }
 })
 
+// This function queries every postcard in the selected life segment and converts each public image URL into the storage path Supabase needs
+async function getLifeSegmentImagePaths(lifeSegmentID, userID) {
+    const { data: postcards, error } = await supabaseClient
+        .from("postcards")
+        .select("image_url")
+        .eq("life_segment_id", lifeSegmentID)
+        .eq("user_id", userID);
+
+    if (error) {
+        throw error;
+    }
+
+    return postcards
+        .map(function(postcard) {
+            if (!postcard.image_url) {
+                return null;
+            }
+
+            return postcard.image_url.split("/postcard-images/")[1];
+        })
+        .filter(function(imagePath) {
+            return imagePath !== null;
+        });
+}
+
 deleteLifeSegmentButton.addEventListener("click", async function() {
     if (!selectedLifeSegmentID) {
         return;
@@ -341,6 +366,9 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
 
         const userID = authData.user.id;
 
+        // Save the image paths before deleting the Life Segment and its postcards
+        const imagePaths = await getLifeSegmentImagePaths(selectedLifeSegmentID, userID);
+
         const { error: deleteError } = await supabaseClient
             .from("life_segments")
             .delete()
@@ -351,6 +379,17 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
             throw deleteError;
         }
 
+        // Remove the corresponding postcard images from Supabase Storage
+        if (imagePaths.length > 0) {
+            const { error: storageError } = await supabaseClient.storage
+                .from("postcard-images")
+                .remove(imagePaths);
+
+            if (storageError) {
+                console.error("Life Segment deleted, but image cleanup failed:", storageError);
+            }
+        }
+
         modalOverlay.style.display = "none";
         selectedLifeSegmentID = null;
 
@@ -358,7 +397,7 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
 
     } catch (error) {
         console.error(error);
-        alert(i18next.t("inventory.lifeSegments.deleteError", {message: error.message}));
+        alert(i18next.t("inventory.lifeSegments.deleteError", { message: error.message }));
     }
 });
 
