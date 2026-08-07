@@ -345,9 +345,11 @@ body {
 }
 
 #postcardCreator {
-    width: min(820px, calc(100% - 32px));
+    width: 100%;
+    max-width: 700px;
     margin: 28px auto;
     padding: 0;
+    box-sizing: border-box;
     background: none;
     border: none;
     border-radius: 0;
@@ -467,4 +469,42 @@ body {
 #locationButton:hover,
 #musicRerollButton:hover {
     background: gold;
+}
+
+
+@media (max-width: 1200px) {
+
+    .postcardCreator {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .builderStep {
+        width: 100%;
+        grid-template-columns: 160px 24px 160px;
+        gap: 8px;
+    }
+
+    .stepControl input,
+    .stepControl select,
+    .stepControl textarea,
+    .stepControl button {
+        width: 160px;
+        box-sizing: border-box;
+
+        font-family: inherit;
+        font-size: 0.95rem;
+
+        border: 1.5px solid black;
+        border-radius: 3px;
+    }
+
+    .musicPlayerRow {
+        width: 100%;
+    }
+
+    #musicPlayer {
+        width: 100%;
+    }
+
 }
