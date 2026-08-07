@@ -14,8 +14,6 @@ async function initializeInventoryTranslations() {
         lng: savedLanguage,
         fallbackLng: "en",
         resources: {
-
-            // Merge the two inventoryTranslations and collectiblesTranslations dictionaries together
             en: {
                 translation: {
                     ...inventoryTranslations.en.translation,
@@ -27,6 +25,13 @@ async function initializeInventoryTranslations() {
                 translation: {
                     ...inventoryTranslations.zh.translation,
                     ...collectiblesTranslations.zh.translation
+                }
+            },
+
+            es: {
+                translation: {
+                    ...inventoryTranslations.es.translation,
+                    ...collectiblesTranslations.es.translation
                 }
             }
         }

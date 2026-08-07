@@ -255,6 +255,135 @@ const translationResources = {
                 about: "关于"
             },
         }
+    },
+
+    es: {
+        translation: {
+            main: {
+                documentTitle: "Postcards Home",
+                title: "Postcards Home",
+                subtitle: "Creado por Alex Yang",
+                selectLanguage: "Seleccionar idioma:",
+                languageLabel: "Elegir idioma de la página",
+
+                steps: {
+                    choosePhoto: "Paso 1: Elegir una foto",
+                    writeCaption: "Paso 2: Escribir un texto",
+                    selectStamp: "Paso 3: Seleccionar un sello",
+                    selectMood: "Paso 4: Seleccionar un estado de ánimo",
+                    useLocation: "Paso 5: Usar tu ubicación"
+                },
+
+                controls: {
+                    captionPlaceholder: "Escribe un texto...",
+                    useLocation: "Usar mi ubicación"
+                },
+
+                stamps: {
+                    select: "Seleccionar sello...",
+                    music: "🎵 Sello de música",
+                    home: "🏡 Sello de hogar",
+                    travel: "✈️ Sello de viaje",
+                    canada: "🇨🇦 Sello de Canadá",
+                    princeton: "🐯 Sello de Princeton"
+                },
+
+                moods: {
+                    select: "Elegir estado de ánimo...",
+                    happy: "😀 Feliz",
+                    excited: "😃 ¡Emocionado!",
+                    romantic: "🥰 Romántico",
+                    reflective: "😇 Tranquilo / Reflexivo",
+                    ambitious: "😈 Ambicioso",
+                    angry: "😡 Enojado",
+                    inspired: "🤩 Inspirado"
+                },
+
+                customization: {
+                    postcardBackground: "Seleccionar fondo de la postal",
+                    selectPostcardBackground: "Seleccionar fondo de la postal...",
+                    defaultPostcard: "Postal blanca predeterminada",
+                    wallpaper: "Seleccionar fondo de pantalla",
+                    selectWallpaper: "Seleccionar fondo de pantalla...",
+                    defaultWallpaper: "Fondo de pantalla predeterminado"
+                },
+
+                postcard: {
+                    captionPlaceholder: "Tu texto aparecerá aquí.",
+                    listeningTo: "♫ Escuchando actualmente: ♫",
+                },
+
+                actions: {
+                    login: "¡Inicia sesión para guardar tus postales!",
+                    logout: "Cerrar sesión",
+                    export: "Exportar postal ▾",
+                    download: "Descargar postal",
+                    share: "↗ Compartir postal",
+                    newPostcard: "Nueva postal",
+                    inventory: "Ir al inventario completo",
+                    rerollMusic: "Elegir otra pieza musical al azar"
+                },
+
+                accessibility: {
+                    musicPlayer: "Vista previa de la música de la postal",
+                    postcardPreview: "Vista previa de la postal en tiempo real",
+                    photoPreview: "Fotografía seleccionada para la postal",
+                    stampPreview: "Sello seleccionado para la postal",
+                    postcardActions: "Acciones de la postal",
+                    closeLifeSegmentModal: "Cerrar ventana de etapa de vida"
+                },
+
+                messages: {
+                    photoRequired: "Selecciona una foto antes de guardar tu postal.",
+                    captionRequired: "Escribe un texto antes de guardar tu postal.",
+                    downloadSuccess: "🎉 ¡Postal descargada correctamente! 🎉",
+                    shareSuccess: "🎉 ¡Felicidades! ¡Postal compartida correctamente! 🎉",
+                    shareUnsupported: "Tu navegador no permite compartir archivos, así que la postal se descargó en su lugar.",
+                    postcardReset: "Postal restablecida correctamente.",
+                    resetConfirmation: "¿SEGURO que quieres RESTABLECER tu postal?",
+                    saving: "Guardando postal... Espera, por favor...",
+                    saveToLifeSegmentSuccess: "🎉 Postal guardada en la etapa de vida ",
+                    loginRequired: "Inicia sesión antes de guardar postales.",
+                    locationRequired: "Activa los servicios de ubicación.",
+                    automaticPlaybackBlocked: "El navegador bloqueó la reproducción automática de música."
+                },
+
+                lifeSegments: {
+                    noSegments: "¡Aún no hay etapas de vida!",
+                    addPostcard: "Añadir postal a una etapa de vida...",
+                    create: "+ Nueva etapa de vida",
+                    createTitle: "Crear nueva etapa de vida",
+                    titlePlaceholder: "Título de la etapa de vida",
+                    descriptionPlaceholder: "Descripción",
+                    createButton: "Crear etapa",
+
+                    modalTitle: "Crear nueva etapa de vida",
+                    explanation: `¿Qué es una "Etapa de vida?"\n
+                                \n
+                                Piensa en ella como una colección de postales que guardan tus recuerdos.
+                                En lugar de tener 50 fotos al azar cuyo contexto acabarás olvidando, ¿por qué no dedicar unos momentos a escribir un texto significativo para tu foto?
+                                En esencia, es como un álbum de postales que documenta un momento específico de tu vida.`,
+                    save: "Guardar",
+                    cancel: "Cancelar"
+                },
+            },
+
+            common: {
+                cancel: "Cancelar",
+                loading: "Cargando...",
+
+                language: "Seleccionar idioma: "
+            },
+
+            footer: {
+                privacy: "Política de privacidad",
+                terms: "Términos de servicio",
+                cookies: "Política de cookies",
+                musicCredits: "Créditos de música",
+                thirdParty: "Avisos de terceros",
+                about: "Acerca de"
+            },
+        }
     }
 };
 
@@ -338,6 +467,46 @@ const loginTranslations = {
                 musicCredits: "音乐鸣谢",
                 thirdParty: "第三方声明",
                 about: "关于"
+            }
+        }
+    },
+
+    es: {
+        translation: {
+            login: {
+                documentTitle: "Postcards Home - Iniciar sesión",
+                title: "Postcards Home: Iniciar sesión",
+                subtitle: "Creado por Alex Yang",
+
+                emailPlaceholder: "Introduce tu correo electrónico:",
+                passwordPlaceholder: "Introduce tu contraseña:",
+                showPassword: "Mostrar contraseña",
+                loginButton: "Iniciar sesión",
+
+                createAccount: "¿No tienes una cuenta? ¡Haz clic aquí para crear una gratis!",
+
+                policyAgreement: `Al continuar usando Postcards Home, acepto la <a href="legal/privacy.html">Política de privacidad</a> y los <a href="legal/terms.html">Términos de servicio.</a>`,
+
+                messages: {
+                    loginSuccess: "¡Sesión iniciada correctamente!",
+                    profileError: "No se pudo cargar tu perfil: {{message}}",
+                    deletedAccount: "Esta cuenta está programada para su eliminación y ya no se puede acceder a ella. Es posible que puedas recuperar parte de ella enviando un correo electrónico a zixuan.yang2018@gmail.com lo antes posible.",
+                    redirecting: "Volviendo a la aplicación en {{seconds}}..."
+                }
+            },
+
+            common: {
+                language: "Idioma:",
+                languageLabel: "Elegir idioma"
+            },
+
+            footer: {
+                privacy: "Política de privacidad",
+                terms: "Términos de servicio",
+                cookies: "Política de cookies",
+                musicCredits: "Créditos de música",
+                thirdParty: "Avisos de terceros",
+                about: "Acerca de"
             }
         }
     }
@@ -466,6 +635,69 @@ const createAccountTranslations = {
             common: {
                 language: "语言：",
                 languageLabel: "选择语言"
+            }
+        }
+    },
+
+    es: {
+        translation: {
+            createAccount: {
+                documentTitle: "Postcards Home: Crear una cuenta",
+                title: "Postcards Home: Crear una cuenta",
+                subtitle: "Creado por Alex Yang",
+
+                emailPlaceholder: "Tu correo electrónico",
+                passwordPlaceholder: "Tu contraseña",
+                confirmPasswordPlaceholder: "Confirma tu contraseña",
+                showPassword: "Mostrar contraseña",
+                firstNamePlaceholder: "Tu nombre",
+                lastNamePlaceholder: "Tu apellido",
+                usernamePlaceholder: "Elige un nombre de usuario",
+                birthdayLabel: "Tu fecha de nacimiento:",
+                createButton: "Crear cuenta",
+                accountExists: "¿Ya tienes una cuenta? Haz clic aquí para iniciar sesión",
+
+                passwordRequirements: {
+                    title: "Requisitos de la contraseña:",
+                    characterPassed: "✅ Al menos 8 caracteres",
+                    characterFailed: "❌ Al menos 8 caracteres",
+                    uppercasePassed: "✅ Al menos 1 letra mayúscula",
+                    uppercaseFailed: "❌ Al menos 1 letra mayúscula",
+                    lowercasePassed: "✅ Al menos 1 letra minúscula",
+                    lowercaseFailed: "❌ Al menos 1 letra minúscula",
+                    numberPassed: "✅ Al menos 1 número",
+                    numberFailed: "❌ Al menos 1 número",
+                    specialPassed: "✅ Al menos 1 carácter especial (p. ej., !, @, #, etc.)",
+                    specialFailed: "❌ Al menos 1 carácter especial (p. ej., !, @, #, etc.)"
+                },
+
+                usernameCheck: {
+                    title: "Comprobación del nombre de usuario:",
+                    empty: "❌ Elige un nombre de usuario",
+                    unavailable: "❌ Nombre de usuario no disponible — ¡Prueba otro!",
+                    available: "✅ ¡Nombre de usuario disponible!"
+                },
+
+                messages: {
+                    emailRequired: "¡Introduce un correo electrónico!",
+                    invalidEmail: "¡Introduce una dirección de correo electrónico válida!",
+                    passwordRequired: "¡Introduce una contraseña!",
+                    invalidPassword: "La contraseña no cumple todos los requisitos.",
+                    passwordMismatch: "Las contraseñas no coinciden.",
+                    firstNameRequired: "¡Introduce tu nombre real!",
+                    lastNameRequired: "¡Introduce tu apellido real!",
+                    usernameRequired: "¡Introduce un nombre de usuario!",
+                    birthdayRequired: "¡Introduce tu fecha de nacimiento!",
+                    usernameUnavailable: "¡Ese nombre de usuario no está disponible!",
+                    waiting: "Espera, por favor...",
+                    accountCreated: "¡Cuenta creada correctamente! ¡Disfruta coleccionando postales! 🎉",
+                    redirecting: "Volviendo a la aplicación en {{seconds}}..."
+                }
+            },
+
+            common: {
+                language: "Idioma:",
+                languageLabel: "Elegir idioma"
             }
         }
     }
