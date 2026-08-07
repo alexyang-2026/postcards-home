@@ -4,17 +4,31 @@
 const musicDatabase = {
     happy: [
         {
-            piece: "Chopin — Prelude No. 19 in E-Flat Major",
+            piece: "Chopin — Ballade No. 3 in A-Flat Major, Op. 47",
             composer: "Frédéric Chopin",
-            audio: "assets/audio/chopin_prelude_19.mp3" 
+            audio: "assets/audio/chopin_ballade_3.mp3" 
         },
+
+        {
+            piece: "Beethoven - Sonata in C Major, Op. 53 \"Waldstein\" (Movement III)",
+            composer: "Ludwig van Beethoven",
+            audio: "assets/audio/beethoven_waldstein_movement_3.mp3"
+        },
+
+        {
+            piece: "Chopin — Grande Polonaise Brillante, Op. 22",
+            composer: "Frédéric Chopin",
+            audio: "assets/audio/chopin_grande_polonaise.m4a"
+        }
+        
+
     ],
 
     excited: [
         {
             piece: "Beethoven - Sonata in C Major, Op. 53 \"Waldstein\" (Movement I)",
             composer: "Ludwig van Beethoven",
-            audio: "assets/audio/beethoven_waldstein_m1.mp3"
+            audio: "assets/audio/beethoven_waldstein_movement_1.m4a"
         },
 
     ],
@@ -23,7 +37,7 @@ const musicDatabase = {
         {
             piece: "Liszt - Ballade No. 2 in B Minor — Ending",
             composer: "Franz Liszt",
-            audio: "assets/audio/liszt_ballade_2_coda.mp3"
+            audio: "assets/audio/liszt_ballade_2_coda.m4a"
         },
 
         {
@@ -42,10 +56,16 @@ const musicDatabase = {
         },
 
         {
-            piece: "Chopin - Prelude No. 23 in F Major",
-            composer: "Frédéric Chopin",
-            audio: "assets/audio/chopin_prelude_23.mp3"
+            piece: "Scriabin — Sonata No. 4 (Movement I — Andante)",
+            composer: "Alexander Scriabin",
+            audio: "assets/audio/scriabin_sonata_4_movement_1.mp3"
         },
+
+        {
+            piece: "Chopin — Andante Spianato, Op. 22",
+            composer: "Frédéric Chopin",
+            audio: "assets/audio/chopin_andante_spianato.m4a"
+        }
     ],
 
     ambitious: [
@@ -54,38 +74,19 @@ const musicDatabase = {
             composer: "Samuel Barber",
             audio: "assets/audio/barber_fugue.m4a"
         },
-
-        {
-            piece: "Liszt — Transcendental Etude No. 5 \"Feux Follets\"",
-            composer: "Franz Liszt",
-            audio: "assets/audio/liszt_transcendental_5_feux_follets.mp3"
-        },
-
-        {
-            piece: "Liszt — Transcendental Etude No. 6 \"Vision\"",
-            composer: "Franz Liszt",
-            audio: "assets/audio/liszt_transcendental_6_vision.mp3"
-        },
-
-        {
-            piece: "Prokofiev — Suggestion Diabolique, Op. 4 No. 4",
-            composer: "Sergei Prokofiev",
-            audio: "assets/audio/prokofiev_suggestion_diabolique.mp3"
-        }
     ],
 
     angry: [
         {
-            piece: "Chopin — Prelude No. 24 in D Minor",
-            composer: "Frédéric Chopin",
-            audio: "assets/audio/chopin_prelude_24.mp3"
+            piece: "Medtner — Sonata Tragica",
+            composer: "Nikolay Medtner",
+            audio: "assets/audio/medtner_sonata_tragica.m4a"
         },
 
         {
-            piece: "Beethoven — Sonata in C Minor, Op. 111 (Movement I)",
-            composer: "Ludwig van Beethoven",
-            audio: "assets/audio/beethoven_111_movement_1.mp3"
-
+            piece: "Chopin — Sonata No. 2 in B-flat Minor (Movement I)",
+            composer: "Frédéric Chopin",
+            audio: "assets/audio/chopin_sonata_2_movement_1.m4a",
         }
     ],
 
@@ -95,14 +96,6 @@ const musicDatabase = {
             composer: "Alexander Scriabin",
             audio: "assets/audio/scriabin_sonata_4_movement_2.mp3"
         }
-    ],
-
-    chinese: [
-        {
-            piece: "Chinese Meme",
-            composer: "idk",
-            audio: "assets/audio/ching_cheng_hanji.mp3"
-        },
     ],
 
     

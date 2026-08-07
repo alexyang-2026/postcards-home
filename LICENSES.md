@@ -1,6 +1,7 @@
 # Music Licenses
 
 ## License URLs
+Creative Commons Attribution 3.0 https://creativecommons.org/licenses/by/3.0/<br>
 Creative Commons Attribution 4.0: https://creativecommons.org/licenses/by/4.0/<br>
 Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/<br>
 
@@ -11,11 +12,46 @@ Performance by: Nelson Friere<br>
 Source: IMSLP: https://imslp.org/wiki/6_Klavierst%C3%BCcke,_Op.118_(Brahms,_Johannes)<br>
 License: Creative Commons Attribution 4.0<br>
 
+### Franz Liszt: Ballade No. 2 in B Minor, S.171
+Performance by: Cristoph Zbinden (Piano)<br>
+Publisher Info: Christoph Zbinden<br>
+Source: https://imslp.org/wiki/Ballade_No.2,_S.171_(Liszt,_Franz)<br>
+License: Creative Commons Attribution 3.0<br>
+
 ### Samuel Barber: Fugue from Piano Sonata, Op. 26
 Performance by: Alex Yang.<br>
 
-© 2026 Alex Yang. All rights reserved.<br>
-Recorded exclusively for Postcards Home.<br>
+© 2025 Alex Yang. All rights reserved.<br>
+Recorded for Postcards Home exclusive use.<br>
+
+### Alexander Scriabin: Sonata No. 4 in F-Sharp Minor, Op. 30
+Performance by: Vladimir Drozdov (Piano)<br>
+Publisher info: Paraclete Music, 1942<br>
+Source: https://imslp.org/wiki/Piano_Sonata_No.4%2C_Op.30_(Scriabin%2C_Aleksandr)<br>
+Public Domain.<br>
+
+### Nikolay Medtner: Sonata Tragica (from Forgotton Melodies II, Op. 39 No. 5)
+Performance by: Ponta Yamazato<br>
+Recorded September 2024<br>
+Source: https://www.youtube.com/watch?v=EV7eov6JW_8<br>
+License: Creative Commons Attribution 4.0<br>
+
+### Frédéric Chopin: Sonata No. 2 in B-flat Minor, Op. 35
+Performance by: Terence Yung (Piano)<br>
+Publisher Info: Terence Yung, 2025<br>
+Source: https://imslp.org/wiki/Piano_Sonata_No.2%2C_Op.35_(Chopin%2C_Fr%C3%A9d%C3%A9ric)<br>
+License: Creative Commons Attribution 4.0<br>
+
+### Frédéric Chopin: Andante Spianato et Grande Polonaise Brillante, Op. 22
+Performance by: Alex Yang<br>
+Source: https://youtu.be/Lyw6fTwU0Uc<br>
+© 2024 Alex Yang. All rights reserved.<br>
+Recorded for Postcards Home exclusive use.<br>
+
+### Beethoven: Sonata in C Major, Op. 53 "Waldstein"
+Performance by: Alex Yang<br>
+© 2024 Alex Yang. All rights reserved.<br>
+Recorded for Postcards Home exclusive use.<br>
 
 
 ## Chopin's Nocturnes
