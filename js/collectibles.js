@@ -113,7 +113,7 @@ const collectibles = {
         },
 
 
-        twilight: {
+        twilightwallpaper: {
             id: "twilightwallpaper",
             name: "Twilight (Wallpaper)",
             type: "wallpaper",
@@ -383,7 +383,8 @@ function findCollectibleByID(collectibleID) {
             if (collectible.id === collectibleID) {
                 return {
                     ...collectible, // thisis because we want to take all properties inside the collectible object and copy it into a new object
-                    category: categoryName
+                    category: categoryName,
+                    collectibleKey: collectibleKey
                 };
             }
         }

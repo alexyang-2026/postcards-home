@@ -31,6 +31,9 @@ async function initializeInventoryTranslations() {
             }
         }
     });
+
+    applyInventoryTranslations();
+    languageSelect.value = savedLanguage;
 }
 
 function applyInventoryTranslations() {
@@ -587,7 +590,7 @@ async function loadCollectibles() {
         const collectible = findCollectibleByID(collectibleID);
 
         const translatedCollectible = i18next.t(
-            `collectibles.${collectible.category}.${collectibleID}`,
+            `collectibles.${collectible.category}.${collectible.collectibleKey}`,
             { returnObjects: true }
         );
 

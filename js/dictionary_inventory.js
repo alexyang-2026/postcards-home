@@ -462,7 +462,7 @@ const collectiblesTranslations = {
                         description: "A calming starry night."
                     },
 
-                    twilight: {
+                    twilightwallpaper: {
                         name: "Twilight (Wallpaper)",
                         description: "Enjoy the twilight calm."
                     },
@@ -654,7 +654,7 @@ const collectiblesTranslations = {
                         description: "令人平静的星空夜景。"
                     },
 
-                    twilight: {
+                    twilightwallpaper: {
                         name: "暮光壁纸",
                         description: "享受黄昏时分的宁静。"
                     },
