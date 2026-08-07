@@ -112,7 +112,9 @@ const translationResources = {
 
             common: {
                 cancel: "Cancel",
-                loading: "Loading..."
+                loading: "Loading...",
+
+                language: "Select Language: "
             },
 
             footer: {
@@ -239,7 +241,9 @@ const translationResources = {
 
             common: {
                 cancel: "取消",
-                loading: "加载中……"
+                loading: "加载中……",
+
+                language: "选择语言："
             },
 
             footer: {

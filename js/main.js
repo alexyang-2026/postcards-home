@@ -1,5 +1,6 @@
 const mainPageTitle = document.getElementById("title");
 const mainPageSubtitle = document.getElementById("subtitle");
+const languageControls = document.getElementById("languageControls");
 const languageSelect = document.getElementById("languageSelect");
 const stepLabels = document.querySelectorAll(".stepLabel");
 const stepArrows = document.querySelectorAll(".stepArrow");
@@ -926,7 +927,7 @@ async function loadCollectibleDropdowns() {
 }
 
 // Change Page Wallpaper
-const textItems = [mainPageTitle, mainPageSubtitle, loggedInUserInfo, footer, ...stepArrows, ...stepLabels];
+const textItems = [mainPageTitle, mainPageSubtitle, loggedInUserInfo, languageControls, footer, ...stepArrows, ...stepLabels];
 function applyWallpaper(wallpaperID) {
     if (!wallpaperID || wallpaperID === "default") {
         document.body.style.backgroundImage = "";

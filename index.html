@@ -16,11 +16,14 @@
         <h2 id="title" data-i18n="main.title">Postcards Home</h2>
         <h6 id="subtitle" data-i18n="main.subtitle">Made by Alex Yang</h6>
 
-        <select id="languageSelect" aria-label="Choose page language" data-i18n-aria-label="main.languageLabel">
-            <option value="" data-i18n="main.selectLanguage">Select Language:</option>
-            <option value="en">🇺🇸 English</option>
-            <option value="zh">🇨🇳 中文</option>
-        </select>
+        <div id="languageControls">
+            <label for="languageSelect" data-i18n="common.language">Language:</label>
+
+            <select id="languageSelect" aria-label="Choose language" data-i18n-aria-label="common.languageLabel">
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
 
         <div id="loggedInUserInfo">
             <h4 id="welcomeMessage" aria-live="polite"></h4>

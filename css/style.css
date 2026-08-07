@@ -35,8 +35,14 @@ body {
     font-size: small;
 }
 
+#languageControls {
+    margin-top: 5px;
+    font-family: American Typewriter;
+}
+
 #languageSelect {
     background-color: gold;
+    border-radius: 2px;
 }
 
 #instructionsBox {
@@ -104,7 +110,11 @@ body {
 #photoPreview{
     width: 100%;
     height: auto;
+    max-height: 180px;
+    object-fit: cover;
+    object-position: center;
     border: 2px solid black;
+    box-sizing: border-box;
 }
 
 #postcardText {
