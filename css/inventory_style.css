@@ -790,6 +790,31 @@ body {
     }
 
     .collectible-card {
-        flex-basis: calc(25% - 18px);
+        flex-basis: calc(50% - 16px);
+    }
+    
+    #lifeSegmentModal {
+        width: 88vw;
+        height: auto;
+        max-height: 80vh;
+
+        padding: 14px;
+        overflow-y: auto;
+    }
+
+    #editPostcardModal {
+        width: 88vw;
+        max-width: 88vw;
+        max-height: 82vh;
+
+        padding: 14px;
+        gap: 10px;
+    }
+
+    #editPostcard {
+        transform: scale(0.82);
+        transform-origin: top center;
+
+        margin-bottom: -60px;
     }
 }
