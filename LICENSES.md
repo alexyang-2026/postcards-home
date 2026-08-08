@@ -189,3 +189,15 @@ Performance by: Yikyung Diana Hughes (piano)<br>
 Publisher Info: Palo Alto: Musopen<br>
 Source: IMSLP: https://imslp.org/wiki/Nocturne_in_C_minor,_B.108_(Chopin,_Fr%C3%A9d%C3%A9ric)<br>
 Copyright: Creative Commons Attribution 4.0<br>
+
+
+# Images/Icons Licenses
+
+## Tabler Icons
+
+Used for certain interface icons, including the Postcards Home favicon.
+Copyright (c) 2020-2026 Paweł Kuna
+Licensed under the MIT License.
+
+Source: https://tabler.io/icons
+License: https://github.com/tabler/tabler-icons/blob/main/LICENSE
