@@ -158,7 +158,7 @@ const collectibles = {
     
     exclusiveMusic: {
 
-        // ALL OF CHOPIN'S NOCTURNES. This will become a collectible set the user can get
+        // ALL OF CHOPIN'S NOCTURNES. This will become a collectible set that will be obtainable
         chopin_nocturne_op9no1: {
             id: "chopin_nocturne_9_1",
             name: "Chopin: Nocturne Op. 9 No. 1 in B-flat Minor",

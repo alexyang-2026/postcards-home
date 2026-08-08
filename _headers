@@ -1,0 +1,15 @@
+/*
+  # This line was implemented to prevent MIME-type sniffing: the browser must respect the file type declared by the server instead of trying to guess whether a fi;le is JS, CSS, etc.
+  # Reduces the chance of a harmless file being interpreted as executable
+  X-Content-Type-Options: nosniff
+
+  # Prevent Postcards Home from being embedded inside an iframe on another website
+  # This is to protect against "clickjacking", where a malicious site could hide the interace underneath its own interface and trick users into clicking desguised buttons
+  X-Frame-Options: DENY
+
+  # Control how much of the current URL is revealed when the user visits another website
+  # For cross-origin requests, only send the site's origin, not the full URL
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Restrict access to sensitive browser features
+  Permissions-Policy: camera=(self), microphone=(), geolocation=(self)
