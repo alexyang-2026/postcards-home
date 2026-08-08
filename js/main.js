@@ -1078,12 +1078,14 @@ async function requireLogin() {
 
 // MAIN LOADING
 window.addEventListener("load", async function() {
+    showLoading("Loading Postcard Creator...");
+
+    /* CURRENTLY THERE IS A BUG: MUST FIX LATER
     const loggedIn = await requireLogin();
     if (!loggedIn) {
         return;
     }
-    
-    showLoading("Loading Postcard Creator...");
+    */
 
     try {
         const savedLanguage = await initializeTranslations();

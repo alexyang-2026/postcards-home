@@ -1,27 +1,47 @@
 const stampDatabase = {
     princeton: {
         name: "Princeton Stamp",
-        image: "assets/images/princeton-stamp.png",
+        image: "assets/images/stamps/princeton-stamp.png",
         rarity: "Legendary"
     },
     canada: {
         name: "Canada Stamp",
-        image: "assets/images/canada-stamp.png",
+        image: "assets/images/stamps/canada-stamp.png",
         rarity: "Common"
     },
     music: {
         name: "Music Stamp",
-        image: "assets/images/music-stamp.png",
+        image: "assets/images/stamps/music-stamp.png",
         rarity: "Rare"
     },
     travel: {
         name: "Travel Stamp",
-        image: "assets/images/travel-stamp.png",
+        image: "assets/images/stamps/travel-stamp.png",
         rarity: "Uncommon"
     },
     home: {
         name: "Home Stamp",
-        image: "assets/images/home-stamp.png",
+        image: "assets/images/stamps/home-stamp.png",
+        rarity: "Common",
+    },
+    washington_1883: {
+        name: "Washington 1883 Stamp",
+        image: "assets/images/stamps/washington_1883_stamp.png",
+        rarity: "Rare"
+    },
+    washington_gold: {
+        name: "Washington Gold Stamp (1932)",
+        image: "assets/images/stamps/washington_gold_stamp.png",
+        rarity: "Legendary"
+    },
+    mount_rushmore_green: {
+        name: "Mount Rushmore Green Stamp (1952)",
+        image: "assets/images/stamps/mount_rushmore_green_stamp.png",
+        rarity: "Rare"
+    },
+    piano_stamp: {
+        name: "Piano Stamp (1941)",
+        image: "assets/images/stamps/piano_stamp_1941.png",
         rarity: "Common",
     }
 };

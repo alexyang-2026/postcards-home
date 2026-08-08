@@ -108,6 +108,12 @@ const musicDatabase = {
         },
 
         {
+            piece: "Chopin — Sonata No. 2 in B-flat Minor (Movement II)",
+            composer: "Frédéric Chopin",
+            audio: "assets/audio/chopin_sonata_2_movement_2.m4a",
+        },
+
+        {
             piece: "Schumann — Sonata No. 2 in G Minor (Movement IV)",
             composer: "Robert Schumann",
             audio: "assets/audio/schumann_sonata_2_movement_4.mp3"

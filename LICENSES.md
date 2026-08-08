@@ -36,11 +36,18 @@ Recorded September 2024<br>
 Source: https://www.youtube.com/watch?v=EV7eov6JW_8<br>
 License: Creative Commons Attribution 4.0<br>
 
-### Frédéric Chopin: Sonata No. 2 in B-flat Minor, Op. 35
+### Frédéric Chopin: Sonata No. 2 in B-flat Minor, Op. 35 (Movement I)
 Performance by: Terence Yung (Piano)<br>
 Publisher Info: Terence Yung, 2025<br>
 Source: https://imslp.org/wiki/Piano_Sonata_No.2%2C_Op.35_(Chopin%2C_Fr%C3%A9d%C3%A9ric)<br>
 License: Creative Commons Attribution 4.0<br>
+
+### Frédéric Chopin: Sonata No. 2 in B-flat Minor, Op. 35 (Movement II)
+Performance by: Alex Yang<br>
+Source: https://youtu.be/pzHnctFeyZY<br>
+© 2024 Alex Yang. All rights reserved.<br>
+Recorded for Postcards Home exclusive use.<br>
+
 
 ### Frédéric Chopin: Andante Spianato et Grande Polonaise Brillante, Op. 22
 Performance by: Alex Yang<br>
