@@ -371,10 +371,13 @@ body {
 #editPostcardImage {
     width: 100%;
     height: auto;
+    max-height: 180px;
     object-fit: cover;
+    object-position: center;
     flex-shrink: 0;
 
     border: 2px solid black;
+    box-sizing: border-box;
 }
 
 #editStampPreview {
@@ -792,7 +795,7 @@ body {
     .collectible-card {
         flex-basis: calc(50% - 16px);
     }
-    
+
     #lifeSegmentModal {
         width: 88vw;
         height: auto;

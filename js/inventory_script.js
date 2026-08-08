@@ -717,7 +717,7 @@ editCaptionButton.addEventListener("click", function () {
     captionEditorInput.focus();
 });
 
-moodSelect.addEventListener("change", function() {
+function loadRandomMusicInEditor() {
     const selectedMood = moodSelect.value;
 
     if (selectedMood === "") {
@@ -756,7 +756,10 @@ moodSelect.addEventListener("change", function() {
     });
 
     resizePostcardText();
-})
+}
+
+moodSelect.addEventListener("change", loadRandomMusicInEditor);
+rerollButton.addEventListener("click", loadRandomMusicInEditor);
 
 deletePostcardButton.addEventListener("click", async function() {
     if (!selectedPostcard) {
