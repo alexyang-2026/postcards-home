@@ -29,6 +29,8 @@ const musicMessage = document.getElementById("musicMessage");
 musicPlayer.style.display = "none";
 musicMessage.style.display = "none";
 
+const musicPlayPauseButton = document.getElementById("musicPlayPauseButton");
+musicPlayPauseButton.style.display = "none";
 const musicRerollButton = document.getElementById("musicRerollButton");
 musicRerollButton.style.display = "none";
 
@@ -418,6 +420,7 @@ function loadRandomMusic() {
     if (selectedMood === "") {
         musicPlayer.src = "";
         musicPlayer.style.display = "none";
+        musicPlayPauseButton.style.display = "none";
         musicRerollButton.style.display = "none";
         return;
     }
@@ -450,6 +453,7 @@ function loadRandomMusic() {
         currentMusicRecommendation = null;
         musicPlayer.style.display = "none";
         musicMessage.style.display = "none";
+        musicPlayPauseButton.style.display = "none";
         musicRerollButton.style.display = "none";
 
         return;
@@ -462,6 +466,7 @@ function loadRandomMusic() {
     currentMusicRecommendation = recommendationsArray[randomIndex];
 
     musicPlayer.style.display = "block";
+    musicPlayPauseButton.style.display = "block";
     musicRerollButton.style.display = "block";
 
     // Now play the music file which is stored in "recommendation.audio"
@@ -477,6 +482,15 @@ function loadRandomMusic() {
 
 
 moodSelect.addEventListener("change", loadRandomMusic);
+musicPlayPauseButton.addEventListener("click", function() {
+    if (musicPlayer.paused) {
+        musicPlayer.play();
+        musicPlayPauseButton.textContent = "⏸️";
+    } else {
+        musicPlayer.pause();
+        musicPlayPauseButton.textContent = "▶️";
+    }
+});
 musicRerollButton.addEventListener("click", loadRandomMusic);
 
 locationButton.addEventListener("click", function(){
@@ -532,6 +546,7 @@ resetPostcardButton.addEventListener("click", function() {
     musicPlayer.removeAttribute("src"); // No audio
     musicPlayer.load();
     musicPlayer.style.display = "none";
+    musicPlayPauseButton.style.display = "none";
     musicRerollButton.style.display = "none";
 
     musicMessage.textContent = "";

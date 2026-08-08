@@ -20,8 +20,12 @@ const musicDatabase = {
             composer: "Frédéric Chopin",
             audio: "assets/audio/chopin_grande_polonaise.m4a"
         },
-        
 
+        {
+            piece: "Bach — Toccata in D Major, BWV 912",
+            composer: "Johann Sebastian Bach",
+            audio: "assets/audio/bach_toccata_d_major.mp3"
+        }
     ],
 
     excited: [
