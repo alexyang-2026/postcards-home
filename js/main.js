@@ -1067,8 +1067,22 @@ languageSelect.addEventListener("change", async function() {
     }
 })
 
+// Function that requires user login
+async function requireLogin() {
+    const {data: authData, error: authError} = await supabaseClient.auth.getUser();
+    if (!authData.user || authError) {
+        window.location.href = "login.html";
+        return false;
+    }
+}
+
 // MAIN LOADING
 window.addEventListener("load", async function() {
+    const loggedIn = await requireLogin();
+    if (!loggedIn) {
+        return;
+    }
+    
     showLoading("Loading Postcard Creator...");
 
     try {
