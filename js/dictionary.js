@@ -111,7 +111,9 @@ const translationResources = {
                                 Instead of 50 random photos which you forgot the context, why not take a few moments and write a meaningful caption for your photo?
                                 In essence, this is like a binder of postcards that document a specific moment in your life.`,
                     save: "Save",
-                    cancel: "Cancel"
+                    cancel: "Cancel",
+
+                    createSuccess: "Successfully Created Life Segment! \nFeel free to close this popup window, or create another!"
                 },
             },
 
@@ -245,7 +247,9 @@ const translationResources = {
                                 与其留下几十张以后忘记来历的照片，不如花一点时间，为每张照片写下一段有意义的文字。
                                 从本质上来说，人生篇章就像一本收录特定人生阶段或经历的明信片集，让你的回忆更完整、更有意义。`,
                     save: "保存",
-                    cancel: "取消"
+                    cancel: "取消",
+
+                    createSuccess: "人生篇章创建成功！\n您可以关闭此窗口，或继续创建另一个人生篇章！"
                 }
             },
 
@@ -374,7 +378,9 @@ const translationResources = {
                                 En lugar de tener 50 fotos al azar cuyo contexto acabarás olvidando, ¿por qué no dedicar unos momentos a escribir un texto significativo para tu foto?
                                 En esencia, es como un álbum de postales que documenta un momento específico de tu vida.`,
                     save: "Guardar",
-                    cancel: "Cancelar"
+                    cancel: "Cancelar",
+
+                    createSuccess: "¡Etapa de vida creada correctamente!\nPuedes cerrar esta ventana o crear otra."
                 },
             },
 

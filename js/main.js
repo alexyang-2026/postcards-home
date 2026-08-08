@@ -24,6 +24,7 @@ const statusMessage = document.getElementById("statusMessage");
 
 let currentMusicRecommendation = null; // variable to store the music piece's title so it can be saved
 const moodSelect = document.getElementById("moodSelect");
+const musicPlayerRow = document.querySelector(".musicPlayerRow");
 const musicPlayer = document.getElementById("musicPlayer");
 const musicMessage = document.getElementById("musicMessage");
 musicPlayer.style.display = "none";
@@ -192,7 +193,7 @@ saveLifeSegmentButton.addEventListener("click", async function() {
 
     lifeSegmentStatusMessage.style.display = "block";
     lifeSegmentStatusMessage.style.color = "green";
-    lifeSegmentStatusMessage.textContent = "Successfully Created Life Segment! \nFeel free to close this popup window, or create another!"
+    lifeSegmentStatusMessage.textContent = i18next.t("main.lifeSegments.createSuccess");
 
     // If this is the first life segment then unlock the fireworks postcard background
     const unlocked = await unlockCollectible(userID, "fireworks", ownedCollectibles);
@@ -420,6 +421,7 @@ function loadRandomMusic() {
     if (selectedMood === "") {
         musicPlayer.src = "";
         musicPlayer.style.display = "none";
+        musicPlayerRow.style.display = "none";
         musicPlayPauseButton.style.display = "none";
         musicRerollButton.style.display = "none";
         return;
@@ -453,6 +455,7 @@ function loadRandomMusic() {
         currentMusicRecommendation = null;
         musicPlayer.style.display = "none";
         musicMessage.style.display = "none";
+        musicPlayerRow.style.display = "none";
         musicPlayPauseButton.style.display = "none";
         musicRerollButton.style.display = "none";
 
@@ -466,6 +469,7 @@ function loadRandomMusic() {
     currentMusicRecommendation = recommendationsArray[randomIndex];
 
     musicPlayer.style.display = "block";
+    musicPlayerRow.style.display = "flex";
     musicPlayPauseButton.style.display = "block";
     musicRerollButton.style.display = "block";
 
@@ -546,6 +550,7 @@ resetPostcardButton.addEventListener("click", function() {
     musicPlayer.removeAttribute("src"); // No audio
     musicPlayer.load();
     musicPlayer.style.display = "none";
+    musicPlayerRow.style.display = "none";
     musicPlayPauseButton.style.display = "none";
     musicRerollButton.style.display = "none";
 
@@ -1078,6 +1083,7 @@ languageSelect.addEventListener("change", async function() {
     updateDate();
 
     if (loggedInUserID) {
+        loginButton.textContent = i18next.t("main.actions.logout");
         await loadLifeSegments(loggedInUserID);
     }
 })
