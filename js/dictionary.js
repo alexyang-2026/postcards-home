@@ -27,7 +27,12 @@ const translationResources = {
                     home: "🏡 Home Stamp",
                     travel: "✈️ Travel Stamp",
                     canada: "🇨🇦 Canada Stamp",
-                    princeton: "🐯 Princeton Stamp"
+                    princeton: "🐯 Princeton Stamp",
+                    washington_gold: "🇺🇸 George Washington Gold Stamp",
+                    piano: "🎹 1941 Piano Stamp",
+                    tchaikovsky: "🎵 Tchaikovsky Stamp",
+                    camera: "📷 1965 Camera Stamp",
+                    russian_space: "🚀 1967 Russian Space Stamp"
                 },
 
                 moods: {
@@ -156,7 +161,12 @@ const translationResources = {
                     home: "🏡 家园邮票",
                     travel: "✈️ 旅行邮票",
                     canada: "🇨🇦 加拿大邮票",
-                    princeton: "🐯 普林斯顿邮票"
+                    princeton: "🐯 普林斯顿邮票",
+                    washington_gold: "🇺🇸 乔治·华盛顿金邮票",
+                    piano: "🎹 1941年钢琴邮票",
+                    tchaikovsky: "🎵 柴可夫斯基邮票",
+                    camera: "📷 1965年照相机邮票",
+                    russian_space: "🚀 1967年俄罗斯太空邮票",
                 },
 
                 moods: {

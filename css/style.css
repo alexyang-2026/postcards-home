@@ -20,13 +20,6 @@ body {
     font-family: American Typewriter;
 }
 
-/*
-#mothersday {
-    font-family: American Typewriter;
-    margin-top:0px;
-    margin-bottom:0px;
-}
-*/
 
 #subtitle {
     margin-top: 0;
@@ -103,7 +96,7 @@ body {
     position:absolute;
     top:12px;
     right:12px;
-    width:80px;
+    width:56px;
 }
 
 
