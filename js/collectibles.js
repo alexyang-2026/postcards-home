@@ -154,6 +154,18 @@ const collectibles = {
             description: "Relax beside gentle ocean waves as you create your postcards.",
             how_to_get: "Add a postcard to a life segment during the summer months."
         },
+
+        cloudcitywallpaper: {
+            id: "cloudcitywallpaper",
+            name: "Cloud City (Wallpaper)",
+            type: "wallpaper",
+            image: "assets/collectibles/wallpapers/cloud-city-wallpaper.JPG",
+            rarity: "Rare",
+            text_color: "black",
+            description: "Enjoy a stunning sky/cloud view.",
+            how_to_get: "Obtain by adding a postcard the mood \"calm/reflective\" to a life segment."
+
+        }
     },
     
     exclusiveMusic: {

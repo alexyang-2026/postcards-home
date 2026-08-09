@@ -810,6 +810,12 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
             unlockedSomething = true;
         }
 
+        // Cloud City
+        if (!ownedCollectibles.includes("cloudcitywallpaper") && mood === "reflective") {
+            await unlockCollectible(userID, "cloudcitywallpaper", ownedCollectibles);
+            unlockedSomething = true;
+        }
+
         if (unlockedSomething) {
             await loadCollectibleDropdowns();
         }

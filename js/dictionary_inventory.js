@@ -679,6 +679,11 @@ const collectiblesTranslations = {
                     oceanwallpaper: {
                         name: "Ocean (Wallpaper)",
                         description: "Relax beside gentle ocean waves as you create your postcards."
+                    },
+
+                    cloudcitywallpaper: {
+                        name: "Cloud City (Wallpaper)",
+                        description: "Enjoy a stunning cloud view from high in the sky!"
                     }
 
                 },
@@ -871,6 +876,11 @@ const collectiblesTranslations = {
                     oceanwallpaper: {
                         name: "海洋壁纸",
                         description: "在轻柔海浪的陪伴下放松并制作你的明信片。"
+                    },
+                    
+                    cloudcitywallpaper: {
+                        name: "云端之城（壁纸）",
+                        description: "在高空中欣赏壮丽的云端美景！"
                     }
 
                 },
@@ -1019,7 +1029,9 @@ const collectiblesTranslations = {
                     ocean: {
                         name: "Océano",
                         description: "Un océano tranquilo."
-                    }
+                    },
+
+                    
                 },
 
                 wallpapers: {
@@ -1062,6 +1074,11 @@ const collectiblesTranslations = {
                     oceanwallpaper: {
                         name: "Océano (Fondo de pantalla)",
                         description: "Relájate junto a suaves olas del océano mientras creas tus postales."
+                    },
+
+                    cloudcitywallpaper: {
+                        name: "Ciudad de las Nubes (Fondo de pantalla)",
+                        description: "¡Disfruta de una impresionante vista de las nubes desde lo alto del cielo!"
                     }
 
                 },
