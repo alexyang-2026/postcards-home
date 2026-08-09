@@ -886,6 +886,24 @@ let ownedCollectibles = [];
 
 async function loadCollectibleDropdowns() {
 
+    wallpaperSelect.innerHTML = `
+        <option value="">
+            ${i18next.t("main.customization.selectWallpaper")}
+        </option>
+        <option value="default">
+            ${i18next.t("main.customization.defaultWallpaper")}
+        </option>
+    `;
+
+    postcardBackgroundSelect.innerHTML = `
+        <option value="">
+            ${i18next.t("main.customization.selectPostcardBackground")}
+        </option>
+        <option value="default">
+            ${i18next.t("main.customization.defaultPostcard")}
+        </option>
+    `;
+
     const { data: authData } = await supabaseClient.auth.getUser();
 
     if (!authData.user) {
@@ -920,8 +938,17 @@ async function loadCollectibleDropdowns() {
 
         const option = document.createElement("option");
 
+        const translatedCollectibleName = collectiblesTranslations[i18next.language]
+            ?.translation
+            ?.collectibles
+            ?.[collectible.category]
+            ?.[collectible.collectibleKey]
+            ?.name
+            || collectible.name
+            || collectible.id;
+
         option.value = collectible.id;
-        option.textContent = collectible.name;
+        option.textContent = translatedCollectibleName;
         if (collectible.category === "wallpapers") {
             wallpaperSelect.appendChild(option);
         } else if (collectible.category === "postcardBackgrounds") {
@@ -1091,10 +1118,11 @@ languageSelect.addEventListener("change", async function() {
     if (loggedInUserID) {
         loginButton.textContent = i18next.t("main.actions.logout");
         await loadLifeSegments(loggedInUserID);
+        await loadCollectibleDropdowns();
     }
 })
 
-// Function that requires user login
+// Function that requires user login — BUGGED RIGHT NOW
 async function requireLogin() {
     const {data: authData, error: authError} = await supabaseClient.auth.getUser();
     if (!authData.user || authError) {

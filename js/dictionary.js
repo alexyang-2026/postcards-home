@@ -92,7 +92,8 @@ const translationResources = {
                     saveToLifeSegmentSuccess: "🎉 Postcard saved to life segment ",
                     loginRequired: "Please log in before saving postcards.",
                     locationRequired: "Please enable location services.",
-                    automaticPlaybackBlocked: "Automatic music playback was blocked."
+                    automaticPlaybackBlocked: "Automatic music playback was blocked.",
+                    collectibleUnlocked: "🎉 You unlocked {{name}}!"
                 },
 
                 lifeSegments: {
@@ -228,7 +229,8 @@ const translationResources = {
                     saveToLifeSegmentSuccess: "🎉 明信片已保存到 ",
                     loginRequired: "请先登录后再保存明信片。",
                     locationRequired: "请启用定位服务。",
-                    automaticPlaybackBlocked: "浏览器阻止了自动播放音乐。"
+                    automaticPlaybackBlocked: "浏览器阻止了自动播放音乐。",
+                    collectibleUnlocked: "🎉 你解锁了{{name}}！"
                 },
 
                 lifeSegments: {
@@ -359,7 +361,8 @@ const translationResources = {
                     saveToLifeSegmentSuccess: "🎉 Postal guardada en la etapa de vida ",
                     loginRequired: "Inicia sesión antes de guardar postales.",
                     locationRequired: "Activa los servicios de ubicación.",
-                    automaticPlaybackBlocked: "El navegador bloqueó la reproducción automática de música."
+                    automaticPlaybackBlocked: "El navegador bloqueó la reproducción automática de música.",
+                    collectibleUnlocked: "🎉 ¡Has desbloqueado {{name}}!"
                 },
 
                 lifeSegments: {

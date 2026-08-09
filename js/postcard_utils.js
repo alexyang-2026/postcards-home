@@ -261,7 +261,16 @@ async function unlockCollectible(userID, collectibleID, ownedCollectibles) {
 
     const collectible = findCollectibleByID(collectibleID);
 
-    alert(`🎉 You unlocked ${collectible?.name || collectibleID}!`);
+    const translatedCollectibleName = collectiblesTranslations[currentLanguage]
+            ?.translation
+            ?.collectibles
+            ?.[collectible.category]
+            ?.[collectible.collectibleKey]
+            ?.name
+        || collectible.name
+        || collectibleID;
+
+    alert(i18next.t("main.messages.collectibleUnlocked", {name: translatedCollectibleName}));
     launchFireworksCelebration();
 
     return true;
