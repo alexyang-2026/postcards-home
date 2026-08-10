@@ -56,6 +56,17 @@ const collectibles = {
             how_to_get: "Unlocked after adding a postcard to a life segment before 7:00 AM."
         },
 
+        sunsethills: {
+            id: "sunsethills",
+            name: "Sunset Hills",
+            type: "postcard_background",
+            image: "assets/collectibles/backgrounds/sunset-hills.jpg",
+            rarity: "Epic",
+            description: "A peaceful sunset to relax and enjoy.",
+            text_color: "green",
+            how_to_get: "Add a postcard to a life segment between 6:00 PM and 7:00 PM."
+        },
+
         ocean: {
             id: "ocean",
             name: "Ocean",
@@ -81,11 +92,11 @@ const collectibles = {
             how_to_get: "Default: everyone already should have it"
         },
 
-        sunset: {
-            id: "sunset",
+        sunsetwallpaper: {
+            id: "sunsetwallpaper",
             name: "Sunset Wallpaper",
             type: "wallpaper",
-            image: "assets/collectibles/wallpapers/sunset.png",
+            image: "assets/collectibles/wallpapers/sunset-wallpaper.png",
             rarity: "Epic",
             description: "A peaceful sunset to relax and enjoy.",
             how_to_get: "Add a postcard to a life segment between 6:00 PM and 7:00 PM."

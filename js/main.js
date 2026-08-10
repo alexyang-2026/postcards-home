@@ -780,7 +780,8 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
             time.totalMinutes >= 18 * 60 &&
             time.totalMinutes < 19 * 60
         ) {
-            await unlockCollectible(userID, "sunset", ownedCollectibles);
+            await unlockCollectible(userID, "sunsetwallpaper", ownedCollectibles);
+            await unlockCollectible(userID, "sunsethills", ownedCollectibles);
             unlockedSomething = true;
         }
 

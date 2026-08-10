@@ -633,6 +633,11 @@ const collectiblesTranslations = {
                         description: "A peaceful dawn of day."
                     },
 
+                    sunsethills: {
+                        name: "Sunset Hills",
+                        description: "A peaceful sunset to relax and enjoy."
+                    },
+
                     ocean: {
                         name: "Ocean",
                         description: "A peaceful ocean."
@@ -646,7 +651,7 @@ const collectiblesTranslations = {
                         description: "The classic beige color background."
                     },
 
-                    sunset: {
+                    sunsetwallpaper: {
                         name: "Sunset Wallpaper",
                         description: "A peaceful sunset to relax and enjoy."
                     },
@@ -830,6 +835,11 @@ const collectiblesTranslations = {
                         description: "宁静而美好的晨曦。"
                     },
 
+                    sunsethills: {
+                        name: "夕阳山丘",
+                        description: "在宁静的夕阳中放松身心，享受美好时光。"
+                    },
+
                     ocean: {
                         name: "海洋",
                         description: "平静辽阔的大海。"
@@ -843,7 +853,7 @@ const collectiblesTranslations = {
                         description: "经典的米色背景。"
                     },
 
-                    sunset: {
+                    sunsetwallpaper: {
                         name: "日落壁纸",
                         description: "欣赏宁静的日落，放松身心。"
                     },
@@ -1026,6 +1036,11 @@ const collectiblesTranslations = {
                         description: "Un amanecer tranquilo."
                     },
 
+                    sunsethills: {
+                        name: "Colinas del Atardecer",
+                        description: "Un atardecer tranquilo para relajarte y disfrutar."
+                    },
+
                     ocean: {
                         name: "Océano",
                         description: "Un océano tranquilo."
@@ -1041,7 +1056,7 @@ const collectiblesTranslations = {
                         description: "El clásico fondo de color beige."
                     },
 
-                    sunset: {
+                    sunsetwallpaper: {
                         name: "Fondo de atardecer",
                         description: "Un tranquilo atardecer para relajarte y disfrutar."
                     },
