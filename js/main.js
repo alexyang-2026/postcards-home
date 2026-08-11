@@ -1150,6 +1150,11 @@ window.addEventListener("load", async function() {
         updateTranslatedDynamicText();
         updateDate();
 
+        // If the browser does not support serviceWorker then I don't want it to throw an error
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js")
+        }
+
         await checkLoggedInUser();
     } catch (error) {
         console.error("Could not initialize page: ", error);
