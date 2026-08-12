@@ -125,6 +125,42 @@ async function loadLifeSegments (userID) {
 }
 
 
+// Function to Load The User's Owned Stamps
+async function loadOwnedStamps(userID) {
+    const { data: profileData, error: profileError } = await supabaseClient
+        .from("profiles")
+        .select("owned_stamps")
+        .eq("user_id", userID)
+        .single();
+
+    if (profileError) {
+        console.error(profileError);
+        return;
+    }
+
+    // Re-create the inner HTML, because we don't want duplicate stamps: I have already made the music/home/travel/Canada stamps free for users who were logged out
+    stampSelect.innerHTML = ` <option value="">${i18next.t("main.stamps.select")}</option>`;
+
+    const ownedStamps = profileData.owned_stamps || [];
+
+    for (const stampID of ownedStamps) {
+        const stamp = stampDatabase[stampID];
+
+        if (!stamp) {
+            console.warn("Stamp not found:", stampID);
+            continue;
+        }
+
+        const option = document.createElement("option");
+
+        option.value = stamp.image;
+        option.textContent = stamp.name;
+
+        stampSelect.appendChild(option);
+    }
+}
+
+
 // Modal / Pop-up Window //
 const lifeSegmentTitleInput = document.getElementById("lifeSegmentTitleInput");
 const lifeSegmentDescriptionInput = document.getElementById("lifeSegmentDescriptionInput");
@@ -350,7 +386,7 @@ downloadButton.addEventListener("click", function() {
 
 stampSelect.addEventListener("change", function() {
 
-    console.log("selected stamp:", stampSelect.value);
+    //console.log("selected stamp:", stampSelect.value);
 
     if (stampSelect.value === ""){
         stampPreview.style.display = "none";
@@ -608,6 +644,7 @@ async function checkLoggedInUser() {
     welcomeMessage.textContent = "Welcome, " + profileData.full_name + "!";
 
     await loadLifeSegments(userID);
+    await loadOwnedStamps(userID);
     await loadCollectibleDropdowns();
 }
 
@@ -1074,7 +1111,7 @@ wallpaperSelect.addEventListener("change", async function () {
         return;
     }
 
-    console.log("Wallpaper Saved: ", updatedProfile);
+    //console.log("Wallpaper Saved: ", updatedProfile);
 
 
     if (wallpaperID === "winterwallpaper") {
