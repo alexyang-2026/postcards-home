@@ -350,7 +350,7 @@ downloadButton.addEventListener("click", function() {
 
 stampSelect.addEventListener("change", function() {
 
-    console.log("selected stamp:", stampSelect.value);
+    //console.log("selected stamp:", stampSelect.value);
 
     if (stampSelect.value === ""){
         stampPreview.style.display = "none";
@@ -1074,7 +1074,7 @@ wallpaperSelect.addEventListener("change", async function () {
         return;
     }
 
-    console.log("Wallpaper Saved: ", updatedProfile);
+    //console.log("Wallpaper Saved: ", updatedProfile);
 
 
     if (wallpaperID === "winterwallpaper") {
