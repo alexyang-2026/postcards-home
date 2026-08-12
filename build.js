@@ -22,6 +22,7 @@ const excluded = new Set([
     "build.js",                     // This backend script should not be copied into www as well
     "README.md",  
     "TODO.md",                      // Also not needed for the app
+    "404.html",                     // This is only for web pages
 ]);
 
 function copyDirectory(source, destination){
