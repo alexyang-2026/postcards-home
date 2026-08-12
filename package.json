@@ -1,0 +1,26 @@
+{
+  "name": "postcards-home",
+  "version": "1.0.0",
+  "description": "Postcards Home is a web application for creating digital postcards that combine photos, captions, music, and locations into memorable snapshots of life.",
+  "main": "service-worker.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexyang-2026/postcards-home.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alexyang-2026/postcards-home/issues"
+  },
+  "homepage": "https://github.com/alexyang-2026/postcards-home#readme",
+  "dependencies": {
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0"
+  }
+}

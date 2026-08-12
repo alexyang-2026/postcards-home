@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/png" href="assets/images/favicon.svg">
+        <title data-i18n="createAccount.documentTitle">Postcards Home: Create Account</title>
+        <link rel="stylesheet" href="css/create_account_style.css">
+    </head>
+    
+    <body>
+        <h2 id="title" data-i18n="createAccount.title">Postcards Home: Create an Account</h2>
+        <h6 id="subtitle" data-i18n="createAccount.subtitle">Created by Alex Yang</h6>
+
+        <div id="languageControls">
+            <label for="languageSelect" data-i18n="common.language">Language:</label>
+
+            <select id="languageSelect" aria-label="Choose language" data-i18n-aria-label="common.languageLabel">
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="es">🇪🇸 Español</option>
+            </select>
+        </div>
+
+        <div id="createAccountBox">
+
+            <!-- The input forms and password checker are the "top row" while the create account button is the bototm row -->
+            <div id="topRow">
+
+                <div id="inputForms">
+
+                    <input id="emailInput" type="email" placeholder="Your Email Here" data-i18n-placeholder="createAccount.emailPlaceholder">
+                    <input id="passwordInput" type="password" placeholder="Your Password Here" data-i18n-placeholder="createAccount.passwordPlaceholder">
+                    <input id="confirmPasswordInput" type="password" placeholder="Confirm Password" data-i18n-placeholder="createAccount.confirmPasswordPlaceholder">
+
+                    <label>
+                        <input id="showPassword" type="checkbox">
+                        <span data-i18n="createAccount.showPassword">Show Password</span>
+                    </label>
+
+                    <input id="firstNameInput" placeholder="Your First Name" data-i18n-placeholder="createAccount.firstNamePlaceholder"></input>
+                    <input id="lastNameInput" placeholder="Your Last Name" data-i18n-placeholder="createAccount.lastNamePlaceholder"></input>
+                    <input id="usernameInput" placeholder="Pick a Username" data-i18n-placeholder="createAccount.usernamePlaceholder">
+
+                    <label for="birthdateInput" data-i18n="createAccount.birthdayLabel">Your Birthday:</label>
+                    <input id="birthdateInput" type="date" placeholder="Your Birthday:">
+
+                </div>
+                
+                <div id="passwordChecker">
+                    <p id="requirementsTitle"><u data-i18n="createAccount.passwordRequirements.title">Password Requirements:</u></p>
+                    <p id="characterCheck" data-i18n="createAccount.passwordRequirements.characterFailed">❌ At least 8 characters</p>
+                    <p id="uppercaseCheck" data-i18n="createAccount.passwordRequirements.uppercaseFailed">❌ At least 1 uppercase letter</p>
+                    <p id="lowercaseCheck" data-i18n="createAccount.passwordRequirements.lowercaseFailed">❌ At least 1 lowercase letter</p>
+                    <p id="numberCheck" data-i18n="createAccount.passwordRequirements.numberFailed">❌ At least 1 number</p>
+                    <p id="specialCharacterCheck" data-i18n="createAccount.passwordRequirements.specialFailed">❌ At least 1 special character (e.g. !, @, #, etc.)</p>
+
+                    <p id="usernameRequirementsTitle"><u data-i18n="createAccount.usernameCheck.title">Username Check:</u></p>
+                    <p id="uniqueCheck" data-i18n="createAccount.usernameCheck.unavailable">❌ Username Not Available — Try Another!</p>
+
+                </div>
+            
+            </div>
+
+            <button id="createAccountButton" data-i18n="createAccount.createButton">Create Account</button>
+            
+            <p id="statusMessage"></p>  
+            <p id="redirectMessage"></p>          
+
+        </div>
+
+        <a id="accountExistsLink" href="login.html" data-i18n="createAccount.accountExists">Already have an account? Click here to log in</a>
+        
+        <script src="libs/supabase.min.js"></script>
+        <script src="libs/i18next.min.js"></script>
+
+        <script src="js/supabase.js"></script>
+        <script src="js/dictionary.js"></script>
+        <script src="js/create_account_js.js"></script>
+        
+    </body>
+</html>

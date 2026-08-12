@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/png" href="assets/images/favicon.svg">
+        <title data-i18n="login.documentTitle">Postcards Home - Login</title>
+        <link rel="stylesheet" href="css/login_style.css">
+    </head>
+
+    <body>
+        <h2 id="title" data-i18n="login.title">Postcards Home: Login</h2>
+        <h6 id="subtitle" data-i18n="login.subtitle">Made by Alex Yang</h6>
+
+        <div id="languageControls">
+            <label for="languageSelect" data-i18n="common.language">Language:</label>
+
+            <select id="languageSelect" aria-label="Choose language" data-i18n-aria-label="common.languageLabel">
+                <option value="en">🇺🇸 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="es">🇪🇸 Español</option>
+            </select>
+        </div>
+
+        <div id="loginForms">
+            <input 
+                id="emailInput"
+                type="email"
+                placeholder="Enter Your Email:"
+                data-i18n-placeholder="login.emailPlaceholder">
+
+            <input
+                id="passwordInput"
+                type="password"
+                placeholder="Enter Your Password:"
+                data-i18n-placeholder="login.passwordPlaceholder">
+
+            <label>
+                <input type="checkbox" id="showPassword">
+                <span data-i18n="login.showPassword">Show Password</span>
+            </label>
+            
+            <!-- <p id="resendEmailText">Note: if you're a new user, you must confirm your email first.</p> -->
+            <p id="statusMessage"></p>
+            <p id="redirectMessage"></p>
+            <!-- <button id="resendConfirmationButton">Press Here to Resend Email Confirmation</button> -->
+            <button id="loginButton" data-i18n="login.loginButton">Log In</button>
+        </div>
+
+        <a id="createAccount" href="create_account.html" data-i18n="login.createAccount">No account? Press here to create one, it's free!</a>
+
+        <p id="agreeToPolicySection" data-i18n-html="login.policyAgreement">
+            By continuing to use Postcards Home, I agree to the <a href="legal/privacy.html">Privacy Policy</a> and the <a href="legal/terms.html">Terms of Service.</a>
+        </p>
+
+        <footer id="footer">
+            <a href="legal/privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+            <span>•</span>
+            <a href="legal/terms.html" data-i18n="footer.terms">Terms of Service</a>
+            <span>•</span>
+            <a href="legal/cookie-policy.html" data-i18n="footer.cookies">Cookie Policy</a>
+            <span>•</span>
+            <a href="legal/music-credits.html" data-i18n="footer.musicCredits">Music Credits</a>
+            <span>•</span>
+            <a href="legal/third-party-notices.html" data-i18n="footer.thirdParty">Third-Party Notices</a>
+            <span>•</span>
+            <a href="legal/about.html" data-i18n="footer.about">About</a>
+        </footer>
+        
+        <script src="libs/supabase.min.js"></script>
+        <script src="libs/i18next.min.js"></script>
+
+        <script src="js/supabase.js"></script>
+        <script src="js/dictionary.js"></script>
+        <script src="js/login_js.js"></script>
+    </body>
+</html>

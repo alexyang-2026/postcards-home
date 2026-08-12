@@ -1,0 +1,823 @@
+:root {
+    --header-height: 80px;
+}
+
+body {
+    display:flex;
+    flex-direction:column;
+    background: #f7efe5;
+    font-family: American Typewriter;
+}
+
+#languageControls {
+    margin-bottom: 8px;
+}
+
+.inventory-layout {
+    display: flex;
+    height: calc(100vh - var(--header-height));
+    
+}
+
+.inventory-sidebar {
+    width: 20%;
+    min-width: 180px;
+    max-width: 300px;
+    
+    padding: 32px;
+    border-right: 2px solid black;
+}
+
+.inventory-sidebar.closed {
+    display: none;
+}
+
+.inventory-nav-button {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    background-color: gold;
+    font-family: American Typewriter;
+}
+
+#profileSettingsButton {
+    background-color: orange;
+}
+
+.inventory-nav-button:active {
+    transform:scale(0.95);
+}
+
+.inventory-main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+
+}
+
+#inventoryMenuButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:fit-content;
+    height:25px;
+    font-family: American Typewriter;
+    font-size: large;
+
+    border: 2px solid black;
+    background-color: lightblue;
+
+}
+
+.general-heading{
+    padding-top: 15px;
+}
+
+.life-segment-grid {
+    display: flex;
+    flex-wrap: wrap; /* If there is not room on this row, move the remaining items to the next one */
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.life-segment {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    flex: 0 0 calc(25% - 18px); /* should take around 1/4 of the window but leave 18px for the gaps */
+    align-items: center;
+}
+
+.life-segment-cover, .stamp-cover {
+    width: 100%; /* make the image as wide as its parent card */
+}
+
+.life-segment-title, .life-segment-postcards, .life-segment-date {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.stamps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.stamp-icon {
+    display: flex;
+    flex-direction:column;
+    border: 2px solid black;
+    flex-basis: calc(25% - 18px);
+    align-items: center;
+}
+
+.stamp-title {
+    text-align: center;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.stamp-rarity {
+    text-align: center;
+}
+
+/* Style Collectibles */
+.collectibles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.collectible-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex-basis: calc(25% - 18px);
+    box-sizing: border-box;
+
+    border: 2px solid black;
+    background: white;
+
+    overflow: hidden;
+}
+
+.collectible-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+
+    border-bottom: 2px solid black;
+}
+
+.collectible-title {
+    text-align: center;
+    margin: 12px 10px 4px;
+}
+
+.collectible-description {
+    text-align: center;
+    margin: 4px 12px;
+    font-size: 14px;
+}
+
+.collectible-category {
+    margin: 8px 12px 14px;
+    padding: 4px 8px;
+
+    border: 1px solid black;
+
+    font-size: 10px;
+    text-align: center;
+}
+
+.life-segment:hover, 
+.stamp-icon:hover,
+.collectible-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 4px grey;
+}
+
+.life-segment:active, 
+.stamp-icon:active, 
+.collectible-card:active {
+    transform: translateY(0);
+    box-shadow: 2px 2px 4px grey;
+}
+
+
+/* Modal Stuff */
+#modalOverlay {
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lifeSegmentModal {
+    position: relative;
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-family: American Typewriter;
+
+    width: 90vw;
+    height: 90vh;
+
+    max-width: 1400px;
+    max-height: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#chooseLifeSegmentImage {
+    background-color: greenyellow;
+}
+
+#deleteLifeSegmentButton {
+    background-color: red;
+}
+
+.inventory-postcard {
+    width: 180px;
+    height: 200px;
+    border: 2px solid black;
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    padding: 10px;
+    box-sizing: border-box; /* The whole card including padding */
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.postcard-photo-container {
+    position: relative;
+    flex: 3;
+    min-height: 0;
+    border: 2px solid black;
+}
+
+.postcard-body {
+    flex: 2;
+    padding: 6px;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    font-family: "Chalkduster", "Fantasy", fantasy;
+}
+
+.postcard-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.postcard-stamp {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 40px;
+}
+
+.postcard-caption,
+.postcard-music,
+.postcard-date,
+.postcard-location {
+    font-size: 8px;
+    margin: 1px 1px;
+    
+}
+
+#closeLifeSegmentModalButton {
+    background: red;
+    border: 2px solid black;
+    border-top-right-radius: 12px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#closeLifeSegmentModalButton.active {
+    transform: scale(0.95);
+}
+
+
+/* Postcard Editor Modal */
+#editPostcardOverlay {
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+#editPostcardModal {
+    position: relative;
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+
+    width: 600px;
+    max-width: 90vw;
+    max-height: 90vh;
+    
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    font-family: American Typewriter;
+
+    overflow-y: auto;
+}
+
+#postcardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 24px;
+    width: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#editPostcard {
+    --text-area-height: 140px;
+
+    position: relative;
+
+    background: white;
+    border: 2px solid black;
+
+    padding: 20px;
+    width: 320px;
+    height: 360px;
+    
+    display: flex;
+    flex-direction: column;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#editPostcardImage {
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
+
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+#editStampPreview {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 80px;
+}
+
+#editCaptionPreview, 
+#editMusicPreview,
+#editDatePreview,
+#editLocationPreview {
+    font-family: Chalkduster, fantasy;
+    font-size: inherit;
+    white-space: pre;
+    text-wrap: wrap;
+    overflow-wrap: anywhere;
+
+    margin: 8px;
+}
+
+#closeEditPostcardButton {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    background: red;
+    border: 2px solid black;
+    border-top-right-radius: 12px;
+}
+
+#editPostcardImage {
+    width: 320px;
+    border: 2px solid black;
+}
+
+#editPostcardText {
+    width: 100%;
+    height: 200px;
+
+    margin-top: 8px; /* moves the text area below the image */
+    overflow: hidden;
+
+    font-size: 11px;
+    line-height: 1.15;
+}
+
+#editCaptionInput {
+    width: 320px;
+    height: 90px;
+}
+
+#editPostcardModalControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#editPostcardModalSaveButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#editPostcardModalControlsButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Individual Styling for Modal Buttons */
+#deletePostcardButton {
+    background-color: red;
+}
+
+#editCaptionButton {
+    background-color: peachpuff;
+}
+
+#editPostcardLocation {
+    background: cyan;
+}
+#downloadPostcardButton, #sharePostcardButton {
+    background-color: yellow;
+}
+
+#savePostcardEditsButton {
+    background-color: limegreen;
+}
+
+#moodSelect {
+    background-color: orange;
+}
+
+
+/* Caption Editor */
+#captionEditorOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(3px);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1002;
+}
+
+#captionEditorModal {
+    position: relative;
+
+    width: 400px;
+    max-width: 85vw;
+    max-height: 80vh;
+
+    padding: 20px;
+
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#captionEditorInput {
+    font-family: American Typewriter;
+}
+
+#applyCaptionButton {
+    background: yellowgreen;
+}
+
+#closeCaptionEditorButton {
+    background: red;
+    border: 2px solid black;
+    border-top-right-radius: 12px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Music Controls */
+#editPostcardMusicControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border: 2px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    width: fit-content;
+}
+
+#editMusicPlayer {
+    display: block;
+    width: 180px;
+    margin: 0;
+}
+
+#rerollButton {
+    border: none;
+    border-left: 2px solid black;
+
+    background: #f7efe5;
+
+    width: 42px;
+    height: 54px;
+
+    cursor: pointer;
+    font-size: 18px;
+
+    transition: background-color 0.2s;
+}
+
+#rerollButton:hover {
+    background: gold;
+}
+
+
+/* Loading Overlay */
+#loadingOverlay {
+    z-index: 9999;
+}
+
+/* Keep Profile Settings and Return buttons at bottom of sidebar */
+.inventory-sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+#profileSettingsButton {
+    margin-top: auto;
+}
+
+/* Profile Settings Overlay */
+#profileSettingsOverlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(5px);
+
+    z-index: 1200;
+}
+
+/* Profile Settings Modal */
+#profileSettingsModal {
+    position: relative;
+
+    width: min(460px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 26px;
+
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 12px;
+
+    box-sizing: border-box;
+    font-family: "American Typewriter", serif;
+}
+
+#profileSettingsModal h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+#closeProfileSettingsButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    background: red;
+    color: white;
+
+    border: none;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    border-top-right-radius: 9px;
+
+    cursor: pointer;
+}
+
+/* Profile and Preferences Sections */
+.profile-settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-top: 22px;
+}
+
+.profile-settings-section h3 {
+    margin: 0 0 6px;
+}
+
+.profile-settings-section label {
+    margin-top: 9px;
+    font-weight: bold;
+}
+
+.profile-settings-section input,
+.profile-settings-section select {
+    width: 100%;
+    min-height: 38px;
+
+    padding: 7px 9px;
+    box-sizing: border-box;
+
+    border: 1.5px solid black;
+    border-radius: 4px;
+
+    background: white;
+    font: inherit;
+}
+
+/* Save Message */
+#profileSettingsMessage {
+    display: none;
+
+    margin: 18px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+}
+
+/* Save Button */
+#profileSettingsActions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 20px;
+}
+
+#saveProfileSettingsButton {
+    padding: 9px 16px;
+
+    background: greenyellow;
+    border: 1.5px solid black;
+    border-radius: 4px;
+
+    font: inherit;
+    cursor: pointer;
+}
+
+#saveProfileSettingsButton:active {
+    transform: scale(0.96);
+}
+
+/* Account Section */
+#accountSection {
+    margin-top: 28px;
+    padding-top: 20px;
+
+    border-top: 1.5px solid black;
+}
+
+#accountSection h3 {
+    margin-top: 0;
+}
+
+#accountSection p {
+    font-family: American Typewriter;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+#logoutButton,
+#deleteAccountButton {
+    padding: 9px 14px;
+    margin-right: 8px;
+
+    border: 1.5px solid black;
+    border-radius: 4px;
+
+    font: inherit;
+    cursor: pointer;
+}
+
+#logoutButton {
+    background: gold;
+}
+
+#deleteAccountButton {
+    background: red;
+    color: white;
+}
+
+#logoutButton:active,
+#deleteAccountButton:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 520px) {
+    #profileSettingsModal {
+        padding: 22px 18px;
+    }
+
+    #logoutButton,
+    #deleteAccountButton {
+        display: block;
+        width: 100%;
+
+        margin-right: 0;
+        margin-top: 8px;
+    }
+}
+
+
+/* Restyling for smaller devices */
+@media (max-width: 1200px) {
+    .collectible-card {
+        flex-basis: calc(50% - 12px);
+    }
+    
+}
+
+@media (max-width: 700px) {
+    .inventory-layout {
+        flex-direction: column;
+    }
+
+    .inventory-sidebar {
+        width: auto;
+        border-right: none;
+        border-bottom: 2px solid black;
+    }
+
+    .collectible-card {
+        flex-basis: calc(50% - 16px);
+    }
+
+    #lifeSegmentModal {
+        width: 88vw;
+        height: auto;
+        max-height: 80vh;
+
+        padding: 14px;
+        overflow-y: auto;
+    }
+
+    #editPostcardModal {
+        width: 88vw;
+        max-width: 88vw;
+        max-height: 82vh;
+
+        padding: 14px;
+        gap: 10px;
+    }
+
+    #editPostcard {
+        transform: scale(0.82);
+        transform-origin: top center;
+
+        margin-bottom: -60px;
+    }
+}

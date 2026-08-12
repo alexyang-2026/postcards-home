@@ -1,0 +1,87 @@
+body {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background: #f7efe5;
+    font-family: Arial, sans-serif;
+}
+
+#title {
+    font-family: American Typewriter;
+    margin-bottom:5px;
+}
+
+#subtitle {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: American Typewriter;
+    font-size: small;
+}
+
+#languageControls {
+    font-family: American Typewriter;
+    margin-bottom: 20px;
+}
+
+#createAccountBox{
+    display:flex;
+    flex-direction:column;
+    border: 2px solid black;
+    padding: 20px;
+    gap: 10px;
+    font-family: American Typewriter;
+
+}
+
+#topRow {
+    display: flex;
+    flex-direction:row;
+}
+
+#inputForms {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+#emailInput,
+#passwordInput,
+#confirmPasswordInput,
+#usernameInput,
+#firstNameInput,
+#lastNameInput,
+#birthdateInput {
+    width: 200px;
+    height: 40px;
+    padding: 8px;
+}
+
+#passwordChecker {
+    margin-left: 20px;
+    font-size:small;
+}
+
+#usernameRequirementsTitle {
+    margin-top: 70px;
+}
+
+#createAccountButton {
+    width: 200px;
+    height: 25px;
+    align-self: center;
+
+}
+
+#accountExistsLink {
+    display: block;
+    margin-top: 20px;
+}
+
+#redirectMessage {
+    color: green;
+}
+
+#accountExistsLink {
+    font-family: American Typewriter;
+}

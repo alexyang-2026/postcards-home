@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.svg">
+    <title data-i18n="inventory.documentTitle">User Inventory</title>
+    <link rel="stylesheet" href="css/inventory_style.css">
+    <link rel="stylesheet" href="css/utilities.css">
+</head>
+
+<body>
+    <button id="inventoryMenuButton" data-i18n="inventory.menu.toggle">☰ Show/Hide Menu</button>
+
+    <div class="inventory-layout">
+        <aside id="inventorySidebar" class="inventory-sidebar">
+            <h2 data-i18n="inventory.menu.title">My Inventory</h2>
+
+            <div id="languageControls">
+                <label for="languageSelect" data-i18n="common.language">Language:</label>
+
+                <select id="languageSelect" aria-label="Choose language" data-i18n-aria-label="common.languageLabel">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh">🇨🇳 中文</option>
+                    <option value="es">🇪🇸 Español</option>
+                </select>
+            </div>
+
+            <button id="fullInventoryButton" class="inventory-nav-button" data-i18n="inventory.menu.fullInventory">Full Inventory</button>
+            <button id="lifeSegmentsButton" class="inventory-nav-button" data-i18n="inventory.menu.lifeSegments">Life Segments</button>
+            <button id="stampsButton" class="inventory-nav-button" data-i18n="inventory.menu.stamps">Stamps</button>
+            <button id="collectiblesButton" class="inventory-nav-button" data-i18n="inventory.menu.collectibles">Collectibles</button>
+            <button id="profileSettingsButton" class="inventory-nav-button" data-i18n="inventory.menu.profileSettings">Profile Settings</button>
+
+            <button id="returnButton" data-i18n="inventory.menu.returnToMain">Return to Main Page</button>
+        </aside>
+
+        <main class="inventory-main">
+            <div class="inventory-main-header">
+                <h2 data-i18n="inventory.header.title">Full Inventory</h2>
+                <p data-i18n="inventory.header.subtitle">Your saved postcards and collections will appear here.</p>
+            </div>
+
+            <section id="lifeSegmentsSection">
+
+                <h3 class=general-heading data-i18n="inventory.sections.lifeSegments">My Life Segment Collection</h3>
+                
+                <div class="life-segment-grid">
+                    
+                    <!-- Template Life Segment
+                    <div class="life-segment">
+                        <img src="assets/images/life-segment-covers/sunrise_over_water.svg" class="life-segment-cover">
+                        <h3 class="life-segment-title">Test</h3>
+
+                        <p class="life-segment-postcards">
+                            24 postcards
+                        </p>
+
+                        <p class="life-segment-date">
+                            Last Updated on June 21, 2026
+                        </p>
+                    </div>
+                -->
+                </div>
+            </section>
+            
+            
+            <section id="stampsSection">
+                <h3 class="general-heading" data-i18n="inventory.sections.stamps">My Stamp Collection</h3>
+
+                <div class="stamps-grid">
+
+                    <!-- Template for Stamps
+                    <div class="stamp-icon">
+                        <img src="assets/images/princeton-stamp.png" class="stamp-cover">
+                        <h3 class="stamp-title">Test</h3>
+                    </div>
+                    -->
+
+                </div>
+            </section>
+
+            <section id="collectiblesSection">
+                <h3 class="general-heading" data-i18n="inventory.sections.collectibles">My Other Collectibles</h3>
+
+                <div class="collectibles-grid">
+
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <div id="modalOverlay">
+        <div id="lifeSegmentModal" class="modal">
+            <button id="closeLifeSegmentModalButton" aria-label="Close Life Segment" data-i18n-aria-label="inventory.lifeSegments.closeLabel">✕</button>
+
+            <h3 id="lifeSegmentModalHeading" class="general-heading" data-i18n="inventory.lifeSegments.modalTitle">View Postcards</h3>
+
+            <div id="lifeSegmentModalButtons">
+                <select id="chooseLifeSegmentImage">
+                    <option value="sunrise_over_water" data-i18n="inventory.lifeSegments.coverMenu">Change Life Segment Cover Image</option> <!-- If the user selects this option, then it will be the default image that is loaded -->
+                    <option value="sunrise_over_water" data-i18n="inventory.lifeSegments.sunriseWater">Sunrise Over Water (Default)</option>
+                    <option value="sunrise_over_mountains" data-i18n="inventory.lifeSegments.sunriseMountains">Sunrise Over Mountains</option>
+                    <option value="sunset_over_city" data-i18n="inventory.lifeSegments.sunsetCity">Sunset Over City</option>
+                    <option value="city_at_dusk" data-i18n="inventory.lifeSegments.cityDusk">City At Dusk</option>
+                    <option value="bridge_at_night" data-i18n="inventory.lifeSegments.bridgeNight">Bridge At Night</option>
+                    <option value="mountain_railway" data-i18n="inventory.lifeSegments.mountainRailway">Mountain Railway</option>
+                    <option value="world_map" data-i18n="inventory.lifeSegments.worldMap">World Map</option>
+                </select>
+
+                <button id="deleteLifeSegmentButton" data-i18n="inventory.lifeSegments.deleteButton">Delete Life Segment</button>
+            </div>
+
+            <p class="general-text" data-i18n="inventory.lifeSegments.instructions">Click on a Postcard to Zoom In or Edit. (Postcards may take some time to load.)</p>
+
+            <div id="postcardGrid">
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div id="editPostcardOverlay">
+        <div id="editPostcardModal">
+            <button id="closeEditPostcardButton" aria-label="Close Postcard Editor" data-i18n-aria-label="inventory.editor.closeLabel">✕</button>
+
+            <h3 data-i18n="inventory.editor.title">View / Edit Postcard</h3>
+
+            <div id="editPostcard">
+
+                <img id="editPostcardImage">
+                <img id="editStampPreview">
+                
+                <div id="editPostcardText">
+                    <p id="editCaptionPreview"></p>
+                    <p id="editMusicPreview"></p>
+                    <p id="editDatePreview"></p>
+                    <p id="editLocationPreview"></p>
+                </div>
+
+            </div>
+            
+            <div id="editPostcardModalControls">
+                <div id="editPostcardModalControlsButtons">
+                    <button id="editCaptionButton" data-i18n="inventory.editor.editCaption">Edit Caption</button>
+                    <button id="editPostcardLocation" data-i18n="inventory.editor.editLocation">📍 Edit Location</button>
+
+                    <select id="moodSelect">
+                        <option value="" data-i18n="inventory.editor.chooseMood">Choose Mood...</option>
+                        <option value="happy" data-i18n="inventory.editor.happy">😀 Happy</option>
+                        <option value="excited" data-i18n="inventory.editor.excited">😃 Excited!</option>
+                        <option value="romantic" data-i18n="inventory.editor.romantic">🥰 Romantic</option>
+                        <option value="reflective" data-i18n="inventory.editor.reflective">😇 Calm / Reflective</option>
+                        <option value="ambitious" data-i18n="inventory.editor.ambitious">😈 Ambitious</option>
+                        <option value="angry" data-i18n="inventory.editor.angry">😡 Angry</option>
+                        <option value="inspired" data-i18n="inventory.editor.inspired">🤩 Inspired</option>
+                    </select>
+
+                    <div id="editPostcardMusicControls">
+                        <audio id="editMusicPlayer" controls loop></audio>
+
+                        <button id="rerollButton" aria-label="Choose another random music piece" data-i18n-aria-label="inventory.editor.rerollMusicLabel">🔄</button>
+                    </div>
+
+                    <button id="deletePostcardButton" class="edit-button" data-i18n="inventory.editor.deletePostcard">Delete Postcard</button>
+                </div>
+
+                <div id="editPostcardModalSaveButtons">
+                    <button id="downloadPostcardButton" class="edit-button" data-i18n="inventory.editor.downloadPostcard">Download Postcard</button>
+                    <button id="sharePostcardButton" class="edit-button" data-i18n="inventory.editor.sharePostcard">Share Postcard</button>
+                    <button id="savePostcardEditsButton" class="edit-button" data-i18n="inventory.editor.saveChanges">Save Changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="captionEditorOverlay">
+        <div id="captionEditorModal">
+            <button id="closeCaptionEditorButton" aria-label="Close Caption Editor" data-i18n-aria-label="inventory.editor.closeCaptionLabel">✕</button>
+
+            <h3 data-i18n="inventory.editor.captionEditorTitle">Edit Caption</h3>
+
+            <textarea id="captionEditorInput" maxlength="500" placeholder="Write your caption..." data-i18n-placeholder="inventory.editor.captionPlaceholder"></textarea>
+
+            <button id="applyCaptionButton" data-i18n="inventory.editor.applyCaption">Apply Caption</button>
+        </div>
+    </div>
+
+    <!--
+    <footer id="footer">
+        <a href="legal/privacy.html">Privacy Policy</a>
+        <span>•</span>
+        <a href="legal/terms.html">Terms of Service</a>
+        <span>•</span>
+        <a href="legal/cookie-policy.html">Cookie Policy</a>
+        <span>•</span>
+        <a href="legal/music-credits.html">Music Credits</a>
+        <span>•</span>
+        <a href="legal/third-party-notices.html">Third-Party Notices</a>
+        <span>•</span>
+        <a href="legal/about.html">About</a>
+    </footer>
+    -->
+
+    <div id="profileSettingsOverlay">
+        <div id="profileSettingsModal">
+            <button id="closeProfileSettingsButton" type="button" aria-label="Close profile settings" data-i18n-aria-label="inventory.profile.closeLabel">✕</button>
+
+            <h2 data-i18n="inventory.profile.title">Profile Settings</h2>
+
+            <section class="profile-settings-section">
+                <h3 data-i18n="inventory.profile.profileHeading">Profile</h3>
+
+                <label for="profileFullNameInput" data-i18n="inventory.profile.fullName">Full Name</label>
+
+                <input id="profileFullNameInput" type="text" maxlength="100">
+
+                <label for="profileUsernameInput" data-i18n="inventory.profile.username">Username</label>
+
+                <input
+                    id="profileUsernameInput"
+                    type="text"
+                    maxlength="30"
+                >
+            </section>
+
+            <section class="profile-settings-section">
+                <h3 data-i18n="inventory.profile.preferencesHeading">Preferences</h3>
+
+                <label for="profileLanguageSelect" data-i18n="inventory.profile.preferredLanguage">Preferred Language</label>
+
+                <select id="profileLanguageSelect">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="zh">🇨🇳 中文</option>
+                </select>
+            </section>
+
+            <p id="profileSettingsMessage"></p>
+
+            <div id="profileSettingsActions">
+                <button id="saveProfileSettingsButton" type="button" data-i18n="inventory.profile.saveChanges">Save Changes</button>
+            </div>
+
+            <section id="accountSection">
+                <h3 data-i18n="inventory.profile.accountHeading">Account</h3>
+
+                <p data-i18n="inventory.profile.accountDescription">
+                    Permanently delete your account, postcards, Life Segments,
+                    collectibles, and uploaded images.
+                </p>
+
+                <button id="logoutButton" data-i18n="inventory.profile.logout">Log Out</button>
+                <button id="deleteAccountButton" type="button" data-i18n="inventory.profile.deleteAccount">Delete My Account</button>
+
+            </section>
+        </div>
+    </div>
+
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+        <p id="loadingText" data-i18n="common.loading">Loading...</p>
+    </div>
+
+    <script src="libs/supabase.min.js"></script>
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="libs/i18next.min.js"></script>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/stamp_database.js"></script>
+    <script src="js/collectibles.js"></script>
+    <script src="js/postcard_utils.js"></script>
+    <script src="js/dictionary_inventory.js"></script>
+    <script src="js/inventory_script.js"></script>
+    
+</body>
+</html>

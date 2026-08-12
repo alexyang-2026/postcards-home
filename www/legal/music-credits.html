@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.svg">
+    <title>Music Credits | Postcards Home</title>
+
+    <link rel="stylesheet" href="legal.css">
+
+    <!-- Markdown renderer -->
+    <script src="../libs/marked.umd.js"></script>
+
+</head>
+
+<body>
+
+    <main class="legalContainer">
+
+        <h1>Music Credits</h1>
+
+        <p class="lastUpdated">
+            Last Updated: August 2, 2026
+        </p>
+
+        <div id="licenses">Loading music credits...</div>
+
+        <a class="backButton" href="../index.html">
+            ← Return to Postcards Home
+        </a>
+
+    </main>
+
+    <script>
+        async function loadLicenses() {
+            const response = await fetch("../LICENSES.md");
+            const markdown = await response.text();
+
+            document.getElementById("licenses").innerHTML = marked.parse(markdown);
+        }
+        loadLicenses();
+    </script>
+
+</body>
+</html>

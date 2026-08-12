@@ -1,0 +1,532 @@
+body {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background: #f7efe5;
+    font-family: Arial, sans-serif;
+
+    background-size: cover;      /* Scale the image so that it fits the entire browser window */
+    background-position: center; /* This is because I want to keep the center of the image always visible */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keep the wallpaper stay while the page scrolls */
+}
+
+#title {
+    font-family: American Typewriter;
+    margin-bottom:5px;
+}
+
+.defaultText {
+    font-family: American Typewriter;
+}
+
+
+#betaBadge {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    padding: 3px 6px;
+
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+
+#subtitle {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: American Typewriter;
+    font-size: small;
+}
+
+#languageControls {
+    margin-top: 5px;
+    font-family: American Typewriter;
+}
+
+#languageSelect {
+    background-color: gold;
+    border-radius: 2px;
+}
+
+#instructionsBox {
+    border: 2px solid black;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#instructionsTitle {
+    margin-top: 0;
+    font-family: American Typewriter;
+    font-size: small;
+}
+
+#instructionsList {
+    margin-top:0;
+    margin-bottom:0;
+    font-family: American Typewriter;
+    font-size: small;
+}
+
+#welcomeMessage {
+    margin-top: 35px;
+    margin-bottom: 10px;
+    font-family: American Typewriter;
+    font-size: large;
+}
+
+
+/* Selects the element with id="postcard" */
+#postcard {
+    position: relative;
+
+    background: white;
+    border: 2px solid black;
+
+    width: 320px;
+    height: 360px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start; /* align everything to the left side */
+}
+
+#stampPreview {
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:56px;
+}
+
+
+#photoPreview{
+    width: 100%;
+    height: auto;
+    max-height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+#postcardText {
+    height: 200px;
+
+    margin-top: 8px;
+    overflow: hidden;
+
+    font-size: 11px;
+    line-height: 1.15;
+}
+
+#captionPreview,
+#musicMessage,
+#datePreview,
+#locationPreview {
+    font-family: Chalkduster, fantasy;
+
+    font-size: inherit;
+    line-height: inherit;
+
+    margin: 8px 0;
+    padding: 0;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+#loginButton {
+    background-color: turquoise;
+    margin-top: 15px;
+}
+
+#loginButton:active {
+    transform:scale(0.95);
+}
+
+/* OLD DOWNLOAD BUTTONS
+#downloadButton{
+    margin-top:15px;
+    background-color: lightgoldenrodyellow;
+}
+
+#downloadButton:active {
+    transform: scale(0.95);
+    background-color: gold;
+}
+
+#shareButton{
+    margin-top: 10px;
+    background-color: limegreen;
+}
+
+#shareButton:active {
+    transform: scale(0.95);
+    background-color: greenyellow;
+}
+*/
+
+#downloadButton {
+    border-bottom: 2px solid black;
+}
+
+#exportButton {
+    background-color: rgb(0, 255, 0);
+}
+
+#resetPostcardButton{
+    background-color: red
+}
+
+#resetPostcardButton:active {
+    transform: scale(0.95);
+}
+
+#statusMessage {
+    display:none;
+    font-family: American Typewriter;
+    font-size: 11;
+    color: red;
+
+}
+
+
+#lifeSegmentControls {
+    margin-top: 26px;
+}
+
+
+#modalOverlay {
+    display: none;
+    position:fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lifeSegmentModal {
+    background: #f7efe5;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    font-family: American Typewriter;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#lifeSegmentTitleInput {
+    width: 200px;
+    height: 30px;
+    margin-top: 0;
+}
+
+#lifeSegmentInfo {
+    margin-top: 0;
+}
+
+#lifeSegmentDescriptionInput {
+    width: 200px;
+    height: 40px;
+}
+
+#xButton_LifeSegmentModal {
+    background-color: red;
+    position: absolute;
+    border: 1px solid black;
+    color: yellow;
+    border-top-right-radius: 13px;
+
+    top: 0;
+    right: 0;
+
+}
+
+#closeLifeSegmentModal {
+    background-color: red;
+}
+
+#saveLifeSegmentButton {
+    background-color: greenyellow;
+}
+
+#toInventoryButton {
+    background-color: gold;
+}
+
+#exportMenuContainer {
+    position: relative;
+}
+
+#exportMenu {
+    display: none;
+
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+
+    min-width: 150px;
+    padding: 5px;
+
+    background: white;
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    z-index: 100;
+}
+
+#exportMenu.open {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#exportMenu button {
+    width: 100%;
+    padding: 10px 12px;
+
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+
+    text-align: left;
+    cursor: pointer;
+}
+
+#exportMenu button:hover {
+    background: #f2f2f2;
+}
+
+#controlCenter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.control-center-button {
+    margin: 0;
+    width: auto;
+    margin-top: 10px;
+    height: 20px;
+}
+
+#footer {
+    margin-bottom: 20px;
+
+    text-align: center;
+    font-family: American Typewriter;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+#footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+#footer a:hover {
+    opacity: 0.65;
+    text-decoration: underline;
+}
+
+#footer span {
+    margin: 0 6px;
+    opacity: 0.6;
+}
+
+#postcardCreator {
+    width: 100%;
+    max-width: 700px;
+    margin: 28px auto;
+    padding: 0;
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    border-radius: 0;
+    backdrop-filter: none;
+}
+
+.builderStep {
+    display: grid;
+    grid-template-columns: 200px 50px 250px;
+    align-items: center;
+    gap: 14px;
+
+    justify-content: center; /* <-- This is because I want to center the entire row */
+
+    margin-bottom: 18px;
+    padding: 0;
+
+    background: none;
+    border: none;
+}
+
+.builderStep:last-child {
+    border-bottom: none;
+}
+
+.stepLabel {
+    font-size: 1rem;
+    font-weight: bold;
+    white-space: normal;
+    font-family: American Typewriter;
+
+}
+
+.stepArrow {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0.75;
+}
+
+.stepControl {
+    min-width: 0;
+}
+
+.stepControl input,
+.stepControl select,
+.stepControl textarea,
+.stepControl button {
+    width: 220px;
+    box-sizing: border-box;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    border: 1.5px solid black;
+    border-radius: 3px;
+}
+
+.stepControl select,
+.stepControl button {
+    min-height: 38px;
+    padding: 6px 10px;
+}
+
+.stepControl textarea {
+    min-height: 70px;
+    padding: 9px;
+    resize: vertical;
+}
+
+#musicControls {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    width: 100%;
+}
+
+
+.musicPlayerRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 7px;
+    width: 320px;
+    flex-wrap: nowrap;
+}
+
+#musicPlayer {
+    display: block;
+    width: 150px;
+    height: 40px;
+    flex: 0 0 auto;
+}
+
+#musicPlayPauseButton,
+#musicRerollButton {
+    flex: 0 0 30px;
+
+    background: gold;
+    border: 1px solid black;
+
+    padding: 0;
+    margin: 0;
+    
+    font-size: 1rem;
+
+    width: 30px;
+    height: 30px;
+    aspect-ratio: 1/1;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#locationButton {
+    cursor: pointer;
+    background: #fff8cc;
+}
+
+#locationButton:hover,
+#musicRerollButton:hover {
+    background: gold;
+}
+
+
+@media (max-width: 1200px) {
+
+    .postcardCreator {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .builderStep {
+        width: 100%;
+        grid-template-columns: 160px 24px 160px;
+        gap: 8px;
+    }
+
+    .stepControl input,
+    .stepControl select,
+    .stepControl textarea,
+    .stepControl button {
+        width: 160px;
+        box-sizing: border-box;
+
+        font-family: inherit;
+        font-size: 0.95rem;
+
+        border: 1.5px solid black;
+        border-radius: 3px;
+    }
+
+    .musicPlayerRow {
+        width: auto;
+        min-width: 0;
+        flex: 1;
+        display: none;
+    }
+
+    #musicPlayer {
+        width: 100%;
+    }
+
+}

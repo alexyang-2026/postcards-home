@@ -1,0 +1,319 @@
+// LOCATION FUNCTION
+async function getLocation(previewElement) {
+
+    previewElement.style.display = "block";
+    previewElement.textContent = "📍 Finding Location...";
+
+    if (!navigator.geolocation) {
+        previewElement.textContent = "📍 Somewhere in the world 🫪";
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        async function(position) {
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            const url =
+                "https://nominatim.openstreetmap.org/reverse?format=json" +
+                "&lat=" + latitude +
+                "&lon=" + longitude;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const city =
+                data.address.city ||
+                data.address.town ||
+                data.address.village ||
+                data.address.municipality ||
+                "Unknown city";
+
+            const region = data.address.state;
+            const country = data.address.country;
+
+            previewElement.textContent = "📍 " + city + ", " + region + ", " + country;
+        },
+
+        function(error) {
+            previewElement.textContent = "📍 Location unavailable. Error Code: " + error.code;
+        }
+
+    );
+} 
+
+
+// SAVE POSTCARD FUNCTION
+async function savePostcardToSupabase(postcard) {
+    const updates = {};
+
+    const updatedLocation = editLocationPreview.textContent.trim();
+    const updatedMood = moodSelect.value || null;
+    const updatedCaption = editCaptionPreview.textContent.trim() || null;
+    const updatedMusicPiece = updatedMood === null
+            ? null
+            : selectedMusicRecommendation 
+                ? selectedMusicRecommendation.piece 
+                : postcard.music_piece;
+
+    if (updatedLocation !== postcard.location) {
+        updates.location = updatedLocation;
+    }
+
+    if (updatedMood !== postcard.mood) {
+        updates.mood = updatedMood;
+    }
+
+    if (updatedMusicPiece !== postcard.music_piece) {
+        updates.music_piece = updatedMusicPiece;
+    }
+
+    if (updatedCaption !== (postcard.caption || "")) {
+        updates.caption = updatedCaption;
+    }
+
+    if (Object.keys(updates).length === 0) {
+        alert("No changes were made.");
+        return;
+    }
+
+    const { data: updatedPostcard, error } = await supabaseClient
+        .from("postcards")
+        .update(updates)
+        .eq("id", postcard.id)
+        .select()
+        .single();
+
+    if (error) {
+        throw error;
+    }
+
+    Object.assign(postcard, updatedPostcard);
+
+    alert("Postcard saved!");
+}
+
+// CREATE A SPINNER FOR LOADING SCREENS
+const loadingOverlay = document.getElementById("loadingOverlay");
+const loadingText = document.getElementById("loadingText");
+
+function showLoading(message = "Loading...") {
+    loadingText.textContent = message;
+    loadingOverlay.style.display = "flex";
+}
+
+function hideLoading(){
+    loadingOverlay.style.display = "none";
+}
+
+
+/// Fireworks Helper Function
+function launchFireworkBurst() {
+    confetti({
+        particleCount: 5000,
+        spread: 360,
+        startVelocity: 28,
+        gravity: 0.7,
+        ticks: 70,
+        scalar: 0.8,
+
+        origin: {
+            x: 0.2 + Math.random() * 0.6,
+            y: 0.15 + Math.random() * 0.4
+        }
+    });
+}
+
+function launchFireworksCelebration() {
+    launchFireworkBurst();
+
+    setTimeout(launchFireworkBurst, 300);
+    setTimeout(launchFireworkBurst, 650);
+}
+
+// Snowfall with Confetti
+function snowfallBurst () {
+    const clusterX = Math.random();
+    confetti({
+        particleCount: 15,
+
+        angle: 270,      // Drop straight down
+        spread: 10,
+
+        gravity: 0.70,
+        startVelocity: 2,
+        drift: 0.1,
+
+        ticks: 300,
+
+        colors: ["white", "#eef7ff"],
+        scalar: 1.2,
+
+        origin: {
+            x: clusterX,
+            y: 0
+        }
+    })
+}
+
+function launchSnowfall() {
+    const snowfall = setInterval(snowfallBurst, 120);
+    
+    // Stop the snowfall after 5 seconds
+    setTimeout(function () {
+        clearInterval(snowfall);
+    }, 5000);
+}
+
+
+// Stars Animation
+function twinkleStar() {
+    confetti({
+        particleCount: 5,
+
+        shapes: ["star"],
+        colors: ["#ffd700", "#ffdd1c"],
+
+        startVelocity: 0,
+        gravity: 0,
+        drift: 0,
+
+        spread: 360,
+        ticks: 70,
+        scalar: 1.2,
+
+        origin: {
+            x: Math.random(),
+            y: Math.random() * 0.65
+        }
+    });
+}
+
+function launchTwinklingStars() {
+    const stars = setInterval(twinkleStar, 180);
+
+    setTimeout(function () {
+        clearInterval(stars);
+    }, 5000);
+}
+
+
+// Ocean Animation
+function oceanWaveBurst(fromLeft) {
+    confetti({
+        particleCount: 500,
+        angle: fromLeft ? 20 : 160,
+        spread: 20,
+        startVelocity: 22,
+        gravity: 1,
+        drift: fromLeft ? 0 : -0.5,
+        ticks: 120,
+        scalar: 1.1,
+        colors: ["#ffffff", "#bfe9ff", "#5ecbff", "#168aad"],
+        origin: {
+            x: fromLeft ? -0.05: 1.05,
+            y: 0.75 + Math.random() * 0.15
+        }
+    });
+}
+
+function launchOceanWaves() {
+    let fromLeft = true;
+
+    const waves = setInterval(function () {
+        oceanWaveBurst(fromLeft);
+        fromLeft = !fromLeft;
+    }, 450);
+
+    setTimeout(function () {
+        clearInterval(waves);
+    }, 5000);
+}
+
+
+// Function to add collectible when it is unclocked
+async function unlockCollectible(userID, collectibleID, ownedCollectibles) {
+    // If already owned: do nothing
+    if (ownedCollectibles.includes(collectibleID)) {
+        return false;
+    }
+
+    // Update the local array immediately
+    ownedCollectibles.push(collectibleID);
+
+    const { error } = await supabaseClient
+        .from("profiles")
+        .update({
+            owned_collectibles: ownedCollectibles
+        })
+        .eq("user_id", userID);
+
+    if (error) {
+        // Undo the local change because Supabase failed
+        ownedCollectibles = ownedCollectibles.filter(function(id) {
+                return id !== collectibleID;
+            });
+
+        throw error;
+    }
+
+    const collectible = findCollectibleByID(collectibleID);
+
+    const translatedCollectibleName = collectiblesTranslations[currentLanguage]
+            ?.translation
+            ?.collectibles
+            ?.[collectible.category]
+            ?.[collectible.collectibleKey]
+            ?.name
+        || collectible.name
+        || collectibleID;
+
+    alert(i18next.t("main.messages.collectibleUnlocked", {name: translatedCollectibleName}));
+    launchFireworksCelebration();
+
+    return true;
+}
+
+// Function to get the current time
+function getCurrentTimeInfo() {
+    const now = new Date();
+
+    return {
+        hour: now.getHours(),
+        minute: now.getMinutes(),
+        month: now.getMonth(),
+        totalMinutes: now.getHours() * 60 + now.getMinutes()
+    };
+}
+
+
+// Function to find a music given the piece name (for audio)
+function findMusicByPieceName(pieceName) {
+    // Search regular mood music
+    for (const mood in musicDatabase) {
+        const foundMusic = musicDatabase[mood].find(function(track) {
+            return track.piece === pieceName;
+        });
+
+        if (foundMusic) {
+            return foundMusic;
+        }
+    }
+
+    // Search exclusive music collectibles
+    const foundExclusiveMusic = Object.values(collectibles).find(function(collectible) {
+        return (collectible.type === "exclusive_music" && collectible.name === pieceName);
+    });
+
+    if (foundExclusiveMusic) {
+        return {
+            piece: foundExclusiveMusic.name,
+            composer: "Frédéric Chopin", // I currently hardcoded Chopin for his nocturnes are the only exclusive music but CHANGE SOON
+            audio: foundExclusiveMusic.audio
+        };
+    }
+
+    return null;
+}
