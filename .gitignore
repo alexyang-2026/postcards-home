@@ -1,15 +1,36 @@
+# macOS
 .DS_Store
 **/.DS_Store
 
+# Environment variables
 .env
 .env.*
 !.env.example
 
+# VS Code
 .vscode/
 
+# Logs
 *.log
 
+# Temporary files
 *.tmp
 *.temp
 
+# Node
 node_modules/
+
+# Android generated/local files
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+
+# Android signing files to not commit private signing keys
+*.jks
+*.keystore
+
+# Xcode generated/user-specific files
+ios/App/DerivedData/
+ios/App/**/xcuserdata/
+*.xcuserstate
