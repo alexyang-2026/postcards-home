@@ -694,7 +694,8 @@ const collectiblesTranslations = {
                 },
 
                 exclusiveMusic: {
-
+                    
+                    /// SECTION FOR CHOPIN NOCTURNES
                     chopin_nocturne_op9no1: {
                         name: "Chopin: Nocturne Op. 9 No. 1 in B-flat Minor",
                         description: "A dark, expressive nocturne of haunting lyricism."
@@ -798,6 +799,172 @@ const collectiblesTranslations = {
                     chopin_nocturne_posth_cminor: {
                         name: "Chopin: Nocturne in C Minor (Posthumous)",
                         description: "A powerful and dramatic concluding nocturne."
+                    },
+
+                    /// SECTION FOR BACH GOLDBERG VARIATIONS
+                    bach_goldberg_aria: {
+                        name: "Bach: Goldberg Variations — Aria",
+                        description: "The serene aria that opens and frames the Goldberg Variations."
+                    },
+
+                    bach_goldberg_variation_1: {
+                        name: "Bach: Goldberg Variations — Variation 1",
+                        description: "A lively opening variation full of energy and motion."
+                    },
+
+                    bach_goldberg_variation_2: {
+                        name: "Bach: Goldberg Variations — Variation 2",
+                        description: "A flowing contrapuntal variation with graceful interplay between voices."
+                    },
+
+                    bach_goldberg_variation_3: {
+                        name: "Bach: Goldberg Variations — Variation 3",
+                        description: "The first canon of the set, elegant and carefully balanced."
+                    },
+
+                    bach_goldberg_variation_4: {
+                        name: "Bach: Goldberg Variations — Variation 4",
+                        description: "A bright and rhythmically buoyant variation."
+                    },
+
+                    bach_goldberg_variation_5: {
+                        name: "Bach: Goldberg Variations — Variation 5",
+                        description: "A brilliant, quick-moving variation with sparkling keyboard writing."
+                    },
+
+                    bach_goldberg_variation_6: {
+                        name: "Bach: Goldberg Variations — Variation 6",
+                        description: "A compact canon with gentle, conversational counterpoint."
+                    },
+
+                    bach_goldberg_variation_7: {
+                        name: "Bach: Goldberg Variations — Variation 7",
+                        description: "A graceful dance-like variation with an elegant character."
+                    },
+
+                    bach_goldberg_variation_8: {
+                        name: "Bach: Goldberg Variations — Variation 8",
+                        description: "A brilliant variation filled with agile keyboard exchanges."
+                    },
+
+                    bach_goldberg_variation_9: {
+                        name: "Bach: Goldberg Variations — Variation 9",
+                        description: "A poised canon with clear and lyrical counterpoint."
+                    },
+
+                    bach_goldberg_variation_10: {
+                        name: "Bach: Goldberg Variations — Variation 10",
+                        description: "A compact fughetta full of intricate contrapuntal writing."
+                    },
+
+                    bach_goldberg_variation_11: {
+                        name: "Bach: Goldberg Variations — Variation 11",
+                        description: "A fast and delicate variation with brilliant hand-crossing textures."
+                    },
+
+                    bach_goldberg_variation_12: {
+                        name: "Bach: Goldberg Variations — Variation 12",
+                        description: "An ingenious canon with tightly interwoven voices."
+                    },
+
+                    bach_goldberg_variation_13: {
+                        name: "Bach: Goldberg Variations — Variation 13",
+                        description: "A tender and richly ornamented lyrical variation."
+                    },
+
+                    bach_goldberg_variation_14: {
+                        name: "Bach: Goldberg Variations — Variation 14",
+                        description: "A virtuosic burst of rapid motion and keyboard brilliance."
+                    },
+
+                    bach_goldberg_variation_15: {
+                        name: "Bach: Goldberg Variations — Variation 15",
+                        description: "A dark and introspective canon that closes the first half."
+                    },
+
+                    bach_goldberg_variation_16: {
+                        name: "Bach: Goldberg Variations — Variation 16",
+                        description: "A grand French overture that opens the second half of the cycle."
+                    },
+
+                    bach_goldberg_variation_17: {
+                        name: "Bach: Goldberg Variations — Variation 17",
+                        description: "A fast and brilliant variation with energetic hand-crossing."
+                    },
+
+                    bach_goldberg_variation_18: {
+                        name: "Bach: Goldberg Variations — Variation 18",
+                        description: "A clear and elegant canon with graceful momentum."
+                    },
+
+                    bach_goldberg_variation_19: {
+                        name: "Bach: Goldberg Variations — Variation 19",
+                        description: "A light and intimate variation with a gentle dance character."
+                    },
+
+                    bach_goldberg_variation_20: {
+                        name: "Bach: Goldberg Variations — Variation 20",
+                        description: "A dazzling virtuosic variation full of rapid keyboard motion."
+                    },
+
+                    bach_goldberg_variation_21: {
+                        name: "Bach: Goldberg Variations — Variation 21",
+                        description: "A deeply expressive canon with a darker emotional character."
+                    },
+
+                    bach_goldberg_variation_22: {
+                        name: "Bach: Goldberg Variations — Variation 22",
+                        description: "A sturdy contrapuntal variation with an almost ceremonial character."
+                    },
+
+                    bach_goldberg_variation_23: {
+                        name: "Bach: Goldberg Variations — Variation 23",
+                        description: "A playful and brilliant variation filled with quick exchanges."
+                    },
+
+                    bach_goldberg_variation_24: {
+                        name: "Bach: Goldberg Variations — Variation 24",
+                        description: "An elegant canon with flowing rhythmic motion."
+                    },
+
+                    bach_goldberg_variation_25: {
+                        name: "Bach: Goldberg Variations — Variation 25",
+                        description: "A profoundly expressive and introspective variation in G minor."
+                    },
+
+                    bach_goldberg_variation_26: {
+                        name: "Bach: Goldberg Variations — Variation 26",
+                        description: "A brilliant variation of rapid motion and rhythmic vitality."
+                    },
+
+                    bach_goldberg_variation_27: {
+                        name: "Bach: Goldberg Variations — Variation 27",
+                        description: "The final canon of the Goldberg Variations, light and intricately woven."
+                    },
+
+                    bach_goldberg_variation_28: {
+                        name: "Bach: Goldberg Variations — Variation 28",
+                        description: "A dazzling variation filled with rapid trills and brilliant keyboard writing."
+                    },
+
+                    bach_goldberg_variation_29: {
+                        name: "Bach: Goldberg Variations — Variation 29",
+                        description: "A powerful and exuberant variation of chords and virtuosic passagework."
+                    },
+
+                    bach_goldberg_variation_30: {
+                        name: "Bach: Goldberg Variations — Variation 30 (Quodlibet)",
+                        description: "The joyous Quodlibet that brings the thirty variations to their conclusion."
+                    },
+
+                    bach_goldberg_aria_da_capo: {
+                        name: "Bach: Goldberg Variations — Aria da capo",
+                        description: "The opening Aria returns at the end of the Goldberg Variations."
+                    },
+
+                    bach_goldberg_complete: {
+                        name: "Bach: Goldberg Variations — Complete",
+                        description: "The complete Goldberg Variations, from the opening Aria through the full cycle."
                     }
                 
                 }
@@ -1000,6 +1167,172 @@ const collectiblesTranslations = {
                     chopin_nocturne_posth_cminor: {
                         name: "肖邦：C小调夜曲（遗作）",
                         description: "一首强烈而富有戏剧性的最后夜曲。"
+                    },
+
+                    // 巴赫哥德堡变奏曲
+                    bach_goldberg_aria: {
+                        name: "巴赫：《哥德堡变奏曲》— 咏叹调",
+                        description: "宁静优美的咏叹调，为《哥德堡变奏曲》揭开序幕，并贯穿整部作品的结构。"
+                    },
+
+                    bach_goldberg_variation_1: {
+                        name: "巴赫：《哥德堡变奏曲》— 第1变奏",
+                        description: "充满活力与动感的第一首变奏。"
+                    },
+
+                    bach_goldberg_variation_2: {
+                        name: "巴赫：《哥德堡变奏曲》— 第2变奏",
+                        description: "流畅的对位织体，各声部之间优雅地相互呼应。"
+                    },
+
+                    bach_goldberg_variation_3: {
+                        name: "巴赫：《哥德堡变奏曲》— 第3变奏",
+                        description: "全曲的第一首卡农，优雅而精巧地保持着声部之间的平衡。"
+                    },
+
+                    bach_goldberg_variation_4: {
+                        name: "巴赫：《哥德堡变奏曲》— 第4变奏",
+                        description: "明亮轻快、富有节奏活力的变奏。"
+                    },
+
+                    bach_goldberg_variation_5: {
+                        name: "巴赫：《哥德堡变奏曲》— 第5变奏",
+                        description: "快速而辉煌，展现出闪耀灵动的键盘技巧。"
+                    },
+
+                    bach_goldberg_variation_6: {
+                        name: "巴赫：《哥德堡变奏曲》— 第6变奏",
+                        description: "精巧的卡农，各声部以温柔而富有对话感的方式交织。"
+                    },
+
+                    bach_goldberg_variation_7: {
+                        name: "巴赫：《哥德堡变奏曲》— 第7变奏",
+                        description: "优雅而富有舞蹈气息的变奏。"
+                    },
+
+                    bach_goldberg_variation_8: {
+                        name: "巴赫：《哥德堡变奏曲》— 第8变奏",
+                        description: "辉煌灵动，各声部在键盘上敏捷地相互交错。"
+                    },
+
+                    bach_goldberg_variation_9: {
+                        name: "巴赫：《哥德堡变奏曲》— 第9变奏",
+                        description: "从容优雅的卡农，拥有清晰而富有歌唱性的对位。"
+                    },
+
+                    bach_goldberg_variation_10: {
+                        name: "巴赫：《哥德堡变奏曲》— 第10变奏",
+                        description: "一首精巧的小赋格，充满细致复杂的对位写作。"
+                    },
+
+                    bach_goldberg_variation_11: {
+                        name: "巴赫：《哥德堡变奏曲》— 第11变奏",
+                        description: "快速而轻盈，以精彩的双手交叉技巧展现键盘的灵动。"
+                    },
+
+                    bach_goldberg_variation_12: {
+                        name: "巴赫：《哥德堡变奏曲》— 第12变奏",
+                        description: "构思巧妙的卡农，各声部紧密交织。"
+                    },
+
+                    bach_goldberg_variation_13: {
+                        name: "巴赫：《哥德堡变奏曲》— 第13变奏",
+                        description: "温柔抒情，旋律中点缀着丰富精致的装饰音。"
+                    },
+
+                    bach_goldberg_variation_14: {
+                        name: "巴赫：《哥德堡变奏曲》— 第14变奏",
+                        description: "充满炫技色彩，以迅疾的运动展现辉煌的键盘技巧。"
+                    },
+
+                    bach_goldberg_variation_15: {
+                        name: "巴赫：《哥德堡变奏曲》— 第15变奏",
+                        description: "深沉而内省的卡农，为整部作品的上半部分画下句点。"
+                    },
+
+                    bach_goldberg_variation_16: {
+                        name: "巴赫：《哥德堡变奏曲》— 第16变奏",
+                        description: "宏伟的法国序曲，为整部变奏曲的下半部分揭开序幕。"
+                    },
+
+                    bach_goldberg_variation_17: {
+                        name: "巴赫：《哥德堡变奏曲》— 第17变奏",
+                        description: "快速辉煌，充满富有活力的双手交叉技巧。"
+                    },
+
+                    bach_goldberg_variation_18: {
+                        name: "巴赫：《哥德堡变奏曲》— 第18变奏",
+                        description: "清晰优雅的卡农，在流动中保持从容的气质。"
+                    },
+
+                    bach_goldberg_variation_19: {
+                        name: "巴赫：《哥德堡变奏曲》— 第19变奏",
+                        description: "轻盈而亲切，带有温柔的舞蹈气息。"
+                    },
+
+                    bach_goldberg_variation_20: {
+                        name: "巴赫：《哥德堡变奏曲》— 第20变奏",
+                        description: "绚丽的炫技变奏，充满快速而敏捷的键盘运动。"
+                    },
+
+                    bach_goldberg_variation_21: {
+                        name: "巴赫：《哥德堡变奏曲》— 第21变奏",
+                        description: "情感深沉的卡农，展现出更为阴暗而内省的色彩。"
+                    },
+
+                    bach_goldberg_variation_22: {
+                        name: "巴赫：《哥德堡变奏曲》— 第22变奏",
+                        description: "坚实的对位写作，带有近乎庄严的气质。"
+                    },
+
+                    bach_goldberg_variation_23: {
+                        name: "巴赫：《哥德堡变奏曲》— 第23变奏",
+                        description: "活泼辉煌，各声部之间充满快速而俏皮的交流。"
+                    },
+
+                    bach_goldberg_variation_24: {
+                        name: "巴赫：《哥德堡变奏曲》— 第24变奏",
+                        description: "优雅流畅的卡农，伴随着不断向前的节奏律动。"
+                    },
+
+                    bach_goldberg_variation_25: {
+                        name: "巴赫：《哥德堡变奏曲》— 第25变奏",
+                        description: "一首极富表现力、深沉内省的G小调变奏。"
+                    },
+
+                    bach_goldberg_variation_26: {
+                        name: "巴赫：《哥德堡变奏曲》— 第26变奏",
+                        description: "辉煌而迅疾，充满强烈的节奏活力。"
+                    },
+
+                    bach_goldberg_variation_27: {
+                        name: "巴赫：《哥德堡变奏曲》— 第27变奏",
+                        description: "《哥德堡变奏曲》中最后一首卡农，轻盈而精巧。"
+                    },
+
+                    bach_goldberg_variation_28: {
+                        name: "巴赫：《哥德堡变奏曲》— 第28变奏",
+                        description: "绚丽夺目，快速的颤音与辉煌的键盘技巧贯穿其中。"
+                    },
+
+                    bach_goldberg_variation_29: {
+                        name: "巴赫：《哥德堡变奏曲》— 第29变奏",
+                        description: "强劲而奔放，以宏大的和弦与炫技段落迸发出巨大能量。"
+                    },
+
+                    bach_goldberg_variation_30: {
+                        name: "巴赫：《哥德堡变奏曲》— 第30变奏（混成曲）",
+                        description: "欢乐的混成曲，为三十首变奏带来充满生命力的终章。"
+                    },
+
+                    bach_goldberg_aria_da_capo: {
+                        name: "巴赫：《哥德堡变奏曲》— 咏叹调再现",
+                        description: "开篇的咏叹调再次响起，为《哥德堡变奏曲》画上最后的句点。"
+                    },
+
+                    bach_goldberg_complete: {
+                        name: "巴赫：《哥德堡变奏曲》— 完整版",
+                        description: "完整的《哥德堡变奏曲》，从开篇咏叹调到整套变奏的完整旅程。"
                     }
                 }
             }
@@ -1203,6 +1536,172 @@ const collectiblesTranslations = {
                     chopin_nocturne_posth_cminor: {
                         name: "Chopin: Nocturno en do menor (Póstumo)",
                         description: "Un poderoso y dramático nocturno final."
+                    },
+
+                    // BACH GOLDBERG VARIATIONS
+                    bach_goldberg_aria: {
+                        name: "Bach: Variaciones Goldberg — Aria",
+                        description: "La serena aria que abre y enmarca las Variaciones Goldberg."
+                    },
+
+                    bach_goldberg_variation_1: {
+                        name: "Bach: Variaciones Goldberg — Variación 1",
+                        description: "Una animada primera variación llena de energía y movimiento."
+                    },
+
+                    bach_goldberg_variation_2: {
+                        name: "Bach: Variaciones Goldberg — Variación 2",
+                        description: "Una fluida variación contrapuntística con un elegante diálogo entre las voces."
+                    },
+
+                    bach_goldberg_variation_3: {
+                        name: "Bach: Variaciones Goldberg — Variación 3",
+                        description: "El primer canon del ciclo, elegante y cuidadosamente equilibrado."
+                    },
+
+                    bach_goldberg_variation_4: {
+                        name: "Bach: Variaciones Goldberg — Variación 4",
+                        description: "Una variación luminosa y llena de vitalidad rítmica."
+                    },
+
+                    bach_goldberg_variation_5: {
+                        name: "Bach: Variaciones Goldberg — Variación 5",
+                        description: "Una brillante y veloz variación de deslumbrante escritura para teclado."
+                    },
+
+                    bach_goldberg_variation_6: {
+                        name: "Bach: Variaciones Goldberg — Variación 6",
+                        description: "Un canon compacto con un contrapunto delicado y conversacional."
+                    },
+
+                    bach_goldberg_variation_7: {
+                        name: "Bach: Variaciones Goldberg — Variación 7",
+                        description: "Una elegante variación de carácter danzante."
+                    },
+
+                    bach_goldberg_variation_8: {
+                        name: "Bach: Variaciones Goldberg — Variación 8",
+                        description: "Una brillante variación llena de ágiles intercambios en el teclado."
+                    },
+
+                    bach_goldberg_variation_9: {
+                        name: "Bach: Variaciones Goldberg — Variación 9",
+                        description: "Un canon sereno de contrapunto claro y lírico."
+                    },
+
+                    bach_goldberg_variation_10: {
+                        name: "Bach: Variaciones Goldberg — Variación 10",
+                        description: "Una pequeña fuga llena de intrincada escritura contrapuntística."
+                    },
+
+                    bach_goldberg_variation_11: {
+                        name: "Bach: Variaciones Goldberg — Variación 11",
+                        description: "Una variación rápida y delicada con brillantes cruces de manos."
+                    },
+
+                    bach_goldberg_variation_12: {
+                        name: "Bach: Variaciones Goldberg — Variación 12",
+                        description: "Un ingenioso canon de voces estrechamente entrelazadas."
+                    },
+
+                    bach_goldberg_variation_13: {
+                        name: "Bach: Variaciones Goldberg — Variación 13",
+                        description: "Una tierna variación lírica ricamente ornamentada."
+                    },
+
+                    bach_goldberg_variation_14: {
+                        name: "Bach: Variaciones Goldberg — Variación 14",
+                        description: "Una explosión virtuosa de rápido movimiento y brillantez pianística."
+                    },
+
+                    bach_goldberg_variation_15: {
+                        name: "Bach: Variaciones Goldberg — Variación 15",
+                        description: "Un canon oscuro e introspectivo que cierra la primera mitad del ciclo."
+                    },
+
+                    bach_goldberg_variation_16: {
+                        name: "Bach: Variaciones Goldberg — Variación 16",
+                        description: "Una majestuosa obertura francesa que abre la segunda mitad del ciclo."
+                    },
+
+                    bach_goldberg_variation_17: {
+                        name: "Bach: Variaciones Goldberg — Variación 17",
+                        description: "Una variación rápida y brillante con enérgicos cruces de manos."
+                    },
+
+                    bach_goldberg_variation_18: {
+                        name: "Bach: Variaciones Goldberg — Variación 18",
+                        description: "Un canon claro y elegante de grácil impulso."
+                    },
+
+                    bach_goldberg_variation_19: {
+                        name: "Bach: Variaciones Goldberg — Variación 19",
+                        description: "Una variación ligera e íntima con un delicado carácter danzante."
+                    },
+
+                    bach_goldberg_variation_20: {
+                        name: "Bach: Variaciones Goldberg — Variación 20",
+                        description: "Una deslumbrante variación virtuosa llena de rápido movimiento."
+                    },
+
+                    bach_goldberg_variation_21: {
+                        name: "Bach: Variaciones Goldberg — Variación 21",
+                        description: "Un canon profundamente expresivo de carácter oscuro e introspectivo."
+                    },
+
+                    bach_goldberg_variation_22: {
+                        name: "Bach: Variaciones Goldberg — Variación 22",
+                        description: "Una sólida variación contrapuntística de carácter casi ceremonial."
+                    },
+
+                    bach_goldberg_variation_23: {
+                        name: "Bach: Variaciones Goldberg — Variación 23",
+                        description: "Una variación juguetona y brillante llena de rápidos intercambios."
+                    },
+
+                    bach_goldberg_variation_24: {
+                        name: "Bach: Variaciones Goldberg — Variación 24",
+                        description: "Un elegante canon de fluido movimiento rítmico."
+                    },
+
+                    bach_goldberg_variation_25: {
+                        name: "Bach: Variaciones Goldberg — Variación 25",
+                        description: "Una variación en sol menor profundamente expresiva e introspectiva."
+                    },
+
+                    bach_goldberg_variation_26: {
+                        name: "Bach: Variaciones Goldberg — Variación 26",
+                        description: "Una brillante variación de rápido movimiento y gran vitalidad rítmica."
+                    },
+
+                    bach_goldberg_variation_27: {
+                        name: "Bach: Variaciones Goldberg — Variación 27",
+                        description: "El último canon de las Variaciones Goldberg, ligero e intrincadamente tejido."
+                    },
+
+                    bach_goldberg_variation_28: {
+                        name: "Bach: Variaciones Goldberg — Variación 28",
+                        description: "Una deslumbrante variación llena de rápidos trinos y brillante escritura para teclado."
+                    },
+
+                    bach_goldberg_variation_29: {
+                        name: "Bach: Variaciones Goldberg — Variación 29",
+                        description: "Una poderosa y exuberante variación de acordes y pasajes virtuosos."
+                    },
+
+                    bach_goldberg_variation_30: {
+                        name: "Bach: Variaciones Goldberg — Variación 30 (Quodlibet)",
+                        description: "El alegre Quodlibet que lleva las treinta variaciones a su conclusión."
+                    },
+
+                    bach_goldberg_aria_da_capo: {
+                        name: "Bach: Variaciones Goldberg — Aria da capo",
+                        description: "El Aria inicial regresa al final de las Variaciones Goldberg."
+                    },
+
+                    bach_goldberg_complete: {
+                        name: "Bach: Variaciones Goldberg — Completa",
+                        description: "Las Variaciones Goldberg completas, desde el Aria inicial hasta el ciclo completo."
                     }
                 }
             }
