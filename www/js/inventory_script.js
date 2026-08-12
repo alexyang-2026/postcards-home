@@ -590,6 +590,14 @@ async function loadInventoryStamps() {
     }
     
     for (const stampName of stampData[0].owned_stamps) {
+        const stamp = stampDatabase[stampName];
+
+        // Defensive programming mechanism to not crash the whole inventory when one stamp is not found
+        if (!stamp) {
+            console.warn("Stamp not found in stampDatabase:", stampName);
+            continue;
+        }
+        
         const rarityText = i18next.t("inventory.stamps.rarity", {rarity: i18next.t(`inventory.rarities.${stampDatabase[stampName].rarity}`)});
 
         const htmlTemplate = `
