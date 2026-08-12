@@ -133,6 +133,13 @@ const translationResources = {
                 thirdParty: "Third-Party Notices",
                 about: "About"
             },
+
+            notFound: {
+                documentTitle: "404 | Postcards Home",
+                title: "This postcard got lost in the mail.",
+                description: "The page you're looking for doesn't exist.",
+                back: "← Return to Postcards Home"
+            }
         }
     },
 
@@ -270,6 +277,13 @@ const translationResources = {
                 thirdParty: "第三方声明",
                 about: "关于"
             },
+
+            notFound: {
+                documentTitle: "404 | Postcards Home",
+                title: "这张明信片在邮途中迷路了。",
+                description: "你要找的页面不存在。",
+                back: "← 返回 Postcards Home"
+            }
         }
     },
 
@@ -402,6 +416,13 @@ const translationResources = {
                 thirdParty: "Avisos de terceros",
                 about: "Acerca de"
             },
+
+            notFound: {
+                documentTitle: "404 | Postcards Home",
+                title: "Esta postal se perdió en el correo.",
+                description: "La página que buscas no existe.",
+                back: "← Volver a Postcards Home"
+            }
         }
     }
 };

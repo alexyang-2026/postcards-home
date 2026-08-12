@@ -9,6 +9,10 @@ body {
     background-position: center; /* This is because I want to keep the center of the image always visible */
     background-repeat: no-repeat;
     background-attachment: fixed; /* Keep the wallpaper stay while the page scrolls */
+
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 #title {

@@ -876,7 +876,7 @@ function resizeMainPostcardText() {
             fontSize + "px";
     }
 
-    console.log("Final font:", fontSize);
+    // console.log("Final font:", fontSize);
 }
 
 

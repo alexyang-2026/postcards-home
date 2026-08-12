@@ -23,6 +23,9 @@ const excluded = new Set([
     "README.md",  
     "TODO.md",                      // Also not needed for the app
     "404.html",                     // This is only for web pages
+    "404.css",
+    "404.js",
+    "ios", "android"                // I do not want to commit entire native apps to the bundle
 ]);
 
 function copyDirectory(source, destination){

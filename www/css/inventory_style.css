@@ -7,6 +7,10 @@ body {
     flex-direction:column;
     background: #f7efe5;
     font-family: American Typewriter;
+
+    padding-top: calc(env(safe-area-inset-top) + 8px);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 #languageControls {
@@ -16,7 +20,6 @@ body {
 .inventory-layout {
     display: flex;
     height: calc(100vh - var(--header-height));
-    
 }
 
 .inventory-sidebar {
@@ -782,6 +785,7 @@ body {
 }
 
 @media (max-width: 700px) {
+
     .inventory-layout {
         flex-direction: column;
     }
