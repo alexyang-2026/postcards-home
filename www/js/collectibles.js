@@ -391,6 +391,338 @@ const collectibles = {
             rarity: "Legendary",
             description: "A powerful and dramatic concluding nocturne."
         },
+
+
+        /// ALL OF BACH's GOLDBERG VARIATIONS.
+        bach_goldberg_aria: {
+            id: "bach_goldberg_aria",
+            name: "Bach: Goldberg Variations — Aria",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_aria.mp3",
+            rarity: "Legendary",
+            description: "The serene aria that opens and frames the Goldberg Variations."
+        },
+
+        bach_goldberg_variation_1: {
+            id: "bach_goldberg_variation_1",
+            name: "Bach: Goldberg Variations — Variation 1",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_1.mp3",
+            rarity: "Legendary",
+            description: "A lively opening variation full of energy and motion."
+        },
+
+        bach_goldberg_variation_2: {
+            id: "bach_goldberg_variation_2",
+            name: "Bach: Goldberg Variations — Variation 2",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_2.mp3",
+            rarity: "Legendary",
+            description: "A flowing contrapuntal variation with graceful interplay between voices."
+        },
+
+        bach_goldberg_variation_3: {
+            id: "bach_goldberg_variation_3",
+            name: "Bach: Goldberg Variations — Variation 3",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_3.mp3",
+            rarity: "Legendary",
+            description: "The first canon of the set, elegant and carefully balanced."
+        },
+
+        bach_goldberg_variation_4: {
+            id: "bach_goldberg_variation_4",
+            name: "Bach: Goldberg Variations — Variation 4",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_4.mp3",
+            rarity: "Legendary",
+            description: "A bright and rhythmically buoyant variation."
+        },
+
+        bach_goldberg_variation_5: {
+            id: "bach_goldberg_variation_5",
+            name: "Bach: Goldberg Variations — Variation 5",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_5.mp3",
+            rarity: "Legendary",
+            description: "A brilliant, quick-moving variation with sparkling keyboard writing."
+        },
+
+        bach_goldberg_variation_6: {
+            id: "bach_goldberg_variation_6",
+            name: "Bach: Goldberg Variations — Variation 6",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_6.mp3",
+            rarity: "Legendary",
+            description: "A compact canon with gentle, conversational counterpoint."
+        },
+
+        bach_goldberg_variation_7: {
+            id: "bach_goldberg_variation_7",
+            name: "Bach: Goldberg Variations — Variation 7",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_7.mp3",
+            rarity: "Legendary",
+            description: "A graceful dance-like variation with an elegant character."
+        },
+
+        bach_goldberg_variation_8: {
+            id: "bach_goldberg_variation_8",
+            name: "Bach: Goldberg Variations — Variation 8",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_8.mp3",
+            rarity: "Legendary",
+            description: "A brilliant variation filled with agile keyboard exchanges."
+        },
+
+        bach_goldberg_variation_9: {
+            id: "bach_goldberg_variation_9",
+            name: "Bach: Goldberg Variations — Variation 9",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_9.mp3",
+            rarity: "Legendary",
+            description: "A poised canon with clear and lyrical counterpoint."
+        },
+
+        bach_goldberg_variation_10: {
+            id: "bach_goldberg_variation_10",
+            name: "Bach: Goldberg Variations — Variation 10",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_10.mp3",
+            rarity: "Legendary",
+            description: "A compact fughetta full of intricate contrapuntal writing."
+        },
+
+        bach_goldberg_variation_11: {
+            id: "bach_goldberg_variation_11",
+            name: "Bach: Goldberg Variations — Variation 11",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_11.mp3",
+            rarity: "Legendary",
+            description: "A fast and delicate variation with brilliant hand-crossing textures."
+        },
+
+        bach_goldberg_variation_12: {
+            id: "bach_goldberg_variation_12",
+            name: "Bach: Goldberg Variations — Variation 12",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_12.mp3",
+            rarity: "Legendary",
+            description: "An ingenious canon with tightly interwoven voices."
+        },
+
+        bach_goldberg_variation_13: {
+            id: "bach_goldberg_variation_13",
+            name: "Bach: Goldberg Variations — Variation 13",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_13.mp3",
+            rarity: "Legendary",
+            description: "A tender and richly ornamented lyrical variation."
+        },
+
+        bach_goldberg_variation_14: {
+            id: "bach_goldberg_variation_14",
+            name: "Bach: Goldberg Variations — Variation 14",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_14.mp3",
+            rarity: "Legendary",
+            description: "A virtuosic burst of rapid motion and keyboard brilliance."
+        },
+
+        bach_goldberg_variation_15: {
+            id: "bach_goldberg_variation_15",
+            name: "Bach: Goldberg Variations — Variation 15",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_15.mp3",
+            rarity: "Legendary",
+            description: "A dark and introspective canon that closes the first half."
+        },
+
+        bach_goldberg_variation_16: {
+            id: "bach_goldberg_variation_16",
+            name: "Bach: Goldberg Variations — Variation 16",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_16.mp3",
+            rarity: "Legendary",
+            description: "A grand French overture that opens the second half of the cycle."
+        },
+
+        bach_goldberg_variation_17: {
+            id: "bach_goldberg_variation_17",
+            name: "Bach: Goldberg Variations — Variation 17",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_17.mp3",
+            rarity: "Legendary",
+            description: "A fast and brilliant variation with energetic hand-crossing."
+        },
+
+        bach_goldberg_variation_18: {
+            id: "bach_goldberg_variation_18",
+            name: "Bach: Goldberg Variations — Variation 18",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_18.mp3",
+            rarity: "Legendary",
+            description: "A clear and elegant canon with graceful momentum."
+        },
+
+        bach_goldberg_variation_19: {
+            id: "bach_goldberg_variation_19",
+            name: "Bach: Goldberg Variations — Variation 19",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_19.mp3",
+            rarity: "Legendary",
+            description: "A light and intimate variation with a gentle dance character."
+        },
+
+        bach_goldberg_variation_20: {
+            id: "bach_goldberg_variation_20",
+            name: "Bach: Goldberg Variations — Variation 20",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_20.mp3",
+            rarity: "Legendary",
+            description: "A dazzling virtuosic variation full of rapid keyboard motion."
+        },
+
+        bach_goldberg_variation_21: {
+            id: "bach_goldberg_variation_21",
+            name: "Bach: Goldberg Variations — Variation 21",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_21.mp3",
+            rarity: "Legendary",
+            description: "A deeply expressive canon with a darker emotional character."
+        },
+
+        bach_goldberg_variation_22: {
+            id: "bach_goldberg_variation_22",
+            name: "Bach: Goldberg Variations — Variation 22",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_22.mp3",
+            rarity: "Legendary",
+            description: "A sturdy contrapuntal variation with an almost ceremonial character."
+        },
+
+        bach_goldberg_variation_23: {
+            id: "bach_goldberg_variation_23",
+            name: "Bach: Goldberg Variations — Variation 23",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_23.mp3",
+            rarity: "Legendary",
+            description: "A playful and brilliant variation filled with quick exchanges."
+        },
+
+        bach_goldberg_variation_24: {
+            id: "bach_goldberg_variation_24",
+            name: "Bach: Goldberg Variations — Variation 24",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_24.mp3",
+            rarity: "Legendary",
+            description: "An elegant canon with flowing rhythmic motion."
+        },
+
+        bach_goldberg_variation_25: {
+            id: "bach_goldberg_variation_25",
+            name: "Bach: Goldberg Variations — Variation 25",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_25.mp3",
+            rarity: "Legendary",
+            description: "A profoundly expressive and introspective variation in G minor."
+        },
+
+        bach_goldberg_variation_26: {
+            id: "bach_goldberg_variation_26",
+            name: "Bach: Goldberg Variations — Variation 26",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_26.mp3",
+            rarity: "Legendary",
+            description: "A brilliant variation of rapid motion and rhythmic vitality."
+        },
+
+        bach_goldberg_variation_27: {
+            id: "bach_goldberg_variation_27",
+            name: "Bach: Goldberg Variations — Variation 27",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_27.mp3",
+            rarity: "Legendary",
+            description: "The final canon of the Goldberg Variations, light and intricately woven."
+        },
+
+        bach_goldberg_variation_28: {
+            id: "bach_goldberg_variation_28",
+            name: "Bach: Goldberg Variations — Variation 28",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_28.mp3",
+            rarity: "Legendary",
+            description: "A dazzling variation filled with rapid trills and brilliant keyboard writing."
+        },
+
+        bach_goldberg_variation_29: {
+            id: "bach_goldberg_variation_29",
+            name: "Bach: Goldberg Variations — Variation 29",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_29.mp3",
+            rarity: "Legendary",
+            description: "A powerful and exuberant variation of chords and virtuosic passagework."
+        },
+
+        bach_goldberg_variation_30: {
+            id: "bach_goldberg_variation_30",
+            name: "Bach: Goldberg Variations — Variation 30 (Quodlibet)",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_variation_30.mp3",
+            rarity: "Legendary",
+            description: "The joyous Quodlibet that brings the thirty variations to their conclusion."
+        },
+
+        bach_goldberg_aria_da_capo: {
+            id: "bach_goldberg_aria_da_capo",
+            name: "Bach: Goldberg Variations — Aria da capo",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_aria_da_capo.mp3",
+            rarity: "Legendary",
+            description: "The opening Aria returns at the end of the Goldberg Variations."
+        },
+
+        bach_goldberg_complete: {
+            id: "bach_goldberg_complete",
+            name: "Bach: Goldberg Variations — Complete",
+            type: "exclusive_music",
+            image: "assets/collectibles/exclusive_music/bach_haussmann_painting.jpg",
+            audio: "assets/audio/bach_goldberg_variations/goldberg_full.mp3",
+            rarity: "Legendary",
+            description: "The complete Goldberg Variations, from the opening Aria through the full cycle."
+        }
     }
 };
 
