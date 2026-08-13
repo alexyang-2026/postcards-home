@@ -15,6 +15,21 @@ body {
     padding-right: env(safe-area-inset-right);
 }
 
+/* Prevent iOS Safari from replacing buttons with blue, borderless controls */
+button {
+    -webkit-appearance: none;
+    appearance: none;
+    color: black;
+    background-color: buttonface;
+    border: 1.5px solid black;
+    border-radius: 1px;
+    font-family: American Typewriter;
+}
+
+select {
+    font-family: American Typewriter;
+}
+
 #title {
     font-family: American Typewriter;
     margin-bottom:5px;
@@ -533,4 +548,19 @@ body {
         width: 100%;
     }
 
+}
+
+/* Keep the postcard-builder dropdowns from inheriting Arial from body */
+.stepControl select {
+    font-family: "American Typewriter", serif;
+}
+
+#captionInput {
+    font-family: "American Typewriter", serif;
+}
+
+#photoInput,
+#photoInput::file-selector-button,                  /* <-- This styles the built-in "Choose file" button */
+#photoInput::-webkit-file-upload-button {           /* <-- This provides compatiibility for Safari, iOS, and older webkit-based browsers */
+    font-family: "American Typewriter", serif;
 }

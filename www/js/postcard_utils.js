@@ -240,6 +240,23 @@ async function unlockCollectible(userID, collectibleID, ownedCollectibles) {
         return false;
     }
 
+    // Prepare the notification before saving so an invalid collectible cannot be
+    // persisted without the user being told that it was unlocked.
+    const collectible = findCollectibleByID(collectibleID);
+
+    if (!collectible) {
+        throw new Error("Collectible not found: " + collectibleID);
+    }
+
+    const translatedCollectibleName = collectiblesTranslations[i18next.language]
+            ?.translation
+            ?.collectibles
+            ?.[collectible.category]
+            ?.[collectible.collectibleKey]
+            ?.name
+        || collectible.name
+        || collectibleID;
+
     // Update the local array immediately
     ownedCollectibles.push(collectibleID);
 
@@ -252,25 +269,16 @@ async function unlockCollectible(userID, collectibleID, ownedCollectibles) {
 
     if (error) {
         // Undo the local change because Supabase failed
-        ownedCollectibles = ownedCollectibles.filter(function(id) {
-                return id !== collectibleID;
-            });
+        const collectibleIndex = ownedCollectibles.indexOf(collectibleID);
+
+        if (collectibleIndex !== -1) {
+            ownedCollectibles.splice(collectibleIndex, 1);
+        }
 
         throw error;
     }
 
-    const collectible = findCollectibleByID(collectibleID);
-
-    const translatedCollectibleName = collectiblesTranslations[currentLanguage]
-            ?.translation
-            ?.collectibles
-            ?.[collectible.category]
-            ?.[collectible.collectibleKey]
-            ?.name
-        || collectible.name
-        || collectibleID;
-
-    alert(i18next.t("main.messages.collectibleUnlocked", {name: translatedCollectibleName}));
+    window.alert(i18next.t("main.messages.collectibleUnlocked", {name: translatedCollectibleName}));
     launchFireworksCelebration();
 
     return true;

@@ -769,6 +769,11 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
         ///// SECTION TO UNLOCK COLLECTIBLES /////
         let unlockedSomething = false;
 
+        // Bach's Goldberg Variations (1-in-8 chance, awarded sequentially)
+        if (await tryUnlockNextBachGoldbergCollectible(userID)) {
+            unlockedSomething = true;
+        }
+
         // Sakura
         if (!ownedCollectibles.includes("sakura")) {
             await unlockCollectible(userID, "sakura", ownedCollectibles);

@@ -776,3 +776,26 @@ async function tryUnlockRandomChopinNocturne(loggedInUserID) {
 
     await unlockCollectible(loggedInUserID, randomNocturne.id, ownedCollectibles);
 }
+
+
+// Give the next Goldberg Variations collectible in the order defined above
+async function tryUnlockNextBachGoldbergCollectible(loggedInUserID) {
+    if (!loggedInUserID) {
+        return false;
+    }
+
+    // Each postcard saved to a Life Segment has a 1-in-8 chance of unlocking a Goldberg variation
+    if (Math.random() >= 1 / 2) {
+        return false;
+    }
+
+    const nextCollectible = Object.values(collectibles.exclusiveMusic).find(function(collectible) {
+        return collectible.id.startsWith("bach_goldberg_") && !ownedCollectibles.includes(collectible.id);
+    });
+
+    if (!nextCollectible) {
+        return false;
+    }
+
+    return await unlockCollectible(loggedInUserID, nextCollectible.id, ownedCollectibles);
+}
