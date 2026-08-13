@@ -1,4 +1,4 @@
-const savedLanguage = localStorage.getItem("YOUR_EXISTING_LANGUAGE_KEY") || "en";
+const savedLanguage = localStorage.getItem("preferredLanguage") || "en";
 
 i18next.init({
     lng: savedLanguage,

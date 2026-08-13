@@ -33,6 +33,13 @@ async function initializeInventoryTranslations() {
                     ...inventoryTranslations.es.translation,
                     ...collectiblesTranslations.es.translation
                 }
+            },
+
+            fr: {
+                translation: {
+                    ...inventoryTranslations.fr.translation,
+                    ...collectiblesTranslations.fr.translation
+                }
             }
         }
     });
