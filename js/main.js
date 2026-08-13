@@ -115,7 +115,7 @@ async function loadLifeSegments (userID) {
 
     lifeSegmentSelect.disabled = false;
     lifeSegmentSelect.innerHTML = `<option value="">${i18next.t("main.lifeSegments.addPostcard")}</option>`;
-    
+
     for (const segment of data){
         const option = document.createElement("option");
         option.value = segment.id;
@@ -154,7 +154,8 @@ async function loadOwnedStamps(userID) {
         piano_stamp: "piano",
         tchaikovsky_stamp: "tchaikovsky",
         camera_stamp: "camera",
-        russian_space_stamp: "russian_space"
+        russian_space_stamp: "russian_space",
+        sakura_stamp: "sakura",
     };
 
     for (const stampID of ownedStamps) {
@@ -180,6 +181,58 @@ async function loadOwnedStamps(userID) {
     if (selectedStamp) {
         stampSelect.value = selectedStamp;
     }
+}
+
+// Function for the user to unlock NEW stamps
+async function unlockStamp(userID, stampID) {
+    if (!userID) {
+        throw new Error("You must be logged in to unlock additional stamps!");
+    }
+
+    const stamp = stampDatabase[stampID];
+
+    if (!stamp) {
+        throw new Error("Stamp not found: " + stampID);
+    }
+
+    const { data: profileData, error: profileError } =
+        await supabaseClient
+            .from("profiles")
+            .select("owned_stamps")
+            .eq("user_id", userID)
+            .single();
+
+    if (profileError) {
+        throw profileError;
+    }
+
+    const ownedStamps = profileData.owned_stamps || []; // Because I have made the Supabase default value for profileData.owned_stamps contain 4 stamps, there should not be an empty or null value
+
+    // Do not add the same stamp twice
+    if (ownedStamps.includes(stampID)) {
+        return false;
+    }
+
+    ownedStamps.push(stampID);
+
+    const { error: updateError } = await supabaseClient
+        .from("profiles")
+        .update({
+            owned_stamps: ownedStamps
+        })
+        .eq("user_id", userID);
+
+    if (updateError) {
+        throw updateError;
+    }
+
+    await loadOwnedStamps(userID);
+
+    alert("🎉 You unlocked " + stamp.name + "!");
+
+    launchFireworksCelebration();
+
+    return true;
 }
 
 
@@ -814,6 +867,7 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
         // Sakura
         if (!ownedCollectibles.includes("sakura")) {
             await unlockCollectible(userID, "sakura", ownedCollectibles);
+            await unlockStamp(userID, "sakura_stamp");
             unlockedSomething = true;
         }
 

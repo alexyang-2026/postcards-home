@@ -32,7 +32,8 @@ const translationResources = {
                     piano: "🎹 1941 Piano Stamp",
                     tchaikovsky: "🎵 Tchaikovsky Stamp",
                     camera: "📷 1965 Camera Stamp",
-                    russian_space: "🚀 1967 Russian Space Stamp"
+                    russian_space: "🚀 1967 Russian Space Stamp",
+                    sakura: "🌸 Sakura Stamp"
                 },
 
                 moods: {
@@ -177,6 +178,7 @@ const translationResources = {
                     tchaikovsky: "🎵 柴可夫斯基邮票",
                     camera: "📷 1965年照相机邮票",
                     russian_space: "🚀 1967年俄罗斯太空邮票",
+                    sakura: "🌸 樱花邮票",
                 },
 
                 moods: {

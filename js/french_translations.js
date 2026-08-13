@@ -29,7 +29,8 @@ const frenchMainTranslations = {
                 piano: "🎹 Timbre piano de 1941",
                 tchaikovsky: "🎵 Timbre Tchaïkovski",
                 camera: "📷 Timbre appareil photo de 1965",
-                russian_space: "🚀 Timbre spatial russe de 1967"
+                russian_space: "🚀 Timbre spatial russe de 1967",
+                sakura: "🌸 Timbre fleur de cerisier"
             },
             moods: {
                 select: "Choisir une humeur…",
