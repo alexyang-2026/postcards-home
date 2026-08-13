@@ -503,6 +503,21 @@ function loadRandomMusic() {
                     audio: collectible.audio
                 }
             })
+    } else if (selectedMood === "exclusive_goldberg") {
+        recommendationsArray = ownedCollectibles
+            .map(function (collectibleID) {
+                return findCollectibleByID(collectibleID);
+            })
+            .filter(function (collectible) {
+                return (collectible && collectible.category === "exclusiveMusic" && collectible.id.startsWith("bach_goldberg") && collectible.audio);
+            })
+            .map(function (collectible) {
+                return {
+                    piece: collectible.name,
+                    composer: "Johann Sebastian Bach",
+                    audio: collectible.audio
+                }
+            })
     } else {
         recommendationsArray = musicDatabase[selectedMood] || [];
     }
@@ -1039,6 +1054,22 @@ async function loadCollectibleDropdowns() {
         exclusiveOption.id = "exclusiveNocturnalOption";
         exclusiveOption.value = "exclusive_nocturnal";
         exclusiveOption.textContent = "🌗 EXCLUSIVE: Nocturnal";
+
+        moodSelect.appendChild(exclusiveOption);
+    }
+
+    // Section for Goldberg Variations
+    const ownsGoldbergVariations = ownedCollectibles.some(function (collectibleID) {
+        const collectible = findCollectibleByID(collectibleID);
+        return (collectible && collectible.category === "exclusiveMusic" && collectible.id.startsWith("bach_goldberg"));
+    })
+
+    if (ownsGoldbergVariations) {
+        const exclusiveOption = document.createElement("option");
+
+        exclusiveOption.id = "exclusiveGoldbergOption";
+        exclusiveOption.value = "exclusive_goldberg";
+        exclusiveOption.textContent = "🧩 EXCLUSIVE: Memories of Childhood #1";
 
         moodSelect.appendChild(exclusiveOption);
     }

@@ -18,7 +18,7 @@ const translationResources = {
 
                 controls: {
                     captionPlaceholder: "Write a caption...",
-                    useLocation: "Use My Location"
+                    useLocation: "📍 Use My Location"
                 },
 
                 stamps: {
@@ -162,7 +162,7 @@ const translationResources = {
 
                 controls: {
                     captionPlaceholder: "写下说明……",
-                    useLocation: "使用我的位置"
+                    useLocation: "📍 使用我的位置"
                 },
 
                 stamps: {

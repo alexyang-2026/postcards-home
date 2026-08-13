@@ -4,7 +4,7 @@ const germanMainTranslations = { translation: {
         documentTitle: "Postcards Home", title: "Postcards Home", subtitle: "Erstellt von Alex Yang",
         selectLanguage: "Sprache auswählen:", languageLabel: "Seitensprache auswählen",
         steps: { choosePhoto: "Schritt 1: Foto auswählen", writeCaption: "Schritt 2: Bildunterschrift schreiben", selectStamp: "Schritt 3: Briefmarke auswählen", selectMood: "Schritt 4: Stimmung auswählen", useLocation: "Schritt 5: Standort verwenden" },
-        controls: { captionPlaceholder: "Schreibe eine Bildunterschrift …", useLocation: "Meinen Standort verwenden" },
+        controls: { captionPlaceholder: "Schreibe eine Bildunterschrift …", useLocation: "📍 Meinen Standort verwenden" },
         stamps: { select: "Briefmarke auswählen …", music: "🎵 Musik-Briefmarke", home: "🏡 Zuhause-Briefmarke", travel: "✈️ Reise-Briefmarke", canada: "🇨🇦 Kanada-Briefmarke", princeton: "🐯 Princeton-Briefmarke", washington_gold: "🇺🇸 Goldene George-Washington-Briefmarke", piano: "🎹 Klavier-Briefmarke von 1941", tchaikovsky: "🎵 Tschaikowski-Briefmarke", camera: "📷 Kamera-Briefmarke von 1965", russian_space: "🚀 Russische Weltraum-Briefmarke von 1967" },
         moods: { select: "Stimmung auswählen …", happy: "😀 Glücklich", excited: "😃 Begeistert!", romantic: "🥰 Romantisch", reflective: "😇 Ruhig / Nachdenklich", ambitious: "😈 Ehrgeizig", angry: "😡 Wütend", inspired: "🤩 Inspiriert" },
         customization: { postcardBackground: "Postkartenhintergrund auswählen", selectPostcardBackground: "Postkartenhintergrund auswählen …", defaultPostcard: "Weiße Standardpostkarte", wallpaper: "Bildschirmhintergrund auswählen", selectWallpaper: "Bildschirmhintergrund auswählen …", defaultWallpaper: "Standardhintergrund" },

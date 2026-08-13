@@ -15,7 +15,7 @@ const spanishMainTranslations = {
             },
             "controls": {
                 "captionPlaceholder": "Escribe un texto...",
-                "useLocation": "Usar mi ubicación"
+                "useLocation": "📍 Usar mi ubicación"
             },
             "stamps": {
                 "select": "Seleccionar sello...",

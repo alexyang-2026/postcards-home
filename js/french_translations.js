@@ -16,7 +16,7 @@ const frenchMainTranslations = {
             },
             controls: {
                 captionPlaceholder: "Écrivez une légende…",
-                useLocation: "Utiliser ma position"
+                useLocation: "📍 Utiliser ma position"
             },
             stamps: {
                 select: "Choisir un timbre…",
