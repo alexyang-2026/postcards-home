@@ -127,6 +127,8 @@ async function loadLifeSegments (userID) {
 
 // Function to Load The User's Owned Stamps
 async function loadOwnedStamps(userID) {
+    const selectedStamp = stampSelect.value;
+
     const { data: profileData, error: profileError } = await supabaseClient
         .from("profiles")
         .select("owned_stamps")
@@ -142,6 +144,18 @@ async function loadOwnedStamps(userID) {
     stampSelect.innerHTML = ` <option value="">${i18next.t("main.stamps.select")}</option>`;
 
     const ownedStamps = profileData.owned_stamps || [];
+    const stampTranslationKeys = {
+        music: "music",
+        home: "home",
+        travel: "travel",
+        canada: "canada",
+        princeton: "princeton",
+        washington_gold: "washington_gold",
+        piano_stamp: "piano",
+        tchaikovsky_stamp: "tchaikovsky",
+        camera_stamp: "camera",
+        russian_space_stamp: "russian_space"
+    };
 
     for (const stampID of ownedStamps) {
         const stamp = stampDatabase[stampID];
@@ -152,11 +166,19 @@ async function loadOwnedStamps(userID) {
         }
 
         const option = document.createElement("option");
+        const translationKey = stampTranslationKeys[stampID];
 
         option.value = stamp.image;
-        option.textContent = stamp.name;
+        option.textContent = translationKey
+            ? i18next.t("main.stamps." + translationKey, {defaultValue: stamp.name})
+            : stamp.name;
 
         stampSelect.appendChild(option);
+    }
+
+    // Keep the user's current selection when rebuilding after a language change.
+    if (selectedStamp) {
+        stampSelect.value = selectedStamp;
     }
 }
 
@@ -1161,6 +1183,7 @@ languageSelect.addEventListener("change", async function() {
     if (loggedInUserID) {
         loginButton.textContent = i18next.t("main.actions.logout");
         await loadLifeSegments(loggedInUserID);
+        await loadOwnedStamps(loggedInUserID);
         await loadCollectibleDropdowns();
     }
 })
