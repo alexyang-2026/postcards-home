@@ -78,6 +78,14 @@ Source: https://youtu.be/B0t_2eLsB5c<br>
 Recorded for Postcards Home exclusive use.<br>
 
 
+### Johann Sebastian Bach: Goldberg Variations, BWV 988
+Performance by: Kimiko Ishizaka (piano)<br>
+Publisher Info: Open Goldberg<br>
+Source: https://imslp.org/wiki/Goldberg-Variationen,_BWV_988_(Bach,_Johann_Sebastian)<br>
+Copyright: Creative Commons Zero 1.0<br>
+Misc. Notes: Open Goldberg Variations. Recorded in Teldex Studio, Berlin, 2012. Bösendorfer 290 Imperial. Anne-Marie Sylvestre, Producer<br>
+
+
 ## Chopin's Nocturnes
 
 ### Frédéric Chopin: Nocturne Op. 9 No. 1 in B-flat Minor
