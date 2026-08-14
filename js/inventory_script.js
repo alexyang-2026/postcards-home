@@ -297,11 +297,7 @@ chooseLifeSegmentImage.addEventListener("change", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
@@ -376,11 +372,7 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
@@ -879,11 +871,7 @@ deletePostcardButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
@@ -1120,11 +1108,7 @@ function showProfileSettingsMessage(message, type) {
 async function loadProfileSettings() {
     const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-    if (authError) {
-        throw authError;
-    }
-
-    if (!authData.user) {
+    if (authError || !authData?.user) {
         throw new Error(i18next.t("inventory.profile.loginRequired"));
     }
 
@@ -1207,11 +1191,7 @@ saveProfileSettingsButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.profile.loginRequired"));
         }
 
@@ -1338,11 +1318,7 @@ deleteAccountButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.profile.loginRequired"));
         }
 

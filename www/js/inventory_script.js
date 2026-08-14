@@ -110,6 +110,7 @@ const deleteLifeSegmentButton = document.getElementById("deleteLifeSegmentButton
 let selectedLifeSegmentID = null;
 let selectedPostcard = null;
 let selectedMusicRecommendation = null;
+let ownedCollectibles = [];
 
 const editPostcardOverlay = document.getElementById("editPostcardOverlay");
 const editPostcard = document.getElementById("editPostcard");
@@ -296,11 +297,7 @@ chooseLifeSegmentImage.addEventListener("change", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
@@ -375,11 +372,7 @@ deleteLifeSegmentButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
@@ -650,7 +643,7 @@ async function loadCollectibles() {
         return;
     }
 
-    const ownedCollectibles = collectiblesData.owned_collectibles || [];
+    ownedCollectibles = collectiblesData.owned_collectibles || [];
     
     for (const collectibleID of ownedCollectibles) {
         const collectible = findCollectibleByID(collectibleID);
@@ -693,6 +686,8 @@ async function loadCollectibles() {
 
         collectiblesGrid.innerHTML += htmlTemplate;
     }
+
+    loadExclusiveMusicOptionsInEditor();
 }
 
 // Edit Postcard Modal Control Buttons ///
@@ -755,9 +750,49 @@ function loadRandomMusicInEditor() {
         return;
     }
 
-    const recommendations = musicDatabase[selectedMood];
+    let recommendations = [];
 
-    if (!recommendations || recommendations.length === 0) {
+    if (selectedMood === "exclusive_nocturnal") {
+        recommendations = ownedCollectibles
+            .map(function(collectibleID) {
+                return findCollectibleByID(collectibleID);
+            })
+            .filter(function(collectible) {
+                return collectible
+                    && collectible.category === "exclusiveMusic"
+                    && collectible.id.startsWith("chopin_nocturne")
+                    && collectible.audio;
+            })
+            .map(function(collectible) {
+                return {
+                    piece: collectible.name,
+                    composer: "Frédéric Chopin",
+                    audio: collectible.audio
+                };
+            });
+    } else if (selectedMood === "exclusive_goldberg") {
+        recommendations = ownedCollectibles
+            .map(function(collectibleID) {
+                return findCollectibleByID(collectibleID);
+            })
+            .filter(function(collectible) {
+                return collectible
+                    && collectible.category === "exclusiveMusic"
+                    && collectible.id.startsWith("bach_goldberg")
+                    && collectible.audio;
+            })
+            .map(function(collectible) {
+                return {
+                    piece: collectible.name,
+                    composer: "Johann Sebastian Bach",
+                    audio: collectible.audio
+                };
+            });
+    } else {
+        recommendations = musicDatabase[selectedMood] || [];
+    }
+
+    if (recommendations.length === 0) {
         console.warn("No music found for mood:", selectedMood);
         return;
     }
@@ -778,6 +813,40 @@ function loadRandomMusicInEditor() {
     });
 
     resizePostcardText();
+}
+
+function loadExclusiveMusicOptionsInEditor() {
+    const selectedMood = moodSelect.value;
+
+    // We need to remove the exclusive options every time we call loadExclusiveMusicOptionsInEditor() otherwise there will be duplicates
+    document.getElementById("exclusiveNocturnalEditorOption")?.remove();
+    document.getElementById("exclusiveGoldbergEditorOption")?.remove();
+
+    const ownsChopinNocturne = ownedCollectibles.some(function(collectibleID) {
+        return collectibleID.startsWith("chopin_nocturne");
+    });
+
+    if (ownsChopinNocturne) {
+        const nocturnalOption = document.createElement("option");
+        nocturnalOption.id = "exclusiveNocturnalEditorOption";
+        nocturnalOption.value = "exclusive_nocturnal";
+        nocturnalOption.textContent = "🌗 EXCLUSIVE: Nocturnal";
+        moodSelect.appendChild(nocturnalOption);
+    }
+
+    const ownsGoldbergVariation = ownedCollectibles.some(function(collectibleID) {
+        return collectibleID.startsWith("bach_goldberg");
+    });
+
+    if (ownsGoldbergVariation) {
+        const goldbergOption = document.createElement("option");
+        goldbergOption.id = "exclusiveGoldbergEditorOption";
+        goldbergOption.value = "exclusive_goldberg";
+        goldbergOption.textContent = "🧩 EXCLUSIVE: Memories of Childhood #1";
+        moodSelect.appendChild(goldbergOption);
+    }
+
+    moodSelect.value = selectedMood;
 }
 
 moodSelect.addEventListener("change", loadRandomMusicInEditor);
@@ -802,11 +871,7 @@ deletePostcardButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.lifeSegments.loginRequired"));
         }
 
@@ -1043,11 +1108,7 @@ function showProfileSettingsMessage(message, type) {
 async function loadProfileSettings() {
     const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-    if (authError) {
-        throw authError;
-    }
-
-    if (!authData.user) {
+    if (authError || !authData?.user) {
         throw new Error(i18next.t("inventory.profile.loginRequired"));
     }
 
@@ -1130,11 +1191,7 @@ saveProfileSettingsButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.profile.loginRequired"));
         }
 
@@ -1261,11 +1318,7 @@ deleteAccountButton.addEventListener("click", async function() {
     try {
         const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-        if (authError) {
-            throw authError;
-        }
-
-        if (!authData.user) {
+        if (authError || !authData?.user) {
             throw new Error(i18next.t("inventory.profile.loginRequired"));
         }
 

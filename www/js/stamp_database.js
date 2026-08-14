@@ -69,5 +69,11 @@ const stampDatabase = {
         name: "🚀 Russian Space Stamp (1967)",
         image: "assets/images/stamps/russian_space_stamp_1967.png",
         rarity: "Legendary"
+    },
+
+    sakura_stamp: {
+        name: "🌸 Sakura Stamp",
+        image: "assets/images/stamps/sakura_stamp.png",
+        rarity: "Rare"
     }
 };

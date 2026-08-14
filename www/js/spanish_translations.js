@@ -15,7 +15,7 @@ const spanishMainTranslations = {
             },
             "controls": {
                 "captionPlaceholder": "Escribe un texto...",
-                "useLocation": "Usar mi ubicación"
+                "useLocation": "📍 Usar mi ubicación"
             },
             "stamps": {
                 "select": "Seleccionar sello...",
@@ -23,7 +23,8 @@ const spanishMainTranslations = {
                 "home": "🏡 Sello de hogar",
                 "travel": "✈️ Sello de viaje",
                 "canada": "🇨🇦 Sello de Canadá",
-                "princeton": "🐯 Sello de Princeton"
+                "princeton": "🐯 Sello de Princeton",
+                "sakura": "🌸 Sello de flor de cerezo"
             },
             "moods": {
                 "select": "Elegir estado de ánimo...",

@@ -115,7 +115,7 @@ async function loadLifeSegments (userID) {
 
     lifeSegmentSelect.disabled = false;
     lifeSegmentSelect.innerHTML = `<option value="">${i18next.t("main.lifeSegments.addPostcard")}</option>`;
-    
+
     for (const segment of data){
         const option = document.createElement("option");
         option.value = segment.id;
@@ -127,6 +127,8 @@ async function loadLifeSegments (userID) {
 
 // Function to Load The User's Owned Stamps
 async function loadOwnedStamps(userID) {
+    const selectedStamp = stampSelect.value;
+
     const { data: profileData, error: profileError } = await supabaseClient
         .from("profiles")
         .select("owned_stamps")
@@ -142,6 +144,19 @@ async function loadOwnedStamps(userID) {
     stampSelect.innerHTML = ` <option value="">${i18next.t("main.stamps.select")}</option>`;
 
     const ownedStamps = profileData.owned_stamps || [];
+    const stampTranslationKeys = {
+        music: "music",
+        home: "home",
+        travel: "travel",
+        canada: "canada",
+        princeton: "princeton",
+        washington_gold: "washington_gold",
+        piano_stamp: "piano",
+        tchaikovsky_stamp: "tchaikovsky",
+        camera_stamp: "camera",
+        russian_space_stamp: "russian_space",
+        sakura_stamp: "sakura",
+    };
 
     for (const stampID of ownedStamps) {
         const stamp = stampDatabase[stampID];
@@ -152,12 +167,72 @@ async function loadOwnedStamps(userID) {
         }
 
         const option = document.createElement("option");
+        const translationKey = stampTranslationKeys[stampID];
 
         option.value = stamp.image;
-        option.textContent = stamp.name;
+        option.textContent = translationKey
+            ? i18next.t("main.stamps." + translationKey, {defaultValue: stamp.name})
+            : stamp.name;
 
         stampSelect.appendChild(option);
     }
+
+    // Keep the user's current selection when rebuilding after a language change.
+    if (selectedStamp) {
+        stampSelect.value = selectedStamp;
+    }
+}
+
+// Function for the user to unlock NEW stamps
+async function unlockStamp(userID, stampID) {
+    if (!userID) {
+        throw new Error(i18next.t("main.messages.loginRequired"));
+    }
+
+    const stamp = stampDatabase[stampID];
+
+    if (!stamp) {
+        throw new Error("Stamp not found: " + stampID);
+    }
+
+    const { data: profileData, error: profileError } =
+        await supabaseClient
+            .from("profiles")
+            .select("owned_stamps")
+            .eq("user_id", userID)
+            .single();
+
+    if (profileError) {
+        throw profileError;
+    }
+
+    const ownedStamps = profileData.owned_stamps || []; // Because I have made the Supabase default value for profileData.owned_stamps contain 4 stamps, there should not be an empty or null value
+
+    // Do not add the same stamp twice
+    if (ownedStamps.includes(stampID)) {
+        return false;
+    }
+
+    ownedStamps.push(stampID);
+
+    const { error: updateError } = await supabaseClient
+        .from("profiles")
+        .update({
+            owned_stamps: ownedStamps
+        })
+        .eq("user_id", userID);
+
+    if (updateError) {
+        throw updateError;
+    }
+
+    await loadOwnedStamps(userID);
+
+    alert("🎉 You unlocked " + stamp.name + "!");
+
+    launchFireworksCelebration();
+
+    return true;
 }
 
 
@@ -200,11 +275,10 @@ saveLifeSegmentButton.addEventListener("click", async function() {
 
     const { data:authData, error:authError } = await supabaseClient.auth.getUser();
 
-    if (authError || !authData) {
+    if (authError || !authData?.user) {
         lifeSegmentStatusMessage.style.display = "block";
         lifeSegmentStatusMessage.style.color = "red";
-        lifeSegmentStatusMessage.textContent = "Error: " + authError.message;
-        console.log(authError)
+        lifeSegmentStatusMessage.textContent = i18next.t("main.messages.loginRequired");
         return;
     }
 
@@ -478,6 +552,21 @@ function loadRandomMusic() {
                 return {
                     piece: collectible.name,
                     composer: "Frédéric Chopin",
+                    audio: collectible.audio
+                }
+            })
+    } else if (selectedMood === "exclusive_goldberg") {
+        recommendationsArray = ownedCollectibles
+            .map(function (collectibleID) {
+                return findCollectibleByID(collectibleID);
+            })
+            .filter(function (collectible) {
+                return (collectible && collectible.category === "exclusiveMusic" && collectible.id.startsWith("bach_goldberg") && collectible.audio);
+            })
+            .map(function (collectible) {
+                return {
+                    piece: collectible.name,
+                    composer: "Johann Sebastian Bach",
                     audio: collectible.audio
                 }
             })
@@ -777,6 +866,7 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
         // Sakura
         if (!ownedCollectibles.includes("sakura")) {
             await unlockCollectible(userID, "sakura", ownedCollectibles);
+            await unlockStamp(userID, "sakura_stamp");
             unlockedSomething = true;
         }
 
@@ -947,10 +1037,10 @@ async function loadCollectibleDropdowns() {
         </option>
     `;
 
-    const { data: authData } = await supabaseClient.auth.getUser();
+    const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-    if (!authData.user) {
-        alert("You need to be logged in!");
+    if (authError || !authData?.user) {
+        alert(i18next.t("main.messages.loginRequired"));
         return;
     }
     
@@ -1017,6 +1107,22 @@ async function loadCollectibleDropdowns() {
         exclusiveOption.id = "exclusiveNocturnalOption";
         exclusiveOption.value = "exclusive_nocturnal";
         exclusiveOption.textContent = "🌗 EXCLUSIVE: Nocturnal";
+
+        moodSelect.appendChild(exclusiveOption);
+    }
+
+    // Section for Goldberg Variations
+    const ownsGoldbergVariations = ownedCollectibles.some(function (collectibleID) {
+        const collectible = findCollectibleByID(collectibleID);
+        return (collectible && collectible.category === "exclusiveMusic" && collectible.id.startsWith("bach_goldberg"));
+    })
+
+    if (ownsGoldbergVariations) {
+        const exclusiveOption = document.createElement("option");
+
+        exclusiveOption.id = "exclusiveGoldbergOption";
+        exclusiveOption.value = "exclusive_goldberg";
+        exclusiveOption.textContent = "🧩 EXCLUSIVE: Memories of Childhood #1";
 
         moodSelect.appendChild(exclusiveOption);
     }
@@ -1093,13 +1199,8 @@ wallpaperSelect.addEventListener("change", async function () {
     
     const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-    if (!authData.user) {
-        alert("You must be logged in to change background!");
-        return;
-    }
-
-    if (authError) {
-        alert("Error: ", authError.message);
+    if (authError || !authData?.user) {
+        alert(i18next.t("main.messages.loginRequired"));
         return;
     }
 
@@ -1161,6 +1262,7 @@ languageSelect.addEventListener("change", async function() {
     if (loggedInUserID) {
         loginButton.textContent = i18next.t("main.actions.logout");
         await loadLifeSegments(loggedInUserID);
+        await loadOwnedStamps(loggedInUserID);
         await loadCollectibleDropdowns();
     }
 })

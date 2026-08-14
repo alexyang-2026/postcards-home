@@ -186,7 +186,7 @@ async function loadOwnedStamps(userID) {
 // Function for the user to unlock NEW stamps
 async function unlockStamp(userID, stampID) {
     if (!userID) {
-        throw new Error("You must be logged in to unlock additional stamps!");
+        throw new Error(i18next.t("main.messages.loginRequired"));
     }
 
     const stamp = stampDatabase[stampID];
@@ -275,11 +275,10 @@ saveLifeSegmentButton.addEventListener("click", async function() {
 
     const { data:authData, error:authError } = await supabaseClient.auth.getUser();
 
-    if (authError || !authData) {
+    if (authError || !authData?.user) {
         lifeSegmentStatusMessage.style.display = "block";
         lifeSegmentStatusMessage.style.color = "red";
-        lifeSegmentStatusMessage.textContent = "Error: " + authError.message;
-        console.log(authError)
+        lifeSegmentStatusMessage.textContent = i18next.t("main.messages.loginRequired");
         return;
     }
 
@@ -1038,10 +1037,10 @@ async function loadCollectibleDropdowns() {
         </option>
     `;
 
-    const { data: authData } = await supabaseClient.auth.getUser();
+    const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-    if (!authData.user) {
-        alert("You need to be logged in!");
+    if (authError || !authData?.user) {
+        alert(i18next.t("main.messages.loginRequired"));
         return;
     }
     
@@ -1200,13 +1199,8 @@ wallpaperSelect.addEventListener("change", async function () {
     
     const { data: authData, error: authError } = await supabaseClient.auth.getUser();
 
-    if (!authData.user) {
-        alert("You must be logged in to change background!");
-        return;
-    }
-
-    if (authError) {
-        alert("Error: ", authError.message);
+    if (authError || !authData?.user) {
+        alert(i18next.t("main.messages.loginRequired"));
         return;
     }
 
