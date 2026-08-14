@@ -27,6 +27,8 @@ button {
 }
 
 select {
+    color: black;
+    border: 1.5px solid black;
     font-family: American Typewriter;
 }
 
@@ -503,6 +505,7 @@ select {
     cursor: pointer;
     background: gold;
     font-family: "American Typewriter";
+    font-size: small;
 }
 
 #locationButton:hover,

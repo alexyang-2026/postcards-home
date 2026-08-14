@@ -25,7 +25,9 @@ const excluded = new Set([
     "404.html",                     // This is only for web pages
     "404.css",
     "404.js",
-    "ios", "android"                // I do not want to commit entire native apps to the bundle
+    "ios", "android",               // I do not want to commit entire native apps to the bundle
+    "dev_tools",                    // Dev tools for creating assets, not part of the app, which is also why most scripts here aren't in HTML/CSS/JS
+    ".venv",
 ]);
 
 function copyDirectory(source, destination){
