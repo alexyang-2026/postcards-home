@@ -156,6 +156,7 @@ async function loadOwnedStamps(userID) {
         camera_stamp: "camera",
         russian_space_stamp: "russian_space",
         sakura_stamp: "sakura",
+        sunset_stamp: "sunset",
     };
 
     for (const stampID of ownedStamps) {
@@ -908,12 +909,14 @@ async function savePostcardToLifeSegment(lifeSegmentID, lifeSegmentName) {
 
         // Sunset
         if (
-            !ownedCollectibles.includes("sunset") &&
+            (!ownedCollectibles.includes("sunsetwallpaper") ||
+                !ownedCollectibles.includes("sunsethills")) &&
             time.totalMinutes >= 18 * 60 &&
             time.totalMinutes < 19 * 60
         ) {
             await unlockCollectible(userID, "sunsetwallpaper", ownedCollectibles);
             await unlockCollectible(userID, "sunsethills", ownedCollectibles);
+            await unlockStamp(userID, "sunset_stamp");
             unlockedSomething = true;
         }
 

@@ -606,11 +606,22 @@ async function loadInventoryStamps() {
         }
         
         const rarityText = i18next.t("inventory.stamps.rarity", {rarity: i18next.t(`inventory.rarities.${stampDatabase[stampName].rarity}`)});
+        const stampTranslationKeys = {
+            music: "music", home: "home", travel: "travel", canada: "canada",
+            princeton: "princeton", washington_gold: "washington_gold",
+            piano_stamp: "piano", tchaikovsky_stamp: "tchaikovsky",
+            camera_stamp: "camera", russian_space_stamp: "russian_space",
+            sakura_stamp: "sakura", sunset_stamp: "sunset"
+        };
+        const translatedStampName = i18next.t(
+            `main.stamps.${stampTranslationKeys[stampName] || stampName}`,
+            {defaultValue: stampDatabase[stampName].name}
+        );
 
         const htmlTemplate = `
             <div class="stamp-icon">
                 <img src="${stampDatabase[stampName].image}" class="stamp-cover">
-                <h3 class="stamp-title">${stampDatabase[stampName].name}</h3>
+                <h3 class="stamp-title">${translatedStampName}</h3>
                 <p class="stamp-rarity">${rarityText}</p>
             </div>`;
 

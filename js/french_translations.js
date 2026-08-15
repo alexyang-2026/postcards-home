@@ -30,7 +30,8 @@ const frenchMainTranslations = {
                 tchaikovsky: "🎵 Timbre Tchaïkovski",
                 camera: "📷 Timbre appareil photo de 1965",
                 russian_space: "🚀 Timbre spatial russe de 1967",
-                sakura: "🌸 Timbre fleur de cerisier"
+                sakura: "🌸 Timbre fleur de cerisier",
+                sunset: "🌅 Timbre coucher de soleil"
             },
             moods: {
                 select: "Choisir une humeur…",

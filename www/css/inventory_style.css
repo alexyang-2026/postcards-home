@@ -13,6 +13,19 @@ body {
     padding-right: env(safe-area-inset-right);
 }
 
+button {
+    -webkit-appearance: none;
+    appearance: none;
+    color: black;
+    border: 1px solid black;
+    font-family: American Typewriter, serif;
+}
+
+select {
+    border: 1px sold black;
+    font-family: American Typewriter, serif;
+}
+
 #languageControls {
     margin-bottom: 8px;
 }
@@ -94,6 +107,7 @@ body {
 
 .life-segment-cover, .stamp-cover {
     width: 100%; /* make the image as wide as its parent card */
+    height: auto;
 }
 
 .life-segment-title, .life-segment-postcards, .life-segment-date {
@@ -111,7 +125,7 @@ body {
     display: flex;
     flex-direction:column;
     border: 2px solid black;
-    flex-basis: calc(25% - 18px);
+    width: calc(25% - 18px);
     align-items: center;
 }
 
@@ -223,6 +237,8 @@ body {
 
 #chooseLifeSegmentImage {
     background-color: greenyellow;
+    border: 1px solid black;
+
 }
 
 #deleteLifeSegmentButton {

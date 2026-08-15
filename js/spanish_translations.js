@@ -24,7 +24,8 @@ const spanishMainTranslations = {
                 "travel": "✈️ Sello de viaje",
                 "canada": "🇨🇦 Sello de Canadá",
                 "princeton": "🐯 Sello de Princeton",
-                "sakura": "🌸 Sello de flor de cerezo"
+                "sakura": "🌸 Sello de flor de cerezo",
+                "sunset": "🌅 Sello de atardecer"
             },
             "moods": {
                 "select": "Elegir estado de ánimo...",

@@ -75,5 +75,11 @@ const stampDatabase = {
         name: "🌸 Sakura Stamp",
         image: "assets/images/stamps/sakura_stamp.png",
         rarity: "Rare"
+    },
+
+    sunset_stamp: {
+        name: "🌅 Sunset Stamp",
+        image: "assets/images/stamps/sunset_stamp.png",
+        rarity: "Rare"
     }
 };
