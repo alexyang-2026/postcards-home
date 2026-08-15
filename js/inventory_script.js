@@ -442,8 +442,8 @@ function displayPostcards(postcardsData) {
         const htmlTemplate = `
             <div class="inventory-postcard" data-postcard-id="${postcard.id}" style="background-image: url('${backgroundImage}')">
                 <div class="postcard-photo-container">
-                    <img class="postcard-photo" src="${postcard.image_url}">
-                    <img class="postcard-stamp" src="${postcard.stamp}">
+                    <img class="postcard-photo" src="${postcard.image_url}" alt="Postcard photograph">
+                    <img class="postcard-stamp" src="${postcard.stamp}" alt="Postcard stamp">
                 </div>
 
                 <div class="postcard-body" style="color: ${postcardTextColor};">
@@ -620,7 +620,7 @@ async function loadInventoryStamps() {
 
         const htmlTemplate = `
             <div class="stamp-icon">
-                <img src="${stampDatabase[stampName].image}" class="stamp-cover">
+                <img src="${stampDatabase[stampName].image}" class="stamp-cover" alt="">
                 <h3 class="stamp-title">${translatedStampName}</h3>
                 <p class="stamp-rarity">${rarityText}</p>
             </div>`;
