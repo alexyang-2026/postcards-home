@@ -3,8 +3,7 @@
 
 ### Priority Features
 - Keyboard Shortcuts
+- Fix Goldberg Variations (add missing audio files and full recording)
 
 ### Future Features
-- French translations
-- German translations
 - Inventory search

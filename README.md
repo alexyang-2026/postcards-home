@@ -1,30 +1,94 @@
 # Postcards Home
 
-Postcards Home is a web application for creating digital postcards that combine photos, captions, music, and locations into memorable snapshots of life.
+Postcards Home is a web application for turning moments into digital postcards that combine photos, captions, locations, moods, and music. (Its features as a mobile app is still in development.)
 
-Unlike any generic postcard editor, Postcards Home engages multiple aspects of your memory. Not only do you keep the visual elements (photo, caption), you also can select your mood, and the creator will generate a piece of classical music that fits that mood.
+Rather than acting as a generic postcard editor, Postcards Home is designed around preserving different dimensions of a memory. Alongside the visual elements of a moment, users can select a mood and receive a piece of classical music that accompanies the postcard, thereby creating an immersive experience that stimulates the memory when images alone cannot.
+
+As users create and save more postcards, they can also unlock collectible customization options, including postcard backgrounds, wallpapers, and other items.
+
+> **Postcards Home is currently in beta.**
 
 ## Features
-- User authentication with Supabase
-- Create and save postcards
-- Image upload and storage
-- Mood-based music selection
-- Life segment organization
-- Inventory view
-- Download and share postcards
+
+### Postcard Creation
+- Create postcards from your own photos
+- Add captions, dates, and locations
+- Choose from different stamps
+- Select a mood and receive accompanying classical music
+- Customize postcard backgrounds with unlocked collectibles
+- Download and share completed postcards
+
+### Memories
+- Save postcards to your account
+- Organize postcards into Life Segments
+- Browse previously created postcards through the Inventory
+- Preserve the music, mood, location, and other information associated with each postcard
+
+### Collectibles & Customization
+- Unlock new items as you use the app
+- Customize postcard backgrounds
+- Customize screen wallpapers
+- Collect stamps and other unlockable items
+
+### Accounts
+- User authentication
+- Persistent postcard collections
+- User-specific Life Segments, collectibles, and preferences
+- Secure access to user data and uploaded images
+
+### Other
+- Multilingual interface. The app is currently supported in:
+    - English
+    - Mandarin Chinese
+    - French
+    - German
+    - Spanish
+    Please let me know if there are any translation errors!
+- Installable Progressive Web App (PWA)
+- Responsive web interface
 
 ## Tech Stack
-This project has been coded using vanilla HTML, CSS, and JS. Therefore, its tech stack is:
+
+Postcards Home is built primarily with vanilla web technologies rather than a frontend framework.
+
+### Frontend
 - HTML
 - CSS
 - JavaScript
+
+### Backend & Infrastructure
 - Supabase
+  - PostgreSQL database
+  - Authentication
+  - Storage
+  - Row Level Security (RLS)
+- Cloudflare Pages
+
+### Developer Tools
+- Python
+- Pillow
+
+Python-based developer tooling is used for offline asset generation, including the creation of custom stamp assets from source images.
 
 ## How To Use It
-It is very self-explanatory. After creating an account and logging in, you will be able to see the main postcard editor. Just follow the instructions on screen: choose a photo, write a caption, select a stamp, choose your mood, use your location, and you will have a beautifully formatted postcard.
 
-Should you wish for additional customization, you may notice that there are two "optional" features: select postcard background and select screen wallpaper. **These are available as you use the app more and unlock more "collectible" items, which can range from postcard background to screen wallpaper to exclusive music options.**
+After creating an account and logging in, open the postcard creator and follow the instructions on screen.
 
-## How To Report Bugs
-1. You can open a new Issue inside the GitHub repository
-2. You can contact me personally at zixuan.yang2018@gmail.com
+Choose a photo, write a caption, select a stamp and mood, optionally add your location, and create your postcard. The selected mood also determines the classical music that accompanies the memory.
+
+Created postcards can be saved into Life Segments, allowing memories from different periods or parts of your life to be organized separately.
+
+Additional customization options become available through the collectible system. As you use Postcards Home, you can unlock items such as postcard backgrounds, screen wallpapers, and other exclusive customization options.
+
+## Project Status
+
+Postcards Home is currently in beta and under active development. Features, designs, and data structures may change as the application continues to develop.
+
+## Reporting Bugs
+
+If you encounter a bug:
+
+1. Open an Issue in this GitHub repository.
+2. Include a description of the problem and, if possible, the steps needed to reproduce it.
+
+You may also contact me at `zixuan.yang2018@gmail.com`.
