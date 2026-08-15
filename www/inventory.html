@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <button id="inventoryMenuButton" data-i18n="inventory.menu.toggle">☰ Show/Hide Menu</button>
+    <button id="inventoryMenuButton" aria-expanded="true" aria-controls="inventorySidebar" data-i18n="inventory.menu.toggle">☰ Show/Hide Menu</button>
 
     <div class="inventory-layout">
         <aside id="inventorySidebar" class="inventory-sidebar">
@@ -30,11 +30,11 @@
                 </select>
             </div>
 
-            <button id="fullInventoryButton" class="inventory-nav-button" data-i18n="inventory.menu.fullInventory">Full Inventory</button>
-            <button id="lifeSegmentsButton" class="inventory-nav-button" data-i18n="inventory.menu.lifeSegments">Life Segments</button>
-            <button id="stampsButton" class="inventory-nav-button" data-i18n="inventory.menu.stamps">Stamps</button>
-            <button id="collectiblesButton" class="inventory-nav-button" data-i18n="inventory.menu.collectibles">Collectibles</button>
-            <button id="profileSettingsButton" class="inventory-nav-button" data-i18n="inventory.menu.profileSettings">Profile Settings</button>
+            <button id="fullInventoryButton" class="inventory-nav-button" aria-pressed="true" aria-controls="lifeSegmentsSection stampsSection collectiblesSection" data-i18n="inventory.menu.fullInventory">Full Inventory</button>
+            <button id="lifeSegmentsButton" class="inventory-nav-button" aria-pressed="false" aria-controls="lifeSegmentsSection" data-i18n="inventory.menu.lifeSegments">Life Segments</button>
+            <button id="stampsButton" class="inventory-nav-button" aria-pressed="false" aria-controls="stampsSection" data-i18n="inventory.menu.stamps">Stamps</button>
+            <button id="collectiblesButton" class="inventory-nav-button" aria-pressed="false" aria-controls="collectiblesSection" data-i18n="inventory.menu.collectibles">Collectibles</button>
+            <button id="profileSettingsButton" class="inventory-nav-button" aria-haspopup="dialog" aria-expanded="false" aria-controls="profileSettingsModal" data-i18n="inventory.menu.profileSettings">Profile Settings</button>
 
             <button id="returnButton" data-i18n="inventory.menu.returnToMain">Return to Main Page</button>
         </aside>
@@ -103,6 +103,7 @@
             <h3 id="lifeSegmentModalHeading" class="general-heading" data-i18n="inventory.lifeSegments.modalTitle">View Postcards</h3>
 
             <div id="lifeSegmentModalButtons">
+                <label class="visually-hidden" for="chooseLifeSegmentImage" data-i18n="inventory.lifeSegments.coverMenu">Change Life Segment Cover Image</label>
                 <select id="chooseLifeSegmentImage">
                     <option value="sunrise_over_water" data-i18n="inventory.lifeSegments.coverMenu">Change Life Segment Cover Image</option> <!-- If the user selects this option, then it will be the default image that is loaded -->
                     <option value="sunrise_over_water" data-i18n="inventory.lifeSegments.sunriseWater">Sunrise Over Water (Default)</option>
@@ -151,6 +152,7 @@
                     <button id="editCaptionButton" data-i18n="inventory.editor.editCaption">Edit Caption</button>
                     <button id="editPostcardLocation" data-i18n="inventory.editor.editLocation">📍 Edit Location</button>
 
+                    <label class="visually-hidden" for="moodSelect" data-i18n="inventory.editor.chooseMood">Choose mood</label>
                     <select id="moodSelect">
                         <option value="" data-i18n="inventory.editor.chooseMood">Choose Mood...</option>
                         <option value="happy" data-i18n="inventory.editor.happy">😀 Happy</option>
@@ -187,6 +189,7 @@
 
             <h3 data-i18n="inventory.editor.captionEditorTitle">Edit Caption</h3>
 
+            <label class="visually-hidden" for="captionEditorInput" data-i18n="inventory.editor.captionPlaceholder">Postcard caption</label>
             <textarea id="captionEditorInput" maxlength="500" placeholder="Write your caption..." data-i18n-placeholder="inventory.editor.captionPlaceholder"></textarea>
 
             <button id="applyCaptionButton" data-i18n="inventory.editor.applyCaption">Apply Caption</button>
@@ -210,10 +213,10 @@
     -->
 
     <div id="profileSettingsOverlay">
-        <div id="profileSettingsModal">
+        <div id="profileSettingsModal" role="dialog" aria-modal="true" aria-labelledby="profileSettingsTitle">
             <button id="closeProfileSettingsButton" type="button" aria-label="Close profile settings" data-i18n-aria-label="inventory.profile.closeLabel">✕</button>
 
-            <h2 data-i18n="inventory.profile.title">Profile Settings</h2>
+            <h2 id="profileSettingsTitle" data-i18n="inventory.profile.title">Profile Settings</h2>
 
             <section class="profile-settings-section">
                 <h3 data-i18n="inventory.profile.profileHeading">Profile</h3>

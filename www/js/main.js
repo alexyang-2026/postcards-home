@@ -69,6 +69,15 @@ exportButton.addEventListener("click", function(event) {
 
 document.addEventListener("click", function() {
     exportMenu.classList.remove("open");
+    exportButton.setAttribute("aria-expanded", "false");
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && exportMenu.classList.contains("open")) {
+        exportMenu.classList.remove("open");
+        exportButton.setAttribute("aria-expanded", "false");
+        exportButton.focus();
+    }
 });
 
 
@@ -251,14 +260,17 @@ createLifeSegmentButton.addEventListener("click", function() {
     modalOverlay.style.display = "flex";
     modalOverlay.style.alignItems = "center";
     modalOverlay.style.justifyContent = "center";
+    createLifeSegmentButton.setAttribute("aria-expanded", "true");
 });
 
 closeLifeSegmentModal.addEventListener("click", function() {
     modalOverlay.style.display = "none";
+    createLifeSegmentButton.setAttribute("aria-expanded", "false");
 });
 
 xButton_LifeSegmentModal.addEventListener("click", function() {
     modalOverlay.style.display = "none";
+    createLifeSegmentButton.setAttribute("aria-expanded", "false");
 })
 
 saveLifeSegmentButton.addEventListener("click", async function() {
@@ -616,9 +628,11 @@ musicPlayPauseButton.addEventListener("click", function() {
     if (musicPlayer.paused) {
         musicPlayer.play();
         musicPlayPauseButton.textContent = "⏸️";
+        musicPlayPauseButton.setAttribute("aria-label", i18next.t("main.accessibility.pauseMusic", {defaultValue: "Pause postcard music"}));
     } else {
         musicPlayer.pause();
         musicPlayPauseButton.textContent = "▶️";
+        musicPlayPauseButton.setAttribute("aria-label", i18next.t("main.accessibility.playMusic", {defaultValue: "Play postcard music"}));
     }
 });
 musicRerollButton.addEventListener("click", loadRandomMusic);

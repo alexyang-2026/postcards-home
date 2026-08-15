@@ -90,6 +90,7 @@ const inventoryMenuButton = document.getElementById("inventoryMenuButton");
 
 inventoryMenuButton.addEventListener("click", function() {
     inventorySidebar.classList.toggle("closed");
+    inventoryMenuButton.setAttribute("aria-expanded", String(!inventorySidebar.classList.contains("closed")));
 })
 
 
@@ -128,6 +129,11 @@ function resetButtonColors() {
     lifeSegmentsButton.style.backgroundColor = "gold";
     stampsButton.style.backgroundColor = "gold";
     collectiblesButton.style.backgroundColor = "gold";
+
+    fullInventoryButton.setAttribute("aria-pressed", "false");
+    lifeSegmentsButton.setAttribute("aria-pressed", "false");
+    stampsButton.setAttribute("aria-pressed", "false");
+    collectiblesButton.setAttribute("aria-pressed", "false");
 }
 
 function hideAllSections() {
@@ -144,6 +150,7 @@ fullInventoryButton.addEventListener("click", function(){
 
     resetButtonColors();
     fullInventoryButton.style.backgroundColor = "lightblue";
+    fullInventoryButton.setAttribute("aria-pressed", "true");
 })
 
 lifeSegmentsButton.addEventListener("click", function() {
@@ -152,6 +159,7 @@ lifeSegmentsButton.addEventListener("click", function() {
 
     resetButtonColors();
     lifeSegmentsButton.style.backgroundColor = "lightblue";
+    lifeSegmentsButton.setAttribute("aria-pressed", "true");
 })
 
 stampsButton.addEventListener("click", function() {
@@ -160,6 +168,7 @@ stampsButton.addEventListener("click", function() {
 
     resetButtonColors();
     stampsButton.style.backgroundColor = "lightblue";
+    stampsButton.setAttribute("aria-pressed", "true");
 
 })
 
@@ -169,6 +178,7 @@ collectiblesButton.addEventListener("click", function() {
 
     resetButtonColors();
     collectiblesButton.style.backgroundColor = "lightblue";
+    collectiblesButton.setAttribute("aria-pressed", "true");
 })
 
 
@@ -1150,6 +1160,7 @@ profileSettingsButton.addEventListener("click", async function() {
         await loadProfileSettings();
 
         profileSettingsOverlay.style.display ="flex";
+        profileSettingsButton.setAttribute("aria-expanded", "true");
         closeProfileSettingsButton.focus();
 
     } catch (error) {
@@ -1165,6 +1176,7 @@ profileSettingsButton.addEventListener("click", async function() {
 function closeProfileSettings() {
     profileSettingsOverlay.style.display = "none";
     profileSettingsMessage.style.display = "none";
+    profileSettingsButton.setAttribute("aria-expanded", "false");
 }
 
 closeProfileSettingsButton.addEventListener("click", closeProfileSettings);

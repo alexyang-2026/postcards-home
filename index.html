@@ -101,7 +101,7 @@
                         
                         <div class="musicPlayerRow">
                             <audio id="musicPlayer" loop aria-label="Postcard music preview" data-i18n-aria-label="main.accessibility.musicPlayer"></audio> <!-- controls give it the interactive playback bar -->
-                            <button id="musicPlayPauseButton" type="button">⏸️</button>
+                            <button id="musicPlayPauseButton" type="button" aria-label="Pause postcard music" data-i18n-aria-label="main.accessibility.pauseMusic">⏸️</button>
                             <button id="musicRerollButton" aria-label="Choose Another Random Music Piece" data-i18n-aria-label="main.actions.rerollMusic">🔄</button>
                         </div>
                     
@@ -175,7 +175,7 @@
                 <option value="" data-i18n="main.lifeSegments.choose">Choose Life Segment...</option>
             </select>
 
-            <button id="createLifeSegmentButton" data-i18n="main.lifeSegments.create">
+            <button id="createLifeSegmentButton" aria-haspopup="dialog" aria-expanded="false" aria-controls="lifeSegmentModal" data-i18n="main.lifeSegments.create">
                 + New Life Segment
             </button>
         </div>

@@ -71,7 +71,9 @@ const frenchMainTranslations = {
                 photoPreview: "Photo sélectionnée pour la carte",
                 stampPreview: "Aperçu du timbre sélectionné",
                 postcardActions: "Actions de la carte",
-                closeLifeSegmentModal: "Fermer la fenêtre du chapitre de vie"
+                closeLifeSegmentModal: "Fermer la fenêtre du chapitre de vie",
+                playMusic: "Lire la musique de la carte",
+                pauseMusic: "Mettre en pause la musique de la carte"
             },
             messages: {
                 photoRequired: "Veuillez prendre une photo avant d’enregistrer votre carte.",

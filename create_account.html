@@ -8,6 +8,7 @@
         <link rel="icon" type="image/png" href="assets/images/favicon.svg">
         <title data-i18n="createAccount.documentTitle">Postcards Home: Create Account</title>
         <link rel="stylesheet" href="css/create_account_style.css">
+        <link rel="stylesheet" href="css/utilities.css">
     </head>
     
     <body>
@@ -33,8 +34,11 @@
 
                 <div id="inputForms">
 
+                    <label class="visually-hidden" for="emailInput" data-i18n="createAccount.emailPlaceholder">Email address</label>
                     <input id="emailInput" type="email" placeholder="Your Email Here" data-i18n-placeholder="createAccount.emailPlaceholder">
+                    <label class="visually-hidden" for="passwordInput" data-i18n="createAccount.passwordPlaceholder">Password</label>
                     <input id="passwordInput" type="password" placeholder="Your Password Here" data-i18n-placeholder="createAccount.passwordPlaceholder">
+                    <label class="visually-hidden" for="confirmPasswordInput" data-i18n="createAccount.confirmPasswordPlaceholder">Confirm password</label>
                     <input id="confirmPasswordInput" type="password" placeholder="Confirm Password" data-i18n-placeholder="createAccount.confirmPasswordPlaceholder">
 
                     <label>
@@ -42,8 +46,11 @@
                         <span data-i18n="createAccount.showPassword">Show Password</span>
                     </label>
 
-                    <input id="firstNameInput" placeholder="Your First Name" data-i18n-placeholder="createAccount.firstNamePlaceholder"></input>
-                    <input id="lastNameInput" placeholder="Your Last Name" data-i18n-placeholder="createAccount.lastNamePlaceholder"></input>
+                    <label class="visually-hidden" for="firstNameInput" data-i18n="createAccount.firstNamePlaceholder">First name</label>
+                    <input id="firstNameInput" placeholder="Your First Name" data-i18n-placeholder="createAccount.firstNamePlaceholder">
+                    <label class="visually-hidden" for="lastNameInput" data-i18n="createAccount.lastNamePlaceholder">Last name</label>
+                    <input id="lastNameInput" placeholder="Your Last Name" data-i18n-placeholder="createAccount.lastNamePlaceholder">
+                    <label class="visually-hidden" for="usernameInput" data-i18n="createAccount.usernamePlaceholder">Username</label>
                     <input id="usernameInput" placeholder="Pick a Username" data-i18n-placeholder="createAccount.usernamePlaceholder">
 
                     <label for="birthdateInput" data-i18n="createAccount.birthdayLabel">Your Birthday:</label>

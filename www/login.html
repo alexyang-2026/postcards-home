@@ -8,6 +8,7 @@
         <link rel="icon" type="image/png" href="assets/images/favicon.svg">
         <title data-i18n="login.documentTitle">Postcards Home - Login</title>
         <link rel="stylesheet" href="css/login_style.css">
+        <link rel="stylesheet" href="css/utilities.css">
     </head>
 
     <body>
@@ -27,12 +28,14 @@
         </div>
 
         <div id="loginForms">
+            <label class="visually-hidden" for="emailInput" data-i18n="login.emailPlaceholder">Email address</label>
             <input 
                 id="emailInput"
                 type="email"
                 placeholder="Enter Your Email:"
                 data-i18n-placeholder="login.emailPlaceholder">
 
+            <label class="visually-hidden" for="passwordInput" data-i18n="login.passwordPlaceholder">Password</label>
             <input
                 id="passwordInput"
                 type="password"

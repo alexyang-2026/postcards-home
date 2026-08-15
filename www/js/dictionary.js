@@ -79,7 +79,9 @@ const translationResources = {
                     photoPreview: "Selected postcard photograph",
                     stampPreview: "Selected postcard stamp",
                     postcardActions: "Postcard actions",
-                    closeLifeSegmentModal: "Close Life Segment window"
+                    closeLifeSegmentModal: "Close Life Segment window",
+                    playMusic: "Play postcard music",
+                    pauseMusic: "Pause postcard music"
                 },
 
                 messages: {
@@ -225,7 +227,9 @@ const translationResources = {
                     photoPreview: "已选择的明信片照片",
                     stampPreview: "已选择的明信片邮票",
                     postcardActions: "明信片操作",
-                    closeLifeSegmentModal: "关闭人生篇章窗口"
+                    closeLifeSegmentModal: "关闭人生篇章窗口",
+                    playMusic: "播放明信片音乐",
+                    pauseMusic: "暂停明信片音乐"
                 },
 
                 messages: {

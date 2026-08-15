@@ -65,7 +65,9 @@ const spanishMainTranslations = {
                 "photoPreview": "Fotografía seleccionada para la postal",
                 "stampPreview": "Sello seleccionado para la postal",
                 "postcardActions": "Acciones de la postal",
-                "closeLifeSegmentModal": "Cerrar ventana de etapa de vida"
+                "closeLifeSegmentModal": "Cerrar ventana de etapa de vida",
+                "playMusic": "Reproducir la música de la postal",
+                "pauseMusic": "Pausar la música de la postal"
             },
             "messages": {
                 "photoRequired": "Selecciona una foto antes de guardar tu postal.",
