@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /inventory.html
+
+Sitemap: https://postcards-home.alexyang2020.workers.dev/sitemap.xml
