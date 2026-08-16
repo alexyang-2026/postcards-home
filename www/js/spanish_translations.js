@@ -239,7 +239,10 @@ const spanishInventoryTranslations = {
             "sections": {
                 "lifeSegments": "Mi colección de etapas de vida",
                 "stamps": "Mi colección de sellos",
-                "collectibles": "Mis otros coleccionables"
+                "collectibles": "Mis otros coleccionables",
+                "otherCollectibles": "Coleccionables de postales y de la aplicación",
+                "chopinNocturnes": "Nocturnos de Chopin",
+                "goldbergVariations": "Variaciones Goldberg"
             },
             "lifeSegments": {
                 "postcardCount": "Contiene {{count}} postales",

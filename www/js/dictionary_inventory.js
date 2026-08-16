@@ -30,7 +30,10 @@ const inventoryTranslations = {
                 sections: {
                     lifeSegments: "My Life Segment Collection",
                     stamps: "My Stamp Collection",
-                    collectibles: "My Other Collectibles"
+                    collectibles: "My Other Collectibles",
+                    otherCollectibles: "Postcard & App Collectibles",
+                    chopinNocturnes: "Chopin Nocturnes",
+                    goldbergVariations: "Goldberg Variations"
                 },
 
                 lifeSegments: {
@@ -229,7 +232,10 @@ const inventoryTranslations = {
                 sections: {
                     lifeSegments: "我的人生篇章",
                     stamps: "我的邮票收藏",
-                    collectibles: "我的其他收藏品"
+                    collectibles: "我的其他收藏品",
+                    otherCollectibles: "明信片与应用收藏品",
+                    chopinNocturnes: "肖邦夜曲",
+                    goldbergVariations: "哥德堡变奏曲"
                 },
 
                 lifeSegments: {

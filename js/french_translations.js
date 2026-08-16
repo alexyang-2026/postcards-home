@@ -218,7 +218,7 @@ const frenchInventoryTranslations = {
                 profileSettings: "Paramètres du profil", returnToMain: "Retour à la page principale"
             },
             header: { title: "Inventaire complet", subtitle: "Vos cartes et collections enregistrées apparaîtront ici." },
-            sections: { lifeSegments: "Mes chapitres de vie", stamps: "Ma collection de timbres", collectibles: "Mes autres objets de collection" },
+            sections: { lifeSegments: "Mes chapitres de vie", stamps: "Ma collection de timbres", collectibles: "Mes autres objets de collection", otherCollectibles: "Objets de collection des cartes et de l’application", chopinNocturnes: "Nocturnes de Chopin", goldbergVariations: "Variations Goldberg" },
             lifeSegments: {
                 postcardCount: "Contient {{count}} cartes", createdOn: "Créé le {{date}}", coverAlt: "Image de couverture de {{title}}",
                 modalTitle: "Voir les cartes", modalTitleWithName: "Voir les cartes de {{title}}",

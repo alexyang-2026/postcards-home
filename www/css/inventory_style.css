@@ -140,11 +140,20 @@ select {
 }
 
 /* Style Collectibles */
+.collectible-subsection {
+    margin-top: 32px;
+}
+
+.collectible-subsection-heading {
+    margin: 0 0 16px;
+    font-size: 1.25rem;
+}
+
 .collectibles-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    margin-top: 32px;
+    margin-top: 0;
 }
 
 .collectible-card {

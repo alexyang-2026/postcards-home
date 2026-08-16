@@ -90,6 +90,11 @@ select {
     padding-top: 15px;
 }
 
+#otherCollectiblesGeneralHeading {
+    text-decoration: underline;
+    font-size: 20px;
+}
+
 .life-segment-grid {
     display: flex;
     flex-wrap: wrap; /* If there is not room on this row, move the remaining items to the next one */
@@ -140,11 +145,20 @@ select {
 }
 
 /* Style Collectibles */
+.collectible-subsection {
+    margin-top: 32px;
+}
+
+.collectible-subsection-heading {
+    margin: 0 0 16px;
+    font-size: 1.25rem;
+}
+
 .collectibles-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    margin-top: 32px;
+    margin-top: 0;
 }
 
 .collectible-card {

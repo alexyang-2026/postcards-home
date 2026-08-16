@@ -640,7 +640,9 @@ async function loadInventoryStamps() {
 }
 
 // Function to load the collectibles
-const collectiblesGrid = document.querySelector(".collectibles-grid");
+const otherCollectiblesGrid = document.getElementById("otherCollectiblesGrid");
+const chopinNocturnesGrid = document.getElementById("chopinNocturnesGrid");
+const goldbergVariationsGrid = document.getElementById("goldbergVariationsGrid");
 
 async function loadCollectibles() {
     const { data: authData } = await supabaseClient.auth.getUser();
@@ -650,7 +652,9 @@ async function loadCollectibles() {
     }
 
     const userID = authData.user.id;
-    collectiblesGrid.innerHTML = "";
+    otherCollectiblesGrid.innerHTML = "";
+    chopinNocturnesGrid.innerHTML = "";
+    goldbergVariationsGrid.innerHTML = "";
 
     const { data: collectiblesData, error: collectiblesError } =
         await supabaseClient
@@ -669,15 +673,15 @@ async function loadCollectibles() {
     for (const collectibleID of ownedCollectibles) {
         const collectible = findCollectibleByID(collectibleID);
 
-        const translatedCollectible = i18next.t(
-            `collectibles.${collectible.category}.${collectible.collectibleKey}`,
-            { returnObjects: true }
-        );
-
         if (!collectible) {
             console.warn("Collectible not found: ", collectibleID);
             continue;
         }
+
+        const translatedCollectible = i18next.t(
+            `collectibles.${collectible.category}.${collectible.collectibleKey}`,
+            { returnObjects: true }
+        );
 
         let collectibleCategory = collectible.category;
         let collectibleCategoryBackgroundColor = "gold";
@@ -705,7 +709,13 @@ async function loadCollectibles() {
             </div>
             `;
 
-        collectiblesGrid.innerHTML += htmlTemplate;
+        if (collectibleID.startsWith("chopin_nocturne_")) {
+            chopinNocturnesGrid.innerHTML += htmlTemplate;
+        } else if (collectibleID.startsWith("bach_goldberg_")) {
+            goldbergVariationsGrid.innerHTML += htmlTemplate;
+        } else {
+            otherCollectiblesGrid.innerHTML += htmlTemplate;
+        }
     }
 
     loadExclusiveMusicOptionsInEditor();

@@ -28,6 +28,9 @@ const excluded = new Set([
     "ios", "android",               // I do not want to commit entire native apps to the bundle
     "dev_tools",                    // Dev tools for creating assets, not part of the app, which is also why most scripts here aren't in HTML/CSS/JS
     ".venv",
+
+    "sitemap.xml",
+    "robots.txt",
 ]);
 
 function copyDirectory(source, destination){
