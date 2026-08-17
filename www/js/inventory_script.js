@@ -643,6 +643,8 @@ async function loadInventoryStamps() {
 const otherCollectiblesGrid = document.getElementById("otherCollectiblesGrid");
 const chopinNocturnesGrid = document.getElementById("chopinNocturnesGrid");
 const goldbergVariationsGrid = document.getElementById("goldbergVariationsGrid");
+const chopinNocturnesSection = document.getElementById("chopinNocturnesSection");
+const goldbergVariationsSection = document.getElementById("goldbergVariationsSection");
 
 async function loadCollectibles() {
     const { data: authData } = await supabaseClient.auth.getUser();
@@ -655,6 +657,8 @@ async function loadCollectibles() {
     otherCollectiblesGrid.innerHTML = "";
     chopinNocturnesGrid.innerHTML = "";
     goldbergVariationsGrid.innerHTML = "";
+    chopinNocturnesSection.hidden = true;
+    goldbergVariationsSection.hidden = true;
 
     const { data: collectiblesData, error: collectiblesError } =
         await supabaseClient
@@ -691,16 +695,14 @@ async function loadCollectibles() {
 
         } else if (collectible.category === "wallpapers") {
             collectibleCategory = i18next.t("inventory.collectibleCategories.wallpaper");
-
             collectibleCategoryBackgroundColor = "limegreen";
+
         } else if (collectible.category === "exclusiveMusic") {
             collectibleCategory = i18next.t("inventory.collectibleCategories.exclusiveMusic");
-
             collectibleCategoryBackgroundColor = "orange";
         }
 
         const htmlTemplate = `
-        
             <div class="collectible-card">
                 <img src="${collectible.image}" alt="${translatedCollectible.name}" class="collectible-image">
                 <h3 class="collectible-title">${translatedCollectible.name}</h3>
@@ -709,10 +711,15 @@ async function loadCollectibles() {
             </div>
             `;
 
+
         if (collectibleID.startsWith("chopin_nocturne_")) {
+            chopinNocturnesSection.hidden = false;
             chopinNocturnesGrid.innerHTML += htmlTemplate;
+
         } else if (collectibleID.startsWith("bach_goldberg_")) {
+            goldbergVariationsSection.hidden = false;
             goldbergVariationsGrid.innerHTML += htmlTemplate;
+
         } else {
             otherCollectiblesGrid.innerHTML += htmlTemplate;
         }

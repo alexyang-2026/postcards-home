@@ -241,8 +241,8 @@ const spanishInventoryTranslations = {
                 "stamps": "Mi colección de sellos",
                 "collectibles": "Mis otros coleccionables",
                 "otherCollectibles": "Coleccionables de postales y de la aplicación",
-                "chopinNocturnes": "Nocturnos de Chopin",
-                "goldbergVariations": "Variaciones Goldberg"
+                "chopinNocturnes": "Colección de música exclusiva: Nocturnos de Chopin",
+                "goldbergVariations": "Colección de música exclusiva: Variaciones Goldberg de Bach"
             },
             "lifeSegments": {
                 "postcardCount": "Contiene {{count}} postales",

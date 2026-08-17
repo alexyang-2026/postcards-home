@@ -395,7 +395,7 @@ select {
 
 .builderStep {
     display: grid;
-    grid-template-columns: 200px 50px 250px;
+    grid-template-columns: 250px 50px 250px;
     align-items: center;
     gap: 14px;
 
@@ -417,6 +417,7 @@ select {
     font-weight: bold;
     white-space: normal;
     font-family: American Typewriter;
+    text-align: right;
 
 }
 

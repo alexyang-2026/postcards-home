@@ -32,8 +32,8 @@ const inventoryTranslations = {
                     stamps: "My Stamp Collection",
                     collectibles: "My Other Collectibles",
                     otherCollectibles: "Postcard & App Collectibles",
-                    chopinNocturnes: "Chopin Nocturnes",
-                    goldbergVariations: "Goldberg Variations"
+                    chopinNocturnes: "Exclusive Music Collection: Chopin Nocturnes",
+                    goldbergVariations: "Exclusive Music Collection: Bach Goldberg Variations"
                 },
 
                 lifeSegments: {
@@ -234,8 +234,8 @@ const inventoryTranslations = {
                     stamps: "我的邮票收藏",
                     collectibles: "我的其他收藏品",
                     otherCollectibles: "明信片与应用收藏品",
-                    chopinNocturnes: "肖邦夜曲",
-                    goldbergVariations: "哥德堡变奏曲"
+                    chopinNocturnes: "专属音乐收藏：肖邦夜曲",
+                    goldbergVariations: "专属音乐收藏：巴赫《哥德堡变奏曲》"
                 },
 
                 lifeSegments: {

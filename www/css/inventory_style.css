@@ -90,6 +90,11 @@ select {
     padding-top: 15px;
 }
 
+#otherCollectiblesGeneralHeading {
+    text-decoration: underline;
+    font-size: 20px;
+}
+
 .life-segment-grid {
     display: flex;
     flex-wrap: wrap; /* If there is not room on this row, move the remaining items to the next one */
